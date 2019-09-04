@@ -137,6 +137,7 @@
 
     <pricing-component></pricing-component>
 
+
   </div>
 
   <div class="col-4">
