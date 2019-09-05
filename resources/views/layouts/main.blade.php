@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- Fonts -->
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Comfortaa|Roboto&display=swap" rel="stylesheet"> -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Comfortaa|Roboto&display=swap" rel="stylesheet"> -->
@@ -92,7 +94,7 @@
       </ul>
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="sign-up">Sign up</a>
+          <a class="nav-link" href="signup">Sign up</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="login">Log in</a>
@@ -109,15 +111,17 @@
       </ul>
         <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="contact">Contact</a>
+          <a class="nav-link" data-toggle="modal" data-target="#contactModal">Contact</a>
         </li>
       </ul>
     </nav>
   </footer>
+<div id="app">
+<contact-component></contact-component>
+</div>
 
       <!-- Optional JavaScript -->
-      <!-- Vue -->
-      <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
 
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -126,6 +130,12 @@
 
 
       <script src="js/app.js"></script>
+
+      <!-- Vue -->
+      <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script> -->
+
+
+
 
     </body>
   </html>

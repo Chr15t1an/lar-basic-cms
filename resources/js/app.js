@@ -21,6 +21,7 @@ window.Vue = require('vue');
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('pricing-component', require('./components/PricingComponent.vue').default);
+Vue.component('contact-component', require('./components/ContactComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,4 +31,11 @@ Vue.component('pricing-component', require('./components/PricingComponent.vue').
 
 const app = new Vue({
     el: '#app',
+});
+
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
 });

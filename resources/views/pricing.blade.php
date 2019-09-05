@@ -151,8 +151,8 @@
 
 <section class="justify-content-around row">
   <div class="">
-    <button type="button" class="btn btn-primary btn-lg">Sign Up</button>
-    <button type="button" class="btn btn-outline-dark btn-lg">Pricing</button>
+    <a href="/signup"><button type="button" class="btn btn-primary btn-lg">Sign Up</button></a>
+    <a href="/pricing"><button type="button" class="btn btn-outline-dark btn-lg">Pricing</button></a>
   </div>
 
 </section>

@@ -2,7 +2,7 @@
   <div class="">
     <form>
        <div class="form-group">
-          <label for="">Number of Users</label><br/>
+          <label for="">Number of Users +5/user</label><br/>
           <div id="pricing-buttons" v-on:click="setUsers" class="btn-group" role="group" aria-label="Basic example">
              <!-- If you click a button in this (class="btn-group") set as active
                 then map the selected one to the uses number -->
@@ -83,7 +83,7 @@
           methods:{
             calcPrice: function(){
               //Calc price.
-
+              var users, sms, minutes ='';
               users = this.numberOfUsers;
               sms = this.smsMessages;
               minutes = this.callTimeMinutes;
@@ -96,6 +96,8 @@
 
             },
             setUsers: function() {
+              var usersText,usersInt ='';
+
               usersText = $('#pricing-buttons .active-pricing');
               usersInt = parseInt(usersText[0].innerText);
               this.numberOfUsers = usersInt;
@@ -109,7 +111,7 @@
               });
 
 
-                $('[data-toggle="tooltip"]').tooltip()
+                $('[data-toggle="tooltip"]').tooltip();
             },
 
               }
