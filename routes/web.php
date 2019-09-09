@@ -30,3 +30,13 @@ Route::get('terms-&-conditions', function () {
 Route::get('/signup', function () {
     return view('signup');
 });
+//Dont want public routes.
+// Route::resources([
+//     'contact' => 'ContactController'
+// ]);
+
+Route::post('/contact','ContactController@store');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

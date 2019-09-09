@@ -60,7 +60,7 @@
 
 
 <!-- main conten block -->
-<div class="main col-lg-8 offset-lg-2">
+<div id="app" class="main col-lg-8 offset-lg-2">
 
 
 
@@ -68,57 +68,57 @@
  @yield('content')
 
 
+   <footer class="col-lg-8 offset-lg-2">
+     <hr/>
+   <nav class="navbar navbar-expand-lg navbar-light">
+     <a class="navbar-brand" href="/">
+         <!-- icon -->
+         <i class="material-icons">
+       chat_bubble_outline
+       </i>
+         <!-- icon -->
+     </a>
+       <ul class="navbar-nav">
+         <li class="nav-item active">
+           <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="pricing">Pricing</a>
+         </li>
+       </ul>
+       <ul class="navbar-nav">
+         <li class="nav-item">
+           <a class="nav-link" href="signup">Sign up</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="login">Log in</a>
+         </li>
+       </ul>
+       <ul class="navbar-nav">
 
-  </div>
+         <li class="nav-item">
+           <a class="nav-link" href="privacy-policy">Privacy Policy</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="terms-&-conditions">Terms & Conditions</a>
+         </li>
+       </ul>
+         <ul class="navbar-nav">
+         <li class="nav-item">
+           <a class="nav-link" data-toggle="modal" data-target="#contactModal">Contact</a>
+         </li>
+       </ul>
+     </nav>
+   </footer>
+
+<contact-component></contact-component>
+</div>
   <!-- end main conten block -->
 
 
 
-  <footer class="col-lg-8 offset-lg-2">
-    <hr/>
-  <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="/">
-        <!-- icon -->
-        <i class="material-icons">
-      chat_bubble_outline
-      </i>
-        <!-- icon -->
-    </a>
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="pricing">Pricing</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="signup">Sign up</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="login">Log in</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav">
 
-        <li class="nav-item">
-          <a class="nav-link" href="privacy-policy">Privacy Policy</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="terms-&-conditions">Terms & Conditions</a>
-        </li>
-      </ul>
-        <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#contactModal">Contact</a>
-        </li>
-      </ul>
-    </nav>
-  </footer>
-<div id="app">
-<contact-component></contact-component>
-</div>
+
 
       <!-- Optional JavaScript -->
 
