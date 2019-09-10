@@ -12,19 +12,23 @@
         <div class="modal-body" style="min-height:320px">
           <form v-if="!submitting">
             <div class="form-group">
-              <label for="exampleInputPassword1">Name</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="What should we call you?">
+              <label for="exampleInputPassword1">First Name</label>
+              <input type="name" name="firstname" class="form-control" id="" placeholder="First Name">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Last Name</label>
+              <input type="name" name="lastname" class="form-control" id="" placeholder="Last Name">
             </div>
 
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="What's the best address to respond to?">
+              <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="What's the best address to respond to?">
               <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
 
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Message</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <textarea name="msg" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
           </form>
 

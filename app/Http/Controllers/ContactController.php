@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ContactController extends Controller
 {
@@ -36,6 +37,47 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         //
+
+
+
+         $validator = Validator::make($request->all(), [
+             'firstname' => 'required|max:155|regex:/^[a-zA-Z\s]*$/',
+             'lastname' => 'required|max:155|regex:/^[a-zA-Z\s]*$/',
+             'email' => 'required|email',
+             'msg' => 'required|regex:/^[a-zA-Z0-9\s]*$/',
+         ]);
+
+
+        if ($validator->fails()) {
+              // Need to return errors.
+                 return response()->json(['errors'=>$validator->errors()]);
+                        // return 'Fail';
+                       // return $validator;
+                       //             ->withErrors($validator)
+                       //             ->withInput();
+                   }
+        //Store
+
+        $newContact = new Contact;
+        $newContact->first_name = $request->firstname;
+        $newContact->last_name = $request->lastname;
+        $newContact->email = $request->email;
+        $newContact->msg = $request->msg;
+
+        try {
+          $newContact->save();
+          return 'Message Saved';
+        } catch (\Exception $e) {
+          return response()->json(['errors'=>$e]);
+        }
+
+
+
+
+        // dd($request->name);
+        //  return 'A';
+
+
     }
 
     /**

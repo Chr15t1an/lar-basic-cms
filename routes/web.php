@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('pubhome');
 });
 
 Route::get('/pricing', function () {
@@ -35,7 +35,7 @@ Route::get('/signup', function () {
 //     'contact' => 'ContactController'
 // ]);
 
-Route::post('/contact','ContactController@store');
+
 
 Auth::routes();
 
