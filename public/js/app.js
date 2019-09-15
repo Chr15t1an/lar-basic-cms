@@ -2049,10 +2049,26 @@ __webpack_require__.r(__webpack_exports__);
       first_name: '',
       last_name: '',
       email: '',
-      msg: ''
+      plan: 'none'
     };
   },
   methods: {
+    getUrlVars: function getUrlVars() {
+      var vars = {};
+      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+        vars[key] = value;
+      });
+      return vars;
+    },
+    getUrlParam: function getUrlParam(parameter, defaultvalue) {
+      var urlparameter = defaultvalue;
+
+      if (window.location.href.indexOf(parameter) > -1) {
+        urlparameter = this.getUrlVars()[parameter];
+      }
+
+      return urlparameter;
+    },
     submitMyForm: function submitMyForm() {
       //Calc price.
       this.submitting = true;
@@ -2060,11 +2076,11 @@ __webpack_require__.r(__webpack_exports__);
         firstname: this.first_name,
         lastname: this.last_name,
         email: this.email,
-        msg: this.msg
+        plan: this.plan
       }; // const dt = { firstname: "gdfg1df2g2121dgfdg",lastname: "gdfg1df2g2121dgfdg", email: "gdfg1df2g2121dgfdg", msg: "gdfg1d9995   <>f2g2121dgfdg" };
 
       self = this;
-      axios.post('/api/contact', dt).then(function (response) {
+      axios.post('/api/signup', dt).then(function (response) {
         // console.log(response.data)
         if (response.data.errors) {
           var d = '';
@@ -2111,7 +2127,9 @@ __webpack_require__.r(__webpack_exports__);
       }); // Need to display Errors and have submitting animation.
     }
   },
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    this.plan = this.getUrlParam('plan', 'none');
+  }
 });
 
 /***/ }),
@@ -37957,68 +37975,91 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(0),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+              _vm._v("Email address")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.email,
+                  expression: "email"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "email",
+                id: "exampleInputEmail1",
+                "aria-describedby": "emailHelp",
+                placeholder: "Enter email"
+              },
+              domProps: { value: _vm.email },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.email = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "small",
+              {
+                staticClass: "form-text text-muted",
+                attrs: { id: "emailHelp" }
+              },
+              [_vm._v("We'll never share your email with anyone else.")]
+            )
+          ]),
           _vm._v(" "),
           _c("input", {
             directives: [
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.email,
-                expression: "email"
+                value: _vm.plan,
+                expression: "plan"
               }
             ],
             staticClass: "d-none",
             attrs: { type: "text", name: "plan", value: "none" },
-            domProps: { value: _vm.email },
+            domProps: { value: _vm.plan },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.email = $event.target.value
+                _vm.plan = $event.target.value
               }
             }
           }),
           _vm._v(" "),
           _c(
             "button",
-            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+            {
+              staticClass: "btn btn-primary",
+              attrs: { type: "submit" },
+              on: {
+                click: _vm.submitMyForm,
+                submit: function($event) {
+                  $event.preventDefault()
+                }
+              }
+            },
             [_vm._v("Sign up")]
           )
         ])
       : _vm._e(),
     _vm._v(" "),
-    _vm.submitting ? _c("div", [_vm._m(1)]) : _vm._e()
+    _vm.submitting ? _c("div", [_vm._m(0)]) : _vm._e()
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-        _vm._v("Email address")
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: {
-          type: "email",
-          id: "exampleInputEmail1",
-          "aria-describedby": "emailHelp",
-          placeholder: "Enter email"
-        }
-      }),
-      _vm._v(" "),
-      _c(
-        "small",
-        { staticClass: "form-text text-muted", attrs: { id: "emailHelp" } },
-        [_vm._v("We'll never share your email with anyone else.")]
-      )
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -38029,7 +38070,7 @@ var staticRenderFns = [
         staticClass: "loader loader--style5 text-center",
         attrs: { title: "4" }
       },
-      [_c("h3", [_vm._v("Email Sent")])]
+      [_c("h3", [_vm._v("Signup Request Sent")])]
     )
   }
 ]

@@ -37,23 +37,23 @@
             </div>
             <div class="form-group">
                <label for="exampleInputEmail1">Email address</label>
-               <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+               <input v-model="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
              </div>
 
 
 
-              <input v-model="email" type="text" class="d-none" name="plan" value="none">
+              <input v-model="plan" type="text" class="d-none" name="plan" value="none">
 
 
-            <button type="submit" class="btn btn-primary">Sign up</button>
+            <button  v-on:click="submitMyForm" v-on:submit.prevent type="submit" class="btn btn-primary">Sign up</button>
           </form>
 
 
           <div v-if="submitting">
 
               <div class="loader loader--style5 text-center" title="4">
-                <h3>Email Sent</h3>
+                <h3>Signup Request Sent</h3>
               </div>
           </div>
 
@@ -72,24 +72,41 @@
             first_name:'',
             last_name:'',
             email:'',
-            msg:'',
+            plan:'none',
 
             }
           },
 
           methods:{
+
+          getUrlVars: function() {
+                  var vars = {};
+                  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+                      vars[key] = value;
+                  });
+                  return vars;
+              },
+
+            getUrlParam: function(parameter, defaultvalue){
+                var urlparameter = defaultvalue;
+                if(window.location.href.indexOf(parameter) > -1){
+                    urlparameter = this.getUrlVars()[parameter];
+                    }
+                return urlparameter;
+            },
+
             submitMyForm: function(){
               //Calc price.
               this.submitting = true;
 
-              const dt = { firstname: this.first_name,lastname: this.last_name, email: this.email, msg: this.msg };
+              const dt = { firstname: this.first_name,lastname: this.last_name, email: this.email, plan: this.plan };
 
               // const dt = { firstname: "gdfg1df2g2121dgfdg",lastname: "gdfg1df2g2121dgfdg", email: "gdfg1df2g2121dgfdg", msg: "gdfg1d9995   <>f2g2121dgfdg" };
 
               self = this;
 
               axios
-                .post('/api/contact', dt)
+                .post('/api/signup', dt)
                 .then(function (response) {
                   // console.log(response.data)
 
@@ -171,6 +188,9 @@
 
           },
           mounted: function () {
+
+            this.plan = this.getUrlParam('plan','none');
+
 
             },
 
