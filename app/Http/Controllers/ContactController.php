@@ -51,13 +51,8 @@ class ContactController extends Controller
         if ($validator->fails()) {
               // Need to return errors.
                  return response()->json(['errors'=>$validator->errors()]);
-                        // return 'Fail';
-                       // return $validator;
-                       //             ->withErrors($validator)
-                       //             ->withInput();
-                   }
+              }
         //Store
-
         $newContact = new Contact;
         $newContact->first_name = $request->firstname;
         $newContact->last_name = $request->lastname;
@@ -70,13 +65,6 @@ class ContactController extends Controller
         } catch (\Exception $e) {
           return response()->json(['errors'=>$e]);
         }
-
-
-
-
-        // dd($request->name);
-        //  return 'A';
-
 
     }
 

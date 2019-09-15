@@ -32,20 +32,8 @@
          </div>
 
 
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-          <label class="form-check-label" for="defaultCheck1">
-            Default checkbox
-          </label>
-        </div>
 
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-          <label class="form-check-label" for="defaultCheck2">
-            Default checkbox
-          </label>
-        </div>
-
+          <input type="text" class="d-none" name="plan" value="none">
 
 
         <button type="submit" class="btn btn-primary">Sign up</button>
