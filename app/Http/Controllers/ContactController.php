@@ -58,6 +58,8 @@ class ContactController extends Controller
         $newContact->last_name = $request->lastname;
         $newContact->email = $request->email;
         $newContact->msg = $request->msg;
+        $newContact->read = 0; //Unread
+        $newContact->archived = 0; //Unarchived.
 
         try {
           $newContact->save();
@@ -68,6 +70,42 @@ class ContactController extends Controller
 
     }
 
+
+
+    /**
+     * Read the specified resource.
+     *
+     * @param  \App\Contact  $contact
+     * @return \Illuminate\Http\Response
+     */
+    public function read($id)
+    {
+      $email = Contact::find($id);
+      if ($email->read === 0) {
+          $email->read = 1;
+      }else {
+          $email->read = 0;
+      }
+      $email->save();
+      // return view('admin.reademails')->with('email',$email);
+    }
+
+    public function archive($id)
+    {
+      $email = Contact::find($id);
+
+      if ($email->archived === 0) {
+          $email->archived = 1;
+      }else {
+          $email->archived = 0;
+      }
+      $email->save();
+
+      // return view('admin.reademails')->with('email',$email);
+    }
+
+
+
     /**
      * Display the specified resource.
      *
@@ -76,7 +114,9 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        //
+      $email = Contact::find($id);
+      return $email;
+      // return view('admin.reademails')->with('email',$email);
     }
 
     /**
@@ -87,7 +127,7 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        //
+
     }
 
     /**

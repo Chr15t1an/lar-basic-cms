@@ -8,17 +8,23 @@ Next step is to plan minimal steps
 - Removed.
 
 
-/signup
-Collect leads
+/signup - X
+Collect leads - X
 
-
-
-Admin/leads
-- View & Mark Leads.
-- Export Leads
 
 Admin/messages
 - View & Mark Contact messages
+...... Working on component. 
+Admin/leads
+list Firstname, Last Name,
+Delete - can archive
+Replyed - no
+
+
+- View & Mark Leads. can vue all
+- Export Leads - can export
+
+
 
 
 Admin/settings
@@ -29,14 +35,21 @@ Admin/settings
 - Bugsnag
 - tag manager
 - Meta Values (title, h1, meta)
+.. email address
 
 
 Set up Analitics
 Write Tests
+Refactor
+- Contacts should be emails or messages
+
+
+Make it safe.
 
 
 
 
+.... Robots.txt
 
 
 

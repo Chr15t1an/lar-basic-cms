@@ -19,6 +19,8 @@ class CreateContactTable extends Migration
             $table->longText('last_name');
             $table->string('email');
             $table->longText('msg');
+            $table->boolean('read');
+            $table->boolean('archived');
             $table->timestamps();
         });
     }

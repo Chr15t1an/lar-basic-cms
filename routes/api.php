@@ -17,6 +17,11 @@ Route::post('/contact','ContactController@store');
 
 Route::post('/signup','SignupController@store');
 
+Route::get('/admin/contacts/{id}', 'ContactController@show');
+
+Route::post('/email/archive/{id}','ContactController@archive');
+Route::post('/email/read/{id}','ContactController@read');
+
 
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();

@@ -36,12 +36,20 @@ Route::get('/signup', function () {
 // ]);
 
 
+Route::get('/admin', 'AdminController@index');
+
+Route::get('/admin/leads', 'AdminController@showleads');
+Route::get('/admin/leads/export', 'SignupController@exportleads');
+
+
+Route::get('/admin/contacts', 'AdminController@showcontacts');
+Route::get('/admin/contacts/{id}', 'AdminController@showemail');
+
+
 
 // Auth::routes();
 Auth::routes([
-  'register' => false, // Registration Routes...
-  'reset' => false, // Password Reset Routes...
-  'verify' => false, // Email Verification Routes...
+  // 'register' => false, // Registration Routes...
+  // 'reset' => false, // Password Reset Routes...
+  // 'verify' => false, // Email Verification Routes...
 ]);
-
-Route::get('/home', 'HomeController@index')->name('home');
