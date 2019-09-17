@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.admin')
 
 @section('title', 'Handle Inbound App Pricing')
 @section('content')
@@ -12,26 +12,6 @@
 
 <div class="container">
 
-    {{$email->first_name}}
-    {{$email->last_name}}<br/>
-    {{$email->email}}<br/>
-    {{$email->msg}}
-
-    {{$email->read}}
-    {{$email->archived}}
-
-    @if ($email->read === 1)
-    <p>EMail Has been read</p>
-    @else
-    <p>EMail is been UnRead</p>
-    @endif
-
-
-    @if ($email->archived === 1)
-    <p>EMail Has been archived</p>
-    @else
-    <p>EMail is been Unarchived</p>
-    @endif
 
 
 <hr>

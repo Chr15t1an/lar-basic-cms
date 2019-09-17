@@ -87,6 +87,7 @@ class ContactController extends Controller
           $email->read = 0;
       }
       $email->save();
+      return $email->read;
       // return view('admin.reademails')->with('email',$email);
     }
 
@@ -101,7 +102,7 @@ class ContactController extends Controller
       }
       $email->save();
 
-      // return view('admin.reademails')->with('email',$email);
+      return $email->archived;
     }
 
 
@@ -112,7 +113,7 @@ class ContactController extends Controller
      * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function show(Contact $contact)
+    public function show($id)
     {
       $email = Contact::find($id);
       return $email;

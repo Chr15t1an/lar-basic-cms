@@ -21,6 +21,7 @@ class AdminController extends Controller
         //
         return view('admin.admin');
     }
+
     public function showcontacts()
     {
        $contact = Contact::all();

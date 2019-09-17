@@ -47,6 +47,7 @@ Route::get('/admin/contacts/{id}', 'AdminController@showemail');
 
 
 
+
 // Auth::routes();
 Auth::routes([
   // 'register' => false, // Registration Routes...
