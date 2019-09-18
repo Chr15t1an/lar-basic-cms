@@ -14,7 +14,7 @@ Collect leads - X
 
 Admin/messages
 - View & Mark Contact messages
-...... Working on component. 
+...... Working on component.
 Admin/leads
 list Firstname, Last Name,
 Delete - can archive
@@ -28,29 +28,67 @@ Replyed - no
 
 
 Admin/settings
--- Segment
+
+.....
+Checklist
+set up todolist
+- uptime robot
+- cloudflare
+- GTM
 - Google Analitics
-- Uptime notification
-- Screen
-- Bugsnag
-- tag manager
-- Meta Values (title, h1, meta)
-.. email address
+- Bugsnag - Bugsnag
+- Generate Sitemap
+- Robot.text
+- Check H1s,Metas.
+-- Segment - can add via GTM
 
 
+settings/seo/sitemap
+- Generate Basic sitemap
+- Can edit.
+- Reminder to submit to google search console.
+      Generate basic sitemap
+      - Dont show admin pages
+      -- https://github.com/spatie/laravel-sitemap
+      -- https://www.youtube.com/watch?v=01x8i9Ashdc
+
+settings/seo/robot.txt
+- Generate Robot .txt
+- Edit RObot.txt
+
+
+
+settings/seo/seo-checkup
+Mix in Python job to check H1, Meta title & Meta Description. - Meta Values (title, h1, meta)
+
+
+/settings/gtm
+- Get GTM Container ID.
+
+
+
+
+
+//////////
 Set up Analitics
-Write Tests
-Refactor
+- Pageviews
+- Exclude Self IP
+- Conversion goals.
+- events.
+
+Documentation.
+How does everything work?
+How do you repeat this.
+
+
+Write Tests.
+Refactor.
 - Contacts should be emails or messages
 
+Design prune
+- Active pages.
 
 Make it safe.
-
-
-
-
-.... Robots.txt
-
 
 
 --------

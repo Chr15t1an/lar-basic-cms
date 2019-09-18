@@ -7,8 +7,6 @@
 <!-- section 1 -->
   <section class="row align-items-center">
 
-<a href="/admin/contacts"><button>Messages</button></a>
-<a href="/admin/leads"><button>Leads</button></a>
 <ul>
 @foreach ($contacts as $contact)
 

@@ -7,8 +7,7 @@
 <!-- section 1 -->
   <section class="row align-items-center">
 
-<a href="/admin/contacts"><button>Messages</button></a>
-<a href="/admin/leads"><button>Leads</button></a>
+
 <ul>
 @foreach ($leads as $l)
     <li>{{$l->first_name}} {{$l->last_name}} | {{$l->email}} </li>

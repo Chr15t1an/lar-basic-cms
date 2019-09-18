@@ -46,6 +46,14 @@ Route::get('/admin/contacts', 'AdminController@showcontacts');
 Route::get('/admin/contacts/{id}', 'AdminController@showemail');
 
 
+// Route::get('/admin/settings', 'AdminController@settings');
+Route::get('/admin/settings', function () {
+    return view('admin.settings');
+});
+
+Route::get('/admin/settings/seo', function () {
+    return view('admin.settings');
+});
 
 
 // Auth::routes();
