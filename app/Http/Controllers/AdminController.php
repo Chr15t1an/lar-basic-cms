@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 use App\Contact;
 use App\Signup;
 
+use Spatie\Sitemap\SitemapGenerator;
+
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Redirect;
+
 class AdminController extends Controller
 {
     /**
@@ -120,9 +125,54 @@ class AdminController extends Controller
         //
     }
 
-    // public function settings()
-    // {
-    //     //
-    //     return view('admin.settings');
-    // }
+    public function makeSitemap()
+    {
+        //
+        // return view('admin.settings');
+        $p = 'sitemap.xml';
+        $siteURL = URL::to('/');
+        SitemapGenerator::create($siteURL)->writeToFile($p);
+        return Redirect::back()->withErrors(['Sitemap Created! <br/> Remember to submit to Google Search Console. ']);
+    }
+
+
+    public function checkMetas()
+    {
+        //
+        // return view('admin.settings');
+        // $p = 'sitemap.xml';
+        // $siteURL = URL::to('/');
+        // SitemapGenerator::create($siteURL)->writeToFile($p);
+        // return Redirect::back()->withErrors(['Sitemap Created! <br/> Remember to submit to Google Search Console. ']);
+    }
+
+    public function makeRobotTxt()
+    {
+
+      // check that it exists
+      // If not rewrite it
+      
+      $a = ```
+      User-agent: *
+      Disallow: /
+
+      User-agent: Googlebot
+      Disallow: /admin
+      Disallow: /admin
+      Disallow: /register
+      Disallow: /reset
+      Disallow: /verify
+
+      User-agent: bingbot
+      Disallow: /admin
+      Disallow: /admin
+      Disallow: /register
+      Disallow: /reset
+      Disallow: /verify
+      ```;
+
+
+    }
+
+
 }

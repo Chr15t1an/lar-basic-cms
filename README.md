@@ -1,4 +1,8 @@
 
+https://close.com/ - this is ready
+
+
+
 
 Next step is to plan minimal steps
 ---
@@ -44,28 +48,41 @@ set up todolist
 
 
 settings/seo/sitemap
-- Generate Basic sitemap
-- Can edit.
+- Generate Basic sitemap - Yes
+- Can edit. - No
 - Reminder to submit to google search console.
       Generate basic sitemap
       - Dont show admin pages
       -- https://github.com/spatie/laravel-sitemap
       -- https://www.youtube.com/watch?v=01x8i9Ashdc
 
-settings/seo/robot.txt
+
+*******
+sitemap
+- Had to reduce php to v 7.2 for composer to work.
+- Sitemap isnt working on localhost:8000.
+... Need to test on laravel homestead
+
+-- https://stackoverflow.com/questions/55043321/laravel-spatie-sitemap-only-contains-1-url
+
+
+*******
+
+settings/seo/robot.txt - Skip till V2
 - Generate Robot .txt
 - Edit RObot.txt
+-- https://support.google.com/webmasters/answer/6062596?hl=en
+*******
 
 
-
-settings/seo/seo-checkup
+settings/seo/seo-checkup - Skip till V2.
 Mix in Python job to check H1, Meta title & Meta Description. - Meta Values (title, h1, meta)
 
 
+
+------ ! 
 /settings/gtm
 - Get GTM Container ID.
-
-
 
 
 

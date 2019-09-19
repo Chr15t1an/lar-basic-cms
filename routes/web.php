@@ -52,8 +52,11 @@ Route::get('/admin/settings', function () {
 });
 
 Route::get('/admin/settings/seo', function () {
-    return view('admin.settings');
+    return view('admin.seo');
 });
+
+
+Route::get('/admin/settings/seo/gen-sitemap', 'AdminController@makeSitemap');
 
 
 // Auth::routes();
