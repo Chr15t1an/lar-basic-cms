@@ -25,6 +25,7 @@ Vue.component('contact-component', require('./components/ContactComponent.vue').
 Vue.component('signup-component', require('./components/SignupComponent.vue').default);
 
 Vue.component('email-component', require('./components/EmailComponent.vue').default);
+Vue.component('gtm-component', require('./components/EmailComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

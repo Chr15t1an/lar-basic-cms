@@ -151,8 +151,8 @@ class AdminController extends Controller
 
       // check that it exists
       // If not rewrite it
-      
-      $a = ```
+
+      $a = `
       User-agent: *
       Disallow: /
 
@@ -169,7 +169,7 @@ class AdminController extends Controller
       Disallow: /register
       Disallow: /reset
       Disallow: /verify
-      ```;
+      `;
 
 
     }

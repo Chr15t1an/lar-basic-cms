@@ -50525,6 +50525,7 @@ Vue.component('pricing-component', __webpack_require__(/*! ./components/PricingC
 Vue.component('contact-component', __webpack_require__(/*! ./components/ContactComponent.vue */ "./resources/js/components/ContactComponent.vue")["default"]);
 Vue.component('signup-component', __webpack_require__(/*! ./components/SignupComponent.vue */ "./resources/js/components/SignupComponent.vue")["default"]);
 Vue.component('email-component', __webpack_require__(/*! ./components/EmailComponent.vue */ "./resources/js/components/EmailComponent.vue")["default"]);
+Vue.component('gtm-component', __webpack_require__(/*! ./components/EmailComponent.vue */ "./resources/js/components/EmailComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

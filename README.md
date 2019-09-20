@@ -80,9 +80,40 @@ Mix in Python job to check H1, Meta title & Meta Description. - Meta Values (tit
 
 
 
------- ! 
+------ !
 /settings/gtm
+
+
+Need to set up admin meta data table.
+
+<!-- php artisan make:model Metavalue -mcr -->
+Needs to use $table->morphs('taggable');
+--
+
+-- Set up meta values
+Included in blade.
+- Need to update form. 
+
+
 - Get GTM Container ID.
+Including the container code
+
+
+
+Track Pageviews & Click Events
+
+Any Goals to track?
+Form Conversions?
+
+Only include in public site
+
+
+
+
+
+
+
+
 
 
 
