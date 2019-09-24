@@ -2046,6 +2046,204 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/GtmComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/GtmComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      submitting: false,
+      errors: {},
+      meta_key: 'gtm',
+      meta_value_gtm: '',
+      value_set: false
+    };
+  },
+  created: function created() {
+    // /meta/get
+    this.getGTM();
+  },
+  methods: {
+    submitMyForm: function submitMyForm() {
+      if (this.value_set) {
+        this.updateGTM();
+      } else {
+        this.addGTM();
+      }
+    },
+    getGTM: function getGTM() {
+      var dt = {
+        meta_key: this.meta_key
+      };
+      self = this;
+      axios.post('/api/meta/get', dt).then(function (response) {
+        // console.log(response.data);
+        self.meta_value_gtm = response.data; // console.log('response');
+
+        console.log(response.data);
+
+        if (response.data) {
+          console.log('full');
+          self.value_set = true;
+        } else {
+          console.log('empty');
+          self.value_set = false;
+        }
+
+        self.submitting = false;
+      }); // self.submitting = false;
+      // return this.meta_value;
+
+      this.submitting = false;
+    },
+    addGTM: function addGTM() {
+      //Calc price.
+      this.submitting = true;
+      var dt = {
+        meta_key: this.meta_key,
+        meta_value: this.meta_value_gtm
+      }; //GTM-W5PBLZD
+
+      console.log(dt);
+      self = this;
+      axios.post('/api/meta/add', dt).then(function (response) {
+        console.log(response.data);
+
+        if (response.data.errors) {
+          var d = '';
+          d = JSON.parse(response.request.responseText); // console.log(d);
+
+          var errorMsgs = [];
+
+          for (var key in d) {
+            // skip loop if the property is from prototype
+            if (!d.hasOwnProperty(key)) continue;
+            var obj = d[key];
+
+            for (var prop in obj) {
+              // skip loop if the property is from prototype
+              if (!obj.hasOwnProperty(prop)) continue; // your code
+
+              console.log(obj[prop][0]);
+              errorMsgs.push(obj[prop][0]);
+            }
+          }
+
+          self.errors = errorMsgs;
+          self.submitting = false;
+          console.log(response.request.response);
+          console.log(d);
+        } else {
+          self.getGTM();
+        }
+      }); // Need to display Errors and have submitting animation.
+    },
+    updateGTM: function updateGTM() {
+      //Calc price.
+      this.submitting = true;
+      var dt = {
+        meta_key: this.meta_key,
+        meta_value: this.meta_value_gtm
+      }; //GTM-W5PBLZD
+
+      console.log(dt);
+      self = this;
+      axios.post('/api/meta/update', dt).then(function (response) {
+        console.log(response.data);
+
+        if (response.data.errors) {
+          var d = '';
+          d = JSON.parse(response.request.responseText); // console.log(d);
+
+          var errorMsgs = [];
+
+          for (var key in d) {
+            // skip loop if the property is from prototype
+            if (!d.hasOwnProperty(key)) continue;
+            var obj = d[key];
+
+            for (var prop in obj) {
+              // skip loop if the property is from prototype
+              if (!obj.hasOwnProperty(prop)) continue; // your code
+
+              console.log(obj[prop][0]);
+              errorMsgs.push(obj[prop][0]);
+            }
+          }
+
+          self.errors = errorMsgs;
+          self.submitting = false;
+          console.log(response.request.response);
+          console.log(d);
+        } else {
+          self.getGTM();
+        }
+      }); // Need to display Errors and have submitting animation.
+    }
+  },
+  mounted: function mounted() {}
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PricingComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PricingComponent.vue?vue&type=script&lang=js& ***!
@@ -2326,6 +2524,204 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.plan = this.getUrlParam('plan', 'none');
   }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SitechecklistComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SitechecklistComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      submitting: false,
+      errors: {},
+      meta_key: 'site_checklist',
+      meta_value_checklist: '',
+      value_set: false
+    };
+  },
+  created: function created() {
+    // /meta/get
+    this.getChecklist();
+  },
+  methods: {
+    submitMyForm: function submitMyForm() {
+      if (this.value_set) {
+        this.updateChecklist();
+      } else {
+        this.addChecklist();
+      }
+    },
+    getChecklist: function getChecklist() {
+      var dt = {
+        meta_key: this.meta_key
+      };
+      self = this;
+      axios.post('/api/meta/get', dt).then(function (response) {
+        // console.log(response.data);
+        self.meta_value = response.data; // console.log('response');
+
+        console.log(response.data);
+
+        if (response.data) {
+          console.log('full');
+          self.value_set = true;
+        } else {
+          console.log('empty');
+          self.value_set = false;
+        }
+
+        self.submitting = false;
+      }); // self.submitting = false;
+      // return this.meta_value;
+
+      this.submitting = false;
+    },
+    addChecklist: function addChecklist() {
+      //Calc price.
+      this.submitting = true;
+      var dt = {
+        meta_key: this.meta_key,
+        meta_value: this.meta_value
+      }; //GTM-W5PBLZD
+
+      console.log(dt);
+      self = this;
+      axios.post('/api/meta/add', dt).then(function (response) {
+        console.log(response.data);
+
+        if (response.data.errors) {
+          var d = '';
+          d = JSON.parse(response.request.responseText); // console.log(d);
+
+          var errorMsgs = [];
+
+          for (var key in d) {
+            // skip loop if the property is from prototype
+            if (!d.hasOwnProperty(key)) continue;
+            var obj = d[key];
+
+            for (var prop in obj) {
+              // skip loop if the property is from prototype
+              if (!obj.hasOwnProperty(prop)) continue; // your code
+
+              console.log(obj[prop][0]);
+              errorMsgs.push(obj[prop][0]);
+            }
+          }
+
+          self.errors = errorMsgs;
+          self.submitting = false;
+          console.log(response.request.response);
+          console.log(d);
+        } else {
+          self.getChecklist();
+        }
+      }); // Need to display Errors and have submitting animation.
+    },
+    updateChecklist: function updateChecklist() {
+      //Calc price.
+      this.submitting = true;
+      var dt = {
+        meta_key: this.meta_key,
+        meta_value: this.meta_value
+      }; //GTM-W5PBLZD
+
+      console.log(dt);
+      self = this;
+      axios.post('/api/meta/update', dt).then(function (response) {
+        console.log(response.data);
+
+        if (response.data.errors) {
+          var d = '';
+          d = JSON.parse(response.request.responseText); // console.log(d);
+
+          var errorMsgs = [];
+
+          for (var key in d) {
+            // skip loop if the property is from prototype
+            if (!d.hasOwnProperty(key)) continue;
+            var obj = d[key];
+
+            for (var prop in obj) {
+              // skip loop if the property is from prototype
+              if (!obj.hasOwnProperty(prop)) continue; // your code
+
+              console.log(obj[prop][0]);
+              errorMsgs.push(obj[prop][0]);
+            }
+          }
+
+          self.errors = errorMsgs;
+          self.submitting = false;
+          console.log(response.request.response);
+          console.log(d);
+        } else {
+          self.getChecklist();
+        }
+      }); // Need to display Errors and have submitting animation.
+    }
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -37994,6 +38390,119 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/GtmComponent.vue?vue&type=template&id=b6a785b0&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/GtmComponent.vue?vue&type=template&id=b6a785b0& ***!
+  \***************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    this.errors.length > 0
+      ? _c("div", [
+          _c(
+            "div",
+            { staticClass: "alert alert-warning", attrs: { role: "alert" } },
+            [
+              _vm._v(
+                "\n              There were some validation errors.\n\n\n\n              "
+              ),
+              _vm._l(this.errors, function(error) {
+                return _c("li", [
+                  _vm._v(
+                    "\n\n                " +
+                      _vm._s(error) +
+                      "\n\n\n              "
+                  )
+                ])
+              })
+            ],
+            2
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      !_vm.submitting
+        ? _c("form", [
+            _c("div", { staticClass: "col" }, [
+              _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+                _vm._v("Google Tag Manager")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.meta_value_gtm,
+                    expression: "meta_value_gtm"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", placeholder: "GTM ID" },
+                domProps: { value: _vm.meta_value_gtm },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.meta_value_gtm = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { type: "submit" },
+                on: {
+                  click: _vm.submitMyForm,
+                  submit: function($event) {
+                    $event.preventDefault()
+                  }
+                }
+              },
+              [_vm._v("Save")]
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.submitting ? _c("div", [_vm._m(0)]) : _vm._e()
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "loader loader--style5 text-center",
+        attrs: { title: "4" }
+      },
+      [_c("h3", [_vm._v("Data Submitted")])]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PricingComponent.vue?vue&type=template&id=d4146a7c&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PricingComponent.vue?vue&type=template&id=d4146a7c& ***!
@@ -38350,6 +38859,119 @@ var staticRenderFns = [
         attrs: { title: "4" }
       },
       [_c("h3", [_vm._v("Signup Request Sent")])]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SitechecklistComponent.vue?vue&type=template&id=68414aae&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SitechecklistComponent.vue?vue&type=template&id=68414aae& ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    this.errors.length > 0
+      ? _c("div", [
+          _c(
+            "div",
+            { staticClass: "alert alert-warning", attrs: { role: "alert" } },
+            [
+              _vm._v(
+                "\n              There were some validation errors.\n\n\n\n              "
+              ),
+              _vm._l(this.errors, function(error) {
+                return _c("li", [
+                  _vm._v(
+                    "\n\n                " +
+                      _vm._s(error) +
+                      "\n\n\n              "
+                  )
+                ])
+              })
+            ],
+            2
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      !_vm.submitting
+        ? _c("form", [
+            _c("div", { staticClass: "col" }, [
+              _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+                _vm._v("Site Checklist")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.meta_value_checklist,
+                    expression: "meta_value_checklist"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", placeholder: "Checklist ID" },
+                domProps: { value: _vm.meta_value_checklist },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.meta_value_checklist = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { type: "submit" },
+                on: {
+                  click: _vm.submitMyForm,
+                  submit: function($event) {
+                    $event.preventDefault()
+                  }
+                }
+              },
+              [_vm._v("Save")]
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.submitting ? _c("div", [_vm._m(0)]) : _vm._e()
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "loader loader--style5 text-center",
+        attrs: { title: "4" }
+      },
+      [_c("h3", [_vm._v("Data Submitted")])]
     )
   }
 ]
@@ -50525,7 +51147,8 @@ Vue.component('pricing-component', __webpack_require__(/*! ./components/PricingC
 Vue.component('contact-component', __webpack_require__(/*! ./components/ContactComponent.vue */ "./resources/js/components/ContactComponent.vue")["default"]);
 Vue.component('signup-component', __webpack_require__(/*! ./components/SignupComponent.vue */ "./resources/js/components/SignupComponent.vue")["default"]);
 Vue.component('email-component', __webpack_require__(/*! ./components/EmailComponent.vue */ "./resources/js/components/EmailComponent.vue")["default"]);
-Vue.component('gtm-component', __webpack_require__(/*! ./components/EmailComponent.vue */ "./resources/js/components/EmailComponent.vue")["default"]);
+Vue.component('gtm-component', __webpack_require__(/*! ./components/GtmComponent.vue */ "./resources/js/components/GtmComponent.vue")["default"]);
+Vue.component('sitechecklist-component', __webpack_require__(/*! ./components/SitechecklistComponent.vue */ "./resources/js/components/SitechecklistComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -50739,6 +51362,76 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/GtmComponent.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/GtmComponent.vue ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _GtmComponent_vue_vue_type_template_id_b6a785b0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GtmComponent.vue?vue&type=template&id=b6a785b0& */ "./resources/js/components/GtmComponent.vue?vue&type=template&id=b6a785b0&");
+/* harmony import */ var _GtmComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GtmComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/GtmComponent.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _GtmComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _GtmComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _GtmComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _GtmComponent_vue_vue_type_template_id_b6a785b0___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _GtmComponent_vue_vue_type_template_id_b6a785b0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/GtmComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/GtmComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/GtmComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GtmComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./GtmComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/GtmComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GtmComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/GtmComponent.vue?vue&type=template&id=b6a785b0&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/GtmComponent.vue?vue&type=template&id=b6a785b0& ***!
+  \*********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GtmComponent_vue_vue_type_template_id_b6a785b0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./GtmComponent.vue?vue&type=template&id=b6a785b0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/GtmComponent.vue?vue&type=template&id=b6a785b0&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GtmComponent_vue_vue_type_template_id_b6a785b0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GtmComponent_vue_vue_type_template_id_b6a785b0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/PricingComponent.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/PricingComponent.vue ***!
@@ -50872,6 +51565,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SignupComponent_vue_vue_type_template_id_e902aeac___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SignupComponent_vue_vue_type_template_id_e902aeac___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/SitechecklistComponent.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/SitechecklistComponent.vue ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SitechecklistComponent_vue_vue_type_template_id_68414aae___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SitechecklistComponent.vue?vue&type=template&id=68414aae& */ "./resources/js/components/SitechecklistComponent.vue?vue&type=template&id=68414aae&");
+/* harmony import */ var _SitechecklistComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SitechecklistComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/SitechecklistComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _SitechecklistComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SitechecklistComponent_vue_vue_type_template_id_68414aae___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SitechecklistComponent_vue_vue_type_template_id_68414aae___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/SitechecklistComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/SitechecklistComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/SitechecklistComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SitechecklistComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./SitechecklistComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SitechecklistComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SitechecklistComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/SitechecklistComponent.vue?vue&type=template&id=68414aae&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/SitechecklistComponent.vue?vue&type=template&id=68414aae& ***!
+  \*******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SitechecklistComponent_vue_vue_type_template_id_68414aae___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./SitechecklistComponent.vue?vue&type=template&id=68414aae& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SitechecklistComponent.vue?vue&type=template&id=68414aae&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SitechecklistComponent_vue_vue_type_template_id_68414aae___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SitechecklistComponent_vue_vue_type_template_id_68414aae___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

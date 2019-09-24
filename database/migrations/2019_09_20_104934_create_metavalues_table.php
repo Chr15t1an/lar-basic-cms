@@ -21,7 +21,7 @@ class CreateMetavaluesTable extends Migration
             //Also I dont have a complex use case at the moment.
             //https://codex.wordpress.org/Metadata_API
             // $table->morphs('meta_key');
-            $table->longText('meta_key');  
+            $table->string('meta_key')->unique();  
             $table->longText('meta_value');
 
 

@@ -5,18 +5,36 @@
 
 
 <!-- section 1 -->
-<section id="app" class="row align-items-center">
+<section class="row align-items-center">
 <div class="container">
 <h1>Settings</h1>
 </div>
 
+<div class="row">
 <div class="container">
-<h2>Google Tag Manager</h2>
 <gtm-component></gtm-component>
 </div>
-
+</div>
+<hr/>
 
   </section>
+
+
+<section >
+
+  <div class="row">
+  <div class="container">
+<!--
+  <sitechecklist-component></sitechecklist-component> -->
+  </div>
+  </div>
+  <hr/>
+
+</section>
+
+
+
+
 
 
 

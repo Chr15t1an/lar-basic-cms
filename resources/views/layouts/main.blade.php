@@ -25,6 +25,9 @@
     <link href="/css/app.css" rel="stylesheet">
 
     <title>@yield('title') | Handle Inbound App</title>
+    <meta name="description" content="@yield('metadescription')">
+  
+
   </head>
 <body>
   <!-- Google Tag Manager (noscript) -->

@@ -58,6 +58,8 @@ Route::get('/admin/settings/seo', function () {
 
 Route::get('/admin/settings/seo/gen-sitemap', 'AdminController@makeSitemap');
 
+// Route::post('/meta/get','MetavalueController@get_metadata');
+
 
 // Auth::routes();
 Auth::routes([

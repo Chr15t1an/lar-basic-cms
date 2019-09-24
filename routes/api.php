@@ -31,10 +31,14 @@ Route::get('/email/read/{id}','ContactController@read');
 Route::post('/meta/add','MetavalueController@add_metadata');
 // Route::post('/meta/add','MetavalueController@add_metadata');
 
-Route::post('/meta/get','MetavalueController@get_metadata');
+// Route::post('/meta/get','MetavalueController@get_metadata');
 Route::post('/meta/get','MetavalueController@api_get_metadata');
 
-Route::post('/meta/update','MetavalueController@update');
+Route::post('/meta/update','MetavalueController@api_update');
+
+
+
+
 Route::post('/meta/delete','MetavalueController@destroy');
 
 

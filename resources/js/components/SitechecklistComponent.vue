@@ -27,8 +27,8 @@
 
 
               <div class="col">
-                <label for="exampleInputEmail1">Google Tag Manager</label>
-                <input v-model="meta_value_gtm" type="text" class="form-control" placeholder="GTM ID">
+                <label for="exampleInputEmail1">Site Checklist</label>
+                <input v-model="meta_value_checklist" type="text" class="form-control" placeholder="Checklist ID">
               </div>
 
 
@@ -57,8 +57,8 @@
 
             submitting: false,
             errors:{},
-            meta_key:'gtm',
-            meta_value_gtm:'',
+            meta_key:'site_checklist',
+            meta_value_checklist:'',
             value_set:false,
 
             }
@@ -66,7 +66,7 @@
           created: function() {
 
             // /meta/get
-          this.getGTM();
+          this.getChecklist();
 
 
         },
@@ -75,14 +75,14 @@
             submitMyForm: function(){
 
               if (this.value_set) {
-                this.updateGTM();
+                this.updateChecklist();
 
               }else {
-                this.addGTM();
+                this.addChecklist();
               }
 
             },
-            getGTM: function(){
+            getChecklist: function(){
               const dt = { meta_key: this.meta_key };
 
               self = this;
@@ -91,7 +91,7 @@
                 .post('/api/meta/get', dt)
                 .then(function (response) {
                   // console.log(response.data);
-                  self.meta_value_gtm = response.data;
+                  self.meta_value = response.data;
                   // console.log('response');
 
                   console.log(response.data);
@@ -118,11 +118,11 @@
 
 
 
-            addGTM: function(){
+            addChecklist: function(){
               //Calc price.
               this.submitting = true;
 
-              const dt = { meta_key: this.meta_key,meta_value: this.meta_value_gtm };
+              const dt = { meta_key: this.meta_key,meta_value: this.meta_value };
 
 
               //GTM-W5PBLZD
@@ -175,7 +175,7 @@
                     console.log( d );
 
                 }else {
-                  self.getGTM();
+                  self.getChecklist();
                 }
 
 
@@ -189,11 +189,11 @@
             },
 
 
-            updateGTM: function(){
+            updateChecklist: function(){
               //Calc price.
               this.submitting = true;
 
-              const dt = { meta_key: this.meta_key,meta_value: this.meta_value_gtm };
+              const dt = { meta_key: this.meta_key,meta_value: this.meta_value };
 
 
               //GTM-W5PBLZD
@@ -246,7 +246,7 @@
                     console.log( d );
 
                 }else {
-                  self.getGTM();
+                  self.getChecklist();
                 }
 
 
