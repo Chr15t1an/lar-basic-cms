@@ -6,6 +6,8 @@
 
 require('./bootstrap');
 
+require('./siteCustom.js');
+
 window.Vue = require('vue');
 
 /**
@@ -21,13 +23,13 @@ window.Vue = require('vue');
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('pricing-component', require('./components/PricingComponent.vue').default);
-Vue.component('contact-component', require('./components/ContactComponent.vue').default);
-Vue.component('signup-component', require('./components/SignupComponent.vue').default);
+Vue.component('contact-component', require('./components/default/ContactComponent.vue').default);
+Vue.component('signup-component', require('./components/default/SignupComponent.vue').default);
 
-Vue.component('email-component', require('./components/EmailComponent.vue').default);
-Vue.component('gtm-component', require('./components/GtmComponent.vue').default);
+Vue.component('email-component', require('./components/admin/EmailComponent.vue').default);
+Vue.component('gtm-component', require('./components/admin/GtmComponent.vue').default);
 
-Vue.component('sitechecklist-component', require('./components/SitechecklistComponent.vue').default);
+Vue.component('sitechecklist-component', require('./components/admin/SitechecklistComponent.vue').default);
 
 
 /**

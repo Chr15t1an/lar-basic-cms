@@ -97,6 +97,11 @@ Only include in public site
 
 
 
+T
+
+
+
+
 
 
 
@@ -265,7 +270,7 @@ Sales funnel  - V2
 - set up Stages i n Analitics
 - Need the signup data from conversion.  
 
-
+log 404s analitics.
 
 
 
@@ -312,6 +317,8 @@ Refactor. - 4
 
 Design prune - 5
 - Active pages.
+
++404 page is fucked. 
 
 Make it safe. - 6
 - register
