@@ -2135,9 +2135,9 @@ __webpack_require__.r(__webpack_exports__);
       };
       self = this;
       axios.post('/api/meta/get', dt).then(function (response) {
-        // console.log(response.data);
-        self.meta_value_gtm = response.data; // console.log('response');
-
+        console.log(response.data);
+        self.meta_value_gtm = response.data;
+        console.log('response');
         console.log(response.data);
 
         if (response.data) {
@@ -2592,11 +2592,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      //           Data Format
+      //           {
+      //   "CHECKLIST": {
+      //     "ID": "1",
+      //     "NAME": "Some Checklist",
+      //     "Items": [
+      //       {
+      //         "NAME": "Qualify Form and Correct Approvals",
+      //         "STATE": false
+      //       },
+      //       {
+      //         "NAME": "Qualify Form and Correct Approvals",
+      //         "STATE": false
+      //       }
+      //     ]
+      //     }
+      // }
       submitting: false,
       errors: {},
       meta_key: 'site_checklist',
-      meta_value_checklist: '',
-      value_set: false
+      meta_value_checklist: 'yo',
+      value_set: true
     };
   },
   created: function created() {
@@ -2612,25 +2629,27 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     getChecklist: function getChecklist() {
-      var dt = {
+      var data = {
         meta_key: this.meta_key
-      };
-      self = this;
-      axios.post('/api/meta/get', dt).then(function (response) {
+      }; //
+
+      var sel = this; //
+
+      axios.post('/api/meta/get', data).then(function (response) {
         // console.log(response.data);
-        self.meta_value = response.data; // console.log('response');
+        sel.meta_value_checklist = response.data; // console.log('response');
 
         console.log(response.data);
 
         if (response.data) {
           console.log('full');
-          self.value_set = true;
+          sel.value_set = true;
         } else {
           console.log('empty');
-          self.value_set = false;
+          sel.value_set = false;
         }
 
-        self.submitting = false;
+        sel.submitting = false;
       }); // self.submitting = false;
       // return this.meta_value;
 
@@ -2645,7 +2664,7 @@ __webpack_require__.r(__webpack_exports__);
       }; //GTM-W5PBLZD
 
       console.log(dt);
-      self = this;
+      sel = this;
       axios.post('/api/meta/add', dt).then(function (response) {
         console.log(response.data);
 
@@ -2669,12 +2688,12 @@ __webpack_require__.r(__webpack_exports__);
             }
           }
 
-          self.errors = errorMsgs;
-          self.submitting = false;
+          sel.errors = errorMsgs;
+          sel.submitting = false;
           console.log(response.request.response);
           console.log(d);
         } else {
-          self.getChecklist();
+          this.getChecklist();
         }
       }); // Need to display Errors and have submitting animation.
     },
@@ -2687,7 +2706,7 @@ __webpack_require__.r(__webpack_exports__);
       }; //GTM-W5PBLZD
 
       console.log(dt);
-      self = this;
+      var self = this;
       axios.post('/api/meta/update', dt).then(function (response) {
         console.log(response.data);
 
@@ -51366,15 +51385,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************************!*\
   !*** ./resources/js/components/GtmComponent.vue ***!
   \**************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _GtmComponent_vue_vue_type_template_id_b6a785b0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GtmComponent.vue?vue&type=template&id=b6a785b0& */ "./resources/js/components/GtmComponent.vue?vue&type=template&id=b6a785b0&");
 /* harmony import */ var _GtmComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GtmComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/GtmComponent.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _GtmComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _GtmComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -51404,7 +51422,7 @@ component.options.__file = "resources/js/components/GtmComponent.vue"
 /*!***************************************************************************!*\
   !*** ./resources/js/components/GtmComponent.vue?vue&type=script&lang=js& ***!
   \***************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

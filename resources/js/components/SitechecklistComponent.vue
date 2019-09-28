@@ -55,11 +55,31 @@
       data:function() {
         return {
 
+
+//           Data Format
+//           {
+//   "CHECKLIST": {
+//     "ID": "1",
+//     "NAME": "Some Checklist",
+//     "Items": [
+//       {
+//         "NAME": "Qualify Form and Correct Approvals",
+//         "STATE": false
+//       },
+//       {
+//         "NAME": "Qualify Form and Correct Approvals",
+//         "STATE": false
+//       }
+//     ]
+//     }
+// }
+
+
             submitting: false,
             errors:{},
             meta_key:'site_checklist',
-            meta_value_checklist:'',
-            value_set:false,
+            meta_value_checklist:'yo',
+            value_set:true,
 
             }
           },
@@ -83,15 +103,15 @@
 
             },
             getChecklist: function(){
-              const dt = { meta_key: this.meta_key };
-
-              self = this;
-
+              var data = { meta_key: this.meta_key };
+            //
+              var sel = this;
+            //
               axios
-                .post('/api/meta/get', dt)
+                .post('/api/meta/get', data)
                 .then(function (response) {
                   // console.log(response.data);
-                  self.meta_value = response.data;
+                  sel.meta_value_checklist = response.data;
                   // console.log('response');
 
                   console.log(response.data);
@@ -99,13 +119,13 @@
                   if(response.data)
                   {
                     console.log('full');
-                    self.value_set = true;
+                    sel.value_set = true;
                   }else {
                     console.log('empty');
-                    self.value_set = false;
+                    sel.value_set = false;
                   }
 
-                  self.submitting = false;
+                  sel.submitting = false;
 
             });
 
@@ -122,7 +142,7 @@
               //Calc price.
               this.submitting = true;
 
-              const dt = { meta_key: this.meta_key,meta_value: this.meta_value };
+              var dt = { meta_key: this.meta_key,meta_value: this.meta_value };
 
 
               //GTM-W5PBLZD
@@ -130,7 +150,7 @@
 
 
 
-              self = this;
+              sel = this;
 
               axios
                 .post('/api/meta/add', dt)
@@ -165,17 +185,17 @@
                   }
 
 
-                  self.errors = errorMsgs;
+                  sel.errors = errorMsgs;
 
 
 
-                    self.submitting = false;
+                    sel.submitting = false;
 
                     console.log( response.request.response );
                     console.log( d );
 
                 }else {
-                  self.getChecklist();
+                  this.getChecklist();
                 }
 
 
@@ -193,7 +213,7 @@
               //Calc price.
               this.submitting = true;
 
-              const dt = { meta_key: this.meta_key,meta_value: this.meta_value };
+              var dt = { meta_key: this.meta_key,meta_value: this.meta_value };
 
 
               //GTM-W5PBLZD
@@ -201,7 +221,7 @@
 
 
 
-              self = this;
+              var self = this;
 
               axios
                 .post('/api/meta/update', dt)

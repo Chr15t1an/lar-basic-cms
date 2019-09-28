@@ -19,17 +19,30 @@ Route::get('/pricing', function () {
     return view('pricing');
 });
 
-Route::get('/privacy-policy', function () {
-    return view('privacy-policy');
-});
-
-Route::get('terms-&-conditions', function () {
-    return view('terms-&-conditions');
-});
 
 Route::get('/signup', function () {
     return view('signup');
 });
+
+
+
+
+/// Do not edit below
+/// Or do if you want
+
+
+
+//Basic Terms and Conditions & Privacy Policy
+Route::get('terms-&-conditions', function () {
+    return view('terms-&-conditions');
+});
+
+Route::get('/privacy-policy', function () {
+    return view('privacy-policy');
+});
+
+
+
 //Dont want public routes.
 // Route::resources([
 //     'contact' => 'ContactController'

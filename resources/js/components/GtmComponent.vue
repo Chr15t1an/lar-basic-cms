@@ -90,9 +90,9 @@
               axios
                 .post('/api/meta/get', dt)
                 .then(function (response) {
-                  // console.log(response.data);
+                  console.log(response.data);
                   self.meta_value_gtm = response.data;
-                  // console.log('response');
+                  console.log('response');
 
                   console.log(response.data);
 

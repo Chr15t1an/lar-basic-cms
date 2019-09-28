@@ -24,8 +24,8 @@
 
   <div class="row">
   <div class="container">
-<!--
-  <sitechecklist-component></sitechecklist-component> -->
+
+  <sitechecklist-component></sitechecklist-component>
   </div>
   </div>
   <hr/>
