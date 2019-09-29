@@ -41,7 +41,7 @@
           <li>Includes 1 phone number </li>
         </ul>
         <a href="#allFeatures"><p>See All Features</p></a>
-        <a class="" href="?"><button type="button" class="btn btn-lg btn-outline-dark">Sign Up</button></a>
+        <a class="" href="/signup?plan=basic"><button type="button" class="btn btn-lg btn-outline-dark">Get Basic</button></a>
       </div>
       <!-- Pricing Option -->
 
@@ -66,7 +66,7 @@
           <li>Includes 1 phone number </li>
         </ul>
         <a href="#allFeatures"><p>See All Features</p></a>
-        <a class="" href="?"><button type="button" class="btn btn-lg btn-outline-dark">Sign Up</button></a>
+        <a class="" href="/signup?plan=premium"><button type="button" class="btn btn-lg btn-outline-dark">Get Premium</button></a>
       </div>
       <!-- Pricing Option -->
 
@@ -91,7 +91,7 @@
           <li>Includes 1 phone number </li>
         </ul>
         <a href="#allFeatures"><p>See All Features</p></a>
-        <a class="" href="?"><button type="button" class="btn btn-lg btn-outline-dark">Sign Up</button></a>
+        <a class="" href="/signup?plan=ultimate"><button type="button" class="btn btn-lg btn-outline-dark">Get Ultimate</button></a>
       </div>
       <!-- Pricing Option -->
 
@@ -117,7 +117,7 @@
           <li>30/day phone support  Set up AWS account</li>
         </ul>
         <!-- <a href=""><p>See All Features</p></a> -->
-        <a class="" href="?"><button type="button" class="btn btn-lg btn-outline-dark">Sign Up</button></a>
+        <a class="" href="/signup?plan=onboard"><button type="button" class="btn btn-lg btn-outline-dark">Get Onboard</button></a>
       </div>
       <!-- Pricing Option -->
 

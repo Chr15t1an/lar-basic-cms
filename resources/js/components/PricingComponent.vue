@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <form>
+    <form id="pricing-calculator">
        <div class="form-group">
           <label for="">Number of Users +5/user</label><br/>
           <div id="pricing-buttons" v-on:click="setUsers" class="btn-group" role="group" aria-label="Basic example">
@@ -17,11 +17,11 @@
        </div>
        <div class="form-group">
           <label for="customRange1">Call Time Minutes: {{callTimeMinutes}}</label><br/>
-          <input type="range" min="0" max="10000" step="1" v-model:value="callTimeMinutes" class="custom-range"  >
+          <input type="range" min="0" max="10000" step="1" v-model:value="callTimeMinutes" class="custom-range callTimeMinutes"  >
        </div>
        <div class="form-group">
           <label for="customRange1">SMS Messages: {{smsMessages}}</label><br/>
-          <input type="range" min="0" max="10000" step="1" v-model:value="smsMessages" class="custom-range" >
+          <input type="range" min="0" max="10000" step="1" v-model:value="smsMessages" class="custom-range smsMessage" >
        </div>
     </form>
     <!-- output table -->

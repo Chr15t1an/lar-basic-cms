@@ -125,6 +125,8 @@ set up todolist
 -- Adwords.
 - https://mixpanel.com/
 - FavIcon
+- Disable Public Registration
+- If logged in show admin in main
 
 
 Set up Todo List
@@ -171,6 +173,7 @@ ga('send', {
   eventCategory: 'Call To Action Button',
   eventAction: 'Click',
   eventLabel: 'Click Text'
+  <!-- ~Value = Page URL  -->
 });
 
 
@@ -213,7 +216,7 @@ ga('send', {
 
 
 
-
+~~~~
 - Footer Clicks(identify class with clicktext )
 
 ga('send', {
@@ -222,17 +225,11 @@ ga('send', {
   eventAction: 'Click',
   eventLabel: 'Click Text'// Click text
 });
-
-Do they use the pricing calculator
-
-
-d
+~~~~~
 
 
 
-
-do they open the acordians.
-
+do they open the acordians. - THis will be tracked with Button Clicks.
 ga('send', {
   hitType: 'event',
   eventCategory: 'Acordian Click',
@@ -241,9 +238,7 @@ ga('send', {
 });
 
 
-
-
-Product selection
+Product selection - THis will be tracked with Button Clicks.
 ga('send', {
   hitType: 'event',
   eventCategory: 'Product Engagment',
@@ -252,6 +247,20 @@ ga('send', {
   eventValue: 'Text' // Product Name
 });
 
+
+~~~~~~
+
+~~~~~~
+
+
+Do they use the pricing calculator
+
+ga('send', {
+  hitType: 'event',
+  eventCategory: 'Pricing Calculator',
+  eventAction: 'Click', // Open or close~
+  eventLabel: 'Click Text' // Click Text~
+});
 
 
 Form submissions.? I dont want to mix with Vue logic.
@@ -312,13 +321,15 @@ How do you repeat this.
 
 
 Write Tests. - 3
+~~
+
 Refactor. - 4
 - Contacts should be emails or messages
 
 Design prune - 5
 - Active pages.
 
-+404 page is fucked. 
++404 page is fucked.
 
 Make it safe. - 6
 - register
