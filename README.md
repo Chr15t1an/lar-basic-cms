@@ -1,8 +1,11 @@
 
+
+
+--------------------------------------------------------------------------------------------------------
+
+
+
 https://close.com/ - this is ready
-
-
-
 
 Next step is to plan minimal steps
 ---
@@ -87,7 +90,10 @@ Including the container code
 
 
 
-Track Pageviews & Click Events
+
+
+
+Track Pageviews-  & Click Events
 
 Any Goals to track?
 Form Conversions?
@@ -95,18 +101,9 @@ Form Conversions?
 Only include in public site
 
 
-
-
-T
-
-
-
-
-
-
-
 !!!!!!!!!
 Admin/settings - Implament Checklist! - Skip V1
+FavIcon
 .....
 Checklist
 set up todolist
@@ -322,6 +319,23 @@ How do you repeat this.
 
 Write Tests. - 3
 ~~
+
+Front End Check
+Is Public Registration on?
+Is FavIcon Set?
+
+Code Tests
+Check all Web Routes
+- admin routes need to be logged in.
+Crud Meta Data
+Crud Lead
+Crud EMail
+- Archive
+- Read
+
+
+
+
 
 Refactor. - 4
 - Contacts should be emails or messages
