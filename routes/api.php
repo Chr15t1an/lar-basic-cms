@@ -17,7 +17,7 @@ Route::post('/contact','ContactController@store');
 
 Route::post('/signup','SignupController@store');
 
-Route::get('/admin/contacts/{id}', 'ContactController@show');
+Route::get('/admin/contacts/{id}', 'ContactController@show')->middleware('auth');
 
 
 

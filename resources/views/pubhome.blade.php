@@ -10,7 +10,7 @@
   <h1>Capture, track, and simplify all email and phone conversations from your customers and leads. </h1>
 </div>
 <div class="col-md-5 col-12 p-5 cta-section">
-  <button type="button" class="btn btn-primary btn-lg">Sign Up</button>
+<a href="/signup"><button type="button" class="btn btn-primary btn-lg">Sign Up</button></a>
     <a href="/pricing"><button type="button" class="btn btn-outline-dark btn-lg">Pricing</button></a>
 </div>
 

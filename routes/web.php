@@ -49,24 +49,24 @@ Route::get('/privacy-policy', function () {
 // ]);
 
 
-Route::get('/admin', 'AdminController@index');
+Route::get('/admin', 'AdminController@index')->middleware('auth');
 
-Route::get('/admin/leads', 'AdminController@showleads');
-Route::get('/admin/leads/export', 'SignupController@exportleads');
+Route::get('/admin/leads', 'AdminController@showleads')->middleware('auth');
+Route::get('/admin/leads/export', 'SignupController@exportleads')->middleware('auth');
 
 
-Route::get('/admin/contacts', 'AdminController@showcontacts');
-Route::get('/admin/contacts/{id}', 'AdminController@showemail');
+Route::get('/admin/contacts', 'AdminController@showcontacts')->middleware('auth');
+Route::get('/admin/contacts/{id}', 'AdminController@showemail')->middleware('auth');
 
 
 // Route::get('/admin/settings', 'AdminController@settings');
 Route::get('/admin/settings', function () {
     return view('admin.settings');
-});
+})->middleware('auth');
 
 Route::get('/admin/settings/seo', function () {
     return view('admin.seo');
-});
+})->middleware('auth');
 
 
 Route::get('/admin/settings/seo/gen-sitemap', 'AdminController@makeSitemap');

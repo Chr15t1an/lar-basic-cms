@@ -1,4 +1,86 @@
+## Finish MVP
+- Lock Admin Section Down.
+Set up API Lockdown. - https://laravel.com/docs/5.7/passport
 
+
+--Email
+-- Lock down Read, Delete,
+-- Limit submissions
+
+leads
+-- Lock down Read, Delete,
+
+
+
+
+
+
+- Crud Endpoints for all Models
+-- If logged in
+- Lock Api down
+- Turn Off Registration - Toggle
+
+
+- Checklist
+  set up todolist
+  - uptime robot
+  - cloudflare
+  - GTM
+  - Google Analitics
+  -- Turn on ecommerce tracking.
+  --Enable Enhanced Ecommerce Reporting set up
+  - Bugsnag - Bugsnag
+  - Generate Sitemap
+  - Robot.text - Just add it in.
+  - Check H1s,Metas.
+  -- Segment - can add via GTM
+  - Utm Conversions
+  -- Adwords.
+  - https://mixpanel.com/
+  - FavIcon - Just add it in.
+  --https://favicon.io/favicon-converter/
+  - Disable Public Registration
+  - If logged in show admin in main
+
+##Refactor.
+  - Contacts should be emails or messages
+  - Remove Unnessasary comments
+  - Add Contects
+  - Remove
+
+## Analitics
+- Forms
+- Sessions over 3 min
+- Pricing Calculator
+-- If they use any of the pricing caliculator items trigger the tag.
+
+
+## Documentation.
+https://docs.google.com/document/d/1t1o-w0rT-o3M5mMwD_Zff9x-U4wA4bl9rdar1-pqRjo/edit
+
+
+
+
+## Design-Cleanup.
+
+### Iterate over the front end
+- Main template 404
+
+### Cleanup the backend.
+-
+
+## Write Tests.
+### Front End Check
+- Is Public Registration on?
+
+### Code Tests
+Check all Web Routes
+- admin routes need to be logged in.
+Crud Meta Data
+Crud Lead
+Crud EMail
+- Archive
+- Read
 
 
 --------------------------------------------------------------------------------------------------------
@@ -30,11 +112,6 @@ Replyed - no
 
 - View & Mark Leads. can vue all
 - Export Leads - can export
-
-
-
-
-
 
 
 settings/seo/sitemap

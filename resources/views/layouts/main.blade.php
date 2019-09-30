@@ -26,7 +26,7 @@
 
     <title>@yield('title') | Handle Inbound App</title>
     <meta name="description" content="@yield('metadescription')">
-  
+
 
   </head>
 <body>
@@ -59,13 +59,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li class="nav-item">
       <a class="nav-link" href="signup">Sign up</a>
     </li>
+
+
   </ul>
 
 <ul class="navbar-nav">
-  <li class="nav-item">
-    <a class="nav-link" href="login"><button type="button" class="btn btn-outline-dark">Log in</button>
-</a>
-  </li>
+
+
+
+    @guest
+    <li class="nav-item">
+    <a class="nav-link" href="login"><button type="button" class="btn btn-outline-dark">Log in</button></a>
+    </li>
+    @if (Route::has('register'))
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+        </li>
+    @endif
+    @else
+
+    <li class="nav-item">
+      <a class="nav-link" href="/admin">Admin</a>
+    </li>
+
+    <li class="nav-item">
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+
+      </li>
+
+
+
+    @endguest
+
+
 </ul>
 
 </div>

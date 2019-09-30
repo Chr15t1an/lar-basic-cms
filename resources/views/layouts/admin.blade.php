@@ -17,7 +17,7 @@
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
 
-    <title>@yield('title') | Handle Inbound App</title>
+    <title>@yield('title')</title>
   </head>
 <body>
 <!-- Navbar -->
@@ -34,9 +34,7 @@
 
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
   <ul class="navbar-nav mr-auto">
-    <li class="nav-item active">
-      <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-    </li>
+
     <li class="nav-item">
       <a class="nav-link" href="/admin/contacts">Messages</a>
     </li>
@@ -52,6 +50,10 @@
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
     </li>
+<li class="nav-item">|</li>
+    <li class="nav-item active">
+      <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+
 
   </ul>
 
