@@ -152,8 +152,14 @@ class SignupController extends Controller
      * @param  \App\Signup  $signup
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Signup $signup)
+    public function destroy($id)
     {
-        //
+      try {
+        $email = Signup::find($id);
+        $email->delete();
+          return 'ok';
+      } catch (\Exception $e) {
+        return response()->json(['errors'=>$e]);
+      }
     }
 }

@@ -1839,6 +1839,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1851,7 +1856,8 @@ __webpack_require__.r(__webpack_exports__);
       emailid: '',
       read: true,
       archive: true,
-      id: 0
+      id: 0,
+      noemail: false
     };
   },
   created: function created() {
@@ -1863,13 +1869,20 @@ __webpack_require__.r(__webpack_exports__);
     axios.get('/api/admin/contacts/' + emailid).then(function (response) {
       // handle success
       console.log(response.data);
-      var payload = response.data;
-      self.first_name = payload.first_name;
-      self.last_name = payload.last_name;
-      self.email = payload.email;
-      self.msg = payload.msg;
-      self.read = payload.read;
-      self.archive = payload.archived;
+      console.log('data');
+
+      if (response.data) {
+        var payload = response.data;
+        self.first_name = payload.first_name;
+        self.last_name = payload.last_name;
+        self.email = payload.email;
+        self.msg = payload.msg;
+        self.read = payload.read;
+        self.archive = payload.archived;
+      } else {
+        console.log('no data');
+        self.noemail = true;
+      }
     }); // axios
     //   .get('/api/admin/contacts/1')
     //   .then(function (response) {
@@ -1905,6 +1918,19 @@ __webpack_require__.r(__webpack_exports__);
         // console.log(response.data);
         self.read = response.data;
       });
+    },
+    destroy: function destroy() {
+      // /email/read/{id}
+      // Route::post('/email/archive/{id}','ContactController@archive');
+      // Route::post('/email/read/{id}','ContactController@read');
+      // add a confirmation.
+      self = this;
+      axios.post('/api/email/archive/' + this.id + '/delete').then(function (response) {
+        // handle success
+        // console.log(response.data);
+        self.read = response.data;
+        location.reload();
+      });
     }
   },
   mounted: function mounted() {
@@ -1925,6 +1951,7 @@ __webpack_require__.r(__webpack_exports__);
   //       });
   //       return vars;
   //   },
+  // http://handleinbound.test/api/email/archive/5/delete
   // submitMyForm: function(){
   //   //Calc price.
   //   this.submitting = true;
@@ -39718,6 +39745,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _vm.noemail ? _c("h1", [_vm._v("No EMail Found")]) : _vm._e(),
     _vm._v(
       "\n          " + _vm._s(_vm.first_name) + " + " + _vm._s(_vm.last_name)
     ),
@@ -39775,7 +39803,17 @@ var render = function() {
           },
           [_vm._v("Mark UnRead")]
         )
-      : _vm._e()
+      : _vm._e(),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-default",
+        attrs: { type: "button" },
+        on: { click: _vm.destroy }
+      },
+      [_vm._v("Delete")]
+    )
   ])
 }
 var staticRenderFns = []
@@ -54538,8 +54576,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/vagrant/lar-build-handle-inbound-marketing-site/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/vagrant/lar-build-handle-inbound-marketing-site/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/c/Documents/lar-build-handle-inbound-marketing-site/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/c/Documents/lar-build-handle-inbound-marketing-site/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

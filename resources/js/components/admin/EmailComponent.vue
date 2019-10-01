@@ -1,7 +1,9 @@
 <template>
   <!-- Contact Modal -->
 
+
       <div>
+          <h1 v-if="noemail">No EMail Found</h1>
             {{ first_name }} + {{ last_name }}<br/>
             {{ email }}<br/>
 
@@ -15,6 +17,9 @@
 
           <button v-if="!read" v-on:click="readToggle" type="button" class="btn btn-primary">Mark Read</button>
           <button v-if="read" v-on:click="readToggle" type="button" class="btn btn-default">Mark UnRead</button>
+
+
+          <button v-on:click="destroy" type="button" class="btn btn-default">Delete</button>
 
     </div>
 
@@ -37,6 +42,7 @@
             read:true,
             archive:true,
             id:0,
+            noemail:false,
 
             }
           },
@@ -54,6 +60,9 @@
                   .then(function (response) {
                     // handle success
                     console.log(response.data);
+                    console.log('data');
+                    if (response.data) {
+
 
                     var payload = response.data;
 
@@ -63,9 +72,14 @@
                     self.msg = payload.msg;
                     self.read = payload.read;
                     self.archive = payload.archived;
-
+                  }else {
+                    console.log('no data');
+                    self.noemail = true;
+                  }
 
                   })
+
+
 
             // axios
             //   .get('/api/admin/contacts/1')
@@ -122,6 +136,25 @@
             },
 
 
+            destroy: function() {
+              // /email/read/{id}
+              // Route::post('/email/archive/{id}','ContactController@archive');
+              // Route::post('/email/read/{id}','ContactController@read');
+
+              // add a confirmation.
+
+
+              self = this;
+              axios.post('/api/email/archive/'+this.id+'/delete')
+                    .then(function (response) {
+                      // handle success
+                      // console.log(response.data);
+                      self.read = response.data;
+                      location.reload();
+                    })
+
+            },
+
 
             },
                       mounted: function () {
@@ -155,7 +188,7 @@
 
 
 
-
+// http://handleinbound.test/api/email/archive/5/delete
 
             // submitMyForm: function(){
             //   //Calc price.

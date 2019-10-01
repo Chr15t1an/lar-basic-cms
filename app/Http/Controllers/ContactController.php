@@ -149,8 +149,17 @@ class ContactController extends Controller
      * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contact $contact)
+    public function destroy($id)
     {
-        //
+      try {
+        $email = Contact::find($id);
+        $email->delete();
+          return 'ok';
+      } catch (\Exception $e) {
+        return response()->json(['errors'=>$e]);
+      }
+
+
+
     }
 }

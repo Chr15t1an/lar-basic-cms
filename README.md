@@ -1,26 +1,31 @@
 ## Finish MVP
-- Lock Admin Section Down.
+- Lock Admin Section Down.~~
 Set up API Lockdown. - https://laravel.com/docs/5.7/passport
 https://laracasts.com/series/whats-new-in-laravel-5-3/episodes/13 - 12 min .
+__ Added Passport Because docs says its better
+=== Get Meta
 ~ GUlp
 ~ Need to generate token
 ~Personal Access Token
-
 --Email
 -- Lock down Read, Delete,
 -- Limit submissions
-
 leads
 -- Lock down Read, Delete,
-
-
-
-
-
-
 - Crud Endpoints for all Models
 -- If logged in
 - Lock Api down
+
+## Need a component for the leads page. 
+{{$l->last_name}}
+<a href="">delete</a>
+leads.blade.php
+
+
+
+
+
+
 - Turn Off Registration - Toggle
 
 
@@ -90,8 +95,13 @@ Crud EMail
 
 
 --------------------------------------------------------------------------------------------------------
+#V2
+- Public vs private meta values - Lock Api
+- Create a token for frontend forms.
+- Check CSRF Token for form submission
 
 
+--------------------------------------------------------------------------------------------------------
 
 https://close.com/ - this is ready
 

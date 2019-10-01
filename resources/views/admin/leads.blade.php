@@ -5,15 +5,16 @@
 
 
 <!-- section 1 -->
-  <section class="row align-items-center">
+  <section class="row ">
 
 
 <ul>
 @foreach ($leads as $l)
-    <li>{{$l->first_name}} {{$l->last_name}} | {{$l->email}} </li>
+    <li>{{$l->first_name}} {{$l->last_name}} | {{$l->email}} | <a href="">delete</a></li>
 @endforeach
 </ul>
 
+<hr/>
 <a href="/admin/leads/export"><button>Export leads</button></a>
 
 

@@ -75,7 +75,7 @@ Route::get('/admin/settings/seo', function () {
 })->middleware('auth');
 
 
-Route::get('/admin/settings/seo/gen-sitemap', 'AdminController@makeSitemap');
+Route::get('/admin/settings/seo/gen-sitemap', 'AdminController@makeSitemap')->middleware('auth');
 
 // Route::post('/meta/get','MetavalueController@get_metadata');
 
