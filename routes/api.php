@@ -14,32 +14,17 @@ use Illuminate\Http\Request;
 */
 
 Route::post('/contact','ContactController@store');
-
 Route::post('/signup','SignupController@store');
 
-Route::get('/admin/contacts/{id}', 'ContactController@show')->middleware('auth');
-
-
-
-
-
-Route::get('/email/archive/{id}','ContactController@archive');
-Route::get('/email/read/{id}','ContactController@read');
-
-
-
-Route::post('/meta/add','MetavalueController@add_metadata');
+Route::get('/admin/contacts/{id}', 'ContactController@show')->middleware('auth:api');
+Route::get('/email/archive/{id}','ContactController@archive')->middleware('auth:api');
+Route::get('/email/read/{id}','ContactController@read')->middleware('auth:api');
+Route::post('/meta/add','MetavalueController@add_metadata')->middleware('auth:api');
 // Route::post('/meta/add','MetavalueController@add_metadata');
-
 // Route::post('/meta/get','MetavalueController@get_metadata');
 Route::post('/meta/get','MetavalueController@api_get_metadata');
-
-Route::post('/meta/update','MetavalueController@api_update');
-
-
-
-
-Route::post('/meta/delete','MetavalueController@destroy');
+Route::post('/meta/update','MetavalueController@api_update')->middleware('auth:api');
+Route::post('/meta/delete','MetavalueController@destroy')->middleware('auth:api');
 
 
 

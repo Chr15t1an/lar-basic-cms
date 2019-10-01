@@ -1,7 +1,10 @@
 ## Finish MVP
 - Lock Admin Section Down.
 Set up API Lockdown. - https://laravel.com/docs/5.7/passport
-
+https://laracasts.com/series/whats-new-in-laravel-5-3/episodes/13 - 12 min .
+~ GUlp
+~ Need to generate token
+~Personal Access Token
 
 --Email
 -- Lock down Read, Delete,
@@ -41,6 +44,9 @@ leads
   --https://favicon.io/favicon-converter/
   - Disable Public Registration
   - If logged in show admin in main
+
+Database backups.
+
 
 ##Refactor.
   - Contacts should be emails or messages

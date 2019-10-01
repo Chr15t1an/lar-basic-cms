@@ -60,6 +60,12 @@ Route::get('/admin/contacts/{id}', 'AdminController@showemail')->middleware('aut
 
 
 // Route::get('/admin/settings', 'AdminController@settings');
+
+Route::get('/admin/apiKeys', function () {
+    return view('admin.apiKeys');
+})->middleware('auth');
+
+
 Route::get('/admin/settings', function () {
     return view('admin.settings');
 })->middleware('auth');

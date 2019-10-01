@@ -47,7 +47,7 @@
           <a class="dropdown-item" href="/admin/settings">Settings Home</a>
           <a class="dropdown-item" href="/admin/settings/seo">SEO</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="/admin/apiKeys">Api Keys</a>
         </div>
     </li>
 <li class="nav-item">|</li>
