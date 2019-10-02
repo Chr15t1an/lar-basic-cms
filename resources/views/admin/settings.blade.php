@@ -34,6 +34,8 @@
 
 
 
+<user-reg-component></user-reg-component>
+
 
 
 

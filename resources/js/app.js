@@ -32,7 +32,11 @@ Vue.component('contact-component', require('./components/default/ContactComponen
 Vue.component('signup-component', require('./components/default/SignupComponent.vue').default);
 
 Vue.component('email-component', require('./components/admin/EmailComponent.vue').default);
+Vue.component('leads-component', require('./components/admin/LeadsComponent.vue').default);
+
 Vue.component('gtm-component', require('./components/admin/GtmComponent.vue').default);
+
+Vue.component('user-reg-component', require('./components/admin/UserRegistrationComponent.vue').default);
 
 Vue.component('sitechecklist-component', require('./components/admin/SitechecklistComponent.vue').default);
 

@@ -45,8 +45,8 @@ class AdminController extends Controller
 
     public function showleads()
     {
-      $leads = Signup::all();
-      return view('admin.leads')->with('leads',$leads);
+    return  $leads = Signup::all();
+      // return view('admin.leads')->with('leads',$leads);
 
     }
 

@@ -25,6 +25,8 @@ Route::post('/email/archive/{id}/delete','ContactController@destroy')->middlewar
 // Create
 Route::post('/signup','SignupController@store');
 //Read in WEB
+Route::get('/admin/leads','AdminController@showleads')->middleware('auth:api');
+
 //No Update
 //Delete
 Route::post('/admin/leads/{id}/delete','SignupController@destroy')->middleware('auth:api');

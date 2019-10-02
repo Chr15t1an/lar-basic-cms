@@ -51,7 +51,14 @@ Route::get('/privacy-policy', function () {
 
 Route::get('/admin', 'AdminController@index')->middleware('auth');
 
-Route::get('/admin/leads', 'AdminController@showleads')->middleware('auth');
+// Route::get('/admin/leads', 'AdminController@showleads')->middleware('auth');
+
+Route::get('/admin/leads', function () {
+    return view('admin.leads');
+})->middleware('auth');
+
+
+
 Route::get('/admin/leads/export', 'SignupController@exportleads')->middleware('auth');
 
 
@@ -80,9 +87,5 @@ Route::get('/admin/settings/seo/gen-sitemap', 'AdminController@makeSitemap')->mi
 // Route::post('/meta/get','MetavalueController@get_metadata');
 
 
-// Auth::routes();
-Auth::routes([
-  // 'register' => false, // Registration Routes...
-  // 'reset' => false, // Password Reset Routes...
-  // 'verify' => false, // Email Verification Routes...
-]);
+Auth::routes();
+Auth::routes(['register' => false]);

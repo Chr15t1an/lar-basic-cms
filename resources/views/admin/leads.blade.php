@@ -8,11 +8,8 @@
   <section class="row ">
 
 
-<ul>
-@foreach ($leads as $l)
-    <li>{{$l->first_name}} {{$l->last_name}} | {{$l->email}} | <a href="">delete</a></li>
-@endforeach
-</ul>
+<leads-component></leads-component>
+
 
 <hr/>
 <a href="/admin/leads/export"><button>Export leads</button></a>
