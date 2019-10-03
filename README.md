@@ -15,19 +15,16 @@ leads
 - Crud Endpoints for all Models
 -- If logged in
 - Lock Api down
-
-## Need a component for the leads page. 
+## Need a component for the leads page.  - Check
 {{$l->last_name}}
 <a href="">delete</a>
 leads.blade.php
 
-
-
+Need a method to add meta_value - v2
 
 
 
 - Turn Off Registration - Toggle
-
 
 - Checklist
   set up todolist
@@ -53,6 +50,12 @@ leads.blade.php
 Database backups.
 
 
+
+## Tests 
+
+
+
+
 ##Refactor.
   - Contacts should be emails or messages
   - Remove Unnessasary comments
@@ -65,6 +68,7 @@ Database backups.
 - Pricing Calculator
 -- If they use any of the pricing caliculator items trigger the tag.
 
+Bugsnag -
 
 ## Documentation.
 https://docs.google.com/document/d/1t1o-w0rT-o3M5mMwD_Zff9x-U4wA4bl9rdar1-pqRjo/edit

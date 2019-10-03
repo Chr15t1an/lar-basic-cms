@@ -61,7 +61,7 @@ class MetavalueController extends Controller
      //             return response()->json(['errors'=>'This Key Is already Set']);
      //       }
 
-
+      try {
         // Check for meta key
         // If exist kick back error
         // Addmeta key & Value
@@ -72,6 +72,14 @@ class MetavalueController extends Controller
 
 
         return response()->json(['msg'=>'Key Added Sucessfully.']);
+
+      } catch (\Exception $e) {
+        // dd($e);
+        //Log Errors
+        return response()->json(['errors'=>'failed']);
+      }
+
+
 
     }
 
@@ -223,13 +231,21 @@ return 'true';
                 return response()->json(['errors'=>$validator->errors()]);
              }
 
+
+
              try {
-               $a = self::get_metadata($meta_key);
+
+               // Update the model
+
+               $meta_key = $request->meta_key;
+               $a = $responce = Metavalue::where('meta_key', $meta_key)->first();
+               
                $a->meta_value = $request->meta_value;
                $a->save();
 
-                return response()->json(['msg'=>'Sucess']);
+                return response()->json(['msg'=>'Success']);
              } catch (\Exception $e) {
+               // dd($e);
                  return response()->json(['errors'=>$validator->errors()]);
 
              }
