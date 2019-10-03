@@ -36,7 +36,7 @@ Route::post('/admin/leads/{id}/delete','SignupController@destroy')->middleware('
 
 Route::post('/meta/add','MetavalueController@add_metadata')->middleware('auth:api');
 Route::post('/meta/get','MetavalueController@api_get_metadata');
-Route::post('/meta/update','MetavalueController@api_update')->middleware('auth:api');
+Route::post('/meta/update','MetavalueController@api_update');//->middleware('auth:api');
 Route::post('/meta/delete','MetavalueController@destroy')->middleware('auth:api');
 
 

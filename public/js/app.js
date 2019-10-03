@@ -2118,16 +2118,15 @@ __webpack_require__.r(__webpack_exports__);
       };
       self = this;
       axios.post('/api/meta/get', dt).then(function (response) {
-        console.log(response.data);
-        self.meta_value_gtm = response.data;
-        console.log('response');
-        console.log(response.data);
+        // console.log(response.data);
+        self.meta_value_gtm = response.data; // console.log('response');
+        // console.log(response.data);
 
         if (response.data) {
-          console.log('full');
+          // console.log('full');
           self.value_set = true;
         } else {
-          console.log('empty');
+          // console.log('empty');
           self.value_set = false;
         }
 
@@ -2144,12 +2143,11 @@ __webpack_require__.r(__webpack_exports__);
         meta_key: this.meta_key,
         meta_value: this.meta_value_gtm
       }; //GTM-W5PBLZD
+      // console.log(dt);
 
-      console.log(dt);
       self = this;
       axios.post('/api/meta/add', dt).then(function (response) {
-        console.log(response.data);
-
+        // console.log(response.data)
         if (response.data.errors) {
           var d = '';
           d = JSON.parse(response.request.responseText); // console.log(d);
@@ -2171,9 +2169,8 @@ __webpack_require__.r(__webpack_exports__);
           }
 
           self.errors = errorMsgs;
-          self.submitting = false;
-          console.log(response.request.response);
-          console.log(d);
+          self.submitting = false; // console.log( response.request.response );
+          // console.log( d );
         } else {
           self.getGTM();
         }
@@ -2186,12 +2183,11 @@ __webpack_require__.r(__webpack_exports__);
         meta_key: this.meta_key,
         meta_value: this.meta_value_gtm
       }; //GTM-W5PBLZD
+      // console.log(dt);
 
-      console.log(dt);
       self = this;
       axios.post('/api/meta/update', dt).then(function (response) {
-        console.log(response.data);
-
+        // console.log(response.data)
         if (response.data.errors) {
           var d = '';
           d = JSON.parse(response.request.responseText); // console.log(d);
@@ -2206,16 +2202,15 @@ __webpack_require__.r(__webpack_exports__);
             for (var prop in obj) {
               // skip loop if the property is from prototype
               if (!obj.hasOwnProperty(prop)) continue; // your code
+              // console.log(obj[prop][0]);
 
-              console.log(obj[prop][0]);
               errorMsgs.push(obj[prop][0]);
             }
           }
 
           self.errors = errorMsgs;
-          self.submitting = false;
-          console.log(response.request.response);
-          console.log(d);
+          self.submitting = false; // console.log( response.request.response );
+          // console.log( d );
         } else {
           self.getGTM();
         }
@@ -2560,14 +2555,13 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/api/meta/get', data).then(function (response) {
         // console.log(response.data);
         sel.meta_value_checklist = response.data; // console.log('response');
-
-        console.log(response.data);
+        // console.log(response.data);
 
         if (response.data) {
-          console.log('full');
+          // console.log('full');
           sel.value_set = true;
         } else {
-          console.log('empty');
+          // console.log('empty');
           sel.value_set = false;
         }
 
@@ -2604,16 +2598,15 @@ __webpack_require__.r(__webpack_exports__);
             for (var prop in obj) {
               // skip loop if the property is from prototype
               if (!obj.hasOwnProperty(prop)) continue; // your code
+              // console.log(obj[prop][0]);
 
-              console.log(obj[prop][0]);
               errorMsgs.push(obj[prop][0]);
             }
           }
 
           sel.errors = errorMsgs;
-          sel.submitting = false;
-          console.log(response.request.response);
-          console.log(d);
+          sel.submitting = false; // console.log( response.request.response );
+          // console.log( d );
         } else {
           this.getChecklist();
         }
@@ -2626,12 +2619,11 @@ __webpack_require__.r(__webpack_exports__);
         meta_key: this.meta_key,
         meta_value: this.meta_value
       }; //GTM-W5PBLZD
+      // console.log(dt);
 
-      console.log(dt);
       var self = this;
       axios.post('/api/meta/update', dt).then(function (response) {
-        console.log(response.data);
-
+        // console.log(response.data)
         if (response.data.errors) {
           var d = '';
           d = JSON.parse(response.request.responseText); // console.log(d);
@@ -2646,16 +2638,15 @@ __webpack_require__.r(__webpack_exports__);
             for (var prop in obj) {
               // skip loop if the property is from prototype
               if (!obj.hasOwnProperty(prop)) continue; // your code
+              // console.log(obj[prop][0]);
 
-              console.log(obj[prop][0]);
               errorMsgs.push(obj[prop][0]);
             }
           }
 
           self.errors = errorMsgs;
-          self.submitting = false;
-          console.log(response.request.response);
-          console.log(d);
+          self.submitting = false; // console.log( response.request.response );
+          // console.log( d );
         } else {
           self.getChecklist();
         }
@@ -2724,16 +2715,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      // submitting: false,
       errors: {},
-      meta_key: 'registration',
-      meta_value_user: false // value_set:false,
-
+      meta_key_userRegistration: 'registration',
+      meta_value_user: false
     };
   },
   created: function created() {
@@ -2746,127 +2733,28 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    // submitMyForm: function(){
-    //
-    //   if (this.value_set) {
-    //     this.updateMeta();
-    //
-    //   }else {
-    //     this.getMeta();
-    //   }
-    //
-    // },
     getMeta: function getMeta() {
       var dt = {
-        meta_key: this.meta_key
+        meta_key: this.meta_key_userRegistration
       };
       self = this;
       axios.post('/api/meta/get', dt).then(function (response) {
-        console.log(response.data);
         self.meta_value = response.data;
-        console.log('response');
-        console.log(response.data); // if(response.data)
-        // {
-        //   console.log('full');
-        //   self.value_set = true;
-        // }else {
-        //   console.log('empty');
-        //   self.value_set = false;
-        // }
-        //
-        // self.submitting = false;
-      }); // self.submitting = false;
-      // return this.meta_value;
-      // this.submitting = false;
+      });
     },
-    //meta_value - watcher?
-    // addMeta: function(){
-    //   //Calc price.
-    //   this.submitting = true;
-    //
-    //   const dt = { meta_key: this.meta_key,meta_value: this.meta_value_gtm };
-    //
-    //
-    //   //GTM-W5PBLZD
-    //   console.log(dt);
-    //
-    //
-    //
-    //   self = this;
-    //
-    //   axios
-    //     .post('/api/meta/add', dt)
-    //     .then(function (response) {
-    //       console.log(response.data)
-    //
-    //
-    //       if(response.data.errors){
-    //
-    //         var d = '';
-    //
-    //
-    //         d = JSON.parse(response.request.responseText);
-    //         // console.log(d);
-    //         var errorMsgs = [];
-    //
-    //         for (var key in d) {
-    //           // skip loop if the property is from prototype
-    //           if (!d.hasOwnProperty(key)) continue;
-    //
-    //           var obj = d[key];
-    //           for (var prop in obj) {
-    //               // skip loop if the property is from prototype
-    //               if (!obj.hasOwnProperty(prop)) continue;
-    //
-    //               // your code
-    //               console.log(obj[prop][0]);
-    //               errorMsgs.push(obj[prop][0]);
-    //
-    //
-    //           }
-    //       }
-    //
-    //
-    //       self.errors = errorMsgs;
-    //
-    //
-    //
-    //         self.submitting = false;
-    //
-    //         console.log( response.request.response );
-    //         console.log( d );
-    //
-    //     }else {
-    //       self.getMeta();
-    //     }
-    //
-    //
-    //
-    //
-    //   });
-    //
-    //
-    //   // Need to display Errors and have submitting animation.
-    //
-    // },
     updateMeta: function updateMeta() {
-      //Calc price.
-      // this.submitting = true;
       var dt = {
         meta_key: this.meta_key,
         meta_value: true
       }; //this.meta_value_user
-      //GTM-W5PBLZD
 
-      console.log(dt);
       self = this;
       axios.post('/api/meta/update', dt).then(function (response) {
-        console.log(response.data);
+        console.log(response.data); // Errors
 
         if (response.data.errors) {
           var d = '';
-          d = JSON.parse(response.request.responseText); // console.log(d);
-
+          d = JSON.parse(response.request.responseText);
           var errorMsgs = [];
 
           for (var key in d) {
@@ -2876,21 +2764,16 @@ __webpack_require__.r(__webpack_exports__);
 
             for (var prop in obj) {
               // skip loop if the property is from prototype
-              if (!obj.hasOwnProperty(prop)) continue; // your code
-
-              console.log(obj[prop][0]);
+              if (!obj.hasOwnProperty(prop)) continue;
               errorMsgs.push(obj[prop][0]);
             }
           }
 
-          self.errors = errorMsgs; // self.submitting = false;
-
-          console.log(response.request.response);
-          console.log(d);
+          self.errors = errorMsgs;
         } else {
           self.getMeta();
         }
-      }); // Need to display Errors and have submitting animation.
+      });
     }
   },
   mounted: function mounted() {}
@@ -40701,53 +40584,51 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("form", [
-        _c("div", { staticClass: "col" }, [
-          _c("label", { attrs: { for: "" } }, [_vm._v("User Registration")]),
-          _vm._v(" "),
-          _c("ul", { staticClass: "tg-list" }, [
-            _c("li", { staticClass: "tg-list-item" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.meta_value_user,
-                    expression: "meta_value_user"
-                  }
-                ],
-                staticClass: "d-none tgl tgl-flat",
-                attrs: { id: "cb4", type: "checkbox" },
-                domProps: {
-                  checked: Array.isArray(_vm.meta_value_user)
-                    ? _vm._i(_vm.meta_value_user, null) > -1
-                    : _vm.meta_value_user
-                },
-                on: {
-                  change: function($event) {
-                    var $$a = _vm.meta_value_user,
-                      $$el = $event.target,
-                      $$c = $$el.checked ? true : false
-                    if (Array.isArray($$a)) {
-                      var $$v = null,
-                        $$i = _vm._i($$a, $$v)
-                      if ($$el.checked) {
-                        $$i < 0 && (_vm.meta_value_user = $$a.concat([$$v]))
-                      } else {
-                        $$i > -1 &&
-                          (_vm.meta_value_user = $$a
-                            .slice(0, $$i)
-                            .concat($$a.slice($$i + 1)))
-                      }
+      _c("div", { staticClass: "col" }, [
+        _c("label", { attrs: { for: "" } }, [_vm._v("User Registration")]),
+        _vm._v(" "),
+        _c("ul", { staticClass: "tg-list" }, [
+          _c("li", { staticClass: "tg-list-item" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.meta_value_user,
+                  expression: "meta_value_user"
+                }
+              ],
+              staticClass: "d-none tgl tgl-flat",
+              attrs: { id: "cb4", type: "checkbox" },
+              domProps: {
+                checked: Array.isArray(_vm.meta_value_user)
+                  ? _vm._i(_vm.meta_value_user, null) > -1
+                  : _vm.meta_value_user
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.meta_value_user,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.meta_value_user = $$a.concat([$$v]))
                     } else {
-                      _vm.meta_value_user = $$c
+                      $$i > -1 &&
+                        (_vm.meta_value_user = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
                     }
+                  } else {
+                    _vm.meta_value_user = $$c
                   }
                 }
-              }),
-              _vm._v(" "),
-              _c("label", { staticClass: "tgl-btn", attrs: { for: "cb4" } })
-            ])
+              }
+            }),
+            _vm._v(" "),
+            _c("label", { staticClass: "tgl-btn", attrs: { for: "cb4" } })
           ])
         ])
       ])

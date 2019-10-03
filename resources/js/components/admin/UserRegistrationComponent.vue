@@ -22,7 +22,7 @@
 
           </div>
           <div class="row">
-          <form>
+
               <div class="col">
                 <label for="">User Registration</label>
 
@@ -38,8 +38,6 @@
 
 
 
-          </form>
-
 
 
 
@@ -52,13 +50,9 @@
     export default {
       data:function() {
         return {
-
-            // submitting: false,
             errors:{},
-            meta_key:'registration',
+            meta_key_userRegistration:'registration',
             meta_value_user:false,
-            // value_set:false,
-
             }
           },
           created: function() {
@@ -76,134 +70,22 @@
         },
           methods:{
 
-            // submitMyForm: function(){
-            //
-            //   if (this.value_set) {
-            //     this.updateMeta();
-            //
-            //   }else {
-            //     this.getMeta();
-            //   }
-            //
-            // },
             getMeta: function(){
-              const dt = { meta_key: this.meta_key };
-
+              const dt = { meta_key: this.meta_key_userRegistration };
               self = this;
-
               axios
                 .post('/api/meta/get', dt)
                 .then(function (response) {
-                  console.log(response.data);
                   self.meta_value = response.data;
-                  console.log('response');
-
-                  console.log(response.data);
-
-                  // if(response.data)
-                  // {
-                  //   console.log('full');
-                  //   self.value_set = true;
-                  // }else {
-                  //   console.log('empty');
-                  //   self.value_set = false;
-                  // }
-                  //
-                  // self.submitting = false;
-
             });
 
-            // self.submitting = false;
-            // return this.meta_value;
 
-            // this.submitting = false;
             },
-
-            //meta_value - watcher?
-
-
-            // addMeta: function(){
-            //   //Calc price.
-            //   this.submitting = true;
-            //
-            //   const dt = { meta_key: this.meta_key,meta_value: this.meta_value_gtm };
-            //
-            //
-            //   //GTM-W5PBLZD
-            //   console.log(dt);
-            //
-            //
-            //
-            //   self = this;
-            //
-            //   axios
-            //     .post('/api/meta/add', dt)
-            //     .then(function (response) {
-            //       console.log(response.data)
-            //
-            //
-            //       if(response.data.errors){
-            //
-            //         var d = '';
-            //
-            //
-            //         d = JSON.parse(response.request.responseText);
-            //         // console.log(d);
-            //         var errorMsgs = [];
-            //
-            //         for (var key in d) {
-            //           // skip loop if the property is from prototype
-            //           if (!d.hasOwnProperty(key)) continue;
-            //
-            //           var obj = d[key];
-            //           for (var prop in obj) {
-            //               // skip loop if the property is from prototype
-            //               if (!obj.hasOwnProperty(prop)) continue;
-            //
-            //               // your code
-            //               console.log(obj[prop][0]);
-            //               errorMsgs.push(obj[prop][0]);
-            //
-            //
-            //           }
-            //       }
-            //
-            //
-            //       self.errors = errorMsgs;
-            //
-            //
-            //
-            //         self.submitting = false;
-            //
-            //         console.log( response.request.response );
-            //         console.log( d );
-            //
-            //     }else {
-            //       self.getMeta();
-            //     }
-            //
-            //
-            //
-            //
-            //   });
-            //
-            //
-            //   // Need to display Errors and have submitting animation.
-            //
-            // },
 
 
             updateMeta: function(){
-              //Calc price.
-              // this.submitting = true;
 
               const dt = { meta_key: this.meta_key,meta_value:true  };//this.meta_value_user
-
-
-              //GTM-W5PBLZD
-              console.log(dt);
-
-
 
               self = this;
 
@@ -212,65 +94,29 @@
                 .then(function (response) {
                   console.log(response.data)
 
-
-                  if(response.data.errors){
-
-                    var d = '';
-
-
-                    d = JSON.parse(response.request.responseText);
-                    // console.log(d);
-                    var errorMsgs = [];
-
-                    for (var key in d) {
-                      // skip loop if the property is from prototype
-                      if (!d.hasOwnProperty(key)) continue;
-
-                      var obj = d[key];
-                      for (var prop in obj) {
-                          // skip loop if the property is from prototype
-                          if (!obj.hasOwnProperty(prop)) continue;
-
-                          // your code
-                          console.log(obj[prop][0]);
-                          errorMsgs.push(obj[prop][0]);
-
-
+                  // Errors
+                        if(response.data.errors){
+                          var d = '';
+                          d = JSON.parse(response.request.responseText);
+                          var errorMsgs = [];
+                          for (var key in d) {
+                            // skip loop if the property is from prototype
+                            if (!d.hasOwnProperty(key)) continue;
+                            var obj = d[key];
+                            for (var prop in obj) {
+                                // skip loop if the property is from prototype
+                                if (!obj.hasOwnProperty(prop)) continue;
+                                errorMsgs.push(obj[prop][0]);
+                            }
+                        }
+                        self.errors = errorMsgs;
+                      }else {
+                        self.getMeta();
                       }
-                  }
-
-
-                  self.errors = errorMsgs;
-
-
-
-                    // self.submitting = false;
-
-                    console.log( response.request.response );
-                    console.log( d );
-
-                }else {
-                  self.getMeta();
-                }
-
-
-
-
               });
-
-
-              // Need to display Errors and have submitting animation.
-
             },
-
-
           },
-          mounted: function () {
-
-
-
-            },
-
+          mounted: function () {},
               }
 
 

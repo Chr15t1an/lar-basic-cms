@@ -114,14 +114,14 @@
                   sel.meta_value_checklist = response.data;
                   // console.log('response');
 
-                  console.log(response.data);
+                  // console.log(response.data);
 
                   if(response.data)
                   {
-                    console.log('full');
+                    // console.log('full');
                     sel.value_set = true;
                   }else {
-                    console.log('empty');
+                    // console.log('empty');
                     sel.value_set = false;
                   }
 
@@ -177,7 +177,7 @@
                           if (!obj.hasOwnProperty(prop)) continue;
 
                           // your code
-                          console.log(obj[prop][0]);
+                          // console.log(obj[prop][0]);
                           errorMsgs.push(obj[prop][0]);
 
 
@@ -191,8 +191,8 @@
 
                     sel.submitting = false;
 
-                    console.log( response.request.response );
-                    console.log( d );
+                    // console.log( response.request.response );
+                    // console.log( d );
 
                 }else {
                   this.getChecklist();
@@ -217,7 +217,7 @@
 
 
               //GTM-W5PBLZD
-              console.log(dt);
+              // console.log(dt);
 
 
 
@@ -226,7 +226,7 @@
               axios
                 .post('/api/meta/update', dt)
                 .then(function (response) {
-                  console.log(response.data)
+                  // console.log(response.data)
 
 
                   if(response.data.errors){
@@ -248,7 +248,7 @@
                           if (!obj.hasOwnProperty(prop)) continue;
 
                           // your code
-                          console.log(obj[prop][0]);
+                          // console.log(obj[prop][0]);
                           errorMsgs.push(obj[prop][0]);
 
 
@@ -262,8 +262,8 @@
 
                     self.submitting = false;
 
-                    console.log( response.request.response );
-                    console.log( d );
+                    // console.log( response.request.response );
+                    // console.log( d );
 
                 }else {
                   self.getChecklist();

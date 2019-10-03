@@ -51,7 +51,7 @@ Database backups.
 
 
 
-## Tests 
+## Tests
 
 
 
@@ -61,7 +61,7 @@ Database backups.
   - Remove Unnessasary comments
   - Add Contects
   - Remove
-
+- The components are gross and clashing. 
 ## Analitics
 - Forms
 - Sessions over 3 min
