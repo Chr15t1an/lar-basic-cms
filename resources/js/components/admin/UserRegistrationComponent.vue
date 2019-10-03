@@ -90,12 +90,12 @@
               var payload = { meta_key: this.meta_key_userRegistration,meta_value:this.meta_value_user };//
 
               self = this;
-              console.log(payload);
+              // console.log(payload);
 
               axios
                 .post('/api/meta/update', payload)
                 .then(function (response) {
-                  console.log(response.data)
+                  // console.log(response.data)
 
                   // Errors
                         if(response.data.errors){

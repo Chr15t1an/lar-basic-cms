@@ -43,148 +43,83 @@
                 <h3>Data Submitted</h3>
               </div>
           </div>
-
-
       </div>
       </div>
-
 </template>
 
 <script>
     export default {
       data:function() {
         return {
-
             submitting: false,
             errors:{},
-            meta_key:'gtm',
+            meta_key_gtm:'gtm',
             meta_value_gtm:'',
             value_set:false,
-
             }
           },
           created: function() {
-
-            // /meta/get
           this.getGTM();
-
-
         },
           methods:{
-
             submitMyForm: function(){
-
               if (this.value_set) {
                 this.updateGTM();
-
               }else {
                 this.addGTM();
               }
-
             },
             getGTM: function(){
-              const dt = { meta_key: this.meta_key };
-
-              self = this;
-
+              var dt = { meta_key: this.meta_key_gtm };
+              var self = this;
               axios
                 .post('/api/meta/get', dt)
                 .then(function (response) {
+
                   // console.log(response.data);
                   self.meta_value_gtm = response.data;
-                  // console.log('response');
-
-                  // console.log(response.data);
-
                   if(response.data)
                   {
-                    // console.log('full');
                     self.value_set = true;
                   }else {
-                    // console.log('empty');
                     self.value_set = false;
                   }
-
-                  self.submitting = false;
+                  //
+                  // self.submitting = false;
 
             });
 
-            // self.submitting = false;
-            // return this.meta_value;
-
             this.submitting = false;
             },
-
-
-
-
             addGTM: function(){
               //Calc price.
               this.submitting = true;
-
-              const dt = { meta_key: this.meta_key,meta_value: this.meta_value_gtm };
-
-
-              //GTM-W5PBLZD
-              // console.log(dt);
-
-
-
+              var dt = { meta_key: this.meta_key,meta_value: this.meta_value_gtm };
               self = this;
-
               axios
                 .post('/api/meta/add', dt)
                 .then(function (response) {
-                  // console.log(response.data)
-
-
                   if(response.data.errors){
-
                     var d = '';
-
-
                     d = JSON.parse(response.request.responseText);
-                    // console.log(d);
                     var errorMsgs = [];
-
                     for (var key in d) {
                       // skip loop if the property is from prototype
                       if (!d.hasOwnProperty(key)) continue;
-
                       var obj = d[key];
                       for (var prop in obj) {
                           // skip loop if the property is from prototype
                           if (!obj.hasOwnProperty(prop)) continue;
-
-                          // your code
-                          console.log(obj[prop][0]);
                           errorMsgs.push(obj[prop][0]);
-
-
                       }
                   }
-
-
                   self.errors = errorMsgs;
-
-
-
                     self.submitting = false;
-
-                    // console.log( response.request.response );
-                    // console.log( d );
-
                 }else {
                   self.getGTM();
                 }
 
-
-
-
               });
-
-
-              // Need to display Errors and have submitting animation.
 
             },
 
@@ -195,79 +130,37 @@
 
               const dt = { meta_key: this.meta_key,meta_value: this.meta_value_gtm };
 
-
-              //GTM-W5PBLZD
-              // console.log(dt);
-
-
-
               self = this;
-
               axios
                 .post('/api/meta/update', dt)
                 .then(function (response) {
-                  // console.log(response.data)
-
 
                   if(response.data.errors){
-
                     var d = '';
-
-
                     d = JSON.parse(response.request.responseText);
-                    // console.log(d);
                     var errorMsgs = [];
 
                     for (var key in d) {
                       // skip loop if the property is from prototype
                       if (!d.hasOwnProperty(key)) continue;
-
                       var obj = d[key];
                       for (var prop in obj) {
                           // skip loop if the property is from prototype
                           if (!obj.hasOwnProperty(prop)) continue;
-
-                          // your code
-                          // console.log(obj[prop][0]);
                           errorMsgs.push(obj[prop][0]);
-
-
                       }
                   }
-
-
                   self.errors = errorMsgs;
-
-
-
                     self.submitting = false;
-
-                    // console.log( response.request.response );
-                    // console.log( d );
 
                 }else {
                   self.getGTM();
                 }
-
-
-
-
               });
-
-
-              // Need to display Errors and have submitting animation.
-
             },
-
-
           },
-          mounted: function () {
-
-
-
-            },
-
-              }
+          mounted: function () {},
+          }
 
 
 

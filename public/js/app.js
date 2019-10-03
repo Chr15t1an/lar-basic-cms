@@ -2087,21 +2087,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       submitting: false,
       errors: {},
-      meta_key: 'gtm',
+      meta_key_gtm: 'gtm',
       meta_value_gtm: '',
       value_set: false
     };
   },
   created: function created() {
-    // /meta/get
     this.getGTM();
   },
   methods: {
@@ -2114,26 +2110,21 @@ __webpack_require__.r(__webpack_exports__);
     },
     getGTM: function getGTM() {
       var dt = {
-        meta_key: this.meta_key
+        meta_key: this.meta_key_gtm
       };
-      self = this;
+      var self = this;
       axios.post('/api/meta/get', dt).then(function (response) {
         // console.log(response.data);
-        self.meta_value_gtm = response.data; // console.log('response');
-        // console.log(response.data);
+        self.meta_value_gtm = response.data;
 
         if (response.data) {
-          // console.log('full');
           self.value_set = true;
         } else {
-          // console.log('empty');
           self.value_set = false;
-        }
+        } //
+        // self.submitting = false;
 
-        self.submitting = false;
-      }); // self.submitting = false;
-      // return this.meta_value;
-
+      });
       this.submitting = false;
     },
     addGTM: function addGTM() {
@@ -2142,16 +2133,12 @@ __webpack_require__.r(__webpack_exports__);
       var dt = {
         meta_key: this.meta_key,
         meta_value: this.meta_value_gtm
-      }; //GTM-W5PBLZD
-      // console.log(dt);
-
+      };
       self = this;
       axios.post('/api/meta/add', dt).then(function (response) {
-        // console.log(response.data)
         if (response.data.errors) {
           var d = '';
-          d = JSON.parse(response.request.responseText); // console.log(d);
-
+          d = JSON.parse(response.request.responseText);
           var errorMsgs = [];
 
           for (var key in d) {
@@ -2161,20 +2148,17 @@ __webpack_require__.r(__webpack_exports__);
 
             for (var prop in obj) {
               // skip loop if the property is from prototype
-              if (!obj.hasOwnProperty(prop)) continue; // your code
-
-              console.log(obj[prop][0]);
+              if (!obj.hasOwnProperty(prop)) continue;
               errorMsgs.push(obj[prop][0]);
             }
           }
 
           self.errors = errorMsgs;
-          self.submitting = false; // console.log( response.request.response );
-          // console.log( d );
+          self.submitting = false;
         } else {
           self.getGTM();
         }
-      }); // Need to display Errors and have submitting animation.
+      });
     },
     updateGTM: function updateGTM() {
       //Calc price.
@@ -2182,16 +2166,12 @@ __webpack_require__.r(__webpack_exports__);
       var dt = {
         meta_key: this.meta_key,
         meta_value: this.meta_value_gtm
-      }; //GTM-W5PBLZD
-      // console.log(dt);
-
+      };
       self = this;
       axios.post('/api/meta/update', dt).then(function (response) {
-        // console.log(response.data)
         if (response.data.errors) {
           var d = '';
-          d = JSON.parse(response.request.responseText); // console.log(d);
-
+          d = JSON.parse(response.request.responseText);
           var errorMsgs = [];
 
           for (var key in d) {
@@ -2201,20 +2181,17 @@ __webpack_require__.r(__webpack_exports__);
 
             for (var prop in obj) {
               // skip loop if the property is from prototype
-              if (!obj.hasOwnProperty(prop)) continue; // your code
-              // console.log(obj[prop][0]);
-
+              if (!obj.hasOwnProperty(prop)) continue;
               errorMsgs.push(obj[prop][0]);
             }
           }
 
           self.errors = errorMsgs;
-          self.submitting = false; // console.log( response.request.response );
-          // console.log( d );
+          self.submitting = false;
         } else {
           self.getGTM();
         }
-      }); // Need to display Errors and have submitting animation.
+      });
     }
   },
   mounted: function mounted() {}
@@ -2748,11 +2725,11 @@ __webpack_require__.r(__webpack_exports__);
         meta_value: this.meta_value_user
       }; //
 
-      self = this;
-      console.log(payload);
-      axios.post('/api/meta/update', payload).then(function (response) {
-        console.log(response.data); // Errors
+      self = this; // console.log(payload);
 
+      axios.post('/api/meta/update', payload).then(function (response) {
+        // console.log(response.data)
+        // Errors
         if (response.data.errors) {
           var d = '';
           d = JSON.parse(response.request.responseText);
