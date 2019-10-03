@@ -89,7 +89,7 @@ Route::get('/admin/settings/seo/gen-sitemap', 'AdminController@makeSitemap')->mi
 
  $registration = App\Http\Controllers\MetavalueController::get_metadata('registration');
  // dd($registration);
-if ($registration === 'true') {
+if ($registration) {
   Auth::routes();
   }else {
   Auth::routes(['register' => false]);

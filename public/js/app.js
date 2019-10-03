@@ -2728,28 +2728,29 @@ __webpack_require__.r(__webpack_exports__);
     this.getMeta();
   },
   watch: {
-    meta_value: function meta_value() {
+    meta_value_user: function meta_value_user() {
       this.updateMeta();
     }
   },
   methods: {
     getMeta: function getMeta() {
-      var dt = {
+      var payload = {
         meta_key: this.meta_key_userRegistration
       };
       self = this;
-      axios.post('/api/meta/get', dt).then(function (response) {
-        self.meta_value = response.data;
+      axios.post('/api/meta/get', payload).then(function (response) {
+        self.meta_value_user = response.data; // console.log(self.meta_value_user);
       });
     },
     updateMeta: function updateMeta() {
-      var dt = {
-        meta_key: this.meta_key,
-        meta_value: true
-      }; //this.meta_value_user
+      var payload = {
+        meta_key: this.meta_key_userRegistration,
+        meta_value: this.meta_value_user
+      }; //
 
       self = this;
-      axios.post('/api/meta/update', dt).then(function (response) {
+      console.log(payload);
+      axios.post('/api/meta/update', payload).then(function (response) {
         console.log(response.data); // Errors
 
         if (response.data.errors) {
