@@ -1,68 +1,22 @@
-## Finish MVP
-- Lock Admin Section Down.~~
-Set up API Lockdown. - https://laravel.com/docs/5.7/passport
-https://laracasts.com/series/whats-new-in-laravel-5-3/episodes/13 - 12 min .
-__ Added Passport Because docs says its better
-=== Get Meta
-~ GUlp
-~ Need to generate token
-~Personal Access Token
---Email
--- Lock down Read, Delete,
--- Limit submissions
-leads
--- Lock down Read, Delete,
-- Crud Endpoints for all Models
--- If logged in
-- Lock Api down
-## Need a component for the leads page.  - Check
-{{$l->last_name}}
-<a href="">delete</a>
-leads.blade.php
 
-Need a method to add meta_value - v2
+##Document
+Instalation
+Comment code
+Components
+- Registration
+- Checklist
 
-- Turn Off Registration - Toggle - check
+##V2 ToDo's
+Automate Check Metas & H1's
+Design Admin Components
+Need a method to add Pages with meta_value's from backend.
+Contact's Model should be emails or messages
 
-- Checklist - Check
-  set up todolist
-  - uptime robot
-  - cloudflare
-  - GTM
-  - Google Analitics
-  -- Turn on ecommerce tracking.
-  --Enable Enhanced Ecommerce Reporting set up
-  - Bugsnag - Bugsnag
-  - Generate Sitemap
-  - Robot.text - Just add it in.
-  - Check H1s,Metas.
-  -- Segment - can add via GTM
-  - Utm Conversions
-  -- Adwords.
-  - https://mixpanel.com/
-  - FavIcon - Just add it in.
-  --https://favicon.io/favicon-converter/
-  - Disable Public Registration
-  - If logged in show admin in main
-Database backups.
-
-
+....
 ##Refactor.
-  - Contacts should be emails or messages
-  - Remove Unnessasary comments
-  - Add Contects
-  <!--  -->
   - Sanitize posts.
   - Validate inputs
   <!-- - Need to seed db -->
-
-
-Go through JS Components
-- Remove console logs
-- Remove commented code.
-
-
-Go Through all pages to clean it up
 
 
 Identify Needed tests

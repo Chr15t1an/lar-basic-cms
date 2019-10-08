@@ -35,8 +35,6 @@
 
 </section>
 
-
-
 <section class="justify-content-around row">
   <div class="cta-section">
     <button type="button" class="btn btn-primary btn-lg">Sign Up</button>
