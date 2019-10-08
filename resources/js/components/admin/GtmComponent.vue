@@ -1,44 +1,23 @@
 <template>
-
   <div>
-  <!-- Contact Modal -->
-
-
+  <!-- GTM Compnent -->
           <div v-if="this.errors.length > 0">
-
             <div class="alert alert-warning" role="alert">
                 There were some validation errors.
-
-
-
                 <li v-for="error in this.errors">
-
                   {{error}}
-
-
                 </li>
-
             </div>
-
           </div>
           <div class="row">
           <form v-if="!submitting">
-
-
-
               <div class="col">
                 <label for="exampleInputEmail1">Google Tag Manager</label>
                 <input v-model="meta_value_gtm" type="text" class="form-control" placeholder="GTM ID">
               </div>
-
-
-
             <button  v-on:click="submitMyForm" v-on:submit.prevent type="submit" class="btn btn-primary">Save</button>
           </form>
-
-
           <div v-if="submitting">
-
               <div class="loader loader--style5 text-center" title="4">
                 <h3>Data Submitted</h3>
               </div>
@@ -75,8 +54,6 @@
               axios
                 .post('/api/meta/get', dt)
                 .then(function (response) {
-
-                  // console.log(response.data);
                   self.meta_value_gtm = response.data;
                   if(response.data)
                   {
@@ -84,9 +61,6 @@
                   }else {
                     self.value_set = false;
                   }
-                  //
-                  // self.submitting = false;
-
             });
 
             this.submitting = false;

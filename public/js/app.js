@@ -1940,27 +1940,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1988,16 +1967,13 @@ __webpack_require__.r(__webpack_exports__);
       };
       var self = this;
       axios.post('/api/meta/get', dt).then(function (response) {
-        // console.log(response.data);
         self.meta_value_gtm = response.data;
 
         if (response.data) {
           self.value_set = true;
         } else {
           self.value_set = false;
-        } //
-        // self.submitting = false;
-
+        }
       });
       this.submitting = false;
     },
@@ -39833,14 +39809,12 @@ var render = function() {
             { staticClass: "alert alert-warning", attrs: { role: "alert" } },
             [
               _vm._v(
-                "\n              There were some validation errors.\n\n\n\n              "
+                "\n              There were some validation errors.\n              "
               ),
               _vm._l(this.errors, function(error) {
                 return _c("li", [
                   _vm._v(
-                    "\n\n                " +
-                      _vm._s(error) +
-                      "\n\n\n              "
+                    "\n                " + _vm._s(error) + "\n              "
                   )
                 ])
               })

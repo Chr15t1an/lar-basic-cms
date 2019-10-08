@@ -68,6 +68,8 @@ Identify Needed tests
 - When I change things does everything still work
 -- Contact Form
 -- Leads Form.
+-- can you write and read meta values
+-- Can you register a user. 
 
 
 ## Tests - V2
