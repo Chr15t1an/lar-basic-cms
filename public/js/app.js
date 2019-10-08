@@ -2163,32 +2163,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2219,54 +2193,16 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      //Need to update still
-      // Data Format -- checklist
-      // {
-      //   "CHECKLIST": {
-      //     "Items": [
-      //       {
-      //         "NAME": "Qualify Form and Correct Approvals",
-      //         "STATE": true
-      //       },
-      //       {
-      //         "NAME": "Qualify Form and Correct Approvals",
-      //         "STATE": false
-      //       }
-      //     ]
-      //     }
-      // }
-      //Post Json
-      //Pull Json from api
-      //Display Checklist
-      // Allow the form to change state
-      //
-      // When I check an item collect the current state of the whole list
-      //  pull form - get all inputs from form.
-      // check value - .elements[0].value
-      //  is checked?
-      // - temp1.elements[0].checked
-      //
-      //
-      //On click Resubmit form
-      submitting: false,
       errors: {},
       meta_key_checklist: 'checklist',
-      meta_value_checklist: {},
-      value_set: true
+      meta_value_checklist: {}
     };
   },
   created: function created() {
-    // /meta/get
     this.getChecklist();
   },
   methods: {
     submitMyChecklist: function submitMyChecklist() {
-      // if (this.value_set) {
-      //   this.updateChecklist();
-      //
-      // }else {
-      //   this.addChecklist();
-      // }
       var formElements = $('#checklistForm')[0].elements;
       var obToArray = Object.values(formElements);
       var listItems = [];
@@ -2274,63 +2210,42 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         listItems.push({
           "NAME": element.value,
           "STATE": element.checked
-        }); // console.log({"NAME":element.value,"STATE":element.checked});
+        });
       });
-      this.meta_value_checklist = listItems; // var payload = '{"CHECKLIST": {"Items": ['+listItems+']}}';
-      // var payload = {"CHECKLIST": {"Items": [listItems]}};
-      // console.log(payload);
-
-      this.updateChecklist(); // meta_value_checklist = listItems
-      // console.log($('#checklistForm')[0].elements);
+      this.meta_value_checklist = listItems;
+      this.updateChecklist();
     },
     getChecklist: function getChecklist() {
       var data = {
         meta_key: this.meta_key_checklist
-      }; //
-
-      var sel = this; //
-
+      };
+      var sel = this;
       axios.post('/api/meta/get', data).then(function (response) {
-        // console.log(response.data);
-        sel.meta_value_checklist = response.data.CHECKLIST.Items; // console.log(sel.meta_value_checklist);
-        // console.log(response.data);
+        sel.meta_value_checklist = response.data.CHECKLIST.Items;
 
         if (response.data) {
-          // console.log('full');
           sel.value_set = true;
         } else {
-          // console.log('empty');
           sel.value_set = false;
         }
 
         sel.submitting = false;
-      }); // self.submitting = false;
-      // return this.meta_value;
-
+      });
       this.submitting = false;
     },
     updateChecklist: function updateChecklist() {
-      //Calc price.
-      // this.submitting = true;
       var payload = {
         "CHECKLIST": {
           "Items": this.meta_value_checklist
         }
       };
       var myJSON = JSON.stringify(payload);
-      console.log(myJSON);
-      console.log(_typeof(myJSON));
       var dt = {
         meta_key: this.meta_key_checklist,
         meta_value: myJSON
-      }; //GTM-W5PBLZD
-      // console.log(dt);
-      // exit;
-
+      };
       var self = this;
       axios.post('/api/meta/update', dt).then(function (response) {
-        console.log(response.data);
-
         if (response.data.errors) {
           var d = '';
           d = JSON.parse(response.request.responseText); // console.log(d);
@@ -2344,80 +2259,20 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
             for (var prop in obj) {
               // skip loop if the property is from prototype
-              if (!obj.hasOwnProperty(prop)) continue; // your code
-              // console.log(obj[prop][0]);
-
+              if (!obj.hasOwnProperty(prop)) continue;
               errorMsgs.push(obj[prop][0]);
             }
           }
 
           self.errors = errorMsgs;
-          self.submitting = false; // console.log( response.request.response );
-          // console.log( d );
+          self.submitting = false;
         } else {
           self.getChecklist();
         }
-      }); // Need to display Errors and have submitting animation.
+      });
     }
   },
-  mounted: function mounted() {} // {
-  //   "CHECKLIST": {
-  //     "Items": [
-  //       {
-  //         "NAME": "Uptime Robot",
-  //         "STATE": false
-  //       },
-  //       {
-  //         "NAME": "Cloudflare",
-  //         "STATE": false
-  //       },
-  //       {
-  //         "NAME": "Google Tag Manager",
-  //         "STATE": false
-  //       },
-  //       {
-  //         "NAME": "Google Analitics",
-  //         "STATE": false
-  //       },
-  //       {
-  //         "NAME": "Turn on ecommerce tracking | Google Analitics",
-  //         "STATE": false
-  //       },
-  //       {
-  //         "NAME": "Bugsnag",
-  //         "STATE": false
-  //       },
-  //       {
-  //         "NAME": "Generate Sitemap",
-  //         "STATE": false
-  //       },
-  //       {
-  //         "NAME": "Robot.txt",
-  //         "STATE": false
-  //       },
-  //       {
-  //         "NAME": "Check H1s and Metas",
-  //         "STATE": false
-  //       },
-  //       {
-  //         "NAME": "Set up Conversions Events",
-  //         "STATE": false
-  //       },
-  //       {
-  //         "NAME": "FavIcon - https://favicon.io/favicon-converter/",
-  //         "STATE": false
-  //       },
-  //       {
-  //         "NAME": "Mixpanel.com",
-  //         "STATE": false
-  //       },
-  //       {
-  //         "NAME": "Disable Public Registration",
-  //         "STATE": false
-  //       }
-  //     ]
-  //     }
-  // }
+  mounted: function mounted() {} //  Example Checklist
   // { "CHECKLIST": { "Items": [ { "NAME": "Uptime Robot", "STATE": false }, { "NAME": "Cloudflare", "STATE": false }, { "NAME": "Google Tag Manager", "STATE": false }, { "NAME": "Google Analitics", "STATE": false }, { "NAME": "Turn on ecommerce tracking | Google Analitics", "STATE": false }, { "NAME": "Bugsnag", "STATE": false }, { "NAME": "Generate Sitemap", "STATE": false }, { "NAME": "Robot.txt", "STATE": false }, { "NAME": "Check H1s and Metas", "STATE": false }, { "NAME": "Set up Conversions Events", "STATE": false }, { "NAME": "FavIcon - https://favicon.io/favicon-converter/", "STATE": false }, { "NAME": "Mixpanel.com", "STATE": false }, { "NAME": "Disable Public Registration", "STATE": false } ] } }
 
 });
@@ -40223,14 +40078,12 @@ var render = function() {
             { staticClass: "alert alert-warning", attrs: { role: "alert" } },
             [
               _vm._v(
-                "\n              There were some validation errors.\n\n\n\n              "
+                "\n              There were some validation errors.\n              "
               ),
               _vm._l(this.errors, function(error) {
                 return _c("div", [
                   _vm._v(
-                    "\n\n                " +
-                      _vm._s(error) +
-                      "\n\n\n              "
+                    "\n                " + _vm._s(error) + "\n              "
                   )
                 ])
               })
