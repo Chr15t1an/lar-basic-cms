@@ -7,27 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class ContactController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
+{    
     /**
      * Store a newly created resource in storage.
      *
@@ -36,9 +16,6 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
-
-
 
          $validator = Validator::make($request->all(), [
              'firstname' => 'required|max:155|regex:/^[a-zA-Z\s]*$/',
@@ -69,9 +46,6 @@ class ContactController extends Controller
         }
 
     }
-
-
-
     /**
      * Read the specified resource.
      *
@@ -104,9 +78,6 @@ class ContactController extends Controller
 
       return $email->archived;
     }
-
-
-
     /**
      * Display the specified resource.
      *
@@ -117,32 +88,8 @@ class ContactController extends Controller
     {
       $email = Contact::find($id);
       return $email;
-      // return view('admin.reademails')->with('email',$email);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Contact  $contact
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Contact $contact)
-    {
 
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Contact  $contact
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Contact $contact)
-    {
-        //
-    }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -158,8 +105,5 @@ class ContactController extends Controller
       } catch (\Exception $e) {
         return response()->json(['errors'=>$e]);
       }
-
-
-
     }
 }

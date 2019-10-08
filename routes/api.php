@@ -31,15 +31,7 @@ Route::get('/admin/leads','AdminController@showleads')->middleware('auth:api');
 //Delete
 Route::post('/admin/leads/{id}/delete','SignupController@destroy')->middleware('auth:api');
 
-
-
-
-Route::post('/meta/add','MetavalueController@add_metadata');//->middleware('auth:api');
+Route::post('/meta/add','MetavalueController@add_metadata')->middleware('auth:api');
 Route::post('/meta/get','MetavalueController@api_get_metadata');
-Route::post('/meta/update','MetavalueController@api_update');//->middleware('auth:api');
+Route::post('/meta/update','MetavalueController@api_update')->middleware('auth:api');
 Route::post('/meta/delete','MetavalueController@destroy')->middleware('auth:api');
-
-
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });

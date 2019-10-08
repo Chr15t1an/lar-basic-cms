@@ -53,6 +53,7 @@ Database backups.
   - Add Contects
   <!--  -->
   - Sanitize posts.
+  - Validate inputs
   <!-- - Need to seed db -->
 
 
@@ -69,7 +70,7 @@ Identify Needed tests
 -- Contact Form
 -- Leads Form.
 -- can you write and read meta values
--- Can you register a user. 
+-- Can you register a user.
 
 
 ## Tests - V2
@@ -103,6 +104,8 @@ Bugsnag -
 ## Documentation.
 https://docs.google.com/document/d/1t1o-w0rT-o3M5mMwD_Zff9x-U4wA4bl9rdar1-pqRjo/edit
 
+-- Instalation Instructions
+-- Comment Code.
 
 
 
