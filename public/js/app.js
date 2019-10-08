@@ -2515,32 +2515,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2577,15 +2551,12 @@ __webpack_require__.r(__webpack_exports__);
         lastname: this.last_name,
         email: this.email,
         plan: this.plan
-      }; // const dt = { firstname: "gdfg1df2g2121dgfdg",lastname: "gdfg1df2g2121dgfdg", email: "gdfg1df2g2121dgfdg", msg: "gdfg1d9995   <>f2g2121dgfdg" };
-
+      };
       self = this;
       axios.post('/api/signup', dt).then(function (response) {
-        // console.log(response.data)
         if (response.data.errors) {
           var d = '';
-          d = JSON.parse(response.request.responseText); // console.log(d);
-
+          d = JSON.parse(response.request.responseText);
           var errorMsgs = [];
 
           for (var key in d) {
@@ -2594,37 +2565,15 @@ __webpack_require__.r(__webpack_exports__);
             var obj = d[key];
 
             for (var prop in obj) {
-              // skip loop if the property is from prototype
-              if (!obj.hasOwnProperty(prop)) continue; // your code
-
-              console.log(obj[prop][0]);
+              if (!obj.hasOwnProperty(prop)) continue;
               errorMsgs.push(obj[prop][0]);
             }
           }
 
-          self.errors = errorMsgs; // parce errors
-          // loop through errors
-          // self.errors = response.data.errors;
-          // self.errors =  response.request.response;
-          // b = response.request.response;
-          // self.errors = Object.keys(b.errors).map(i => b.errors[i])
-          // d = response.request.response;
-          // self.errors = Object.entries(response.request.response);
-          // a = response.data.errors;
-
-          self.submitting = false; // Object.values(b.errors)
-          // const peopleArray = Object.keys(peopleObj).map(i => peopleObj[i])
-          //
-          // const peopleArray = Object.keys(b.errors).map(i => b.errors[i])
-          //
-          //
-          // peopleArray = Object.keys(b.errors).map(i => b.errors[i])
-          //
-
-          console.log(response.request.response);
-          console.log(d);
+          self.errors = errorMsgs;
+          self.submitting = false;
         }
-      }); // Need to display Errors and have submitting animation.
+      });
     }
   },
   mounted: function mounted() {
@@ -40455,14 +40404,12 @@ var render = function() {
             { staticClass: "alert alert-warning", attrs: { role: "alert" } },
             [
               _vm._v(
-                "\n              There were some validation errors.\n\n\n\n              "
+                "\n              There were some validation errors.\n              "
               ),
               _vm._l(this.errors, function(error) {
                 return _c("li", [
                   _vm._v(
-                    "\n\n                " +
-                      _vm._s(error) +
-                      "\n\n\n              "
+                    "\n                " + _vm._s(error) + "\n              "
                   )
                 ])
               })
