@@ -1,49 +1,26 @@
 <template>
-
   <div>
-  <!-- Contact Modal -->
-
-
+  <!-- Toggle User Registration -->
           <div v-if="this.errors.length > 0">
-
             <div class="alert alert-warning" role="alert">
                 There were some validation errors.
-
-
-
                 <li v-for="error in this.errors">
-
                   {{error}}
-
-
                 </li>
-
             </div>
-
           </div>
           <div class="row">
-
               <div class="col">
                 <label for="">User Registration</label>
-
                 <ul class="tg-list">
                 <li class="tg-list-item">
-                  <!-- <h4>Flat</h4> checked> is true-->
                   <input v-model="meta_value_user" class="d-none tgl tgl-flat" id="cb4" type="checkbox"/>
                   <label class="tgl-btn" for="cb4"></label>
                 </li>
               </ul>
-
               </div>
-
-
-
-
-
-
       </div>
       </div>
-
 </template>
 
 <script>
@@ -76,8 +53,7 @@
               axios
                 .post('/api/meta/get', payload)
                 .then(function (response) {
-                  self.meta_value_user = response.data
-                  // console.log(self.meta_value_user);
+                  self.meta_value_user = response.data;
 
             });
 
@@ -87,16 +63,11 @@
 
             updateMeta: function(){
 
-              var payload = { meta_key: this.meta_key_userRegistration,meta_value:this.meta_value_user };//
-
+              var payload = { meta_key: this.meta_key_userRegistration,meta_value:this.meta_value_user };
               self = this;
-              // console.log(payload);
-
               axios
                 .post('/api/meta/update', payload)
                 .then(function (response) {
-                  // console.log(response.data)
-
                   // Errors
                         if(response.data.errors){
                           var d = '';
@@ -192,7 +163,4 @@ li {
   left: 50%;
   background: #7fc6a6;
 }
-
-
-
 </style>

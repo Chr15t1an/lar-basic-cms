@@ -46,6 +46,30 @@ Need a method to add meta_value - v2
   - If logged in show admin in main
 Database backups.
 
+
+##Refactor.
+  - Contacts should be emails or messages
+  - Remove Unnessasary comments
+  - Add Contects
+  <!--  -->
+  - Sanitize posts.
+  <!-- - Need to seed db -->
+
+
+Go through JS Components
+- Remove console logs
+- Remove commented code.
+
+
+Go Through all pages to clean it up
+
+
+Identify Needed tests
+- When I change things does everything still work
+-- Contact Form
+-- Leads Form.
+
+
 ## Tests - V2
 - Unit tests reduce manual tests.
 -- A known fixed input produces a known fixed output.
@@ -56,19 +80,11 @@ Database backups.
 -- https://laracasts.com/series/build-a-laravel-app-with-tdd
 
 
-- When I change things does everything still work
--- Contact Form
--- Leads Form. 
 
 
 
-##Refactor.
-  - Contacts should be emails or messages
-  - Remove Unnessasary comments
-  - Add Contects
-  - Remove
-  - Sanitize posts.
-  <!-- - Need to seed db -->
+
+
 
 Switch edits from master
 

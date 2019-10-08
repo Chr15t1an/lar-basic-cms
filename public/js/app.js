@@ -2313,29 +2313,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2360,19 +2337,16 @@ __webpack_require__.r(__webpack_exports__);
       };
       self = this;
       axios.post('/api/meta/get', payload).then(function (response) {
-        self.meta_value_user = response.data; // console.log(self.meta_value_user);
+        self.meta_value_user = response.data;
       });
     },
     updateMeta: function updateMeta() {
       var payload = {
         meta_key: this.meta_key_userRegistration,
         meta_value: this.meta_value_user
-      }; //
-
-      self = this; // console.log(payload);
-
+      };
+      self = this;
       axios.post('/api/meta/update', payload).then(function (response) {
-        // console.log(response.data)
         // Errors
         if (response.data.errors) {
           var d = '';
@@ -7963,7 +7937,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\nul,\nli {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n.tgl, .tgl:after, .tgl:before, .tgl *, .tgl *:after, .tgl *:before, .tgl + .tgl-btn {\n  box-sizing: border-box;\n}\n.tgl::-moz-selection, .tgl:after::-moz-selection, .tgl:before::-moz-selection, .tgl *::-moz-selection, .tgl *:after::-moz-selection, .tgl *:before::-moz-selection, .tgl + .tgl-btn::-moz-selection {\n  background: none;\n}\n.tgl::selection, .tgl:after::selection, .tgl:before::selection, .tgl *::selection, .tgl *:after::selection, .tgl *:before::selection, .tgl + .tgl-btn::selection {\n  background: none;\n}\n.tgl + .tgl-btn {\n  outline: 0;\n  display: block;\n  width: 4em;\n  height: 2em;\n  position: relative;\n  cursor: pointer;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.tgl + .tgl-btn:after, .tgl + .tgl-btn:before {\n  position: relative;\n  display: block;\n  content: \"\";\n  width: 50%;\n  height: 100%;\n}\n.tgl + .tgl-btn:after {\n  left: 0;\n}\n.tgl + .tgl-btn:before {\n  display: none;\n}\n.tgl:checked + .tgl-btn:after {\n  left: 50%;\n}\n.tgl-flat + .tgl-btn {\n  padding: 2px;\n  transition: all 0.2s ease;\n  background: #fff;\n  border: 4px solid #f2f2f2;\n  border-radius: 2em;\n}\n.tgl-flat + .tgl-btn:after {\n  transition: all 0.2s ease;\n  background: #f2f2f2;\n  content: \"\";\n  border-radius: 1em;\n}\n.tgl-flat:checked + .tgl-btn {\n  border: 4px solid #7fc6a6;\n}\n.tgl-flat:checked + .tgl-btn:after {\n  left: 50%;\n  background: #7fc6a6;\n}\n\n\n\n", ""]);
+exports.push([module.i, "\nul,\nli {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n.tgl, .tgl:after, .tgl:before, .tgl *, .tgl *:after, .tgl *:before, .tgl + .tgl-btn {\n  box-sizing: border-box;\n}\n.tgl::-moz-selection, .tgl:after::-moz-selection, .tgl:before::-moz-selection, .tgl *::-moz-selection, .tgl *:after::-moz-selection, .tgl *:before::-moz-selection, .tgl + .tgl-btn::-moz-selection {\n  background: none;\n}\n.tgl::selection, .tgl:after::selection, .tgl:before::selection, .tgl *::selection, .tgl *:after::selection, .tgl *:before::selection, .tgl + .tgl-btn::selection {\n  background: none;\n}\n.tgl + .tgl-btn {\n  outline: 0;\n  display: block;\n  width: 4em;\n  height: 2em;\n  position: relative;\n  cursor: pointer;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.tgl + .tgl-btn:after, .tgl + .tgl-btn:before {\n  position: relative;\n  display: block;\n  content: \"\";\n  width: 50%;\n  height: 100%;\n}\n.tgl + .tgl-btn:after {\n  left: 0;\n}\n.tgl + .tgl-btn:before {\n  display: none;\n}\n.tgl:checked + .tgl-btn:after {\n  left: 50%;\n}\n.tgl-flat + .tgl-btn {\n  padding: 2px;\n  transition: all 0.2s ease;\n  background: #fff;\n  border: 4px solid #f2f2f2;\n  border-radius: 2em;\n}\n.tgl-flat + .tgl-btn:after {\n  transition: all 0.2s ease;\n  background: #f2f2f2;\n  content: \"\";\n  border-radius: 1em;\n}\n.tgl-flat:checked + .tgl-btn {\n  border: 4px solid #7fc6a6;\n}\n.tgl-flat:checked + .tgl-btn:after {\n  left: 50%;\n  background: #7fc6a6;\n}\n", ""]);
 
 // exports
 
@@ -40155,14 +40129,12 @@ var render = function() {
             { staticClass: "alert alert-warning", attrs: { role: "alert" } },
             [
               _vm._v(
-                "\n              There were some validation errors.\n\n\n\n              "
+                "\n              There were some validation errors.\n              "
               ),
               _vm._l(this.errors, function(error) {
                 return _c("li", [
                   _vm._v(
-                    "\n\n                " +
-                      _vm._s(error) +
-                      "\n\n\n              "
+                    "\n                " + _vm._s(error) + "\n              "
                   )
                 ])
               })
