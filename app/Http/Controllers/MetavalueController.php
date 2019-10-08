@@ -9,9 +9,6 @@ use Illuminate\Support\Facades\Validator;
 
 class MetavalueController extends Controller
 {
-
-
-
     public function add_metadata(Request $request)
     {
       $validator = Validator::make($request->all(), [

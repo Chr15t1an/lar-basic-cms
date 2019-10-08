@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Handle Inbound App Pricing')
+@section('title', 'Leads')
 @section('content')
 
 
