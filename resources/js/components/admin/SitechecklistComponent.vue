@@ -259,5 +259,65 @@
               }
 
 
+              // {
+              //   "CHECKLIST": {
+              //     "Items": [
+              //       {
+              //         "NAME": "Uptime Robot",
+              //         "STATE": false
+              //       },
+              //       {
+              //         "NAME": "Cloudflare",
+              //         "STATE": false
+              //       },
+              //       {
+              //         "NAME": "Google Tag Manager",
+              //         "STATE": false
+              //       },
+              //       {
+              //         "NAME": "Google Analitics",
+              //         "STATE": false
+              //       },
+              //       {
+              //         "NAME": "Turn on ecommerce tracking | Google Analitics",
+              //         "STATE": false
+              //       },
+              //       {
+              //         "NAME": "Bugsnag",
+              //         "STATE": false
+              //       },
+              //       {
+              //         "NAME": "Generate Sitemap",
+              //         "STATE": false
+              //       },
+              //       {
+              //         "NAME": "Robot.txt",
+              //         "STATE": false
+              //       },
+              //       {
+              //         "NAME": "Check H1s and Metas",
+              //         "STATE": false
+              //       },
+              //       {
+              //         "NAME": "Set up Conversions Events",
+              //         "STATE": false
+              //       },
+              //       {
+              //         "NAME": "FavIcon - https://favicon.io/favicon-converter/",
+              //         "STATE": false
+              //       },
+              //       {
+              //         "NAME": "Mixpanel.com",
+              //         "STATE": false
+              //       },
+              //       {
+              //         "NAME": "Disable Public Registration",
+              //         "STATE": false
+              //       }
+              //     ]
+              //     }
+              // }
+              // { "CHECKLIST": { "Items": [ { "NAME": "Uptime Robot", "STATE": false }, { "NAME": "Cloudflare", "STATE": false }, { "NAME": "Google Tag Manager", "STATE": false }, { "NAME": "Google Analitics", "STATE": false }, { "NAME": "Turn on ecommerce tracking | Google Analitics", "STATE": false }, { "NAME": "Bugsnag", "STATE": false }, { "NAME": "Generate Sitemap", "STATE": false }, { "NAME": "Robot.txt", "STATE": false }, { "NAME": "Check H1s and Metas", "STATE": false }, { "NAME": "Set up Conversions Events", "STATE": false }, { "NAME": "FavIcon - https://favicon.io/favicon-converter/", "STATE": false }, { "NAME": "Mixpanel.com", "STATE": false }, { "NAME": "Disable Public Registration", "STATE": false } ] } }
+
 
 </script>
