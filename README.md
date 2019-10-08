@@ -22,9 +22,7 @@ leads.blade.php
 
 Need a method to add meta_value - v2
 
-
-
-- Turn Off Registration - Toggle
+- Turn Off Registration - Toggle - check
 
 - Checklist
   set up todolist
@@ -61,7 +59,8 @@ Database backups.
   - Remove Unnessasary comments
   - Add Contects
   - Remove
-- The components are gross and clashing. 
+  <!-- - Need to seed db -->
+- The components are gross and clashing.
 ## Analitics
 - Forms
 - Sessions over 3 min

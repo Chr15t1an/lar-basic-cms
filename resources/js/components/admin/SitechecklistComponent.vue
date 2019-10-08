@@ -1,6 +1,6 @@
 <template>
 
-  <div>
+  <div class="container">
   <!-- Contact Modal -->
 
 
@@ -11,38 +11,37 @@
 
 
 
-                <li v-for="error in this.errors">
+                <div v-for="error in this.errors">
 
                   {{error}}
 
 
-                </li>
+                </div>
 
             </div>
 
           </div>
           <div class="row">
-          <form v-if="!submitting">
+          <form id="checklistForm">
+            <div v-for="item in meta_value_checklist">
 
+              <div v-if="item.STATE">
 
+              <input v-on:click="submitMyChecklist" type="checkbox" v-bind:value="item.NAME" checked>{{item.NAME}} | {{item.STATE}}<br>
 
-              <div class="col">
-                <label for="exampleInputEmail1">Site Checklist</label>
-                <input v-model="meta_value_checklist" type="text" class="form-control" placeholder="Checklist ID">
+              </div>
+              <div v-else>
+
+              <input v-on:click="submitMyChecklist" type="checkbox" v-bind:value="item.NAME">{{item.NAME}} | {{item.STATE}}<br>
+
               </div>
 
 
+            </div>
 
-            <button  v-on:click="submitMyForm" v-on:submit.prevent type="submit" class="btn btn-primary">Save</button>
+
+
           </form>
-
-
-          <div v-if="submitting">
-
-              <div class="loader loader--style5 text-center" title="4">
-                <h3>Data Submitted</h3>
-              </div>
-          </div>
 
 
       </div>
@@ -55,16 +54,15 @@
       data:function() {
         return {
 
+//Need to update still
 
-//           Data Format
-//           {
+// Data Format -- checklist
+// {
 //   "CHECKLIST": {
-//     "ID": "1",
-//     "NAME": "Some Checklist",
 //     "Items": [
 //       {
 //         "NAME": "Qualify Form and Correct Approvals",
-//         "STATE": false
+//         "STATE": true
 //       },
 //       {
 //         "NAME": "Qualify Form and Correct Approvals",
@@ -73,12 +71,27 @@
 //     ]
 //     }
 // }
+//Post Json
+//Pull Json from api
+//Display Checklist
+// Allow the form to change state
+//
+// When I check an item collect the current state of the whole list
+//  pull form - get all inputs from form.
+// check value - .elements[0].value
+//  is checked?
+// - temp1.elements[0].checked
+//
+//
+
+//On click Resubmit form
+
 
 
             submitting: false,
             errors:{},
-            meta_key:'site_checklist',
-            meta_value_checklist:'yo',
+            meta_key_checklist:'checklist',
+            meta_value_checklist:{},
             value_set:true,
 
             }
@@ -92,18 +105,39 @@
         },
           methods:{
 
-            submitMyForm: function(){
+            submitMyChecklist: function(){
 
-              if (this.value_set) {
-                this.updateChecklist();
+              // if (this.value_set) {
+              //   this.updateChecklist();
+              //
+              // }else {
+              //   this.addChecklist();
+              // }
 
-              }else {
-                this.addChecklist();
-              }
+              var formElements = $('#checklistForm')[0].elements;
+              var obToArray = Object.values(formElements);
+              var listItems = [];
+              obToArray.forEach(function(element) {
+                listItems.push({"NAME":element.value,"STATE":element.checked});
+                // console.log({"NAME":element.value,"STATE":element.checked});
+              });
+
+              this.meta_value_checklist = listItems;
+
+              // var payload = '{"CHECKLIST": {"Items": ['+listItems+']}}';
+              // var payload = {"CHECKLIST": {"Items": [listItems]}};
+
+              // console.log(payload);
+
+              this.updateChecklist();
+
+              // meta_value_checklist = listItems
+
+              // console.log($('#checklistForm')[0].elements);
 
             },
             getChecklist: function(){
-              var data = { meta_key: this.meta_key };
+              var data = { meta_key: this.meta_key_checklist };
             //
               var sel = this;
             //
@@ -111,8 +145,8 @@
                 .post('/api/meta/get', data)
                 .then(function (response) {
                   // console.log(response.data);
-                  sel.meta_value_checklist = response.data;
-                  // console.log('response');
+                  sel.meta_value_checklist = response.data.CHECKLIST.Items;
+                  // console.log(sel.meta_value_checklist);
 
                   // console.log(response.data);
 
@@ -136,97 +170,32 @@
             },
 
 
-
-
-            addChecklist: function(){
-              //Calc price.
-              this.submitting = true;
-
-              var dt = { meta_key: this.meta_key,meta_value: this.meta_value };
-
-
-              //GTM-W5PBLZD
-              console.log(dt);
-
-
-
-              sel = this;
-
-              axios
-                .post('/api/meta/add', dt)
-                .then(function (response) {
-                  console.log(response.data)
-
-
-                  if(response.data.errors){
-
-                    var d = '';
-
-
-                    d = JSON.parse(response.request.responseText);
-                    // console.log(d);
-                    var errorMsgs = [];
-
-                    for (var key in d) {
-                      // skip loop if the property is from prototype
-                      if (!d.hasOwnProperty(key)) continue;
-
-                      var obj = d[key];
-                      for (var prop in obj) {
-                          // skip loop if the property is from prototype
-                          if (!obj.hasOwnProperty(prop)) continue;
-
-                          // your code
-                          // console.log(obj[prop][0]);
-                          errorMsgs.push(obj[prop][0]);
-
-
-                      }
-                  }
-
-
-                  sel.errors = errorMsgs;
-
-
-
-                    sel.submitting = false;
-
-                    // console.log( response.request.response );
-                    // console.log( d );
-
-                }else {
-                  this.getChecklist();
-                }
-
-
-
-
-              });
-
-
-              // Need to display Errors and have submitting animation.
-
-            },
-
-
             updateChecklist: function(){
               //Calc price.
-              this.submitting = true;
+              // this.submitting = true;
 
-              var dt = { meta_key: this.meta_key,meta_value: this.meta_value };
+              var payload = {"CHECKLIST": {"Items": this.meta_value_checklist}};
+
+              var myJSON = JSON.stringify(payload);
+
+              console.log(myJSON);
+              console.log(typeof(myJSON));
+
+              var dt = { meta_key: this.meta_key_checklist, meta_value: myJSON };
 
 
               //GTM-W5PBLZD
               // console.log(dt);
 
-
+              // exit;
 
               var self = this;
 
               axios
                 .post('/api/meta/update', dt)
                 .then(function (response) {
-                  // console.log(response.data)
+                  console.log(response.data)
+
 
 
                   if(response.data.errors){

@@ -9,7 +9,7 @@
 
 <h1>Admin</h1>
 
-////
+<sitechecklist-component></sitechecklist-component>
 
   </section>
 

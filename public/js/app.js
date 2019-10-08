@@ -2431,7 +2431,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 //
 //
 //
@@ -2486,15 +2487,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      //           Data Format
-      //           {
+      //Need to update still
+      // Data Format -- checklist
+      // {
       //   "CHECKLIST": {
-      //     "ID": "1",
-      //     "NAME": "Some Checklist",
       //     "Items": [
       //       {
       //         "NAME": "Qualify Form and Correct Approvals",
-      //         "STATE": false
+      //         "STATE": true
       //       },
       //       {
       //         "NAME": "Qualify Form and Correct Approvals",
@@ -2503,10 +2503,23 @@ __webpack_require__.r(__webpack_exports__);
       //     ]
       //     }
       // }
+      //Post Json
+      //Pull Json from api
+      //Display Checklist
+      // Allow the form to change state
+      //
+      // When I check an item collect the current state of the whole list
+      //  pull form - get all inputs from form.
+      // check value - .elements[0].value
+      //  is checked?
+      // - temp1.elements[0].checked
+      //
+      //
+      //On click Resubmit form
       submitting: false,
       errors: {},
-      meta_key: 'site_checklist',
-      meta_value_checklist: 'yo',
+      meta_key_checklist: 'checklist',
+      meta_value_checklist: {},
       value_set: true
     };
   },
@@ -2515,23 +2528,39 @@ __webpack_require__.r(__webpack_exports__);
     this.getChecklist();
   },
   methods: {
-    submitMyForm: function submitMyForm() {
-      if (this.value_set) {
-        this.updateChecklist();
-      } else {
-        this.addChecklist();
-      }
+    submitMyChecklist: function submitMyChecklist() {
+      // if (this.value_set) {
+      //   this.updateChecklist();
+      //
+      // }else {
+      //   this.addChecklist();
+      // }
+      var formElements = $('#checklistForm')[0].elements;
+      var obToArray = Object.values(formElements);
+      var listItems = [];
+      obToArray.forEach(function (element) {
+        listItems.push({
+          "NAME": element.value,
+          "STATE": element.checked
+        }); // console.log({"NAME":element.value,"STATE":element.checked});
+      });
+      this.meta_value_checklist = listItems; // var payload = '{"CHECKLIST": {"Items": ['+listItems+']}}';
+      // var payload = {"CHECKLIST": {"Items": [listItems]}};
+      // console.log(payload);
+
+      this.updateChecklist(); // meta_value_checklist = listItems
+      // console.log($('#checklistForm')[0].elements);
     },
     getChecklist: function getChecklist() {
       var data = {
-        meta_key: this.meta_key
+        meta_key: this.meta_key_checklist
       }; //
 
       var sel = this; //
 
       axios.post('/api/meta/get', data).then(function (response) {
         // console.log(response.data);
-        sel.meta_value_checklist = response.data; // console.log('response');
+        sel.meta_value_checklist = response.data.CHECKLIST.Items; // console.log(sel.meta_value_checklist);
         // console.log(response.data);
 
         if (response.data) {
@@ -2548,59 +2577,28 @@ __webpack_require__.r(__webpack_exports__);
 
       this.submitting = false;
     },
-    addChecklist: function addChecklist() {
-      //Calc price.
-      this.submitting = true;
-      var dt = {
-        meta_key: this.meta_key,
-        meta_value: this.meta_value
-      }; //GTM-W5PBLZD
-
-      console.log(dt);
-      sel = this;
-      axios.post('/api/meta/add', dt).then(function (response) {
-        console.log(response.data);
-
-        if (response.data.errors) {
-          var d = '';
-          d = JSON.parse(response.request.responseText); // console.log(d);
-
-          var errorMsgs = [];
-
-          for (var key in d) {
-            // skip loop if the property is from prototype
-            if (!d.hasOwnProperty(key)) continue;
-            var obj = d[key];
-
-            for (var prop in obj) {
-              // skip loop if the property is from prototype
-              if (!obj.hasOwnProperty(prop)) continue; // your code
-              // console.log(obj[prop][0]);
-
-              errorMsgs.push(obj[prop][0]);
-            }
-          }
-
-          sel.errors = errorMsgs;
-          sel.submitting = false; // console.log( response.request.response );
-          // console.log( d );
-        } else {
-          this.getChecklist();
-        }
-      }); // Need to display Errors and have submitting animation.
-    },
     updateChecklist: function updateChecklist() {
       //Calc price.
-      this.submitting = true;
+      // this.submitting = true;
+      var payload = {
+        "CHECKLIST": {
+          "Items": this.meta_value_checklist
+        }
+      };
+      var myJSON = JSON.stringify(payload);
+      console.log(myJSON);
+      console.log(_typeof(myJSON));
       var dt = {
-        meta_key: this.meta_key,
-        meta_value: this.meta_value
+        meta_key: this.meta_key_checklist,
+        meta_value: myJSON
       }; //GTM-W5PBLZD
       // console.log(dt);
+      // exit;
 
       var self = this;
       axios.post('/api/meta/update', dt).then(function (response) {
-        // console.log(response.data)
+        console.log(response.data);
+
         if (response.data.errors) {
           var d = '';
           d = JSON.parse(response.request.responseText); // console.log(d);
@@ -40423,7 +40421,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "container" }, [
     this.errors.length > 0
       ? _c("div", [
           _c(
@@ -40434,7 +40432,7 @@ var render = function() {
                 "\n              There were some validation errors.\n\n\n\n              "
               ),
               _vm._l(this.errors, function(error) {
-                return _c("li", [
+                return _c("div", [
                   _vm._v(
                     "\n\n                " +
                       _vm._s(error) +
@@ -40449,72 +40447,38 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      !_vm.submitting
-        ? _c("form", [
-            _c("div", { staticClass: "col" }, [
-              _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                _vm._v("Site Checklist")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.meta_value_checklist,
-                    expression: "meta_value_checklist"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text", placeholder: "Checklist ID" },
-                domProps: { value: _vm.meta_value_checklist },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.meta_value_checklist = $event.target.value
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary",
-                attrs: { type: "submit" },
-                on: {
-                  click: _vm.submitMyForm,
-                  submit: function($event) {
-                    $event.preventDefault()
-                  }
-                }
-              },
-              [_vm._v("Save")]
-            )
+      _c(
+        "form",
+        { attrs: { id: "checklistForm" } },
+        _vm._l(_vm.meta_value_checklist, function(item) {
+          return _c("div", [
+            item.STATE
+              ? _c("div", [
+                  _c("input", {
+                    attrs: { type: "checkbox", checked: "" },
+                    domProps: { value: item.NAME },
+                    on: { click: _vm.submitMyChecklist }
+                  }),
+                  _vm._v(_vm._s(item.NAME) + " | " + _vm._s(item.STATE)),
+                  _c("br")
+                ])
+              : _c("div", [
+                  _c("input", {
+                    attrs: { type: "checkbox" },
+                    domProps: { value: item.NAME },
+                    on: { click: _vm.submitMyChecklist }
+                  }),
+                  _vm._v(_vm._s(item.NAME) + " | " + _vm._s(item.STATE)),
+                  _c("br")
+                ])
           ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.submitting ? _c("div", [_vm._m(0)]) : _vm._e()
+        }),
+        0
+      )
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "loader loader--style5 text-center",
-        attrs: { title: "4" }
-      },
-      [_c("h3", [_vm._v("Data Submitted")])]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

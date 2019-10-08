@@ -220,16 +220,16 @@ return 'true';
     {
         //
 
-        $validator = Validator::make($request->all(), [
-            'meta_key' => 'required|max:155|regex:/^[a-zA-Z\s]*$/',
-            'meta_value' => 'required',
-        ]);
-
-
-       if ($validator->fails()) {
-             // Need to return errors.
-                return response()->json(['errors'=>$validator->errors()]);
-             }
+       //  $validator = Validator::make($request->all(), [
+       //      'meta_key' => 'required|max:155|regex:/^[a-zA-Z\s]*$/',
+       //      'meta_value' => 'required',
+       //  ]);
+       //
+       //
+       // if ($validator->fails()) {
+       //       // Need to return errors.
+       //          return response()->json(['errors'=>$validator->errors()]);
+       //       }
 
 
 
@@ -239,7 +239,7 @@ return 'true';
 
                $meta_key = $request->meta_key;
                $a = $responce = Metavalue::where('meta_key', $meta_key)->first();
-               
+
                $a->meta_value = $request->meta_value;
                $a->save();
 
