@@ -4,11 +4,9 @@
 
       <div>
           <h1 v-if="noemail">No EMail Found</h1>
-            {{ first_name }} + {{ last_name }}<br/>
-            {{ email }}<br/>
-
-    <hr/>
-
+            <strong>From:</strong><br/>{{ first_name }} {{ last_name }}<br/>
+            <strong>From email:</strong><br/>{{ email }}<br/>
+          <strong> Messages:</strong><br/>
           {{ msg }}<br/>
 
 

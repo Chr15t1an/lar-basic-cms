@@ -1842,8 +1842,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -40167,15 +40165,20 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _vm.noemail ? _c("h1", [_vm._v("No EMail Found")]) : _vm._e(),
-    _vm._v(
-      "\n          " + _vm._s(_vm.first_name) + " + " + _vm._s(_vm.last_name)
-    ),
+    _vm._v(" "),
+    _c("strong", [_vm._v("From:")]),
     _c("br"),
-    _vm._v("\n          " + _vm._s(_vm.email)),
+    _vm._v(_vm._s(_vm.first_name) + " " + _vm._s(_vm.last_name)),
     _c("br"),
     _vm._v(" "),
-    _c("hr"),
-    _vm._v("\n\n        " + _vm._s(_vm.msg)),
+    _c("strong", [_vm._v("From email:")]),
+    _c("br"),
+    _vm._v(_vm._s(_vm.email)),
+    _c("br"),
+    _vm._v(" "),
+    _c("strong", [_vm._v(" Messages:")]),
+    _c("br"),
+    _vm._v("\n        " + _vm._s(_vm.msg)),
     _c("br"),
     _vm._v(" "),
     !_vm.archive

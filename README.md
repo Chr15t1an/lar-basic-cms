@@ -55,6 +55,13 @@ Database backups.
 -- New fetures need test. https://laracasts.com/series/build-a-laravel-app-with-tdd/episodes/2
 -- https://laracasts.com/series/build-a-laravel-app-with-tdd
 
+
+- When I change things does everything still work
+-- Contact Form
+-- Leads Form. 
+
+
+
 ##Refactor.
   - Contacts should be emails or messages
   - Remove Unnessasary comments
