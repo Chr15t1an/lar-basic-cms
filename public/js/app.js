@@ -1743,9 +1743,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1792,7 +1789,6 @@ __webpack_require__.r(__webpack_exports__);
       usersText = $('#pricing-buttons .active-pricing');
       usersInt = parseInt(usersText[0].innerText);
       this.numberOfUsers = usersInt;
-      console.log(usersInt);
     }
   },
   mounted: function mounted() {

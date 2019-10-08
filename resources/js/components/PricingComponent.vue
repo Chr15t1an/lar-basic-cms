@@ -42,9 +42,6 @@
        </tbody>
     </table>
   </div>
-
-
-
 </template>
 
 <script>
@@ -101,7 +98,6 @@
               usersText = $('#pricing-buttons .active-pricing');
               usersInt = parseInt(usersText[0].innerText);
               this.numberOfUsers = usersInt;
-              console.log(usersInt);
             }
           },
           mounted: function () {
