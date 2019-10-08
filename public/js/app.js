@@ -2121,177 +2121,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      // submitting: false,
       errors: {},
       leads: {}
     };
   },
   created: function created() {
-    // var pathArray = window.location.pathname.split('/');
-    // console.log(pathArray[3]);
-    //
-    // var emailid = pathArray[3];
-    // this.id = emailid;
     self = this;
     axios.get('/api/admin/leads').then(function (response) {
       // handle success
-      console.log(response.data);
       self.leads = response.data;
-      console.log('data');
 
-      if (response.data) {// var payload = response.data;
-        // self.first_name = payload.first_name;
-        // self.last_name = payload.last_name;
-        // self.email = payload.email;
-        // self.msg = payload.msg;
-        // self.read = payload.read;
-        // self.archive = payload.archived;
-      } else {
-        console.log('no data');
+      if (response.data) {} else {
         self.noemail = true;
       }
-    }); // axios
-    //   .get('/api/admin/contacts/1')
-    //   .then(function (response) {
-    //
-    //   }
+    });
   },
   methods: {
     destroy: function destroy(itemId) {
-      // /email/read/{id}
-      // Route::post('/email/archive/{id}','ContactController@archive');
-      // Route::post('/email/read/{id}','ContactController@read');
-      // add a confirmation.
       self = this;
       axios.post('/api/admin/leads/' + itemId + '/delete').then(function (response) {
         // handle success
-        console.log(response.data);
         self.read = response.data;
         location.reload();
       });
     }
   },
-  mounted: function mounted() {
-    this.emailid = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
-  } // getUrlParam: function(parameter, defaultvalue){
-  //       var urlparameter = defaultvalue;
-  //       if(window.location.href.indexOf(parameter) > -1){
-  //           urlparameter = this.getUrlVars()[parameter];
-  //           }
-  //       return urlparameter;
-  //   },
-  //
-  //
-  //   getUrlVars: function() {
-  //       var vars = {};
-  //       var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-  //           vars[key] = value;
-  //       });
-  //       return vars;
-  //   },
-  // http://handleinbound.test/api/email/archive/5/delete
-  // submitMyForm: function(){
-  //   //Calc price.
-  //   this.submitting = true;
-  //
-  //   const dt = { firstname: this.first_name,lastname: this.last_name, email: this.email, msg: this.msg };
-  //
-  //   // const dt = { firstname: "gdfg1df2g2121dgfdg",lastname: "gdfg1df2g2121dgfdg", email: "gdfg1df2g2121dgfdg", msg: "gdfg1d9995   <>f2g2121dgfdg" };
-  //
-  //   self = this;
-  //
-  //   axios
-  //     .post('/api/contact', dt)
-  //     .then(function (response) {
-  //       // console.log(response.data)
-  //
-  //
-  //       if(response.data.errors){
-  //
-  //         var d = '';
-  //
-  //
-  //         d = JSON.parse(response.request.responseText);
-  //         // console.log(d);
-  //         var errorMsgs = [];
-  //
-  //         for (var key in d) {
-  //           // skip loop if the property is from prototype
-  //           if (!d.hasOwnProperty(key)) continue;
-  //
-  //           var obj = d[key];
-  //           for (var prop in obj) {
-  //               // skip loop if the property is from prototype
-  //               if (!obj.hasOwnProperty(prop)) continue;
-  //
-  //               // your code
-  //               console.log(obj[prop][0]);
-  //               errorMsgs.push(obj[prop][0]);
-  //
-  //
-  //           }
-  //       }
-  //
-  //
-  //       self.errors = errorMsgs;
-  //
-  // parce errors
-  // loop through errors
-  // self.errors = response.data.errors;
-  // self.errors =  response.request.response;
-  // b = response.request.response;
-  // self.errors = Object.keys(b.errors).map(i => b.errors[i])
-  // d = response.request.response;
-  // self.errors = Object.entries(response.request.response);
-  // a = response.data.errors;
-  //
-  // self.submitting = false;
-  //  // Object.values(b.errors)
-  //  // const peopleArray = Object.keys(peopleObj).map(i => peopleObj[i])
-  //  //
-  //  // const peopleArray = Object.keys(b.errors).map(i => b.errors[i])
-  //  //
-  //  //
-  //  // peopleArray = Object.keys(b.errors).map(i => b.errors[i])
-  //  //
-  //
-  // console.log( response.request.response );
-  // console.log( d );
-  //
-  // }
-  //
-  // });
-  // Need to display Errors and have submitting animation.
-
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -40259,13 +40117,11 @@ var render = function() {
             { staticClass: "alert alert-warning", attrs: { role: "alert" } },
             [
               _vm._v(
-                "\n          There were some validation errors.\n\n\n\n          "
+                "\n          There were some validation errors.\n          "
               ),
               _vm._l(this.errors, function(error) {
                 return _c("li", [
-                  _vm._v(
-                    "\n\n            " + _vm._s(error) + "\n\n\n          "
-                  )
+                  _vm._v("\n            " + _vm._s(error) + "\n          ")
                 ])
               })
             ],
