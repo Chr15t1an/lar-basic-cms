@@ -24,7 +24,7 @@ Need a method to add meta_value - v2
 
 - Turn Off Registration - Toggle - check
 
-- Checklist
+- Checklist - Check
   set up todolist
   - uptime robot
   - cloudflare
@@ -44,22 +44,28 @@ Need a method to add meta_value - v2
   --https://favicon.io/favicon-converter/
   - Disable Public Registration
   - If logged in show admin in main
-
 Database backups.
 
-
-
-## Tests
-
-
-
+## Tests - V2
+- Unit tests reduce manual tests.
+-- A known fixed input produces a known fixed output.
+-- always use fixed values
+-- If you run into something
+-- Moving forward GO Test Driven Development.
+-- New fetures need test. https://laracasts.com/series/build-a-laravel-app-with-tdd/episodes/2
+-- https://laracasts.com/series/build-a-laravel-app-with-tdd
 
 ##Refactor.
   - Contacts should be emails or messages
   - Remove Unnessasary comments
   - Add Contects
   - Remove
+  - Sanitize posts.
   <!-- - Need to seed db -->
+
+Switch edits from master
+
+
 - The components are gross and clashing.
 ## Analitics
 - Forms
