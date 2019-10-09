@@ -19,8 +19,8 @@ class SignupController extends Controller
     public function store(Request $request)
     {
          $validator = Validator::make($request->all(), [
-             'firstname' => 'required|max:155|regex:/^[a-zA-Z\s]*$/',
-             'lastname' => 'required|max:155|regex:/^[a-zA-Z\s]*$/',
+             'first_name' => 'required|max:155|regex:/^[a-zA-Z\s]*$/',
+             'last_name' => 'required|max:155|regex:/^[a-zA-Z\s]*$/',
              'email' => 'required|email',
              'plan' => 'alpha',
          ]);
@@ -31,8 +31,8 @@ class SignupController extends Controller
               }
         //Store
         $newLead = new Signup;
-        $newLead->first_name = $request->firstname;
-        $newLead->last_name = $request->lastname;
+        $newLead->first_name = $request->first_name;
+        $newLead->last_name = $request->last_name;
         $newLead->email = $request->email;
         $newLead->plan = $request->plan;
 

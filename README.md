@@ -28,6 +28,12 @@ Check CSRF Token for form submission
 ##Refactor
 
 ## Tests - V2
+
+//Run Tests - vendor/bin/phpunit
+// Run tests on the server (vagrant ssh)
+
+Start by writing tests. 
+
 Identify Needed tests
 - When I change things does everything still work
 
