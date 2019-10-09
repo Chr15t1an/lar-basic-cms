@@ -2428,8 +2428,8 @@ __webpack_require__.r(__webpack_exports__);
       //Calc price.
       this.submitting = true;
       var dt = {
-        firstname: this.first_name,
-        lastname: this.last_name,
+        first_name: this.first_name,
+        last_name: this.last_name,
         email: this.email,
         msg: this.msg
       };

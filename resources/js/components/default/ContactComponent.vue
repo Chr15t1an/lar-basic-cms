@@ -69,7 +69,7 @@
             submitMyForm: function(){
               //Calc price.
               this.submitting = true;
-              const dt = { firstname: this.first_name,lastname: this.last_name, email: this.email, msg: this.msg };
+              const dt = { first_name: this.first_name,last_name: this.last_name, email: this.email, msg: this.msg };
               self = this;
               axios
                 .post('/api/contact', dt)

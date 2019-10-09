@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class ContactController extends Controller
-{    
+{
     /**
      * Store a newly created resource in storage.
      *
@@ -18,10 +18,10 @@ class ContactController extends Controller
     {
 
          $validator = Validator::make($request->all(), [
-             'firstname' => 'required|max:155|regex:/^[a-zA-Z\s]*$/',
-             'lastname' => 'required|max:155|regex:/^[a-zA-Z\s]*$/',
+             'first_name' => 'required|max:155|regex:/^[a-zA-Z\s]*$/',
+             'last_name' => 'required|max:155|regex:/^[a-zA-Z\s]*$/',
              'email' => 'required|email',
-             'msg' => 'required|regex:/^[a-zA-Z0-9\s]*$/',
+             'msg' => 'required|regex:/^[a-zA-Z0-9 _.,!"\s]*$/',
          ]);
 
 
@@ -31,8 +31,8 @@ class ContactController extends Controller
               }
         //Store
         $newContact = new Contact;
-        $newContact->first_name = $request->firstname;
-        $newContact->last_name = $request->lastname;
+        $newContact->first_name = $request->first_name;
+        $newContact->last_name = $request->last_name;
         $newContact->email = $request->email;
         $newContact->msg = $request->msg;
         $newContact->read = 0; //Unread
