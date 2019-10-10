@@ -43,6 +43,7 @@ r
 
 Crud EMail- Contacts
 c+
+r+
 
 
 Crud Meta Data
@@ -56,6 +57,8 @@ admin routes need to be logged in.
 
 Switch edits from master
 
+
+Test that Auth is locked down
 
 
 ....
@@ -86,7 +89,8 @@ Components
 
 
 ##V2 ToDo's --- Moving forward GO Test Driven Development.
-Tests need to be ran in a separate SQlight database. 
+Tests need to be ran in a separate SQlight database.
+Change plan (leads) to product to be more general. 
 Automate Check Metas & H1's
 Design Admin Components
 Need a method to add Pages with meta_value's from backend.
