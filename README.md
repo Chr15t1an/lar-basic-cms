@@ -24,6 +24,7 @@ Identify Needed tests
 
 php artisan make:test ContactMessageReadTest
 
+php artisan make:test MetaCreateTest
 
 #Unit Tests
 - Export Leads
