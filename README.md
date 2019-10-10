@@ -22,7 +22,7 @@ Start by writing tests.
 Identify Needed tests
 - When I change things does everything still work
 
-php artisan make:test ContactMessageCreateTest
+php artisan make:test ContactMessageReadTest
 
 
 #Unit Tests
@@ -37,11 +37,14 @@ php artisan make:test ContactMessageCreateTest
 #Feature Tests
 Crud Lead - Signups
 c+
-re
+r
 
 
 
 Crud EMail- Contacts
+c+
+
+
 Crud Meta Data
 Pages load
 -- using sitemap
@@ -83,6 +86,7 @@ Components
 
 
 ##V2 ToDo's --- Moving forward GO Test Driven Development.
+Tests need to be ran in a separate SQlight database. 
 Automate Check Metas & H1's
 Design Admin Components
 Need a method to add Pages with meta_value's from backend.
