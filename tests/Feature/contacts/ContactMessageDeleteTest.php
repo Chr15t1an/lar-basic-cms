@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 use App\User;
 
 
-class ContactMessageReadTest extends TestCase
+class ContactMessageDeleteTest extends TestCase
 {
       use WithFaker, DatabaseTransactions, WithoutMiddleware;
   /**
@@ -21,7 +21,7 @@ class ContactMessageReadTest extends TestCase
    * @return void
    * @test
    */
-   public function a_admin_can_read_aContact_msg()
+   public function can_delete_aContact_msg()
    {
 
      $attributes = [ // sentence
@@ -43,12 +43,15 @@ class ContactMessageReadTest extends TestCase
 
        //Testing that the API works not the template or js.
        //Middleware Disabled .
-       $route = 'api/admin/contacts/'.$testcontact->id;
+        $route = 'api/email/archive/'.$testcontact->id.'/delete';
         $response = $this->actingAs($user)
-               ->get($route)
-               ->assertJson($attributes);
+               ->post($route)
+               ->assertOk();
+               // ->assertJson($attributes);
 
+      $this->assertDatabaseMissing('contacts', $attributes);
 
+        // check that is deleted
 
    }
 }

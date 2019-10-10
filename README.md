@@ -37,17 +37,29 @@ php artisan make:test ContactMessageReadTest
 #Feature Tests
 Crud Lead - Signups
 c+
-r
-
-
+r+
+-no update
+delete
 
 Crud EMail- Contacts
 c+
 r+
+Archive & Read +
+delete
 
 
 Crud Meta Data
+C.
+R
+U
+D
+
+
+
+
+
 Pages load
+
 -- using sitemap
 -- No 404's
 
@@ -90,7 +102,7 @@ Components
 
 ##V2 ToDo's --- Moving forward GO Test Driven Development.
 Tests need to be ran in a separate SQlight database.
-Change plan (leads) to product to be more general. 
+Change plan (leads) to product to be more general.
 Automate Check Metas & H1's
 Design Admin Components
 Need a method to add Pages with meta_value's from backend.

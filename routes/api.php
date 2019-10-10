@@ -19,7 +19,7 @@ Route::get('/admin/contacts/{id}', 'ContactController@show')->middleware('auth:a
 //Update
 Route::get('/email/read/{id}','ContactController@read')->middleware('auth:api');
 Route::get('/email/archive/{id}','ContactController@archive')->middleware('auth:api');
-
+// Delete
 Route::post('/email/archive/{id}/delete','ContactController@destroy')->middleware('auth:api');
 
 // Create
