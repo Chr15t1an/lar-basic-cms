@@ -31,16 +31,11 @@ class LeadsReadTest extends TestCase
        'plan' => $this->faker->word,
      ];
 
-
-       // $this->json('POST','api/contact',$attributes);
-
+      // Test Signup
        $this->json('POST','api/signup',$attributes);
        $this->assertDatabaseHas('signups',$attributes);
 
-       // its in the database
-       // $response = $this->assertDatabaseHas('contacts',$attributes);
-       // $testcontact = DB::table('signups')->where('email',$attributes['email'])->first();
-
+       //Check that its in the database
        //Create a User
        $user = factory(User::class)->make();
 
@@ -50,7 +45,5 @@ class LeadsReadTest extends TestCase
         $response = $this->actingAs($user)
                ->get($route)
                ->assertJsonFragment($attributes);
-
-
    }
 }
