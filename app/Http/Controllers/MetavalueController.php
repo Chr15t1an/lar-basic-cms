@@ -128,4 +128,30 @@ class MetavalueController extends Controller
                  return response()->json(['errors'=>$validator->errors()]);
              }
     }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Signup  $signup
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Request $request)
+    {
+      try {
+        // Update the model
+        $meta_key = $request->meta_key;
+        $a = $responce = Metavalue::where('meta_key', $meta_key)->first();
+        $a->delete();
+         return response()->json(['msg'=>'Deleted']);
+      } catch (\Exception $e) {
+          return response()->json(['errors'=>$e]);
+      }
+
+    }
+
+
+
+
+
 }

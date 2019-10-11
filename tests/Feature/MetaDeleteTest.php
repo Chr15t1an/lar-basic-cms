@@ -16,7 +16,7 @@ class MetaDeleteTest extends TestCase
      * @return void
      * @test
      */
-    public function test_read_meta()
+    public function test_delete_meta()
     {
 
       // Create key & Values
