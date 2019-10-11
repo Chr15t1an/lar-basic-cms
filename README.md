@@ -24,15 +24,15 @@ Identify Needed tests
 
 php artisan make:test ContactMessageReadTest
 
-php artisan make:test MetaCreateTest
+php artisan make:test ExportLeadsTest
 
 #Unit Tests
 - Export Leads
 - Create Sitemap
 -- Failing.
 - Email
--- Archive
--- Read
+-- Archive +
+-- Read +
 -- No registration when it is disablled (failing post request & get form.)
 
 #Feature Tests
@@ -50,23 +50,23 @@ delete
 
 
 Crud Meta Data
-C.
-R
-U
-D
-
-
-
+C.+
+R+
+U+
+D+
 
 
 Pages load
-
 -- using sitemap
 -- No 404's
 
 
 admin routes need to be logged in.
-
+===
+$this->get('/users/export')
+           ->assertStatus(302)
+           ->assertLocation('/login');
+====
 
 Switch edits from master
 

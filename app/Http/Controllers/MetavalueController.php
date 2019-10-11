@@ -147,7 +147,6 @@ class MetavalueController extends Controller
       } catch (\Exception $e) {
           return response()->json(['errors'=>$e]);
       }
-
     }
 
 
