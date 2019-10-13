@@ -28,8 +28,8 @@ Route::get('/signup', function () {
 /// Or do if you want
 
 //Basic Terms and Conditions & Privacy Policy
-Route::get('terms-&-conditions', function () {
-    return view('terms-&-conditions');
+Route::get('/terms-and-conditions', function () {
+    return view('terms-and-conditions');
 });
 
 Route::get('/privacy-policy', function () {
@@ -58,7 +58,6 @@ Route::get('/admin/settings/seo', function () {
     return view('admin.seo');
 })->middleware('auth');
 
-Route::get('/admin/settings/seo/gen-sitemap', 'AdminController@makeSitemap')->middleware('auth');
 
 $registration = App\Http\Controllers\MetavalueController::get_metadata('registration');
 if ($registration) {

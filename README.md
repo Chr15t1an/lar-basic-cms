@@ -24,10 +24,10 @@ Identify Needed tests
 
 php artisan make:test ContactMessageReadTest
 
-php artisan make:test ExportLeadsTest
+php artisan make:test CreateSitemapTest
 
 #Unit Tests
-- Export Leads
+- Export Leads ->+
 - Create Sitemap
 -- Failing.
 - Email
@@ -102,6 +102,8 @@ Components
 
 
 ##V2 ToDo's --- Moving forward GO Test Driven Development.
+Rework Sitemap to read URLs and not set them statically
+Create Pages via the backend like wordpress. 
 Tests need to be ran in a separate SQlight database.
 Change plan (leads) to product to be more general.
 Automate Check Metas & H1's
@@ -121,3 +123,8 @@ http://handleinbound.test/api/meta/add?meta_key=registration&meta_value=true
 - The Vue components are gross and clashing.
 
 ....
+
+
+---
+Check Packages - php -r "print_r(get_loaded_extensions());"
+composer require spatie/laravel-sitemap

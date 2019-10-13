@@ -35,3 +35,6 @@ Route::post('/meta/add','MetavalueController@add_metadata')->middleware('auth:ap
 Route::post('/meta/get','MetavalueController@api_get_metadata');
 Route::post('/meta/update','MetavalueController@api_update')->middleware('auth:api');
 Route::post('/meta/delete','MetavalueController@destroy')->middleware('auth:api');
+
+
+Route::get('/admin/settings/seo/gen-sitemap', 'AdminController@makeSitemap');//->middleware('auth:api');

@@ -40,6 +40,9 @@ Vue.component('user-reg-component', require('./components/admin/UserRegistration
 
 Vue.component('sitechecklist-component', require('./components/admin/SitechecklistComponent.vue').default);
 
+
+Vue.component('createsitemap-component', require('./components/admin/CreateSitemapComponent.vue').default);
+
 Vue.component(
     'passport-clients',
     require('./components/passport/Clients.vue').default

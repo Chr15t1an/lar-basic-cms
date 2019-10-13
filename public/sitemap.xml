@@ -1,3 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>http://handleinbound.test</loc>
+        <lastmod>2019-10-12T00:00:00+00:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.1</priority>
+    </url>
+    <url>
+        <loc>http://handleinbound.test/login</loc>
+        <lastmod>2019-10-12T00:00:00+00:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.1</priority>
+    </url>
+    <url>
+        <loc>http://handleinbound.test/pricing</loc>
+        <lastmod>2019-10-12T00:00:00+00:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.1</priority>
+    </url>
+    <url>
+        <loc>http://handleinbound.test/privacy-policy</loc>
+        <lastmod>2019-10-12T00:00:00+00:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.1</priority>
+    </url>
+    <url>
+        <loc>http://handleinbound.test/signup</loc>
+        <lastmod>2019-10-12T00:00:00+00:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.1</priority>
+    </url>
+    <url>
+        <loc>http://handleinbound.test/terms-and-conditions</loc>
+        <lastmod>2019-10-12T00:00:00+00:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.1</priority>
+    </url>
 </urlset>

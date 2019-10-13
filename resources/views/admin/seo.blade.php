@@ -15,9 +15,9 @@
 @endif
 
 (Generate Sitemap )<br/>
-<a href="/admin/settings/seo/gen-sitemap"><button>Generate Sitemap</button></a><br/>
+<!-- <a href="/admin/settings/seo/gen-sitemap"><button>Generate Sitemap</button></a><br/> -->
 
-
+<createsitemap-component></createsitemap-component>
 
 
   </section>
