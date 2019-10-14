@@ -60,6 +60,7 @@ Route::get('/admin/settings/seo', function () {
 
 
 $registration = App\Http\Controllers\MetavalueController::get_metadata('registration');
+// dd($registration);
 if ($registration) {
   Auth::routes();
   }else {

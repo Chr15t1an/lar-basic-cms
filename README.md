@@ -28,12 +28,12 @@ php artisan make:test CreateSitemapTest
 
 #Unit Tests
 - Export Leads ->+
-- Create Sitemap
--- Failing.
-- Email
--- Archive +
--- Read +
--- No registration when it is disablled (failing post request & get form.)
+- Create Sitemap ->+
+- Email ->+
+-- Archive ->++
+-- Read +->+
+
+-- No registration when it is disablled (failing post request & get form.) *
 
 #Feature Tests
 Crud Lead - Signups
@@ -55,13 +55,24 @@ R+
 U+
 D+
 
-
-Pages load
+Pages load - >+
 -- using sitemap
 -- No 404's
 
 
-admin routes need to be logged in.
+admin routes need to be logged in. - *
+
+
+.....
+php artisan make:test CheckRegistrationFailsIfDisabledTest
+-- No registration when it is disablled (failing post request & get form.) *
+
+
+
+
+
+
+
 ===
 $this->get('/users/export')
            ->assertStatus(302)
@@ -102,8 +113,10 @@ Components
 
 
 ##V2 ToDo's --- Moving forward GO Test Driven Development.
+Insure you are protexting against CSRF.
+- I belive we are but still need to undestand at a deeper level. 
 Rework Sitemap to read URLs and not set them statically
-Create Pages via the backend like wordpress. 
+Create Pages via the backend like wordpress.
 Tests need to be ran in a separate SQlight database.
 Change plan (leads) to product to be more general.
 Automate Check Metas & H1's

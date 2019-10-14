@@ -77,29 +77,15 @@ class MetavalueController extends Controller
      * @param  \App\Metavalue  $metavalue
      * @return \Illuminate\Http\Response
      */
-    public function update($meta_key, $meta_value, Request $request)
+    public static function update($meta_key, $meta_value)
     {
-        //
-
-        $validator = Validator::make($request->all(), [
-            'meta_key' => 'required|max:155|regex:/^[a-zA-Z\s]*$/',
-            'meta_value' => 'required|max:155|regex:/^[a-zA-Z\s]*$/',
-        ]);
-
-
-       if ($validator->fails()) {
-             // Need to return errors.
-                return response()->json(['errors'=>$validator->errors()]);
-             }
-
              try {
-               $a = self::get_metadata($meta_key);
-               $a->meta_value = $request->meta_value;
+               $a = $responce = Metavalue::where('meta_key', $meta_key)->first();
+               $a->meta_value = $meta_value;
                $a->save();
-
                 return response()->json(['msg'=>'Sucess']);
              } catch (\Exception $e) {
-                 return response()->json(['errors'=>$validator->errors()]);
+                 return response()->json(['errors'=>$e]);
              }
     }
 
