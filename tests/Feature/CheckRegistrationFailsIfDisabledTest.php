@@ -43,8 +43,18 @@ class CheckRegistrationFailsIfDisabledTest extends TestCase
     {
 
       // dd($reg_status);
+        //Form Doesnt Show
         $response = $this->get('/register');
         $response->assertStatus(404);
+
+        // test the post request.
+        $response = $this->post('/register');
+        $response->assertStatus(404);
+
+
+
+
+
         // Set back to origional
         \App\Http\Controllers\MetavalueController::update('registration', $reg_status);
         //
