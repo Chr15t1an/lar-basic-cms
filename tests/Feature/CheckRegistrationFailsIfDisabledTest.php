@@ -10,18 +10,6 @@ use App\User;
 
 class CheckRegistrationFailsIfDisabledTest extends TestCase
 {
-  // use DatabaseTransactions;
-    public $regStatus = '0';
-
-
-
-    public function setRegvar($testvar) {
-        $this->regStatus = $testvar;
-    }
-    public function getRegvar() {
-        return $this->regStatus;
-    }
-
     /**
      * A basic feature test example.
      *
@@ -31,34 +19,19 @@ class CheckRegistrationFailsIfDisabledTest extends TestCase
 
     public function test_registration_Fails_if_off()
     {
-        // $this->$r = dd(\App\Http\Controllers\MetavalueController::get_metadata('registration'));
-
-        $reg = \App\Http\Controllers\MetavalueController::get_metadata('registration');
-
-        self::setRegvar($reg);
-
-        // $this->regStatus = $reg;
-
-        // dd($this->regStatus);
-
-
-        // $response = $this->get('/');
+        $reg_status = \App\Http\Controllers\MetavalueController::get_metadata('registration');
         $attributes = [ // sentence
           'meta_key' => 'registration',
           'meta_value' => 0,
         ];
         //
         // //Get current status
-
-
         // update($meta_key, $meta_value)
         \App\Http\Controllers\MetavalueController::update('registration', 0);
 
         // Check The database.
         $this->assertDatabaseHas('metavalues',$attributes);
-
-
-
+        return $reg_status;
     }
 
 
@@ -66,33 +39,28 @@ class CheckRegistrationFailsIfDisabledTest extends TestCase
          * @depends test_registration_Fails_if_off
          */
 
-    public function test_registration_Fails_if_off_p2()
+    public function test_registration_Fails_if_off_p2($reg_status)
     {
 
-      dd(self::getRegvar());
+      // dd($reg_status);
         $response = $this->get('/register');
         $response->assertStatus(404);
-
         // Set back to origional
-        $stat = $this->regStatus; //self::getRegvar();
-        // dd($stat);
-        \App\Http\Controllers\MetavalueController::update('registration', $stat);
+        \App\Http\Controllers\MetavalueController::update('registration', $reg_status);
         //
         $attr = [ // sentence
           'meta_key' => 'registration',
-          'meta_value' => $stat,
+          'meta_value' => $reg_status,
         ];
         //
-        // // Check The database.
+        // Check The database.
         $this->assertDatabaseHas('metavalues',$attr);
     }
 
-
-
-
-
-
-}// // $response = $this->get('/');
+}
+// $stat = //$this->regStatus; //self::getRegvar();
+// dd($stat);
+// // $response = $this->get('/');
 // $attributes = [ // sentence
 //   'meta_key' => 'registration',
 //   'meta_value' => 0,
@@ -205,3 +173,22 @@ class CheckRegistrationFailsIfDisabledTest extends TestCase
 //                 ]);
 //
 //   $response->assertSee($registration);
+// // use DatabaseTransactions;
+//   public $regStatus = '0';
+//
+//
+//
+//   public function setRegvar($testvar) {
+//       $this->regStatus = $testvar;
+//   }
+//   public function getRegvar() {
+//       return $this->regStatus;
+//   }
+// self::setRegvar($reg);
+// $this->$r = dd(\App\Http\Controllers\MetavalueController::get_metadata('registration'));
+// $this->regStatus = $reg;
+
+// dd($this->regStatus);
+
+
+// $response = $this->get('/');
