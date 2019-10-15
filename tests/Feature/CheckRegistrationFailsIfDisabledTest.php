@@ -11,7 +11,7 @@ use App\User;
 class CheckRegistrationFailsIfDisabledTest extends TestCase
 {
     /**
-     * A basic feature test example.
+     * Check that registration fails when disabled.
      *
      * @return void
      * @test
@@ -19,186 +19,55 @@ class CheckRegistrationFailsIfDisabledTest extends TestCase
 
     public function test_registration_Fails_if_off()
     {
+
+        //Get current registration status.
         $reg_status = \App\Http\Controllers\MetavalueController::get_metadata('registration');
-        $attributes = [ // sentence
+
+        //an array on the disabled state for this meta value to be passed to the assert fuction.
+        $attributes = [
           'meta_key' => 'registration',
           'meta_value' => 0,
         ];
-        //
-        // //Get current status
-        // update($meta_key, $meta_value)
+
+        //Set the registration status to disabled.
         \App\Http\Controllers\MetavalueController::update('registration', 0);
 
-        // Check The database.
+        // Check The database and assert that registration is disabled.
         $this->assertDatabaseHas('metavalues',$attributes);
         return $reg_status;
     }
 
 
     /**
-         * @depends test_registration_Fails_if_off
-         */
+      * @depends test_registration_Fails_if_off
+      * This function is needed because (I think)
+      * We need two Test instances
+      * because it creates a new request which reloads
+      * the routes file disabling registration routes.
+      *
+      */
 
     public function test_registration_Fails_if_off_p2($reg_status)
     {
 
-      // dd($reg_status);
-        //Form Doesnt Show
+
+        // Check that Form Doesnt Show
         $response = $this->get('/register');
         $response->assertStatus(404);
 
-        // test the post request.
+        // Check that the post request fails.
         $response = $this->post('/register');
         $response->assertStatus(404);
 
-
-
-
-
-        // Set back to origional
+        // Set back to origional registration.
         \App\Http\Controllers\MetavalueController::update('registration', $reg_status);
         //
-        $attr = [ // sentence
+        $attr = [
           'meta_key' => 'registration',
           'meta_value' => $reg_status,
         ];
-        //
         // Check The database.
         $this->assertDatabaseHas('metavalues',$attr);
     }
 
 }
-// $stat = //$this->regStatus; //self::getRegvar();
-// dd($stat);
-// // $response = $this->get('/');
-// $attributes = [ // sentence
-//   'meta_key' => 'registration',
-//   'meta_value' => 0,
-// ];
-// //
-// // //Get current status
-// $registration = \App\Http\Controllers\MetavalueController::get_metadata('registration');
-//
-// // update($meta_key, $meta_value)
-// \App\Http\Controllers\MetavalueController::update('registration', 0);
-//
-// // Check The database.
-// $this->assertDatabaseHas('metavalues',$attributes);
-
-// $registration = \App\Http\Controllers\MetavalueController::get_metadata('registration');
-
-// $r = \App\Http\Controllers\MetavalueController::get_metadata('registration');
-// dd($registration);
-// $registration = \App\Http\Controllers\MetavalueController::get_metadata('registration');
-// Form Should be redirected
-
-// dd();
-
-// dd($response);
-//
-//
-// $user = factory(User::class)->create();
-// // $this->actingAs($user, 'api')
-//
-// //Update it to false
-// $this->actingAs($user, 'api')->json('POST','api/meta/update',[
-//             'meta_key' => 'registration',
-//             'meta_value' => 0,
-//         ]);
-//
-//   // Check that the DB Has been updated.
-//   $this->assertDatabaseHas('metavalues',$attributes);
-//
-
-  // dd($this);
-
-
-
-
-    // dd($response);
-
-
-/////////
-/////////
-///////////// Being redirected as logged in
-////////////
-/////////
-/////////
-
-
-// $user = factory(User::class)->create();
-// $this->actingAs($user, 'api')
-
-// dd($registration);
-// $response = $this->actingAs($user, 'api')->get('/admin');
-// $response->assertOK();
-//set reg status to false
-
-//
-// $response = $this->get('/register');
-// $response->assertStatus(404);
-//
-// //Set back to origional
-// \App\Http\Controllers\MetavalueController::update('registration', $registration);
-//
-// $attr = [ // sentence
-//   'meta_key' => 'registration',
-//   'meta_value' => $registration,
-// ];
-//
-// // Check The database.
-// $this->assertDatabaseHas('metavalues',$attr);
-
-
-// Form Should be redirected
-
-// $response = $this->get('/register');
-//
-// dd($response);
-
-
-// user creation should fail
-
-       //  $user = factory(User::class)->make();
-       //  $response = $this->post('register', [
-       //     'name' => $user->name,
-       //     'email' => $user->email,
-       //     'password' => 'password',
-       //     'password_confirmation' => 'password'
-       // ]);
-       //
-       // dd( $response);
-       // $response->assertStatus(302);
-
-
-// //Update back to original state
-//   $this->json('POST','api/meta/update',[
-//             'meta_key' => 'registration',
-//             'meta_value' => $registration,
-//         ]);
-//
-//   //Check that it was back.
-//   $response = $this->json('POST','api/meta/get',[
-//                             'meta_key' => 'registration',
-//                 ]);
-//
-//   $response->assertSee($registration);
-// // use DatabaseTransactions;
-//   public $regStatus = '0';
-//
-//
-//
-//   public function setRegvar($testvar) {
-//       $this->regStatus = $testvar;
-//   }
-//   public function getRegvar() {
-//       return $this->regStatus;
-//   }
-// self::setRegvar($reg);
-// $this->$r = dd(\App\Http\Controllers\MetavalueController::get_metadata('registration'));
-// $this->regStatus = $reg;
-
-// dd($this->regStatus);
-
-
-// $response = $this->get('/');

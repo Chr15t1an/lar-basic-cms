@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreateContactTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Create contacts table. 
      *
      * @return void
      */

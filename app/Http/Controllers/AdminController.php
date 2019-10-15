@@ -9,31 +9,39 @@ use Illuminate\Http\Request;
 use App\Contact;
 use App\Signup;
 
-// use Spatie\Sitemap\SitemapGenerator;
 use Carbon\Carbon;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 
-// use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Redirect;
+
+/**
+ * The Admin Controller is a place to store genral functions for admin features
+ *
+ */
+
+
 
 class AdminController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of contact messages.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('admin.admin');
-    }
 
     public function showcontacts()
     {
       $contact = Contact::all();
       return view('admin.contacts')->with('contacts',$contact);
     }
+
+    /**
+     * Display a single contact messages.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
     public function showemail($id)
     {
       $email = Contact::find($id);
@@ -41,11 +49,25 @@ class AdminController extends Controller
 
     }
 
+
+    /**
+     * Display a listing of leads.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
     public function showleads()
     {
     return  $leads = Signup::all();
 
     }
+
+    /**
+     * Manually Create a Sitemap. 
+     *
+     * @return \Illuminate\Http\Response
+     */
+
 
     public function makeSitemap()
     {

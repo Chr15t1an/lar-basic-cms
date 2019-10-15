@@ -16,7 +16,7 @@ class ContactMessageDeleteTest extends TestCase
 {
       use WithFaker, DatabaseTransactions, WithoutMiddleware;
   /**
-   * A basic feature test example.
+   * Test that a contact message can be deleted.
    *
    * @return void
    * @test
@@ -30,7 +30,6 @@ class ContactMessageDeleteTest extends TestCase
        'email' => $this->faker->email,
        'msg' => $this->faker->paragraph,
      ];
-
 
        $this->json('POST','api/contact',$attributes);
 
@@ -47,11 +46,11 @@ class ContactMessageDeleteTest extends TestCase
         $response = $this->actingAs($user)
                ->post($route)
                ->assertOk();
-               // ->assertJson($attributes);
 
+      // check that is deleted
       $this->assertDatabaseMissing('contacts', $attributes);
 
-        // check that is deleted
+
 
    }
 }

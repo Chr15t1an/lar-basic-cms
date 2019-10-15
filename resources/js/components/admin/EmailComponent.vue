@@ -7,7 +7,6 @@
             <strong> Messages:</strong><br/>
             {{ msg }}<br/>
 
-
           <button v-if="!archive" v-on:click="archiveToggle" type="button" class="btn btn-primary">Archive</button>
           <button v-if="archive" v-on:click="archiveToggle" type="button" class="btn btn-default">unAchive</button>
 
@@ -37,10 +36,12 @@
             }
           },
           created: function() {
+            //get email id from URL
             var pathArray = window.location.pathname.split('/');
             var emailid = pathArray[3];
             this.id = emailid;
             self = this;
+            //Get email data by id.
             axios.get('/api/admin/contacts/'+emailid)
                   .then(function (response) {
                     // handle success
@@ -59,6 +60,7 @@
           },
 
           methods:{
+            //Archive or unarchive email
             archiveToggle: function() {
               self = this;
               axios.get('/api/email/archive/'+this.id)
@@ -68,6 +70,7 @@
                     })
             },
 
+            //Mark read & unread email
             readToggle: function() {
               self = this;
               axios.get('/api/email/read/'+this.id)
@@ -76,6 +79,7 @@
                       self.read = response.data;
                     })
             },
+            //delete the email 
             destroy: function() {
               self = this;
               axios.post('/api/email/archive/'+this.id+'/delete')

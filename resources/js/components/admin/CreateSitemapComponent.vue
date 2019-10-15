@@ -1,15 +1,15 @@
 <template>
-  <!-- Read Email Component -->
+  <!-- Create Sitemap Component -->
       <div>
         <div v-if="this.errors.length > 0">
           <div class="alert alert-warning" role="alert">
-              
+
               <li v-for="error in this.errors">
                 {{error}}
               </li>
           </div>
         </div>
-
+<!-- A button to fire the api request -->
         <button v-on:click='makeSitemap' class="btn btn-dark">Generate Sitemap</button>
 
     </div>
@@ -29,6 +29,7 @@
           methods:{
             makeSitemap: function() {
               self = this;
+              //Api Request. 
               axios.get('/api/admin/settings/seo/gen-sitemap')
                     .then(function (response) {
                       // handle success

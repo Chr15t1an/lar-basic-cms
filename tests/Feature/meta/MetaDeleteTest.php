@@ -11,7 +11,7 @@ class MetaDeleteTest extends TestCase
 {
   use WithFaker, DatabaseTransactions, WithoutMiddleware;
     /**
-     * A basic feature test example.
+     * Test deleting metadata.
      *
      * @return void
      * @test
@@ -19,27 +19,20 @@ class MetaDeleteTest extends TestCase
     public function test_delete_meta()
     {
 
-      // Create key & Values
-      $attributes = [ // sentence
+        // Create key & Values
+        $attributes = [
         'meta_key' => $this->faker->word,
         'meta_value' => $this->faker->word,
-      ];
-
-
-      //Add to database
+        ];
+        //Add to database
         $this->json('POST','api/meta/add',$attributes);
-
-      // Check that it exists
+        // Check that it exists
         $this->assertDatabaseHas('metavalues',$attributes);
-
-
-
         //Delete it
-
         $this->json('POST','api/meta/delete',[
                     'meta_key' => $attributes['meta_key'],
                 ]);
-
+        //Check that its missing. 
         $this->assertDatabaseMissing('metavalues', $attributes);
 
     }

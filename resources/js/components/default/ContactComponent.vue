@@ -67,7 +67,7 @@
 
           methods:{
             submitMyForm: function(){
-              //Calc price.
+              //Contact form.
               this.submitting = true;
               const dt = { first_name: this.first_name,last_name: this.last_name, email: this.email, msg: this.msg };
               self = this;
@@ -89,7 +89,7 @@
                       for (var prop in obj) {
 
                           if (!obj.hasOwnProperty(prop)) continue;
-                          // your code
+
                           console.log(obj[prop][0]);
                           errorMsgs.push(obj[prop][0]);
                       }

@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 class CheckAdminRoutesFailForGuestTest extends TestCase
 {
     /**
-     * A basic feature test example.
+     * Check that admin routes are unaccessable to guests. 
      *
      * @return void
      * @test

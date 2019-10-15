@@ -1,92 +1,53 @@
-##Refactor/
-## Tests - V2
 
-Unit Test - testing an individual unit, such as a method (function) in a class, with all dependencies mocked up.
-
-Test in full isolation
-
-Feature Request/Functional Test - AKA Integration Test, testing a slice of functionality in a system. This will test many methods and may interact with dependencies like Databases or Web Services.
-
-https://stackoverflow.com/questions/2741832/unit-tests-vs-functional-tests
-
-~~~~~
-~~~~~
-
-//Run Tests - vendor/bin/phpunit
-// Run tests on the server (vagrant ssh)
-
-?? After running tests database fails.
-
-
-Start by writing tests.
-Identify Needed tests
-- When I change things does everything still work
-
-php artisan make:test ContactMessageReadTest
-
-php artisan make:test CreateSitemapTest
-
-#Unit Tests
-- Export Leads ->+
-- Create Sitemap ->+
-- Email ->+
--- Archive ->++
--- Read +->+
-
--- No registration when it is disablled (failing post request & get form.) *
-
-#Feature Tests
-Crud Lead - Signups
-c+
-r+
--no update
-delete
-
-Crud EMail- Contacts
-c+
-r+
-Archive & Read +
-delete
-
-
-Crud Meta Data
-C.+
-R+
-U+
-D+
-
-Pages load - >+
--- using sitemap
--- No 404's
-
-
-admin routes need to be logged in. - *
-
-
-.....
-php artisan make:test CheckRegistrationFailsIfDisabledTest
--- No registration when it is disablled (failing post request & get form.) *
-
-
-
-
-
-
-
-===
-$this->get('/users/export')
-           ->assertStatus(302)
-           ->assertLocation('/login');
-====
-
-Switch edits from master
-
-
-Test that Auth is locked down
-
+Add Comments
+Switch from master
+Instalation script
+Document in ReadMe.
 
 ....
-##Document
+##Document Code
+Comment Code
+Instalation
+Code documentation.
+....
+
+Analitics Coverage & Todo Article
+
+
+Adwords process -
+- Walk through it.
+
+- Article - Market Test Process - Combine into a todo list
+
+
+---------------Stratagy Plan-----------------
+- Pick a service (customer service, sales appointments, etc) - something you can do
+-- Market Research - Do other people pay for that
+-- Scalability Plan - Can I start small but grow it to meet my goal
+- Operating plan  - What is the process to work with a customer
+
+
+?????
+- Get Proof Tool(s) - Prove that it works and you can do it. (by doing it with someone)
+-- Manual Sales
+-- Market test
+?????
+
+
+- Get a contract
+
+
+
+----
+~~~~~
+Post Luancu
+~~~~~
+
+
+- Should this be last, write post version.  
+
+
+
 https://docs.google.com/document/d/1t1o-w0rT-o3M5mMwD_Zff9x-U4wA4bl9rdar1-pqRjo/edit
 Article - Market Test Process
 Article - Set up Analitics via GTM
@@ -113,8 +74,12 @@ Components
 
 
 ##V2 ToDo's --- Moving forward GO Test Driven Development.
+Add a fileName to Csv export. 
+Need Public vs Private metadata so that I can Control what gets read.
+get_metadata - Needs to not be static or validate better.
+Add Blog Functionality. - CRUD & Tests.
 Insure you are protexting against CSRF.
-- I belive we are but still need to undestand at a deeper level. 
+- I belive we are but still need to undestand at a deeper level.
 Rework Sitemap to read URLs and not set them statically
 Create Pages via the backend like wordpress.
 Tests need to be ran in a separate SQlight database.

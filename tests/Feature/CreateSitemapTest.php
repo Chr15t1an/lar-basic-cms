@@ -18,7 +18,7 @@ class CreateSitemapTest extends TestCase
 {
     use WithFaker, DatabaseTransactions, WithoutMiddleware;
     /**
-     * A basic feature test example.
+     * Check that the sitemap exists and can be created.
      *
      * @return void
      */
@@ -38,8 +38,8 @@ class CreateSitemapTest extends TestCase
         $sitemapXml = new SimpleXMLElement(file_get_contents($sitemap_path));
 
         $sitemapJson = json_encode($sitemapXml);
-        // check that home url Exists
+        // check that home url is present. 
         $this->assertContains(json_encode(url('/')), $sitemapJson);
-        
+
     }
 }

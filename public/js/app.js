@@ -53918,20 +53918,29 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
  *
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
-//
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+//Pricing Component
 
-Vue.component('pricing-component', __webpack_require__(/*! ./components/PricingComponent.vue */ "./resources/js/components/PricingComponent.vue")["default"]);
-Vue.component('contact-component', __webpack_require__(/*! ./components/default/ContactComponent.vue */ "./resources/js/components/default/ContactComponent.vue")["default"]);
-Vue.component('signup-component', __webpack_require__(/*! ./components/default/SignupComponent.vue */ "./resources/js/components/default/SignupComponent.vue")["default"]);
-Vue.component('email-component', __webpack_require__(/*! ./components/admin/EmailComponent.vue */ "./resources/js/components/admin/EmailComponent.vue")["default"]);
-Vue.component('leads-component', __webpack_require__(/*! ./components/admin/LeadsComponent.vue */ "./resources/js/components/admin/LeadsComponent.vue")["default"]);
-Vue.component('gtm-component', __webpack_require__(/*! ./components/admin/GtmComponent.vue */ "./resources/js/components/admin/GtmComponent.vue")["default"]);
-Vue.component('user-reg-component', __webpack_require__(/*! ./components/admin/UserRegistrationComponent.vue */ "./resources/js/components/admin/UserRegistrationComponent.vue")["default"]);
-Vue.component('sitechecklist-component', __webpack_require__(/*! ./components/admin/SitechecklistComponent.vue */ "./resources/js/components/admin/SitechecklistComponent.vue")["default"]);
-Vue.component('createsitemap-component', __webpack_require__(/*! ./components/admin/CreateSitemapComponent.vue */ "./resources/js/components/admin/CreateSitemapComponent.vue")["default"]);
+Vue.component('pricing-component', __webpack_require__(/*! ./components/PricingComponent.vue */ "./resources/js/components/PricingComponent.vue")["default"]); //Contact Component
+
+Vue.component('contact-component', __webpack_require__(/*! ./components/default/ContactComponent.vue */ "./resources/js/components/default/ContactComponent.vue")["default"]); //Signup Component
+
+Vue.component('signup-component', __webpack_require__(/*! ./components/default/SignupComponent.vue */ "./resources/js/components/default/SignupComponent.vue")["default"]); //Email Component
+
+Vue.component('email-component', __webpack_require__(/*! ./components/admin/EmailComponent.vue */ "./resources/js/components/admin/EmailComponent.vue")["default"]); //Leads Component
+
+Vue.component('leads-component', __webpack_require__(/*! ./components/admin/LeadsComponent.vue */ "./resources/js/components/admin/LeadsComponent.vue")["default"]); //Google Tag Manager Component
+
+Vue.component('gtm-component', __webpack_require__(/*! ./components/admin/GtmComponent.vue */ "./resources/js/components/admin/GtmComponent.vue")["default"]); //User Registration Component
+
+Vue.component('user-reg-component', __webpack_require__(/*! ./components/admin/UserRegistrationComponent.vue */ "./resources/js/components/admin/UserRegistrationComponent.vue")["default"]); //Check list Component
+
+Vue.component('sitechecklist-component', __webpack_require__(/*! ./components/admin/SitechecklistComponent.vue */ "./resources/js/components/admin/SitechecklistComponent.vue")["default"]); //Create sitemap component
+
+Vue.component('createsitemap-component', __webpack_require__(/*! ./components/admin/CreateSitemapComponent.vue */ "./resources/js/components/admin/CreateSitemapComponent.vue")["default"]); //Passport Api. Endpoints.
+
 Vue.component('passport-clients', __webpack_require__(/*! ./components/passport/Clients.vue */ "./resources/js/components/passport/Clients.vue")["default"]);
 Vue.component('passport-authorized-clients', __webpack_require__(/*! ./components/passport/AuthorizedClients.vue */ "./resources/js/components/passport/AuthorizedClients.vue")["default"]);
 Vue.component('passport-personal-access-tokens', __webpack_require__(/*! ./components/passport/PersonalAccessTokens.vue */ "./resources/js/components/passport/PersonalAccessTokens.vue")["default"]);
@@ -54939,8 +54948,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/c/Documents/lar-build-handle-inbound-marketing-site/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/c/Documents/lar-build-handle-inbound-marketing-site/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/vagrant/lar-build-handle-inbound-marketing-site/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/vagrant/lar-build-handle-inbound-marketing-site/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

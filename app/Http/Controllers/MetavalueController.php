@@ -9,8 +9,18 @@ use Illuminate\Support\Facades\Validator;
 
 class MetavalueController extends Controller
 {
+
+  /**
+   * Add a new metadata key value pair.
+   *
+   * @param  \App\Metavalue  $metavalue
+   * @return \Illuminate\Http\Response
+   */
+
     public function add_metadata(Request $request)
     {
+
+      //Validate the Request
       $validator = Validator::make($request->all(), [
           'meta_key' => 'required|max:155|regex:/^[a-zA-Z\s]*$/',
           'meta_value' => 'required',
@@ -39,7 +49,7 @@ class MetavalueController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Handles the Api Request
      *
      * @param  \App\Metavalue  $metavalue
      * @return \Illuminate\Http\Response
@@ -47,17 +57,24 @@ class MetavalueController extends Controller
 
     public function api_get_metadata(Request $request )
     {
-
+      //validate the $request
       $meta_key = $request->meta_key;
-      // return $meta_key;
       $validator = Validator::make($request->all(), [
           'meta_key' => 'required|max:155|regex:/^[a-zA-Z\s]*$/',
       ]);
       $meta_key = $request->meta_key;
 
+      //call the get_metadata function
       return self::get_metadata($meta_key);
     }
 
+
+    /**
+     * Retrives the metadata by meta_key
+     *
+     * @param  \App\Metavalue  $metavalue
+     * @return \Illuminate\Http\Response
+     */
 
     public static function get_metadata($meta_key = '')
     {
@@ -70,10 +87,10 @@ class MetavalueController extends Controller
 
           return 'true';
     }
+
     /**
-     * Update the specified resource in storage.
+     * Update the meta_value by passing the meta_key & meta_value.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Metavalue  $metavalue
      * @return \Illuminate\Http\Response
      */
@@ -89,6 +106,13 @@ class MetavalueController extends Controller
              }
     }
 
+    /**
+     * Update the meta_value by passing the meta_key & meta_value via the api.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Metavalue  $metavalue
+     * @return \Illuminate\Http\Response
+     */
     public function api_update(Request $request)
     {
         //
@@ -117,7 +141,7 @@ class MetavalueController extends Controller
 
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the meta_key & meta_value by passing the meta_key
      *
      * @param  \App\Signup  $signup
      * @return \Illuminate\Http\Response

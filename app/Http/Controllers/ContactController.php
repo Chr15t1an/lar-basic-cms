@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 class ContactController extends Controller
 {
     /**
-     * Store a newly created resource in storage.
+     * Store a new contact message in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -17,6 +17,7 @@ class ContactController extends Controller
     public function store(Request $request)
     {
 
+        //Validate the input
          $validator = Validator::make($request->all(), [
              'first_name' => 'required|max:155|regex:/^[a-zA-Z\s]*$/',
              'last_name' => 'required|max:155|regex:/^[a-zA-Z\s]*$/',
@@ -46,8 +47,9 @@ class ContactController extends Controller
         }
 
     }
+
     /**
-     * Read the specified resource.
+     * Change read status for a single email by id.
      *
      * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
@@ -62,13 +64,18 @@ class ContactController extends Controller
       }
       $email->save();
       return $email->read;
-      // return view('admin.reademails')->with('email',$email);
+
     }
 
+    /**
+     * Change Archive status for a single email by id.
+     *
+     * @param  \App\Contact  $contact
+     * @return \Illuminate\Http\Response
+     */
     public function archive($id)
     {
       $email = Contact::find($id);
-
       if ($email->archived === 0) {
           $email->archived = 1;
       }else {
@@ -78,8 +85,9 @@ class ContactController extends Controller
 
       return $email->archived;
     }
+
     /**
-     * Display the specified resource.
+     * Return email data by id.
      *
      * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
@@ -91,7 +99,7 @@ class ContactController extends Controller
 
     }
     /**
-     * Remove the specified resource from storage.
+     * Remove the email from storage.
      *
      * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response

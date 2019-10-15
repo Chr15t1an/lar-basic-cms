@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreateSignupTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Create signups table. 
      *
      * @return void
      */

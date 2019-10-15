@@ -1,7 +1,6 @@
 <?php
 
 namespace Tests\Feature;
-
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -14,14 +13,14 @@ class LeadDeleteTest extends TestCase
 {
   use WithFaker, DatabaseTransactions, WithoutMiddleware;
     /**
-     * A basic feature test example.
+     * Test that a lead can be deleted.
      *
      * @return void
      * @test
      */
     public function can_delete_a_lead()
     {
-      $attributes = [ // sentence
+      $attributes = [
         'first_name' => $this->faker->word,
         'last_name' => $this->faker->word,
         'email' => $this->faker->email,
@@ -33,7 +32,7 @@ class LeadDeleteTest extends TestCase
         $this->assertDatabaseHas('signups',$attributes);
 
 
-
+        //Pull the record from the database for record id. 
         $testcontact = DB::table('signups')->where('email',$attributes['email'])->first();
 
         //Create a User
@@ -45,8 +44,8 @@ class LeadDeleteTest extends TestCase
          $response = $this->actingAs($user)
                 ->post($route)
                 ->assertOk();
-                // ->assertJson($attributes);
 
+       //Assert that it was deleted.
        $this->assertDatabaseMissing('signups', $attributes);
 
 

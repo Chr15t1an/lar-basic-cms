@@ -11,15 +11,13 @@ class ExportLeadsTest extends TestCase
 {
   use WithFaker, DatabaseTransactions, WithoutMiddleware;
     /**
-     * A basic feature test example.
-     *
+     * Test adding a lead, exporting the list,
+     * and asserting that lead is in the download.
      * @return void
      * @test
      */
     public function testExportLeads()
     {
-
-
       // Add a new lead
       $attributes = [ // sentence
         'first_name' => $this->faker->word,
@@ -32,8 +30,6 @@ class ExportLeadsTest extends TestCase
         $this->json('POST','api/signup',$attributes);
         // assert that it is in the database
         $this->assertDatabaseHas('signups',$attributes);
-
-
         // Get the export
         $response = $this->get('/admin/leads/export')
                            ->assertHeader('content-type', 'text/csv; charset=UTF-8')
@@ -47,8 +43,6 @@ class ExportLeadsTest extends TestCase
           $this->assertContains($attributes['last_name'], $content);
           $this->assertContains($attributes['email'], $content);
           $this->assertContains($attributes['plan'], $content);
-
-
 
     }
 }

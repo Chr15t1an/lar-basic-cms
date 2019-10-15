@@ -11,13 +11,14 @@ use Illuminate\Support\Facades\Validator;
 class SignupController extends Controller
 {
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created lead in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+      //Validate the request
          $validator = Validator::make($request->all(), [
              'first_name' => 'required|max:155|regex:/^[a-zA-Z\s]*$/',
              'last_name' => 'required|max:155|regex:/^[a-zA-Z\s]*$/',
@@ -29,7 +30,9 @@ class SignupController extends Controller
               // Need to return errors.
                  return response()->json(['errors'=>$validator->errors()]);
               }
-        //Store
+        //Store the lead.
+
+
         $newLead = new Signup;
         $newLead->first_name = $request->first_name;
         $newLead->last_name = $request->last_name;
@@ -45,7 +48,9 @@ class SignupController extends Controller
 
     }
 
-      /**
+     /**
+       * Create a CSV
+       *
        * @param array $columnNames
        * @param array $rows
        * @param string $fileName
@@ -70,25 +75,24 @@ class SignupController extends Controller
           return response()->stream($callback, 200, $headers);
       }
 
+
+      /**
+        * Export leads/Signups to a CSV.
+        *
+        */
+
       public function exportleads() {
-          //$rows = [['a','b','c'],[1,2,3]];//replace this with your own array of arrays
-
           $rows = [];
-
           $leads = Signup::all();
-
           foreach ($leads as $l) {
             array_push($rows,[$l->first_name, $l->last_name,$l->email,$l->plan]);
           }
-
-          $columnNames = ['firstname', 'lastname', 'email','plan'];//replace this with your own array of string column headers
-
-
+          $columnNames = ['firstname', 'lastname', 'email','plan'];
           return self::getCsv($columnNames, $rows);
       }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified lead from storage.
      *
      * @param  \App\Signup  $signup
      * @return \Illuminate\Http\Response

@@ -16,7 +16,7 @@ class LeadsReadTest extends TestCase
 {
       use WithFaker, DatabaseTransactions, WithoutMiddleware;
   /**
-   * A basic feature test example.
+   * Test that a lead can be read from the database.
    *
    * @return void
    * @test
@@ -24,7 +24,7 @@ class LeadsReadTest extends TestCase
    public function can_read_a_lead()
    {
 
-     $attributes = [ // sentence
+     $attributes = [ 
        'first_name' => $this->faker->word,
        'last_name' => $this->faker->word,
        'email' => $this->faker->email,

@@ -16,7 +16,7 @@ class ContactMessageReadTest extends TestCase
 {
       use WithFaker, DatabaseTransactions, WithoutMiddleware;
   /**
-   * A basic feature test example.
+   * Test that a message can be read.
    *
    * @return void
    * @test
@@ -24,13 +24,12 @@ class ContactMessageReadTest extends TestCase
    public function a_admin_can_read_aContact_msg()
    {
 
-     $attributes = [ // sentence
+     $attributes = [
        'first_name' => $this->faker->word,
        'last_name' => $this->faker->word,
        'email' => $this->faker->email,
        'msg' => $this->faker->paragraph,
      ];
-
 
        $this->json('POST','api/contact',$attributes);
 

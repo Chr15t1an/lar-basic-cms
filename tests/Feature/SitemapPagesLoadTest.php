@@ -11,14 +11,13 @@ use SimpleXMLElement;
 class SitemapPagesLoadTest extends TestCase
 {
     /**
-     * A basic feature test example.
+     * Test that every page listed on the sitemap loads.
      *
      * @return void
      * @test
      */
     public function test_sitemap_URLs()
     {
-
       //Get sitemap
       $sitemap_path = public_path().'/sitemap.xml';
       $sitemapXml = new SimpleXMLElement(file_get_contents($sitemap_path));
@@ -30,15 +29,11 @@ class SitemapPagesLoadTest extends TestCase
       foreach ($array['url'] as $key => $value) {
         array_push($sites,$value['loc']);
       }
-      //Assert thst all URLs are 200.  
+      //Assert thst all URLs are 200.
         foreach ($sites as $key => $value) {
-          // print_r($value);
-          // array_push($sites,$value['loc']);
           $response = $this->get($value);
           $response->assertStatus(200);
         }
-
-
 
     }
 }

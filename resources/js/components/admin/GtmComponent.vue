@@ -41,6 +41,7 @@
           this.getGTM();
         },
           methods:{
+            //Submit my GTM form.
             submitMyForm: function(){
               if (this.value_set) {
                 this.updateGTM();
@@ -48,6 +49,7 @@
                 this.addGTM();
               }
             },
+            //Get GTM data.
             getGTM: function(){
               var dt = { meta_key: this.meta_key_gtm };
               var self = this;
@@ -65,8 +67,8 @@
 
             this.submitting = false;
             },
+            //Add initial GTM data.
             addGTM: function(){
-              //Calc price.
               this.submitting = true;
               var dt = { meta_key: this.meta_key,meta_value: this.meta_value_gtm };
               self = this;
@@ -92,28 +94,20 @@
                 }else {
                   self.getGTM();
                 }
-
               });
-
             },
-
-
+            //Update GTM data.
             updateGTM: function(){
-              //Calc price.
               this.submitting = true;
-
               const dt = { meta_key: this.meta_key,meta_value: this.meta_value_gtm };
-
               self = this;
               axios
                 .post('/api/meta/update', dt)
                 .then(function (response) {
-
                   if(response.data.errors){
                     var d = '';
                     d = JSON.parse(response.request.responseText);
                     var errorMsgs = [];
-
                     for (var key in d) {
                       // skip loop if the property is from prototype
                       if (!d.hasOwnProperty(key)) continue;
@@ -126,7 +120,6 @@
                   }
                   self.errors = errorMsgs;
                     self.submitting = false;
-
                 }else {
                   self.getGTM();
                 }
@@ -135,7 +128,5 @@
           },
           mounted: function () {},
           }
-
-
 
 </script>

@@ -34,19 +34,19 @@
           },
           created: function() {
 
-            // /meta/get
           this.getMeta();
 
 
         },
         watch: {
+          //On toggle update the value.
           meta_value_user: function () {
             this.updateMeta();
           }
 
         },
           methods:{
-
+            //Get current registration status.
             getMeta: function(){
               var payload = { meta_key: this.meta_key_userRegistration };
               self = this;
@@ -61,6 +61,7 @@
             },
 
 
+            //Update registration status. 
             updateMeta: function(){
 
               var payload = { meta_key: this.meta_key_userRegistration,meta_value:this.meta_value_user };

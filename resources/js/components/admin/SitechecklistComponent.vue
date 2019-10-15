@@ -38,6 +38,7 @@
           this.getChecklist();
         },
           methods:{
+            // Submit checklist
             submitMyChecklist: function(){
               var formElements = $('#checklistForm')[0].elements;
               var obToArray = Object.values(formElements);
@@ -48,6 +49,7 @@
               this.meta_value_checklist = listItems;
               this.updateChecklist();
             },
+            //Get CHECKLIST
             getChecklist: function(){
               var data = { meta_key: this.meta_key_checklist };
               var sel = this;
@@ -59,16 +61,15 @@
 
                   if(response.data)
                   {
-
                     sel.value_set = true;
                   }else {
-
                     sel.value_set = false;
                   }
                   sel.submitting = false;
             });
             this.submitting = false;
             },
+            //Update CHECKLIST
             updateChecklist: function(){
               var payload = {"CHECKLIST": {"Items": this.meta_value_checklist}};
               var myJSON = JSON.stringify(payload);
@@ -77,8 +78,6 @@
               axios
                 .post('/api/meta/update', dt)
                 .then(function (response) {
-
-
                   if(response.data.errors){
                     var d = '';
                     d = JSON.parse(response.request.responseText);
@@ -101,13 +100,11 @@
                   self.getChecklist();
                 }
               });
-
             },
           },
           mounted: function () {},
 
               }
-
               //  Example Checklist
               // { "CHECKLIST": { "Items": [ { "NAME": "Uptime Robot", "STATE": false }, { "NAME": "Cloudflare", "STATE": false }, { "NAME": "Google Tag Manager", "STATE": false }, { "NAME": "Google Analitics", "STATE": false }, { "NAME": "Turn on ecommerce tracking | Google Analitics", "STATE": false }, { "NAME": "Bugsnag", "STATE": false }, { "NAME": "Generate Sitemap", "STATE": false }, { "NAME": "Robot.txt", "STATE": false }, { "NAME": "Check H1s and Metas", "STATE": false }, { "NAME": "Set up Conversions Events", "STATE": false }, { "NAME": "FavIcon - https://favicon.io/favicon-converter/", "STATE": false }, { "NAME": "Mixpanel.com", "STATE": false }, { "NAME": "Disable Public Registration", "STATE": false } ] } }
 

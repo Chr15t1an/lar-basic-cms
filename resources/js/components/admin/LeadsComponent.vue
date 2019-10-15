@@ -48,9 +48,9 @@
 
           created: function() {
             self = this;
+            //Get all leads.
             axios.get('/api/admin/leads')
                   .then(function (response) {
-                    // handle success
                     self.leads = response.data;
                     if (response.data) {
                   }else {
@@ -60,6 +60,7 @@
           },
 
           methods:{
+            //Delete a lead.
             destroy: function(itemId) {
 
               self = this;
