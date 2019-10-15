@@ -1,12 +1,88 @@
+#Install - finish writing
+set up a server
+- https://hackernoon.com/a-step-by-step-guide-to-setup-php-laravel-environment-linux-50b55a4fd15e
+-- Write a script to spin up a server,
+install Packages,
+set up firewall,
+Install php, nginx, mysql, gulp, composer
 
-Add Comments
-Switch from master
-Instalation script
+Generate mysql user, password, database,
+test & prod
+set up nginx.conf /site/ enabled/ (ln)
+test & Prod
+Test has a robot.txt to no index.
+...
+git pull
+- set up test & Prod
+-  
+
+1. Write Server provision Shell Setup Script.
+- https://github.com/dopyoman/laravel-server
+
+
+
+2. Install Repo Instructions.  
+
+
+
+
+
+
+
+composer install.
+npm run production
+php artisan run migration.
+- Add Registration & Checklist
+?Migration.
+
+
+
+
+
+
+Add these steps.
+https://laravel.com/docs/5.7/deployment
+
+
+run test
+cd ~/project-dir
+phpunit
+
+
+
+Installation script
 Document in ReadMe.
+
+#Deployment Process.
+Two databases test & Production
+Two repo | test & Production
+  /test
+  /production
+When you commit new code to a branch.
+Test your code
+Pull branch to test repo.
+- run migration, npm run production, --install script repo locally
+- run tests do any needed QA
+Merge master into current branch. (')
+- Resolve merge conflics. (')
+merg into master
+
+pull master to repo.
+
+
+
+
+
+....
+....
+....
+
+Switch from master
+
 
 ....
 ##Document Code
-Comment Code
+Comment Code - X
 Instalation
 Code documentation.
 ....
@@ -35,7 +111,9 @@ Adwords process -
 
 
 - Get a contract
-
+76 ck
+bean 93
+20 cal sauce
 
 
 ----
@@ -74,7 +152,8 @@ Components
 
 
 ##V2 ToDo's --- Moving forward GO Test Driven Development.
-Add a fileName to Csv export. 
+Tests need to be ran in a separate database.
+Add a fileName to Csv export.
 Need Public vs Private metadata so that I can Control what gets read.
 get_metadata - Needs to not be static or validate better.
 Add Blog Functionality. - CRUD & Tests.
@@ -100,9 +179,29 @@ http://handleinbound.test/api/meta/add?meta_key=checklist&meta_value={ "CHECKLIS
 http://handleinbound.test/api/meta/add?meta_key=registration&meta_value=true
 - The Vue components are gross and clashing.
 
+### V2. Deployment Process.
+- Set up CI in Gitlab
+- https://www.youtube.com/watch?v=RdOhgdnIhQI
+- https://www.youtube.com/watch?v=Jav4vbUrqII&t=18s - Using gitlab.
+https://about.gitlab.com/blog/2018/01/22/a-beginners-guide-to-continuous-integration/
+
+Issue
+Create new Branch from issue
+Push to branch - Unit & Feature Tests run. (')
+Merge master into current branch. (')
+- Resolve merge conflics. (')
+
+Create merge request
+Merge with master
+- Master tests run migration
+
+Pushed to branch.
+- Branch goes to test enviroment.
+- Test environment mirrors production master.
+- Run Tests.
+
+If you merge with Master
+- Gets pushed to production.
 ....
-
-
----
 Check Packages - php -r "print_r(get_loaded_extensions());"
 composer require spatie/laravel-sitemap
