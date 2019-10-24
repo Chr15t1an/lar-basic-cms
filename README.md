@@ -1,153 +1,23 @@
-#Install - finish writing
-set up a server
-- https://hackernoon.com/a-step-by-step-guide-to-setup-php-laravel-environment-linux-50b55a4fd15e
--- Write a script to spin up a server,
-install Packages,
-set up firewall,
-Install php, nginx, mysql, gulp, composer
-
-Generate mysql user, password, database,
-test & prod
-set up nginx.conf /site/ enabled/ (ln)
-test & Prod
-Test has a robot.txt to no index.
-...
-git pull
-- set up test & Prod
--  
-
-1. Write Server provision Shell Setup Script.
-- https://github.com/dopyoman/laravel-server
-
-
-
-2. Install Repo Instructions.  
-
-
-
-
-
-
-
-composer install.
-npm run production
-php artisan run migration.
-- Add Registration & Checklist
-?Migration.
-
-
-
-
-
-
-Add these steps.
-https://laravel.com/docs/5.7/deployment
-
-
-run test
-cd ~/project-dir
-phpunit
-
-
-
-Installation script
-Document in ReadMe.
-
-#Deployment Process.
-Two databases test & Production
-Two repo | test & Production
-  /test
-  /production
-When you commit new code to a branch.
-Test your code
-Pull branch to test repo.
-- run migration, npm run production, --install script repo locally
-- run tests do any needed QA
-Merge master into current branch. (')
-- Resolve merge conflics. (')
-merg into master
-
-pull master to repo.
-
-
-
-
-
-....
-....
-....
-
-Switch from master
-
-
-....
-##Document Code
-Comment Code - X
-Instalation
-Code documentation.
-....
-
-Analitics Coverage & Todo Article
-
-
-Adwords process -
-- Walk through it.
-
-- Article - Market Test Process - Combine into a todo list
-
-
----------------Stratagy Plan-----------------
-- Pick a service (customer service, sales appointments, etc) - something you can do
--- Market Research - Do other people pay for that
--- Scalability Plan - Can I start small but grow it to meet my goal
-- Operating plan  - What is the process to work with a customer
-
-
-?????
-- Get Proof Tool(s) - Prove that it works and you can do it. (by doing it with someone)
--- Manual Sales
--- Market test
-?????
-
-
-- Get a contract
-76 ck
-bean 93
-20 cal sauce
-
-
-----
-~~~~~
-Post Luancu
-~~~~~
-
-
-- Should this be last, write post version.  
-
-
-
-https://docs.google.com/document/d/1t1o-w0rT-o3M5mMwD_Zff9x-U4wA4bl9rdar1-pqRjo/edit
-Article - Market Test Process
-Article - Set up Analitics via GTM
---- Raw, Test, Master | Goals | Filters | template out a Google Tag container?
---- log 404s analitics | Conversions
-
-How does everything work? | Context
-Instalation
-Comment code
+#-- Need to insert metas & Checklist during initial migration - this am
+## Design-Cleanup. this am -
++404 page is fucked.
+#Build Post and Page Functionality. - FRI / n.Mon/ n.Tues
+- How to Cache?
+- Switch from master
+Stop and Create a blog - my office it person.
+-- Document what you need.
+-- Make project a stand alone resume piece
+#Code documentation - n.WED - n.Thurs
 Components
 - Registration
 - Checklist
+#Process Articles n.F ++ nn.Mon - nn.Thurs
+#Run a new experiment from the top. ~ Nov 15th
 
-## Design-Cleanup.
-+404 page is fucked.
-
-
-## Analitics
-- Forms
-- Sessions over 3 min
-- Pricing Calculator
--- If they use any of the pricing caliculator items trigger the tag.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*******************************       START HERE        ********************************
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+https://docs.google.com/document/d/1adkzcZA8odWzEm19zAf4boEuIhGyft3Zm3OQTLVjhc8/edit
 
 
 
@@ -180,7 +50,9 @@ http://handleinbound.test/api/meta/add?meta_key=registration&meta_value=true
 - The Vue components are gross and clashing.
 
 ### V2. Deployment Process.
+
 - Set up CI in Gitlab
+- Docor images
 - https://www.youtube.com/watch?v=RdOhgdnIhQI
 - https://www.youtube.com/watch?v=Jav4vbUrqII&t=18s - Using gitlab.
 https://about.gitlab.com/blog/2018/01/22/a-beginners-guide-to-continuous-integration/
@@ -205,3 +77,48 @@ If you merge with Master
 ....
 Check Packages - php -r "print_r(get_loaded_extensions());"
 composer require spatie/laravel-sitemap
+
+#Install
+1. Spin up a server
+2. Provision https://github.com/Chr15t1an/provision-script-set  
+
+#Deployment Process.
+When you commit new code to a branch.
+Test your code locally.
+Pull branch to test repo.
+Merge master into current branch.
+- Resolve merge conflics.
+mere into master
+
+
+##Posts that need to be written
+
+Analitics Coverage & Todo Article
+Article - Market Test Process - Combine into a todo list
+---------------Stratagy Plan-----------------
+- Pick a service (customer service, sales appointments, etc) - something you can do
+-- Market Research - Do other people pay for that
+-- Scalability Plan - Can I start small but grow it to meet my goal
+- Operating plan  - What is the process to work with a customer
+
+
+?????
+- Get Proof Tool(s) - Prove that it works and you can do it. (by doing it with someone)
+-- Manual Sales
+-- Market test
+?????
+
+
+- Get a contract
+---------------End Content-----------------
+
+https://docs.google.com/document/d/1t1o-w0rT-o3M5mMwD_Zff9x-U4wA4bl9rdar1-pqRjo/edit
+Article - Market Test Process
+Article - Set up Analitics via GTM
+--- Raw, Test, Master | Goals | Filters | template out a Google Tag container?
+--- log 404s analitics | Conversions
+##### Analitics
+- Forms
+- Sessions over 3 min
+- Pricing Calculator
+-- If they use any of the pricing caliculator items trigger the tag.
