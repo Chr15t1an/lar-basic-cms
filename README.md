@@ -1,6 +1,4 @@
-#-- Need to insert metas & Checklist during initial migration - this am
-## Design-Cleanup. this am -
-+404 page is fucked.
+
 #Build Post and Page Functionality. - FRI / n.Mon/ n.Tues
 - How to Cache?
 - Switch from master
@@ -11,6 +9,10 @@ Stop and Create a blog - my office it person.
 Components
 - Registration
 - Checklist
+
+seed
+migrations
+
 #Process Articles n.F ++ nn.Mon - nn.Thurs
 #Run a new experiment from the top. ~ Nov 15th
 
