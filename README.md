@@ -12,6 +12,8 @@ php artisan make:controller PostController --resource
 
 php artisan make:model Post
 
+....
+Need to work in Mixpanel
 
 #Build Post and Page Functionality. - FRI / n.Mon/ n.Tues
 - How to Cache?
