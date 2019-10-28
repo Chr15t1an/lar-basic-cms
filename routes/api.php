@@ -42,5 +42,10 @@ Route::post('/meta/update','MetavalueController@api_update')->middleware('auth:a
 //Delete a meta value.
 Route::post('/meta/delete','MetavalueController@destroy')->middleware('auth:api');
 
-//Generate a sitemap 
-Route::get('/admin/settings/seo/gen-sitemap', 'AdminController@makeSitemap');//->middleware('auth:api');
+//Generate a sitemap
+Route::get('/admin/settings/seo/gen-sitemap', 'AdminController@makeSitemap')->middleware('auth:api');
+
+
+
+//Create A Post
+Route::post('/admin/posts/create', 'PostController@create')->middleware('auth:api');

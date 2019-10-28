@@ -1,3 +1,17 @@
+php artisan make:test CreatePostTest
+
+php artisan make:test AdminReadPostTest
+php artisan make:test PublicReadPostTest
+
+
+php artisan make:migration create_posts_table
+
+
+php artisan make:controller PostController --resource
+
+
+php artisan make:model Post
+
 
 #Build Post and Page Functionality. - FRI / n.Mon/ n.Tues
 - How to Cache?
