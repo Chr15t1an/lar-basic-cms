@@ -1,23 +1,6 @@
-php artisan make:test CreatePostTest
-
-php artisan make:test ReadPostTest
-
-php artisan make:test UpdatePostTest
-
-php artisan make:test DeletePostTest
-
-
-php artisan make:test AdminReadPostTest
-php artisan make:test PublicReadPostTest - no because this case is addressed with the  update.
-
-
-php artisan make:migration create_posts_table
-
-
-php artisan make:controller PostController --resource
-
-
-php artisan make:model Post
+Make View pages
+Comment tests
+comment controller.
 
 ....
 Need to work in Mixpanel

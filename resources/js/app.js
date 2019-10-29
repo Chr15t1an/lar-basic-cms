@@ -18,6 +18,14 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+//View Posts Component
+Vue.component('view-posts-component', require('./components/ViewPostsComponent.vue').default);
+
+//Edit Post Component
+// Vue.component('edit-post-component', require('./components/EditPostComponent.vue').default);
+
+
+
 //Pricing Component
 Vue.component('pricing-component', require('./components/PricingComponent.vue').default);
 //Contact Component

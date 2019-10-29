@@ -53,6 +53,7 @@ Route::get('/privacy-policy', function () {
 
 
 Route::get('/posts/{slug}', 'PostController@show');
+Route::get('/posts', 'PostController@index');
 
 
 /*
@@ -106,3 +107,14 @@ if ($registration) {
   }else {
   Auth::routes(['register' => false]);
 }
+
+
+
+
+Route::get('/admin/posts', function () {
+    return view('admin.posts.view');
+})->middleware('auth');
+
+Route::get('/admin/posts/edit/{id}', function () {
+    return view('admin.posts.edit');
+})->middleware('auth');

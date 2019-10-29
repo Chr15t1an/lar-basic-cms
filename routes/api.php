@@ -45,12 +45,8 @@ Route::post('/meta/delete','MetavalueController@destroy')->middleware('auth:api'
 //Generate a sitemap
 Route::get('/admin/settings/seo/gen-sitemap', 'AdminController@makeSitemap')->middleware('auth:api');
 
-
-
 //Create A Post
-Route::post('/admin/posts/create', 'PostController@create');//->middleware('auth:api');
-
-Route::get('/admin/posts/edit/{id}', 'PostController@edit');//->middleware('auth:api');
-Route::post('/admin/posts/edit/{id}', 'PostController@update');//->middleware('auth:api');
-
-Route::post('/admin/posts/delete/{id}', 'PostController@destroy');//->middleware('auth:api');
+Route::post('/admin/posts/create', 'PostController@create')->middleware('auth:api');
+Route::get('/admin/posts/edit/{id}', 'PostController@edit')->middleware('auth:api');
+Route::post('/admin/posts/edit/{id}', 'PostController@update')->middleware('auth:api');
+Route::post('/admin/posts/delete/{id}', 'PostController@destroy')->middleware('auth:api');
