@@ -9,6 +9,6 @@ class Post extends Model
 {
     //
     use SoftDeletes;
-    protected $primaryKey = 'slug';
-    protected $keyType = 'string';
+    // protected $primaryKey = 'slug';
+    // protected $keyType = 'string';
 }
