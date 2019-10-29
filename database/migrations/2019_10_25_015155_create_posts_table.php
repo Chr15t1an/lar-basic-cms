@@ -25,6 +25,8 @@ class CreatePostsTable extends Migration
             $table->longText('meta_description')->nullable();
             $table->string('status');
 
+            $table->softDeletes();
+
 
         });
     }

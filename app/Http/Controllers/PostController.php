@@ -55,7 +55,12 @@ class PostController extends Controller
           $newPost->title = $request->title;
           $newPost->template = $request->template;
           $newPost->slug = $request->slug;
-          $newPost->status = 'draft';
+
+          if ($request->status) {
+            $newPost->status = $request->status;
+          }else {
+            $newPost->status = 'draft';
+          }
 
           if ($request->body) {
             $newPost->body = $request->body;
@@ -111,9 +116,25 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+      //lookup by slug
+      $post = post::find($slug);
+      if ($post && $post->status==='published' ) {
+        return view('posts.default')->with('post', $post);
+      }else {
+         abort(404);
+      }
+
+
+//       use Illuminate\Support\Facades\View;
+//
+// if (View::exists('emails.customer')) {
+//     //
+// }
+
+
+
     }
 
     /**
