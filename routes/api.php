@@ -52,3 +52,5 @@ Route::post('/admin/posts/create', 'PostController@create');//->middleware('auth
 
 Route::get('/admin/posts/edit/{id}', 'PostController@edit');//->middleware('auth:api');
 Route::post('/admin/posts/edit/{id}', 'PostController@update');//->middleware('auth:api');
+
+Route::post('/admin/posts/delete/{id}', 'PostController@destroy');//->middleware('auth:api');

@@ -251,6 +251,13 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+      try {
+        // Update the model
+        $a = $responce = post::findOrFail($id);
+        $a->delete();
+        return response()->json(['msg'=>'Deleted']);
+      } catch (\Exception $e) {
+          return response()->json(['errors'=>$e]);
+      }
     }
 }
