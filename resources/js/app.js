@@ -19,10 +19,12 @@ window.Vue = require('vue');
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 //View Posts Component
-Vue.component('view-posts-component', require('./components/ViewPostsComponent.vue').default);
+Vue.component('view-posts-component', require('./components/admin/posts/ViewPostsComponent.vue').default);
 
 //Edit Post Component
-// Vue.component('edit-post-component', require('./components/EditPostComponent.vue').default);
+Vue.component('edit-post-component', require('./components/admin/posts/EditPostComponent.vue').default);
+
+Vue.component('create-post-component', require('./components/admin/posts/CreatePostComponent.vue').default);
 
 
 

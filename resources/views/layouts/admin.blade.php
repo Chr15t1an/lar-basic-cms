@@ -9,6 +9,9 @@
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
 
+
+    <!-- include summernote css/js -->
+
     <title>@yield('title')</title>
   </head>
 <body>
@@ -31,6 +34,9 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/admin/leads">Leads</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/admin/posts">Posts</a>
     </li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
@@ -58,5 +64,14 @@
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
       <script src="/js/app.js"></script>
+
+      <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+
+
+
+      <script type="text/javascript">
+      
+      </script>
     </body>
   </html>

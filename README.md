@@ -1,9 +1,12 @@
+
+Working on pages and components.
+
 Make View pages
 Comment tests
 comment controller.
 
-....
-Need to work in Mixpanel
+File Uploader
+- Crud Tests
 
 #Build Post and Page Functionality. - FRI / n.Mon/ n.Tues
 - How to Cache?
@@ -11,6 +14,13 @@ Need to work in Mixpanel
 Stop and Create a blog - my office it person.
 -- Document what you need.
 -- Make project a stand alone resume piece
+....
+Need to work in Mixpanel
+
+
+#Redesign BackEnd.
+
+
 #Code documentation - n.WED - n.Thurs
 Components
 - Registration
@@ -18,6 +28,12 @@ Components
 
 seed
 migrations
+
+
+Make Public Project. 
+
+
+
 
 #Process Articles n.F ++ nn.Mon - nn.Thurs
 #Run a new experiment from the top. ~ Nov 15th

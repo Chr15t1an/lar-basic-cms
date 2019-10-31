@@ -13,7 +13,7 @@
 <section class="row">
   <div class="col-12">
 <!-- https://github.com/andreasindal/laravel-markdown -->
-<p>{{$post->body}}</p>
+{!! $post->body !!}
   </div>
 </section>
 

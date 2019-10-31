@@ -112,9 +112,19 @@ if ($registration) {
 
 
 Route::get('/admin/posts', function () {
+    //Use onpage Vue Component to get data
     return view('admin.posts.view');
 })->middleware('auth');
 
 Route::get('/admin/posts/edit/{id}', function () {
+    //Use onpage Vue Component to get data
     return view('admin.posts.edit');
+})->middleware('auth');
+
+
+
+Route::get('/admin/posts/create', function () {
+    //Use onpage Vue Component to get data
+    //If No ID the component will adjust
+    return view('admin.posts.create');
 })->middleware('auth');
