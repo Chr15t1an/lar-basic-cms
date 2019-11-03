@@ -13,7 +13,10 @@
       <div class="row">
           <form v-on:submit.prevent id="">
 
-
+            <div class="form-group">
+                 <label for="exampleFormControlTextarea1">Body</label>
+                 <div id="summernote"></div>
+            </div>
 
               <div class="form-group">
                    <label for="exampleFormControlTextarea1">Body</label>

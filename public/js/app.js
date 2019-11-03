@@ -2592,6 +2592,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -40648,6 +40651,8 @@ var render = function() {
         [
           _vm._m(0),
           _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
           _c(
             "button",
             {
@@ -40662,6 +40667,18 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "exampleFormControlTextarea1" } }, [
+        _vm._v("Body")
+      ]),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "summernote" } })
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

@@ -1,4 +1,14 @@
 
+own it into future
+retainer for dev hours
+- manage email
+technical tasks
+per month.
+
+
+How doo you get an apple cx service contract.
+
+--
 Working on pages and components.
 
 Make View pages
@@ -30,7 +40,7 @@ seed
 migrations
 
 
-Make Public Project. 
+Make Public Project.
 
 
 
