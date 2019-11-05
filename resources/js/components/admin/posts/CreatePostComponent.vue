@@ -14,20 +14,42 @@
           <form v-on:submit.prevent id="">
 
             <div class="form-group">
-                 <label for="exampleFormControlTextarea1">Title</label>
-                 <input v-model="this.post.title" type="text" class="form-control" id="" required>
+                <label for="exampleFormControlTextarea1">Title</label>
+                <input v-model="post_title" type="text" class="form-control" id="" aria-describedby="" placeholder="Title">
             </div>
 
             <div class="form-group">
                  <label for="">Slug</label>
-                 <input v-model="this.post.slug" type="text" class="form-control" id="" required>
+                 <input v-model="post_slug" type="text" class="form-control" id="" required>
             </div>
+
+            <div class="form-group">
+                 <label for="">Featured Image</label>
+                 <input v-model="featured_image" type="text" class="form-control" id="" >
+            </div>
+
+            <div class="form-group">
+                 <label for="">Meta Title</label>
+                 <input v-model="meta_title" type="text" class="form-control" id="" >
+            </div>
+
+            <div class="form-group">
+                 <label for="">Meta Description</label>
+                 <input v-model="meta_description" type="text" class="form-control" id="" >
+            </div>
+
+            <div class="form-group">
+                 <label for="">Published</label>
+                 <input v-model="status" type="checkbox" class="form-control" id="" >
+            </div>
+
+
 
               <div class="form-group">
                    <label for="exampleFormControlTextarea1">Body</label>
-                   <div id="summernote">New Post</div>
+                   <div id="summernote"></div>
               </div>
-          <button v-on:click="updatePost" class="btn btn-primary mb-2">Update</button>
+          <button v-on:click="createPost" class="btn btn-primary mb-2">Create</button>
           </form>
       </div>
       </div>
@@ -40,6 +62,14 @@
             errors:{},
             post_id:0,
             post:{},
+            post_title:"",
+            post_slug:"",
+            featured_image:"",
+            meta_description:"",
+            meta_title:"",
+            status:"",
+            template:"",
+            body:"",
 
             }
           },
@@ -48,28 +78,29 @@
           methods:{
 
             //Update CHECKLIST
-            updatePost: function(){
+            createPost: function(){
 
               this.post.body = $('#summernote').summernote('code');
+              this.body = $('#summernote').summernote('code');
 
 
               // console.log(myJSON);
               var attributes = {
-                'title':this.post.title,
-                'body':this.post.body,
-                'featured_image':this.post.featured_image,
-                'template':this.post.template,
-                'meta_title':this.post.meta_title,
-                'meta_description':this.post.meta_description,
-                'slug':this.post.slug,
-                'status':this.post.status,
+                'title':this.post_title,
+                'body':this.body,
+                'featured_image':this.featured_image,
+                'template':'default',
+                'meta_title':this.meta_title,
+                'meta_description':this.meta_description,
+                'slug':this.post_slug,
+                'status':this.status,
               };
 
 
               // var dt = { myJSON };
               var self = this;
               axios
-                .post('/api/admin/posts/edit/'+this.post_id, attributes)
+                .post('/api/admin/posts/store', attributes)
                 .then(function (response) {
                   if(response.data.errors){
                     var d = '';
@@ -90,8 +121,10 @@
                   self.errors = errorMsgs;
                     self.submitting = false;
                 }else {
-
-                  self.getPost();
+                  var new_post_id = response.data.id;
+                  // console.log(new_post_id);
+                  window.location.replace("/admin/posts/edit/"+new_post_id);
+                  // self.getPost();
                 }
               });
             },
@@ -100,16 +133,32 @@
 
 
             var attributes = {
-              'title':'this.post.title',
-              'body':'this.post.body',
-              'featured_image':'this.post.featured_image',
-              'template':'this.post.template',
-              'meta_title':'this.post.meta_title',
-              'meta_description':'this.post.meta_description',
-              'slug':'this.post.slug',
-              'status':'this.post.status',
+              'title':'',
+              'body':'',
+              'featured_image':'',
+              'template':'default',
+              'meta_title':'',
+              'meta_description':'',
+              'slug':'',
+              'status':0,
             };
             this.post = attributes;
+
+            var sel = this;
+
+            sel.post_title = '';
+            sel.post_slug = '';
+
+            sel.post_title = '';
+            sel.post_slug = '';
+            sel.featured_image = '';
+            sel.meta_description = '';
+            sel.meta_title = '';
+            sel.status = '';
+            sel.template = '';
+            sel.body = '';
+
+
 
 
             $(document).ready(function() {

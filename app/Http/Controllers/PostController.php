@@ -132,7 +132,7 @@ class PostController extends Controller
                 // $newPost->meta_key = $request->meta_key;
                 // $newPost->meta_value = $request->meta_value;
                 $newPost->save();
-                return response()->json(['msg'=>'Post Created.']);
+                return response()->json(['msg'=>'Post Created.','id'=>$newPost->id]);
 
               } catch (\Exception $e) {
                 //Log Errors

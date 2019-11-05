@@ -2472,33 +2472,64 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       errors: {},
       post_id: 0,
-      post: {}
+      post: {},
+      post_title: "",
+      post_slug: "",
+      featured_image: "",
+      meta_description: "",
+      meta_title: "",
+      status: "",
+      template: "",
+      body: ""
     };
   },
   created: function created() {},
   methods: {
     //Update CHECKLIST
-    updatePost: function updatePost() {
-      this.post.body = $('#summernote').summernote('code'); // console.log(myJSON);
+    createPost: function createPost() {
+      this.post.body = $('#summernote').summernote('code');
+      this.body = $('#summernote').summernote('code'); // console.log(myJSON);
 
       var attributes = {
-        'title': this.post.title,
-        'body': this.post.body,
-        'featured_image': this.post.featured_image,
-        'template': this.post.template,
-        'meta_title': this.post.meta_title,
-        'meta_description': this.post.meta_description,
-        'slug': this.post.slug,
-        'status': this.post.status
+        'title': this.post_title,
+        'body': this.body,
+        'featured_image': this.featured_image,
+        'template': 'default',
+        'meta_title': this.meta_title,
+        'meta_description': this.meta_description,
+        'slug': this.post_slug,
+        'status': this.status
       }; // var dt = { myJSON };
 
       var self = this;
-      axios.post('/api/admin/posts/edit/' + this.post_id, attributes).then(function (response) {
+      axios.post('/api/admin/posts/store', attributes).then(function (response) {
         if (response.data.errors) {
           var d = '';
           d = JSON.parse(response.request.responseText); // console.log(d);
@@ -2520,23 +2551,36 @@ __webpack_require__.r(__webpack_exports__);
           self.errors = errorMsgs;
           self.submitting = false;
         } else {
-          self.getPost();
+          var new_post_id = response.data.id; // console.log(new_post_id);
+
+          window.location.replace("/admin/posts/edit/" + new_post_id); // self.getPost();
         }
       });
     }
   },
   mounted: function mounted() {
     var attributes = {
-      'title': 'this.post.title',
-      'body': 'this.post.body',
-      'featured_image': 'this.post.featured_image',
-      'template': 'this.post.template',
-      'meta_title': 'this.post.meta_title',
-      'meta_description': 'this.post.meta_description',
-      'slug': 'this.post.slug',
-      'status': 'this.post.status'
+      'title': '',
+      'body': '',
+      'featured_image': '',
+      'template': 'default',
+      'meta_title': '',
+      'meta_description': '',
+      'slug': '',
+      'status': 0
     };
     this.post = attributes;
+    var sel = this;
+    sel.post_title = '';
+    sel.post_slug = '';
+    sel.post_title = '';
+    sel.post_slug = '';
+    sel.featured_image = '';
+    sel.meta_description = '';
+    sel.meta_title = '';
+    sel.status = '';
+    sel.template = '';
+    sel.body = '';
     $(document).ready(function () {
       // $('#summernote').summernote({
       //   // placeholder: this.post.body,
@@ -40628,19 +40672,24 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: this.post.title,
-                  expression: "this.post.title"
+                  value: _vm.post_title,
+                  expression: "post_title"
                 }
               ],
               staticClass: "form-control",
-              attrs: { type: "text", id: "", required: "" },
-              domProps: { value: this.post.title },
+              attrs: {
+                type: "text",
+                id: "",
+                "aria-describedby": "",
+                placeholder: "Title"
+              },
+              domProps: { value: _vm.post_title },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(this.post, "title", $event.target.value)
+                  _vm.post_title = $event.target.value
                 }
               }
             })
@@ -40654,19 +40703,140 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: this.post.slug,
-                  expression: "this.post.slug"
+                  value: _vm.post_slug,
+                  expression: "post_slug"
                 }
               ],
               staticClass: "form-control",
               attrs: { type: "text", id: "", required: "" },
-              domProps: { value: this.post.slug },
+              domProps: { value: _vm.post_slug },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(this.post, "slug", $event.target.value)
+                  _vm.post_slug = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "" } }, [_vm._v("Featured Image")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.featured_image,
+                  expression: "featured_image"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", id: "" },
+              domProps: { value: _vm.featured_image },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.featured_image = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "" } }, [_vm._v("Meta Title")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.meta_title,
+                  expression: "meta_title"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", id: "" },
+              domProps: { value: _vm.meta_title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.meta_title = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "" } }, [_vm._v("Meta Description")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.meta_description,
+                  expression: "meta_description"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", id: "" },
+              domProps: { value: _vm.meta_description },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.meta_description = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "" } }, [_vm._v("Published")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.status,
+                  expression: "status"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "checkbox", id: "" },
+              domProps: {
+                checked: Array.isArray(_vm.status)
+                  ? _vm._i(_vm.status, null) > -1
+                  : _vm.status
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.status,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.status = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.status = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.status = $$c
+                  }
                 }
               }
             })
@@ -40678,9 +40848,9 @@ var render = function() {
             "button",
             {
               staticClass: "btn btn-primary mb-2",
-              on: { click: _vm.updatePost }
+              on: { click: _vm.createPost }
             },
-            [_vm._v("Update")]
+            [_vm._v("Create")]
           )
         ]
       )
@@ -40697,7 +40867,7 @@ var staticRenderFns = [
         _vm._v("Body")
       ]),
       _vm._v(" "),
-      _c("div", { attrs: { id: "summernote" } }, [_vm._v("New Post")])
+      _c("div", { attrs: { id: "summernote" } })
     ])
   }
 ]
