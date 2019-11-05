@@ -2662,6 +2662,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2689,16 +2690,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     // Submit checklist
-    // submitMyChecklist: function(){
-    //   var formElements = $('#checklistForm')[0].elements;
-    //   var obToArray = Object.values(formElements);
-    //   var listItems = [];
-    //   obToArray.forEach(function(element) {
-    //     listItems.push({"NAME":element.value,"STATE":element.checked});
-    //   });
-    //   this.meta_value_checklist = listItems;
-    //   this.updateChecklist();
-    // },
+    deletePost: function deletePost() {
+      var self = this;
+      axios.post('/api/admin/posts/delete/' + this.post_id).then(function (response) {
+        window.location.replace("/admin/posts");
+      });
+    },
     //Get CHECKLIST
     getPost: function getPost() {
       // var data = {id:this.post_id};
@@ -41116,6 +41113,15 @@ var render = function() {
               on: { click: _vm.updatePost }
             },
             [_vm._v("Update")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-danger mb-2",
+              on: { click: _vm.deletePost }
+            },
+            [_vm._v("Delete")]
           )
         ]
       )

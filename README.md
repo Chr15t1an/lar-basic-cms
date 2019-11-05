@@ -1,4 +1,32 @@
 
+Delet Post.
+
+Crud File. 
+
+Set up form (Component) for AWS
+Toggle AWS vs local storage.
+
+
+
+Edit AWS Key.
+
+
+
+~~~~~~~~
+~~~~~~~~
+CreateFile
+- Move File to destination Save that path.
+- File Path
+
+
+ReadFile
+UpdateFile
+- File Name
+- File Path
+DeleteFile
+
+
+----
 own it into future
 retainer for dev hours
 - manage email
@@ -10,10 +38,6 @@ How doo you get an apple cx service contract.
 
 --
 Working on pages and components.
-
-Make View pages
-Comment tests
-comment controller.
 
 File Uploader
 - Crud Tests
@@ -56,11 +80,12 @@ https://docs.google.com/document/d/1adkzcZA8odWzEm19zAf4boEuIhGyft3Zm3OQTLVjhc8/
 
 
 ##V2 ToDo's --- Moving forward GO Test Driven Development.
+Video Player.
 Allow Posts/Blog TO Be Disabled in Settings.
 Allow multimple template files.
 Algolia Search.
 AWS FileStorage.
-Add BugSnag. 
+Add BugSnag.
 
 Tests need to be ran in a separate database.
 Add a fileName to Csv export.

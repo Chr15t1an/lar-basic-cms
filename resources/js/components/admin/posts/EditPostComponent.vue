@@ -50,6 +50,7 @@
                    <div id="summernote"></div>
               </div>
           <button v-on:click="updatePost" class="btn btn-primary mb-2">Update</button>
+          <button v-on:click="deletePost" class="btn btn-danger mb-2">Delete</button>
           </form>
       </div>
       </div>
@@ -83,16 +84,16 @@
         },
           methods:{
             // Submit checklist
-            // submitMyChecklist: function(){
-            //   var formElements = $('#checklistForm')[0].elements;
-            //   var obToArray = Object.values(formElements);
-            //   var listItems = [];
-            //   obToArray.forEach(function(element) {
-            //     listItems.push({"NAME":element.value,"STATE":element.checked});
-            //   });
-            //   this.meta_value_checklist = listItems;
-            //   this.updateChecklist();
-            // },
+            deletePost: function(){
+
+
+            var self = this;
+            axios
+              .post('/api/admin/posts/delete/'+this.post_id)
+              .then(function (response) {
+                  window.location.replace("/admin/posts");
+              });
+            },
             //Get CHECKLIST
             getPost: function(){
               // var data = {id:this.post_id};
