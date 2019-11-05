@@ -11,7 +11,7 @@ class CreatePostTest extends TestCase
 {
   use WithFaker, DatabaseTransactions, WithoutMiddleware;
     /**
-     * A basic feature test example.
+     *  Test creating a post. 
      *
      * @return void
      */

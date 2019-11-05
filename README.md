@@ -56,12 +56,18 @@ https://docs.google.com/document/d/1adkzcZA8odWzEm19zAf4boEuIhGyft3Zm3OQTLVjhc8/
 
 
 ##V2 ToDo's --- Moving forward GO Test Driven Development.
+Allow Posts/Blog TO Be Disabled in Settings.
+Allow multimple template files.
+Algolia Search.
+AWS FileStorage.
+Add BugSnag. 
+
 Tests need to be ran in a separate database.
 Add a fileName to Csv export.
 Need Public vs Private metadata so that I can Control what gets read.
 get_metadata - Needs to not be static or validate better.
 Add Blog Functionality. - CRUD & Tests.
-Insure you are protexting against CSRF.
+Insure you are protecting against CSRF.
 - I belive we are but still need to undestand at a deeper level.
 Rework Sitemap to read URLs and not set them statically
 Create Pages via the backend like wordpress.

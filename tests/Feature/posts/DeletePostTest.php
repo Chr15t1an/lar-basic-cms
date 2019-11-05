@@ -14,7 +14,7 @@ class DeletePostTest extends TestCase
 {
   use WithFaker, DatabaseTransactions, WithoutMiddleware;
     /**
-     * A basic feature test example.
+     * Test creating and then deleting a post.
      *
      * @return void
      */
@@ -37,20 +37,12 @@ class DeletePostTest extends TestCase
 
         $slug = $attributes['slug'];
 
-
         $post = post::where('slug', $slug)->first();
         $postID = $post->id;
 
         $this->json('post','api/admin/posts/delete/'.$postID);
 
-        //Check that its missing.
-        // $this->assertDatabaseMissing('posts', $attributes);
-
         $this->assertSoftDeleted('posts', $attributes);
 
-
-
-        // $response = $this->get('/');
-        // $response->assertStatus(200);
     }
 }

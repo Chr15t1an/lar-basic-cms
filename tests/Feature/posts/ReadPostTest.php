@@ -11,7 +11,7 @@ class ReadPostTest extends TestCase
 {
   use WithFaker, DatabaseTransactions, WithoutMiddleware;
     /**
-     * A basic feature test example.
+     * Test Creating and then reading that post. 
      *
      * @return void
      */

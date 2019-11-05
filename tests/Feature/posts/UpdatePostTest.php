@@ -14,13 +14,12 @@ class UpdatePostTest extends TestCase
 {
   use WithFaker, DatabaseTransactions, WithoutMiddleware;
     /**
-     * A basic feature test example.
+     * Test creating and updating a post.
      *
      * @return void
      */
     public function testUpdatePost()
     {
-
       //Make one for the test.
       $attributes = [
         'title' => $this->faker->word,
@@ -42,20 +41,14 @@ class UpdatePostTest extends TestCase
 
 
         $postID = $post->id;
-
         // catch data
         $response = $this->json('get','api/admin/posts/edit/'.$postID);
 
-        // dd($response);
         $response->assertSee($attributes['title']);
         $response->assertSee($attributes['body']);
 
 
-
-
-
         // Update
-
         $attributes2 = [
           'title' => 'Test Update Title',
           'body' => 'Test Update Body',
@@ -67,25 +60,14 @@ class UpdatePostTest extends TestCase
           'status' => $attributes['status'],
         ];
 
-
-        // dd('api/admin/posts/edit/'.$postID);
-
         $this->json('POST','api/admin/posts/edit/'.$postID, $attributes2);
 
 
         // catch data
         $response = $this->json('get','api/admin/posts/edit/'.$postID);
 
-        // dd($response);
-        // $response->assertSee($attributes2['title']);
-        // $response->assertSee($attributes2['body']);
-
         // hit an update
 
         $this->assertDatabaseHas('posts',$attributes2);
-
-
-        // $response = $this->get('/');
-        // $response->assertStatus(200);
     }
 }
