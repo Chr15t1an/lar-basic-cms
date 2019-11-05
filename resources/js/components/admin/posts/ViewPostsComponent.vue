@@ -1,6 +1,10 @@
 <template>
 
   <div class="container">
+
+    <a href="/admin/posts/create"><button>Create New</button></a>
+
+
   <!-- Admin Todo Checklist -->
           <div v-if="this.errors.length > 0">
             <div class="alert alert-warning" role="alert">

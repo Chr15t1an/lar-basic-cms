@@ -56,6 +56,7 @@ Route::get('/posts/{slug}', 'PostController@show');
 Route::get('/posts', 'PostController@index');
 
 
+
 /*
 |--------------------------------------------------------------------------
 | End Public Web Routes

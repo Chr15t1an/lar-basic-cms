@@ -10,16 +10,24 @@
                 </div>
             </div>
           </div>
-          <div class="row">
-          <form id="checklistForm">
-            <div v-for="item in meta_value_checklist">
-              <div v-if="item.STATE">
-              <input v-on:click="submitMyChecklist" type="checkbox" v-bind:value="item.NAME" checked>{{item.NAME}} | {{item.STATE}}<br>
-              </div>
-              <div v-else>
-              <input v-on:click="submitMyChecklist" type="checkbox" v-bind:value="item.NAME">{{item.NAME}} | {{item.STATE}}<br>
-              </div>
+      <div class="row">
+          <form v-on:submit.prevent id="">
+
+            <div class="form-group">
+                 <label for="exampleFormControlTextarea1">Title</label>
+                 <input v-model="this.post.title" type="text" class="form-control" id="" required>
             </div>
+
+            <div class="form-group">
+                 <label for="">Slug</label>
+                 <input v-model="this.post.slug" type="text" class="form-control" id="" required>
+            </div>
+
+              <div class="form-group">
+                   <label for="exampleFormControlTextarea1">Body</label>
+                   <div id="summernote">New Post</div>
+              </div>
+          <button v-on:click="updatePost" class="btn btn-primary mb-2">Update</button>
           </form>
       </div>
       </div>
@@ -30,53 +38,38 @@
       data:function() {
         return {
             errors:{},
-            meta_key_checklist:'checklist',
-            meta_value_checklist:{},
+            post_id:0,
+            post:{},
+
             }
           },
           created: function() {
-          this.getChecklist();
         },
           methods:{
-            // Submit checklist
-            submitMyChecklist: function(){
-              var formElements = $('#checklistForm')[0].elements;
-              var obToArray = Object.values(formElements);
-              var listItems = [];
-              obToArray.forEach(function(element) {
-                listItems.push({"NAME":element.value,"STATE":element.checked});
-              });
-              this.meta_value_checklist = listItems;
-              this.updateChecklist();
-            },
-            //Get CHECKLIST
-            getChecklist: function(){
-              var data = { meta_key: this.meta_key_checklist };
-              var sel = this;
-              axios
-                .post('/api/meta/get', data)
-                .then(function (response) {
 
-                  sel.meta_value_checklist = response.data.CHECKLIST.Items;
-
-                  if(response.data)
-                  {
-                    sel.value_set = true;
-                  }else {
-                    sel.value_set = false;
-                  }
-                  sel.submitting = false;
-            });
-            this.submitting = false;
-            },
             //Update CHECKLIST
-            updateChecklist: function(){
-              var payload = {"CHECKLIST": {"Items": this.meta_value_checklist}};
-              var myJSON = JSON.stringify(payload);
-              var dt = { meta_key: this.meta_key_checklist, meta_value: myJSON };
+            updatePost: function(){
+
+              this.post.body = $('#summernote').summernote('code');
+
+
+              // console.log(myJSON);
+              var attributes = {
+                'title':this.post.title,
+                'body':this.post.body,
+                'featured_image':this.post.featured_image,
+                'template':this.post.template,
+                'meta_title':this.post.meta_title,
+                'meta_description':this.post.meta_description,
+                'slug':this.post.slug,
+                'status':this.post.status,
+              };
+
+
+              // var dt = { myJSON };
               var self = this;
               axios
-                .post('/api/meta/update', dt)
+                .post('/api/admin/posts/edit/'+this.post_id, attributes)
                 .then(function (response) {
                   if(response.data.errors){
                     var d = '';
@@ -97,12 +90,40 @@
                   self.errors = errorMsgs;
                     self.submitting = false;
                 }else {
-                  self.getChecklist();
+
+                  self.getPost();
                 }
               });
             },
           },
-          mounted: function () {},
+          mounted: function () {
+
+
+            var attributes = {
+              'title':'this.post.title',
+              'body':'this.post.body',
+              'featured_image':'this.post.featured_image',
+              'template':'this.post.template',
+              'meta_title':'this.post.meta_title',
+              'meta_description':'this.post.meta_description',
+              'slug':'this.post.slug',
+              'status':'this.post.status',
+            };
+            this.post = attributes;
+
+
+            $(document).ready(function() {
+              // $('#summernote').summernote({
+              //   // placeholder: this.post.body,
+              // });https://summernote.org/
+              // console.log(sel.post.body);
+              // $('#summernote').summernote();
+              $('#summernote').summernote('code', '<h6>Start..<h6/>');
+              // $('#summernote').summernote({tabsize: 2,height: 100});
+            });
+
+
+          },
 
               }
               //  Example Checklist

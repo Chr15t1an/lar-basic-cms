@@ -25,7 +25,7 @@ class CreatePostTest extends TestCase
           'meta_title' => $this->faker->word,
           'meta_description' => $this->faker->sentence,
           'slug' => $this->faker->word,
-          'status' => 'draft',
+          'status' => false,
         ];
           $this->json('POST','api/admin/posts/store',$attributes);
           $this->assertDatabaseHas('posts',$attributes);

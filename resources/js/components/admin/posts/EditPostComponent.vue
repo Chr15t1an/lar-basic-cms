@@ -14,9 +14,36 @@
           <form v-on:submit.prevent id="">
 
             <div class="form-group">
-                 <label for="exampleFormControlTextarea1">Body</label>
-                 <div id="summernote"></div>
+                <label for="exampleFormControlTextarea1">Title</label>
+                <input v-model="post_title" type="text" class="form-control" id="" aria-describedby="" placeholder="Title">
             </div>
+
+            <div class="form-group">
+                 <label for="">Slug</label>
+                 <input v-model="post_slug" type="text" class="form-control" id="" required>
+            </div>
+
+            <div class="form-group">
+                 <label for="">Featured Image</label>
+                 <input v-model="featured_image" type="text" class="form-control" id="" >
+            </div>
+
+            <div class="form-group">
+                 <label for="">Meta Title</label>
+                 <input v-model="meta_title" type="text" class="form-control" id="" >
+            </div>
+
+            <div class="form-group">
+                 <label for="">Meta Description</label>
+                 <input v-model="meta_description" type="text" class="form-control" id="" >
+            </div>
+
+            <div class="form-group">
+                 <label for="">Published</label>
+                 <input v-model="status" type="checkbox" class="form-control" id="" >
+            </div>
+
+
 
               <div class="form-group">
                    <label for="exampleFormControlTextarea1">Body</label>
@@ -35,6 +62,14 @@
             errors:{},
             post_id:0,
             post:{},
+            post_title:"",
+            post_slug:"",
+            featured_image:"",
+            meta_description:"",
+            meta_title:"",
+            status:"",
+            template:"",
+            body:"",
             // postBody:"",
             // meta_key_checklist:'checklist',
             // meta_value_checklist:{},
@@ -68,6 +103,18 @@
                   // console.log(response.data);
                   sel.post = response.data;
 
+                  sel.post_title = sel.post.title;
+                  sel.post_slug = sel.post.slug;
+
+                  sel.post_title = sel.post.title;
+                  sel.post_slug = sel.post.slug;
+                  sel.featured_image = sel.post.featured_image;
+                  sel.meta_description = sel.post.meta_description;
+                  sel.meta_title = sel.post.meta_title;
+                  sel.status = sel.post.status;
+                  sel.template = sel.post.template;
+                  sel.body = sel.post.body;
+
                   $(document).ready(function() {
                     // $('#summernote').summernote({
                     //   // placeholder: this.post.body,
@@ -89,18 +136,20 @@
 
 
               this.post.body = $('#summernote').summernote('code');
+              this.body = $('#summernote').summernote('code');
+
 
 
               // console.log(myJSON);
               var attributes = {
-                'title':this.post.title,
-                'body':this.post.body,
-                'featured_image':this.post.featured_image,
-                'template':this.post.template,
-                'meta_title':this.post.meta_title,
-                'meta_description':this.post.meta_description,
-                'slug':this.post.slug,
-                'status':this.post.status,
+                'title':this.post_title,
+                'body':this.body,
+                'featured_image':this.featured_image,
+                'template':this.template,
+                'meta_title':this.meta_title,
+                'meta_description':this.meta_description,
+                'slug':this.post_slug,
+                'status':this.status,
               };
 
 
@@ -136,6 +185,7 @@
             },
           },
           mounted: function () {
+
 
           },
 

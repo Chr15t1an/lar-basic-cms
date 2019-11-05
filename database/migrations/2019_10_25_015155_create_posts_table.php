@@ -23,7 +23,7 @@ class CreatePostsTable extends Migration
             $table->string('template');
             $table->string('meta_title')->nullable();
             $table->longText('meta_description')->nullable();
-            $table->string('status');
+            $table->boolean('status'); //could be bool
 
             $table->softDeletes();
 

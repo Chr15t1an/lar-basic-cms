@@ -17,6 +17,13 @@ class PostController extends Controller
     {
         //
         $posts = post::all();
+        //Unset All Drafts.
+        foreach ($posts as $key => $value) {
+          if($value->status === 0){
+            unset($posts[$key]);
+          }
+        }
+
         return view('posts.index')->with('posts', $posts);
     }
 
@@ -24,6 +31,13 @@ class PostController extends Controller
     {
         //
         $posts = post::all();
+
+        foreach ($posts as $key => $value) {
+          if($value->status === 0){
+            unset($posts[$key]);
+          }
+        }
+
         return $posts;
     }
 
@@ -62,7 +76,7 @@ class PostController extends Controller
                   'template' => 'required',
                   // 'meta_title' => 'required',
                   // 'meta_description' => $this->faker->sentence,
-                  'status' => 'required|string',
+                  'status' => 'required',
               ]);
 
              if ($validator->fails()) {
@@ -81,11 +95,13 @@ class PostController extends Controller
                 $newPost->template = $request->template;
                 $newPost->slug = $request->slug;
 
-                if ($request->status) {
-                  $newPost->status = $request->status;
-                }else {
-                  $newPost->status = 'draft';
-                }
+                $newPost->status = $request->status;
+
+                // if ($request->status) {
+                //   $newPost->status = $request->status;
+                // }else {
+                //   $newPost->status = 'draft';
+                // }
 
                 if ($request->body) {
                   $newPost->body = $request->body;
@@ -135,7 +151,10 @@ class PostController extends Controller
       //lookup by slug
       // $post = post::find($slug);
       $post = post::where('slug', $slug)->first();//find($slug);
-      if ($post && $post->status==='published' ) {
+
+      // dd($post);
+
+      if ($post && $post->status===1 ) {
         return view('posts.default')->with('post', $post);
       }else {
          abort(404);
@@ -186,7 +205,7 @@ class PostController extends Controller
             'template' => 'required',
             // 'meta_title' => 'required',
             // 'meta_description' => $this->faker->sentence,
-            'status' => 'required|string',
+            'status' => 'required',
         ]);
 
 
@@ -209,11 +228,13 @@ class PostController extends Controller
            $newPost->template = $request->template;
            $newPost->slug = $request->slug;
 
-           if ($request->status) {
-             $newPost->status = $request->status;
-           }else {
-             $newPost->status = 'draft';
-           }
+
+            $newPost->status = $request->status;
+           // if ($request->status) {
+           //   $newPost->status = $request->status;
+           // }else {
+           //   $newPost->status = 'draft';
+           // }
 
            if ($request->body) {
              $newPost->body = $request->body;
