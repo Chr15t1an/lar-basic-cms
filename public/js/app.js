@@ -2692,7 +2692,7 @@ __webpack_require__.r(__webpack_exports__);
         'title': this.post_title,
         'body': this.body,
         'featured_image': this.featured_image,
-        'template': this.template,
+        'template': 'default',
         'meta_title': this.meta_title,
         'meta_description': this.meta_description,
         'slug': this.post_slug,

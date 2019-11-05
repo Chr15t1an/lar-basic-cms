@@ -32,11 +32,11 @@ class PostController extends Controller
         //
         $posts = post::all();
 
-        foreach ($posts as $key => $value) {
-          if($value->status === 0){
-            unset($posts[$key]);
-          }
-        }
+        // foreach ($posts as $key => $value) {
+        //   if($value->status === 0){
+        //     unset($posts[$key]);
+        //   }
+        // }
 
         return $posts;
     }
