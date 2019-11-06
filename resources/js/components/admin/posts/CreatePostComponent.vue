@@ -67,7 +67,7 @@
             featured_image:"",
             meta_description:"",
             meta_title:"",
-            status:"",
+            status:false,
             template:"",
             body:"",
 
