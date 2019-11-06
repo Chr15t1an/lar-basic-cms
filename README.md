@@ -1,7 +1,18 @@
 
-Delet Post.
+Crud File.
 
-Crud File. 
+php artisan make:test CreateFileLocalTest
+php artisan make:test CreateFileAWSTest
+
+
+php artisan make:test UpdateFileTest
+
+php artisan make:test ReadFileTest
+
+php artisan make:test DeleteFileTest
+
+
+
 
 Set up form (Component) for AWS
 Toggle AWS vs local storage.
