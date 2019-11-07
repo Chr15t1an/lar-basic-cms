@@ -63,6 +63,11 @@ Route::get('/posts', 'PostController@index');
 */
 
 
+Route::get('/admin/files/{slug}', 'FileController@show');
+Route::get('/admin/files', 'FileController@index');
+
+
+Route::post('/admin/files', 'FileController@store');
 
 
 

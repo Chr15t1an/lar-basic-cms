@@ -38,6 +38,9 @@
     <li class="nav-item">
       <a class="nav-link" href="/admin/posts">Posts</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/admin/files">Files</a>
+    </li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -71,7 +74,7 @@
 
 
       <script type="text/javascript">
-      
+
       </script>
     </body>
   </html>

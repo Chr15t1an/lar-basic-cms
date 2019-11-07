@@ -18,7 +18,10 @@ class FileController extends Controller
      */
     public function index()
     {
-        //
+
+      $files = File::all();
+      return view('admin.filesindex')->with('files', $files);
+
     }
 
     /**
@@ -42,11 +45,25 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
+      // try {
+      //
+      // } catch (\Exception $e) {
+      //
+      // }
+
+      // dd($request);
+
 
         // is aws enabled?
+        // request()->file('file')->store('uploads');
+        // $request->file('file')->store('uploads');
+        $path = $request->file('file')->store('uploads');
+        // Storage::disk('uploads')->put($request->file('file'), 'Contents');
 
+      return $path;
 
-
+        // Storage::disk('public')->put($request->file('file'), 'Contents');
+        // Storage::put('file.jpg', $contents);
 
     }
 

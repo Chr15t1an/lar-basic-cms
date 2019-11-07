@@ -2,6 +2,14 @@
 Crud File.
 
 php artisan make:test CreateFileLocalTest
+
+...
+php artisan make:controller FileController --resource --model=File
+
+php artisan make:migration create_files_table
+
+
+
 php artisan make:test CreateFileAWSTest
 
 
@@ -76,6 +84,7 @@ migrations
 
 
 Make Public Project.
+And Make a Blog / Resume Website. 
 
 
 
@@ -94,7 +103,7 @@ https://docs.google.com/document/d/1adkzcZA8odWzEm19zAf4boEuIhGyft3Zm3OQTLVjhc8/
 Video Player.
 Allow Posts/Blog TO Be Disabled in Settings.
 Allow multimple template files.
-Algolia Search.
+Algolia Search.!
 AWS FileStorage.
 Add BugSnag.
 
