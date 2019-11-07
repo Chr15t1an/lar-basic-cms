@@ -1,9 +1,13 @@
 
+php artisan storage:link?
+
+
 Crud File.
 
 php artisan make:test CreateFileLocalTest
+--need to burn the file that is created.
 
-...
+...Storage::delete('public/'.$response->getContent());
 php artisan make:controller FileController --resource --model=File
 
 php artisan make:migration create_files_table
@@ -84,7 +88,7 @@ migrations
 
 
 Make Public Project.
-And Make a Blog / Resume Website. 
+And Make a Blog / Resume Website.
 
 
 
@@ -100,6 +104,7 @@ https://docs.google.com/document/d/1adkzcZA8odWzEm19zAf4boEuIhGyft3Zm3OQTLVjhc8/
 
 
 ##V2 ToDo's --- Moving forward GO Test Driven Development.
+Alerts- Notifications.
 Video Player.
 Allow Posts/Blog TO Be Disabled in Settings.
 Allow multimple template files.

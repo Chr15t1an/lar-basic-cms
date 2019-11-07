@@ -45,25 +45,37 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
+
+
+
+      try {
+        //Upload the file
+        $path = $request->file('file')->store('uploads', 'assets');
+        // Create a New File
+        $newFile = new File;
+        $newFile->path = '/assets/'.$path;
+        $newFile->save();
+        return $newFile->path;//response()->json(['msg'=>'sucess']);
+      } catch (\Exception $e) {
+        //Return Errors
+        return response()->json(['errors'=>'failed']);
+      }
+
+
+
+
+
+
+
       // try {
       //
       // } catch (\Exception $e) {
       //
       // }
 
-      // dd($request);
+      // dd($request->file('file'));
 
 
-        // is aws enabled?
-        // request()->file('file')->store('uploads');
-        // $request->file('file')->store('uploads');
-        $path = $request->file('file')->store('uploads');
-        // Storage::disk('uploads')->put($request->file('file'), 'Contents');
-
-      return $path;
-
-        // Storage::disk('public')->put($request->file('file'), 'Contents');
-        // Storage::put('file.jpg', $contents);
 
     }
 
@@ -107,8 +119,24 @@ class FileController extends Controller
      * @param  \App\File  $file
      * @return \Illuminate\Http\Response
      */
-    public function destroy(File $file)
+    public function destroy($id)
     {
-        //
+
+// dd($id);
+
+      // $a = '/public/assets/uploads/Pu17DkjdSy9tVCKjBpa3B0xcQ6XVYezgiXoEBLhn.jpeg';
+// /uploads/Pu17DkjdSy9tVCKjBpa3B0xcQ6XVYezgiXoEBLhn.jpeg
+      Storage::disk('assets')->delete('/uploads/Pu17DkjdSy9tVCKjBpa3B0xcQ6XVYezgiXoEBLhn.jpeg');
+
+      // $id = 2;
+      // dd($id);
+      // try {
+      //   // Delete the model
+      //   $a = $responce = File::findOrFail($id);
+      //   $a->delete();
+      //   return response()->json(['msg'=>'Deleted']);
+      // } catch (\Exception $e) {
+      //     return response()->json(['errors'=>$e]);
+      // }
     }
 }

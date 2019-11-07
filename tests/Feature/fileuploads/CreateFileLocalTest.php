@@ -4,6 +4,8 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 
+use App\File;
+
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
@@ -21,27 +23,22 @@ class CreateFileLocalTest extends TestCase
      */
     public function testLocalUpload()
     {
+      //Create an Image
+      $attributes = [
+      'file' => UploadedFile::fake()->image('avatar.jpg'),
+      ];
 
-      $response = $this->json('POST', 'api/admin/photos', [
-          UploadedFile::fake()->image('photo1.jpg'),
-          UploadedFile::fake()->image('photo2.jpg')
-      ]);
-
-
-
-      //Assert file is available in db & public path.
-        // $response = $this->get('/fileuploads');
-        $response->assertStatus(200);
-
-        // Assert one or more files were stored...
-       Storage::disk('photos')->assertExists('photo1.jpg');
-       Storage::disk('photos')->assertExists(['photo1.jpg', 'photo2.jpg']);
-
-       // Assert one or more files were not stored...
-       Storage::disk('photos')->assertMissing('missing.jpg');
-       Storage::disk('photos')->assertMissing(['missing.jpg', 'non-existing.jpg']);
+      $response = $this->json('POST', 'api/file/store',$attributes);
+      $response->assertStatus(200);
 
 
+      $this->assertDatabaseHas('files',['path'=>$response->getContent()]);
+
+      //Need to delete file!!
+      // dd($response->getContent());
+      $path = $response->getContent();
+      
+      Storage::disk('assets')->delete($response->getContent());
 
 
     }

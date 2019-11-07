@@ -58,4 +58,4 @@ Route::post('/admin/posts/delete/{id}', 'PostController@destroy')->middleware('a
 Route::post('/file/store', 'FileController@store');//->middleware('auth:api');
 Route::get('/file/edit/{id}', 'FileController@edit')->middleware('auth:api');
 Route::post('/file/edit/{id}', 'FileController@update')->middleware('auth:api');
-Route::post('/file/delete/{id}', 'FileController@destroy')->middleware('auth:api');
+Route::post('/file/delete/{id}', 'FileController@destroy');//->middleware('auth:api');
