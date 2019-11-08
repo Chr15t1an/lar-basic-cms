@@ -18,23 +18,14 @@ class FileController extends Controller
      */
     public function index()
     {
-
       $files = File::all();
       return view('admin.filesindex')->with('files', $files);
-
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function api_index()
     {
-        //
-
-
-
+      $files = File::all();
+      return $files;
     }
 
     /**
@@ -45,9 +36,6 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
-
-
-
       try {
         //Upload the file
         $path = $request->file('file')->store('uploads', 'assets');
@@ -60,22 +48,6 @@ class FileController extends Controller
         //Return Errors
         return response()->json(['errors'=>'failed']);
       }
-
-
-
-
-
-
-
-      // try {
-      //
-      // } catch (\Exception $e) {
-      //
-      // }
-
-      // dd($request->file('file'));
-
-
 
     }
 
@@ -91,7 +63,7 @@ class FileController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Return the object via the api.
      *
      * @param  \App\File  $file
      * @return \Illuminate\Http\Response
@@ -115,7 +87,6 @@ class FileController extends Controller
         $a = $responce = File::findOrFail($id);
         try {
           //Upload the file
-          //Upload the file
           $a->title = $request->title;
           $a->path = $request->path;
           // Create a New File
@@ -136,28 +107,18 @@ class FileController extends Controller
      */
     public function destroy($id)
     {
-
-
       try {
         // Delete the model
         $a = $responce = File::findOrFail($id);
-        // dd($a->path);
-
         $path = $a->path;
         $chunks = explode('/', $path);
-
-        //Need to delete file!!
-        // dd($response->getContent());
+        // Delete file
         Storage::disk('assets')->delete('/uploads/'.$chunks[3]);
-
-
-
+        // Delete object.
         $a->delete();
         return response()->json(['msg'=>'Deleted']);
       } catch (\Exception $e) {
           return response()->json(['errors'=>$e]);
       }
-
-
     }
 }
