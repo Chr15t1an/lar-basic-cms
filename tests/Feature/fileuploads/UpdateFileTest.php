@@ -2,26 +2,26 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-
 use App\File;
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
+
+use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 
-class CreateFileLocalTest extends TestCase
+class UpdateFileTest extends TestCase
 {
   use WithFaker, DatabaseTransactions, WithoutMiddleware;
     /**
-     * Test Uploading a file
+     * A basic feature test example.
      *
      * @return void
      */
-    public function testLocalUpload()
+    public function testExample()
     {
       //Create an Image
       $attributes = [
@@ -56,10 +56,44 @@ class CreateFileLocalTest extends TestCase
       // Assert the file was stored...
       Storage::disk('assets')->assertExists('/uploads/'.$chunks[3]);
 
+      //Assert in DB.
+      $this->assertDatabaseHas('files',['path'=>$path]);
+
+
+
+      //
+      $file = File::where('path', $path)->first();
+
+
+      // Endpoint to get the resource
+
+      $response = $this->json('get', 'api/file/edit/'.$file->id);
+      // dd($response);
+      $fileJson = $response->getContent();
+      $fileJson = json_decode($fileJson);
+      //Update a property.
+      $fileJson->title = $this->faker->word;
+      $newTitle = $fileJson->title;
+      // $fileJson = json_encode($fileJson);
+
+      // dd($fileJson);
+
+      $filearray = (array) $fileJson;
+
+
+      // Endpoint to update the resource
+
+      $response = $this->json('POST', 'api/file/edit/'.$file->id, $filearray);
+
+
+
+
+      $this->assertDatabaseHas('files',['title'=>$newTitle]);
+
+
+
 
       //Clean Up
       Storage::disk('assets')->delete('/uploads/'.$chunks[3]);
-
-
     }
 }
