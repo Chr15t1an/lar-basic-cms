@@ -27,43 +27,30 @@ class DeleteFileTest extends TestCase
       $attributes = [
       'file' => UploadedFile::fake()->image('avatar.jpg'),
       ];
-      //
+
+      //Submit image as an upload.
       $response = $this->json('POST', 'api/file/store',$attributes);
       $response->assertStatus(200);
-      //
 
+      //Save the path.
       $path = $response->getContent();
-      //
+      // Assert that the path exists in the database.
       $this->assertDatabaseHas('files',['path'=>$path]);
-      //
-      //
-      //  // Check That the file exists
+      //Cunk the path to grab the filename and rebuild the path.
       $chunks = explode('/', $path);
-
-
-        // Assert the file was stored...
+      // Assert the file was stored...
       Storage::disk('assets')->assertExists('/uploads/'.$chunks[3]);
 
-      //
-      // //Need to delete file!!
-      //
+      //Pull the record to get the file id.
       $file = File::where('path', $path)->first();
-      //
-      // print_r($file->id);
-      //
+
+      // Delet the file using the controller.
       $response = $this->json('POST', '/api/file/delete/'.$file->id);
-      //
-      //
+
+      // Assert a path does not exist in the database.
       $this->assertDatabaseMissing('files',['path'=>$path]);
-      // //Clean Up
-      //
-      // // $chunks = explode('/', $path);
-      // // //Need to delete file!!
-      // // // dd($response->getContent());
-      // // Storage::disk('assets')->delete('/uploads/'.$chunks[3]);
-      //
-      //
-      // // Assert a file does not exist...
+
+      // Assert a file does not exist.
       Storage::disk('assets')->assertMissing('/uploads/'.$chunks[3]);
 
     }

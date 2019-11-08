@@ -1,37 +1,6 @@
+Comment Controller & Tests
+Build Vue Components.
 
-php artisan storage:link?
-
-
-Crud File.
-
-php artisan make:test CreateFileLocalTest
---need to burn the file that is created.
-
-...Storage::delete('public/'.$response->getContent());
-php artisan make:controller FileController --resource --model=File
-
-php artisan make:migration create_files_table
-
-
-
-php artisan make:test CreateFileAWSTest
-
-
-php artisan make:test UpdateFileTest
-
-php artisan make:test ReadFileTest
-
-php artisan make:test DeleteFileTest
-
-
-
-
-Set up form (Component) for AWS
-Toggle AWS vs local storage.
-
-
-
-Edit AWS Key.
 
 
 
@@ -111,6 +80,7 @@ Allow multimple template files.
 Algolia Search.!
 AWS FileStorage.
 Add BugSnag.
+Toggle AWS vs local storage.
 
 Tests need to be ran in a separate database.
 Add a fileName to Csv export.

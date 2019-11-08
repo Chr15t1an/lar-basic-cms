@@ -28,36 +28,20 @@ class CreateFileLocalTest extends TestCase
       'file' => UploadedFile::fake()->image('avatar.jpg'),
       ];
 
+      //Submit image as an upload.
       $response = $this->json('POST', 'api/file/store',$attributes);
       $response->assertStatus(200);
-
-
       $path = $response->getContent();
 
-      //Assert in DB.
+        // Assert that the path exists in the database.
       $this->assertDatabaseHas('files',['path'=>$path]);
 
-                //Check that route works
-              // $response = $this->get($path);
-
-              // dd($response);
-              //
-              //
-              // $response->assertStatus(200);
-              //
-              //
-              //   dd('$path');
-
-
-      // Check That the file exists
       $chunks = explode('/', $path);
-
-
       // Assert the file was stored...
       Storage::disk('assets')->assertExists('/uploads/'.$chunks[3]);
 
 
-      //Clean Up
+      //Clean Up the file. 
       Storage::disk('assets')->delete('/uploads/'.$chunks[3]);
 
 
