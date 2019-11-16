@@ -36,7 +36,17 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
+
+
       try {
+
+        // return $request;
+        // dd($request->file('file'));
+
+        if ($request->file('file') === null) {
+          return "No File Found";
+        }
+
         //Upload the file
         $path = $request->file('file')->store('uploads', 'assets');
         // Create a New File

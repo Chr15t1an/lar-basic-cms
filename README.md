@@ -1,23 +1,38 @@
-Comment Controller & Tests
 Build Vue Components.
 
+/admin/files
+
+https://www.raymondcamden.com/2019/08/08/drag-and-drop-file-upload-in-vuejs
+
+
+#c2
+Upload Files
+
+
+
+#c1
+Show all files -
+- Delete
+- Get Path
+- Update Title
+
+
+
+
+#Redesign BackEnd.
+
+
+#Code documentation - n.WED - n.Thurs
+Components
+- Registration
+- Checklist
+
+
 
 
 
 ~~~~~~~~
 ~~~~~~~~
-CreateFile
-- Move File to destination Save that path.
-- File Path
-
-
-ReadFile
-UpdateFile
-- File Name
-- File Path
-DeleteFile
-
-
 ----
 own it into future
 retainer for dev hours
@@ -30,9 +45,6 @@ How doo you get an apple cx service contract.
 
 --
 Working on pages and components.
-
-File Uploader
-- Crud Tests
 
 #Build Post and Page Functionality. - FRI / n.Mon/ n.Tues
 - How to Cache?
@@ -73,6 +85,12 @@ https://docs.google.com/document/d/1adkzcZA8odWzEm19zAf4boEuIhGyft3Zm3OQTLVjhc8/
 
 
 ##V2 ToDo's --- Moving forward GO Test Driven Development.
+
+Add Drag and Drop File uploader. 
+
+https://css-tricks.com/instant-page/
+
+
 Alerts- Notifications.
 Video Player.
 Allow Posts/Blog TO Be Disabled in Settings.
