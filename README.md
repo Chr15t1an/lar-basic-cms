@@ -1,25 +1,6 @@
-Build Vue Components.
-
-/admin/files
-
-https://www.raymondcamden.com/2019/08/08/drag-and-drop-file-upload-in-vuejs
-
-
-#c2
-Upload Files
-
-
-
-#c1
-Show all files -
-- Delete
-- Get Path
-- Update Title
-
-
-
-
 #Redesign BackEnd.
+
+Find a design template
 
 
 #Code documentation - n.WED - n.Thurs
@@ -86,7 +67,7 @@ https://docs.google.com/document/d/1adkzcZA8odWzEm19zAf4boEuIhGyft3Zm3OQTLVjhc8/
 
 ##V2 ToDo's --- Moving forward GO Test Driven Development.
 
-Add Drag and Drop File uploader. 
+Add Drag and Drop File uploader.
 
 https://css-tricks.com/instant-page/
 
