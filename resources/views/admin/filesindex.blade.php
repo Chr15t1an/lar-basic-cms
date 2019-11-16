@@ -17,9 +17,13 @@
 
   <uploadfiles-component></uploadfiles-component>
 
-  
+  <hr/>
+
+  <displayfiles-component></displayfiles-component>
+
+
 <pre>
-<?php print_r($files) ?>
+<?php //print_r($files) ?>
 </pre>
 
 

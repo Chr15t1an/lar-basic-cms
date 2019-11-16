@@ -18,8 +18,9 @@ class FileController extends Controller
      */
     public function index()
     {
-      $files = File::all();
-      return view('admin.filesindex')->with('files', $files);
+      // $files = File::all();
+      // return view('admin.filesindex')->with('files', $files);
+      return view('admin.filesindex');
     }
 
     public function api_index()
@@ -93,12 +94,24 @@ class FileController extends Controller
      */
     public function update(Request $request,$id)
     {
+
         //
         $a = $responce = File::findOrFail($id);
         try {
           //Upload the file
-          $a->title = $request->title;
-          $a->path = $request->path;
+          if ($request->title) {
+              $a->title = $request->title;
+
+          }
+          // $a->title = $request->title;
+
+
+          if ($request->path) {
+            $a->path = $request->path;
+
+          }
+
+          // $a->path = $request->path;
           // Create a New File
           $a->save();
           return response()->json(['msg'=>'sucess']);

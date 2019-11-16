@@ -64,6 +64,10 @@ Vue.component(
 Vue.component('uploadfiles-component', require('./components/admin/UploadFilesComponent.vue').default);
 
 
+//Create sitemap component
+Vue.component('displayfiles-component', require('./components/admin/DisplayFilesComponent.vue').default);
+
+
 
 
 
