@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 class CheckAdminRoutesFailForGuestTest extends TestCase
 {
     /**
-     * Check that admin routes are unaccessable to guests. 
+     * Check that admin routes are unaccessable to guests.
      *
      * @return void
      * @test
@@ -19,7 +19,7 @@ class CheckAdminRoutesFailForGuestTest extends TestCase
         $response = $this->get('/admin');
         $response->assertStatus(302);
 
-        $response = $this->get('/admin/apiKeys');
+        $response = $this->get('/admin/settings');
         $response->assertStatus(302);
 
 

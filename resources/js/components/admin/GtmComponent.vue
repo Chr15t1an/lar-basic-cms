@@ -11,10 +11,9 @@
           </div>
           <div class="row">
           <form v-if="!submitting">
-              <div class="col">
-                <label for="exampleInputEmail1">Google Tag Manager</label>
-                <input v-model="meta_value_gtm" type="text" class="form-control" placeholder="GTM ID">
-              </div>
+            <div class="form-group">
+              <input v-model="meta_value_gtm" type="text" class="form-control" placeholder="GTM ID">
+            </div>
             <button  v-on:click="submitMyForm" v-on:submit.prevent type="submit" class="btn btn-primary">Save</button>
           </form>
           <div v-if="submitting">

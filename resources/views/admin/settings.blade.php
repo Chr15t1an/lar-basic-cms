@@ -1,31 +1,40 @@
 @extends('layouts.admin')
-
 @section('title', 'Settings')
 @section('content')
 
-
-<!-- section 1 -->
-<section class="row align-items-center">
-<div class="container">
 <h1>Settings</h1>
-</div>
+<!-- Google Tag Manager -->
+<section class="row">
+  <div class="container">
+    <h3>Google Tag Manager</h3>
+    <gtm-component></gtm-component>
+  </div>
+</section>
 
-<div class="row">
-<div class="container">
-<gtm-component></gtm-component>
-</div>
-</div>
-<hr/>
+<!-- Api Keys -->
+<section class="row align-items-center">
+    <div class="container">
+      <h3>Api Keys</h3>
+    <passport-clients></passport-clients>
+    <passport-authorized-clients></passport-authorized-clients>
+    <passport-personal-access-tokens></passport-personal-access-tokens>
+    </div>
+</section>
 
-  </section>
+<!-- User Registration -->
+<section class="row align-items-center">
+    <div class="container">
+    <h3>User Registration</h3>
+    <user-reg-component></user-reg-component>
+    </div>
+</section>
 
-
-
-
-<user-reg-component></user-reg-component>
-
-
-
-
+<!-- Site Map -->
+<section class="row align-items-center">
+    <div class="container">
+      <h3>Site Map</h3>
+      <createsitemap-component></createsitemap-component>
+    </div>
+</section>
 
 @endsection

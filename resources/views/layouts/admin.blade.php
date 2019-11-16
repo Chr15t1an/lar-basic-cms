@@ -16,7 +16,7 @@
   </head>
 <body>
 <!-- Navbar -->
-<nav id="mainnav" class="col-lg-8 navbar navbar-expand-lg navbar-light offset-lg-2">
+<nav id="mainnav" class="col-lg-12 navbar navbar-expand-lg navbar-light">
 <a class="navbar-brand d-flex navbar-brand" href="/admin/">
     <!-- icon -->
   Admin
@@ -30,30 +30,45 @@
   <ul class="navbar-nav mr-auto">
 
     <li class="nav-item">
+      <a class="nav-link" href="/admin/">Dashboard</a>
+    </li>
+    <!-- <li class="nav-item">
       <a class="nav-link" href="/admin/contacts">Messages</a>
+    </li> -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contacts</a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <!-- <a class="dropdown-item" href="#">Contacts</a> -->
+
+          <a class="nav-link" href="/admin/leads">Leads</a>
+          <div class="dropdown-divider"></div>
+          <a class="nav-link" href="/admin/contacts">Messages</a>
+        </div>
     </li>
-    <li class="nav-item">
+    <!-- <li class="nav-item">
       <a class="nav-link" href="/admin/leads">Leads</a>
+    </li> -->
+    <li class="nav-item">
+      <a class="nav-link" href="/admin/files">Files</a>
     </li>
+
     <li class="nav-item">
       <a class="nav-link" href="/admin/posts">Posts</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/admin/files">Files</a>
+      <a class="nav-link" href="/admin/settings"> Settings</a>
     </li>
-    <li class="nav-item dropdown">
+    <!-- <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/admin/settings">Website Settings</a>
+          <a class="dropdown-item" href="/admin/settings"> Settings</a>
 
           <a class="dropdown-item" href="/admin/settings/seo">SEO</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="/admin/apiKeys">Api Keys</a>
         </div>
-    </li>
-<li class="nav-item">|</li>
-    <li class="nav-item active">
-      <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+    </li> -->
+<!-- <li class="nav-item">|</li> -->
   </ul>
 </div>
 </nav>

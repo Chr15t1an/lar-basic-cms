@@ -102,17 +102,17 @@ Route::get('/admin/leads/export', 'SignupController@exportleads')->middleware('a
 Route::get('/admin/contacts', 'AdminController@showcontacts')->middleware('auth');
 Route::get('/admin/contacts/{id}', 'AdminController@showemail')->middleware('auth');
 
-Route::get('/admin/apiKeys', function () {
-    return view('admin.apiKeys');
-})->middleware('auth');
+// Route::get('/admin/apiKeys', function () {
+//     return view('admin.apiKeys');
+// })->middleware('auth');
 
 Route::get('/admin/settings', function () {
     return view('admin.settings');
 })->middleware('auth');
 
-Route::get('/admin/settings/seo', function () {
-    return view('admin.seo');
-})->middleware('auth');
+// Route::get('/admin/settings/seo', function () {
+//     return view('admin.seo');
+// })->middleware('auth');
 
 //Checks if registration is disabled
 $registration = App\Http\Controllers\MetavalueController::get_metadata('registration');
