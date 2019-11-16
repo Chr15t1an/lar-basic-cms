@@ -12,12 +12,14 @@
           </div>
           <div class="row">
           <form id="checklistForm">
-            <div v-for="item in meta_value_checklist">
+            <div style="margin: 10px;" v-for="item in meta_value_checklist">
               <div v-if="item.STATE">
-              <input v-on:click="submitMyChecklist" type="checkbox" v-bind:value="item.NAME" checked>{{item.NAME}} | {{item.STATE}}<br>
+              <input v-if="item.STATE" v-on:click="submitMyChecklist" type="checkbox" v-bind:value="item.NAME" checked>
+              <label class="form-check-label" for="exampleCheck1">{{item.NAME}}</label>
               </div>
               <div v-else>
-              <input v-on:click="submitMyChecklist" type="checkbox" v-bind:value="item.NAME">{{item.NAME}} | {{item.STATE}}<br>
+                <input v-on:click="submitMyChecklist" type="checkbox" v-bind:value="item.NAME">
+                <label class="form-check-label" for="exampleCheck1">{{item.NAME}}</label>
               </div>
             </div>
           </form>

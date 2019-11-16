@@ -4,20 +4,19 @@
 @section('content')
 
 
-<!-- section 1 -->
-  <section class="row ">
+<!-- Leads -->
 
-
-<leads-component></leads-component>
-
-
-<hr/>
-<a href="/admin/leads/export"><button>Export leads</button></a>
-
-
-
-  </section>
-
+<section class="row">
+<div class="container">
+<h1>Dashboard</h1>
+<div class="card">
+<h5 style="background-color: #fff;" class="card-header">Leads</h5>
+<div class="card-body">
+  <leads-component></leads-component>
+</div>
+</div>
+</div>
+</section>
 
 
 @endsection

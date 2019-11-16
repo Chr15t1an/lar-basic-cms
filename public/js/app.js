@@ -2268,6 +2268,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2311,6 +2320,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -40765,44 +40776,61 @@ var render = function() {
         ])
       : _vm._e(),
     _vm._v(" "),
-    _c("table", { staticClass: "table" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "tbody",
-        _vm._l(_vm.leads, function(lead, name, index) {
-          return _c("tr", [
-            _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(index + 1))]),
+    _vm.leads[0]
+      ? _c("div", [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-success",
+              attrs: { href: "/admin/leads/export" }
+            },
+            [_vm._v("Export leads")]
+          ),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c("table", { staticClass: "table" }, [
+            _vm._m(0),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(lead.first_name))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(lead.last_name) + " ")]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(lead.email))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(lead.plan))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(lead.created_at))]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "a",
-                {
-                  attrs: { href: "#" },
-                  on: {
-                    click: function($event) {
-                      return _vm.destroy(lead.id)
-                    }
-                  }
-                },
-                [_vm._v("Delete")]
-              )
-            ])
+            _c(
+              "tbody",
+              _vm._l(_vm.leads, function(lead, name, index) {
+                return _c("tr", [
+                  _c("th", { attrs: { scope: "row" } }, [
+                    _vm._v(_vm._s(index + 1))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(lead.first_name))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(lead.last_name) + " ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(lead.email))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(lead.plan))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(lead.created_at))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "a",
+                      {
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            return _vm.destroy(lead.id)
+                          }
+                        }
+                      },
+                      [_vm._v("Delete")]
+                    )
+                  ])
+                ])
+              }),
+              0
+            )
           ])
-        }),
-        0
-      )
-    ])
+        ])
+      : _c("div", [_c("p", [_vm._v("No leads yet.")])])
   ])
 }
 var staticRenderFns = [
@@ -40878,16 +40906,25 @@ var render = function() {
         "form",
         { attrs: { id: "checklistForm" } },
         _vm._l(_vm.meta_value_checklist, function(item) {
-          return _c("div", [
+          return _c("div", { staticStyle: { margin: "10px" } }, [
             item.STATE
               ? _c("div", [
-                  _c("input", {
-                    attrs: { type: "checkbox", checked: "" },
-                    domProps: { value: item.NAME },
-                    on: { click: _vm.submitMyChecklist }
-                  }),
-                  _vm._v(_vm._s(item.NAME) + " | " + _vm._s(item.STATE)),
-                  _c("br")
+                  item.STATE
+                    ? _c("input", {
+                        attrs: { type: "checkbox", checked: "" },
+                        domProps: { value: item.NAME },
+                        on: { click: _vm.submitMyChecklist }
+                      })
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "form-check-label",
+                      attrs: { for: "exampleCheck1" }
+                    },
+                    [_vm._v(_vm._s(item.NAME))]
+                  )
                 ])
               : _c("div", [
                   _c("input", {
@@ -40895,8 +40932,15 @@ var render = function() {
                     domProps: { value: item.NAME },
                     on: { click: _vm.submitMyChecklist }
                   }),
-                  _vm._v(_vm._s(item.NAME) + " | " + _vm._s(item.STATE)),
-                  _c("br")
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "form-check-label",
+                      attrs: { for: "exampleCheck1" }
+                    },
+                    [_vm._v(_vm._s(item.NAME))]
+                  )
                 ])
           ])
         }),
