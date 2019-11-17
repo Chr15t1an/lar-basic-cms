@@ -1,6 +1,8 @@
 <template>
   <!-- Read Email Component -->
     <div>
+            <h1 v-if="!emails.length">Empty</h1>
+
             <div class="email" v-for="email in emails">
               <span v-if="email.archived"></span>
               <a href="#" v-on:click="openEmail(email.id)"><p>{{email.first_name}} {{email.last_name}}</p></a>

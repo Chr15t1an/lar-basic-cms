@@ -3,13 +3,16 @@
 @section('title', 'Emails')
 @section('content')
 
-
-<!-- section 1 -->
-<section class="row align-items-center">
-<div class="container">
+  <!-- EMail -->
+  <section class="row">
+  <div class="container">
+  <div class="card">
+  <h5 style="background-color: #fff;" class="card-header">E Mail</h5>
+  <div class="card-body">
     <email-component></email-component>
-</div>
+  </div>
+  </div>
+  </div>
   </section>
-
 
 @endsection

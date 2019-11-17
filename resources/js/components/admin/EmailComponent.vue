@@ -1,20 +1,18 @@
 <template>
   <!-- Read Email Component -->
       <div>
-          <h1 v-if="noemail">No EMail Found</h1>
-            <strong>From:</strong><br/>{{ first_name }} {{ last_name }}<br/>
-            <strong>From email:</strong><br/>{{ email }}<br/>
-            <strong> Messages:</strong><br/>
-            {{ msg }}<br/>
+            <h1 v-if="noemail">No EMail Found</h1>
 
-          <button v-if="!archive" v-on:click="archiveToggle" type="button" class="btn btn-primary">Archive</button>
-          <button v-if="archive" v-on:click="archiveToggle" type="button" class="btn btn-default">unAchive</button>
+            <strong>From:</strong> {{ first_name }} {{ last_name }}<br/>
+            {{ email }}<br/>
+            <strong> Message:</strong><br/>
+            <div style="margin: 14px 0px;" class="">{{ msg }}</div>
 
-          <button v-if="!read" v-on:click="readToggle" type="button" class="btn btn-primary">Mark Read</button>
-          <button v-if="read" v-on:click="readToggle" type="button" class="btn btn-default">Mark UnRead</button>
-
-
-          <button v-on:click="destroy" type="button" class="btn btn-default">Delete</button>
+          <button v-if="!archive" v-on:click="archiveToggle" type="button" class="btn btn-primary"><i class="material-icons">archive</i></button>
+          <button v-if="archive" v-on:click="archiveToggle" type="button" class="btn btn-light"><i class="material-icons">unarchive</i></button>
+          <!-- <button v-if="!read" v-on:click="readToggle" type="button" class="btn btn-primary">Mark Read</button>
+          <button v-if="read" v-on:click="readToggle" type="button" class="btn btn-default">Mark UnRead</button> -->
+          <button v-on:click="destroy" type="button" class="btn btn-danger">Delete</button>
 
     </div>
 </template>
@@ -79,14 +77,15 @@
                       self.read = response.data;
                     })
             },
-            //delete the email 
+            //delete the email
             destroy: function() {
               self = this;
               axios.post('/api/email/archive/'+this.id+'/delete')
                     .then(function (response) {
                       // handle success
                       self.read = response.data;
-                      location.reload();
+                      // location.reload();
+                      window.location.replace("/admin/contacts");
                     })
             },
             },

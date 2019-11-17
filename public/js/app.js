@@ -2000,8 +2000,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2056,13 +2054,14 @@ __webpack_require__.r(__webpack_exports__);
         self.read = response.data;
       });
     },
-    //delete the email 
+    //delete the email
     destroy: function destroy() {
       self = this;
       axios.post('/api/email/archive/' + this.id + '/delete').then(function (response) {
         // handle success
-        self.read = response.data;
-        location.reload();
+        self.read = response.data; // location.reload();
+
+        window.location.replace("/admin/contacts");
       });
     }
   },
@@ -2229,6 +2228,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -40683,19 +40684,17 @@ var render = function() {
     _vm.noemail ? _c("h1", [_vm._v("No EMail Found")]) : _vm._e(),
     _vm._v(" "),
     _c("strong", [_vm._v("From:")]),
+    _vm._v(" " + _vm._s(_vm.first_name) + " " + _vm._s(_vm.last_name)),
     _c("br"),
-    _vm._v(_vm._s(_vm.first_name) + " " + _vm._s(_vm.last_name)),
-    _c("br"),
-    _vm._v(" "),
-    _c("strong", [_vm._v("From email:")]),
-    _c("br"),
-    _vm._v(_vm._s(_vm.email)),
+    _vm._v("\n          " + _vm._s(_vm.email)),
     _c("br"),
     _vm._v(" "),
-    _c("strong", [_vm._v(" Messages:")]),
+    _c("strong", [_vm._v(" Message:")]),
     _c("br"),
-    _vm._v("\n          " + _vm._s(_vm.msg)),
-    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticStyle: { margin: "14px 0px" } }, [
+      _vm._v(_vm._s(_vm.msg))
+    ]),
     _vm._v(" "),
     !_vm.archive
       ? _c(
@@ -40705,7 +40704,7 @@ var render = function() {
             attrs: { type: "button" },
             on: { click: _vm.archiveToggle }
           },
-          [_vm._v("Archive")]
+          [_c("i", { staticClass: "material-icons" }, [_vm._v("archive")])]
         )
       : _vm._e(),
     _vm._v(" "),
@@ -40713,42 +40712,18 @@ var render = function() {
       ? _c(
           "button",
           {
-            staticClass: "btn btn-default",
+            staticClass: "btn btn-light",
             attrs: { type: "button" },
             on: { click: _vm.archiveToggle }
           },
-          [_vm._v("unAchive")]
-        )
-      : _vm._e(),
-    _vm._v(" "),
-    !_vm.read
-      ? _c(
-          "button",
-          {
-            staticClass: "btn btn-primary",
-            attrs: { type: "button" },
-            on: { click: _vm.readToggle }
-          },
-          [_vm._v("Mark Read")]
-        )
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.read
-      ? _c(
-          "button",
-          {
-            staticClass: "btn btn-default",
-            attrs: { type: "button" },
-            on: { click: _vm.readToggle }
-          },
-          [_vm._v("Mark UnRead")]
+          [_c("i", { staticClass: "material-icons" }, [_vm._v("unarchive")])]
         )
       : _vm._e(),
     _vm._v(" "),
     _c(
       "button",
       {
-        staticClass: "btn btn-default",
+        staticClass: "btn btn-danger",
         attrs: { type: "button" },
         on: { click: _vm.destroy }
       },
@@ -40887,68 +40862,72 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    _vm._l(_vm.emails, function(email) {
-      return _c("div", { staticClass: "email" }, [
-        email.archived ? _c("span") : _vm._e(),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            attrs: { href: "#" },
-            on: {
-              click: function($event) {
-                return _vm.openEmail(email.id)
-              }
-            }
-          },
-          [
-            _c("p", [
-              _vm._v(_vm._s(email.first_name) + " " + _vm._s(email.last_name))
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        !email.archived
-          ? _c(
-              "i",
-              {
-                staticClass: "material-icons",
-                on: {
-                  click: function($event) {
-                    return _vm.archiveToggle(email.id)
-                  }
+    [
+      !_vm.emails.length ? _c("h1", [_vm._v("Empty")]) : _vm._e(),
+      _vm._v(" "),
+      _vm._l(_vm.emails, function(email) {
+        return _c("div", { staticClass: "email" }, [
+          email.archived ? _c("span") : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  return _vm.openEmail(email.id)
                 }
-              },
-              [_vm._v("archive")]
-            )
-          : _c(
-              "i",
-              {
-                staticClass: "material-icons",
-                on: {
-                  click: function($event) {
-                    return _vm.archiveToggle(email.id)
-                  }
-                }
-              },
-              [_vm._v("unarchive")]
-            ),
-        _vm._v(" "),
-        _c(
-          "i",
-          {
-            staticClass: "material-icons",
-            on: {
-              click: function($event) {
-                return _vm.destroy(email.id)
               }
-            }
-          },
-          [_vm._v("delete")]
-        )
-      ])
-    }),
-    0
+            },
+            [
+              _c("p", [
+                _vm._v(_vm._s(email.first_name) + " " + _vm._s(email.last_name))
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          !email.archived
+            ? _c(
+                "i",
+                {
+                  staticClass: "material-icons",
+                  on: {
+                    click: function($event) {
+                      return _vm.archiveToggle(email.id)
+                    }
+                  }
+                },
+                [_vm._v("archive")]
+              )
+            : _c(
+                "i",
+                {
+                  staticClass: "material-icons",
+                  on: {
+                    click: function($event) {
+                      return _vm.archiveToggle(email.id)
+                    }
+                  }
+                },
+                [_vm._v("unarchive")]
+              ),
+          _vm._v(" "),
+          _c(
+            "i",
+            {
+              staticClass: "material-icons",
+              on: {
+                click: function($event) {
+                  return _vm.destroy(email.id)
+                }
+              }
+            },
+            [_vm._v("delete")]
+          )
+        ])
+      })
+    ],
+    2
   )
 }
 var staticRenderFns = []
