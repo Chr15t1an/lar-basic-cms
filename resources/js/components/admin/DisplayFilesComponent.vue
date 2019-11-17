@@ -1,6 +1,6 @@
 <template>
   <!-- Create Sitemap Component -->
-      <div>
+      <div class="row" id='filecontainer'>
         <div v-if="this.errors.length > 0">
           <div class="alert alert-warning" role="alert">
 
@@ -9,7 +9,10 @@
               </li>
           </div>
         </div>
-          <div v-for="file in files" >
+
+        <!-- <span @fileupload="getFilelist">A</span> -->
+
+          <div class="col-4" v-for="file in files" >
             <div v-bind:id="file.id" class="card" style="width: 18rem;">
               <img v-bind:src="file.path"  class="card-img-top" alt="">
               <div class="card-body">
@@ -18,8 +21,8 @@
                   <input type="text" class="form-control" id="" placeholder="" v-bind:value="file.title">
                 </h5>
                 <p class="card-text">Path:{{file.path}}</p>
-                <a v-on:click="saveFile(file.id)" href="#" class="btn btn-success">Save</a>
-                <a v-on:click="deleteFile(file.id)" href="#" class="btn btn-danger">Delete</a>
+                <a v-on:click="saveFile(file.id)" class="btn btn-success">Save</a>
+                <a v-on:click="deleteFile(file.id)" class="btn btn-danger">Delete</a>
               </div>
             </div>
 
@@ -39,6 +42,21 @@
 
               this.getFilelist();
 
+
+            // this.$on('fileupload', function(value){
+            //     console.log('WORKING');
+            // });
+
+
+            var self = this;
+
+            // Listen for the event.
+            window.addEventListener('fileUploaded', function (e) {
+            /* Give the file a second to upload.*/
+            setTimeout(function(){ self.getFilelist(); }, 1000);
+          }, false);
+
+
           },
 
           methods:{
@@ -46,8 +64,7 @@
 
 
               var titleVal = $('#'+id+' input[type=text]').val();
-              // var pathVal = $('#'+id+' .card-text').text();
-              // $('#20 .card-text').text()
+
               console.log(titleVal);
               // var data = { title: titleVal, path: };
               var data = {title: titleVal};
@@ -69,16 +86,22 @@
 
                   self.files = response.data;
                   console.log(self.files);
+                  console.log('GetFileList ');
 
             });
             },
 
             deleteFile: function(id){
-
+              // e.preventDefault();
               // var data = { meta_key: this.meta_key_checklist };
 
+              self = this;
+              // $('#'+id).hide();
 
-              $('#'+id).hide();
+              // var container = document.getElementById('filecontainer');
+              // container.setAttribute("style", "position: fixed");
+              // $('#'+id).fadeOut();
+              // container.removeAttribute("style", "position: fixed");
 
               axios.post('/api/file/delete/'+id).then(function (response) {
 
@@ -103,13 +126,18 @@
 
               }else {
                 console.log(response.data);
+                self.getFilelist();
+
 
               }
+              return false;
 
               });
             }
             },
             mounted: function () {
+
+
 
           }
 

@@ -5,7 +5,7 @@
 #Redesign BackEnd.
 
 inbox - 1 [****]
-email - 2
+email - 2 [****]
 
 Files, Drag and Drop. - 3
 - On upload call the images again

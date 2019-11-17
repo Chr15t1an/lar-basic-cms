@@ -1907,6 +1907,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1915,13 +1918,22 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    this.getFilelist();
+    this.getFilelist(); // this.$on('fileupload', function(value){
+    //     console.log('WORKING');
+    // });
+
+    var self = this; // Listen for the event.
+
+    window.addEventListener('fileUploaded', function (e) {
+      /* Give the file a second to upload.*/
+      setTimeout(function () {
+        self.getFilelist();
+      }, 1000);
+    }, false);
   },
   methods: {
     saveFile: function saveFile(id) {
-      var titleVal = $('#' + id + ' input[type=text]').val(); // var pathVal = $('#'+id+' .card-text').text();
-      // $('#20 .card-text').text()
-
+      var titleVal = $('#' + id + ' input[type=text]').val();
       console.log(titleVal); // var data = { title: titleVal, path: };
 
       var data = {
@@ -1936,11 +1948,18 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/api/files').then(function (response) {
         self.files = response.data;
         console.log(self.files);
+        console.log('GetFileList ');
       });
     },
     deleteFile: function deleteFile(id) {
+      // e.preventDefault();
       // var data = { meta_key: this.meta_key_checklist };
-      $('#' + id).hide();
+      self = this; // $('#'+id).hide();
+      // var container = document.getElementById('filecontainer');
+      // container.setAttribute("style", "position: fixed");
+      // $('#'+id).fadeOut();
+      // container.removeAttribute("style", "position: fixed");
+
       axios.post('/api/file/delete/' + id).then(function (response) {
         if (response.data.errors) {
           var d = '';
@@ -1963,7 +1982,10 @@ __webpack_require__.r(__webpack_exports__);
           self.errors = errorMsgs;
         } else {
           console.log(response.data);
+          self.getFilelist();
         }
+
+        return false;
       });
     }
   },
@@ -2556,6 +2578,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2565,6 +2588,75 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {},
   methods: {
+    uxEvents: function uxEvents() {
+      var self = this;
+      var dropzone = document.getElementById('dropzone');
+
+      dropzone.ondragover = function () {
+        this.className = "dropzone dragover";
+        return false;
+      };
+
+      dropzone.ondragleave = function () {
+        this.className = "dropzone";
+        return false;
+      };
+
+      dropzone.ondrop = function (e) {
+        e.preventDefault();
+        this.className = "dropzone"; // console.log(e.dataTransfer.files);
+
+        self.upload(e.dataTransfer.files); // this.className = "dropzone dragover";
+        // return false;
+      };
+    },
+    upload: function upload(files) {
+      console.log(files);
+      var self = this;
+      var i;
+
+      for (i = 0; i < files.length; i++) {
+        console.log(files[i]); //Works !
+
+        var formData = new FormData();
+        var imagefile = files[i]; // formData.append("file", imagefile.files[0]);
+
+        formData.append("file", imagefile);
+        axios.post('/api/file/store', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then(function (response) {
+          if (response.data.errors) {
+            var d = '';
+            d = JSON.parse(response.request.responseText); // console.log(d);
+
+            var errorMsgs = [];
+
+            for (var key in d) {
+              // skip loop if the property is from prototype
+              if (!d.hasOwnProperty(key)) continue;
+              var obj = d[key];
+
+              for (var prop in obj) {
+                // skip loop if the property is from prototype
+                if (!obj.hasOwnProperty(prop)) continue;
+                errorMsgs.push(obj[prop][0]);
+              }
+            }
+
+            self.errors = errorMsgs;
+          } else {
+            console.log(response.data);
+          }
+        });
+      }
+
+      var event = new Event('fileUploaded'); // Dispatch the event.
+
+      window.dispatchEvent(event); // this.$emit('fileupload');//getFilelist();
+      // vm.$emit('test', 'hi')
+    },
     previewFiles: function previewFiles() {
       this.files = this.$refs.myFile.files[0]; //$('#uploadfiles')[0].files
 
@@ -2574,10 +2666,7 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.$refs.myFile);
     },
     uploadImg: function uploadImg() {
-      console.log('Up'); // var attributes = {
-      //   'file':this.$refs.myFile.files,
-      // };
-
+      console.log('Up');
       var self = this; //Works !
 
       var formData = new FormData();
@@ -2614,7 +2703,9 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    this.uxEvents();
+  }
 });
 
 /***/ }),
@@ -8627,7 +8718,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.box__dragndrop,\n.box__uploading,\n.box__success,\n.box__error {\n  display: none;\n}\n.box.is-dragover {\n  background-color: grey;\n}\n.box.is-uploading .box__input {\n  visibility: none;\n}\n.box.is-uploading .box__uploading {\n  display: block;\n}\n", ""]);
+exports.push([module.i, "\n.dropzone {\n  width: 100%;\n  height: 200px;\n  border: 2px dashed #ccc;\n  color: #ccc;\n  line-height: 300px;\n  text-align: center;\n}\n.dropzone.dragover{\n  color: black;\n  border-color: black;\n}\n.box__dragndrop,\n.box__uploading,\n.box__success,\n.box__error {\n  display: none;\n}\n.box.is-dragover {\n  background-color: grey;\n}\n.box.is-uploading .box__input {\n  visibility: none;\n}\n.box.is-uploading .box__uploading {\n  display: block;\n}\n", ""]);
 
 // exports
 
@@ -40574,6 +40665,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "row", attrs: { id: "filecontainer" } },
     [
       this.errors.length > 0
         ? _c("div", [
@@ -40591,7 +40683,7 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       _vm._l(_vm.files, function(file) {
-        return _c("div", [
+        return _c("div", { staticClass: "col-4" }, [
           _c(
             "div",
             {
@@ -40626,7 +40718,6 @@ var render = function() {
                   "a",
                   {
                     staticClass: "btn btn-success",
-                    attrs: { href: "#" },
                     on: {
                       click: function($event) {
                         return _vm.saveFile(file.id)
@@ -40640,7 +40731,6 @@ var render = function() {
                   "a",
                   {
                     staticClass: "btn btn-danger",
-                    attrs: { href: "#" },
                     on: {
                       click: function($event) {
                         return _vm.deleteFile(file.id)
@@ -41184,40 +41274,21 @@ var render = function() {
         ])
       : _vm._e(),
     _vm._v(" "),
-    _c(
-      "form",
-      {
-        attrs: { method: "post", enctype: "multipart/form-data" },
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-          }
-        }
-      },
-      [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "exampleFormControlFile1" } }, [
-            _vm._v("Example file input")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            ref: "myFile",
-            staticClass: "form-control-file",
-            attrs: { type: "file", name: "file", id: "uploadfiles" },
-            on: { change: _vm.previewFiles }
-          })
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "btn btn-lg",
-          attrs: { value: "Upload Image", name: "submit" },
-          on: { click: _vm.uploadImg }
-        })
-      ]
-    )
+    _vm._m(0)
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "dropzone", attrs: { id: "dropzone" } }, [
+      _c("label", { attrs: { for: "exampleFormControlFile1" } }, [
+        _vm._v("Drag Files Here")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
