@@ -9,7 +9,13 @@
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
 
+<!-- Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
 
+<!-- https://material.io/resources/icons/?search=delete&icon=commute&style=baseline
+
+           -->
     <!-- include summernote css/js -->
 
     <title>@yield('title')</title>

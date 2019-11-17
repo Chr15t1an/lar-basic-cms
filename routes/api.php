@@ -12,6 +12,10 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+//Get All messages.
+Route::get('/emails','ContactController@index');
+
 //Create contact message.
 Route::post('/contact','ContactController@store');
 // Read contact message.

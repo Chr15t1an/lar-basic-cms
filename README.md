@@ -1,4 +1,26 @@
+
+
+
+
 #Redesign BackEnd.
+
+inbox - 1 [****]
+email - 2
+
+Files, Drag and Drop. - 3
+- On upload call the images again
+
+display files - 4
+- Float
+
+
+PostIndex - 5
+
+Create & Edit Page.- 6
+
+
+
+
 
 Find a design template
 
@@ -8,6 +30,9 @@ Components
 - Registration
 - Checklist
 
+
+Not using read for inbox.
+Using Archive only.  
 
 
 
@@ -66,6 +91,8 @@ https://docs.google.com/document/d/1adkzcZA8odWzEm19zAf4boEuIhGyft3Zm3OQTLVjhc8/
 
 
 ##V2 ToDo's --- Moving forward GO Test Driven Development.
+
+Clear out errors on contacts.
 
 Add Drag and Drop File uploader.
 

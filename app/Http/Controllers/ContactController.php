@@ -8,6 +8,22 @@ use Illuminate\Support\Facades\Validator;
 
 class ContactController extends Controller
 {
+
+
+  /**
+   * Return Contacts via API
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @return \Illuminate\Http\Response
+   */
+
+  public function index()
+  {
+    $contacts = Contact::all();
+    return $contacts;
+  }
+
+
     /**
      * Store a new contact message in storage.
      *

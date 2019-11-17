@@ -13,7 +13,7 @@
       <div v-if="leads[0]">
         <a class="btn btn-success" href="/admin/leads/export">Export leads</a>
         <hr/>
-      <table class="table">
+      <table class="table table-responsive">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -27,7 +27,7 @@
         </thead>
         <tbody>
           <tr v-for="(lead, name, index) in leads">
-            <th scope="row">{{ index + 1 }}</th>
+            <th scope="row">{{ index }}</th>
             <td>{{ lead.first_name }}</td>
             <td>{{ lead.last_name }} </td>
             <td>{{ lead.email }}</td>

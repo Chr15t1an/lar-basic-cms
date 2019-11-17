@@ -34,8 +34,12 @@ Vue.component('pricing-component', require('./components/PricingComponent.vue').
 Vue.component('contact-component', require('./components/default/ContactComponent.vue').default);
 //Signup Component
 Vue.component('signup-component', require('./components/default/SignupComponent.vue').default);
+
 //Email Component
 Vue.component('email-component', require('./components/admin/EmailComponent.vue').default);
+//Inbox Component
+Vue.component('inbox-component', require('./components/admin/InboxComponent.vue').default);
+
 //Leads Component
 Vue.component('leads-component', require('./components/admin/LeadsComponent.vue').default);
 //Google Tag Manager Component
