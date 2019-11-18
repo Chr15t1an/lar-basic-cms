@@ -67,7 +67,7 @@
             featured_image:"",
             meta_description:"",
             meta_title:"",
-            status:false,
+            status:0,
             template:"",
             body:"",
 
@@ -154,19 +154,12 @@
             sel.featured_image = '';
             sel.meta_description = '';
             sel.meta_title = '';
-            sel.status = '';
+            // sel.status = '';
             sel.template = '';
             sel.body = '';
 
 
-
-
             $(document).ready(function() {
-              // $('#summernote').summernote({
-              //   // placeholder: this.post.body,
-              // });https://summernote.org/
-              // console.log(sel.post.body);
-              // $('#summernote').summernote();
               $('#summernote').summernote('code', '<h6>Start..<h6/>');
               // $('#summernote').summernote({tabsize: 2,height: 100});
             });
@@ -175,8 +168,5 @@
           },
 
               }
-              //  Example Checklist
-              // { "CHECKLIST": { "Items": [ { "NAME": "Uptime Robot", "STATE": false }, { "NAME": "Cloudflare", "STATE": false }, { "NAME": "Google Tag Manager", "STATE": false }, { "NAME": "Google Analitics", "STATE": false }, { "NAME": "Turn on ecommerce tracking | Google Analitics", "STATE": false }, { "NAME": "Bugsnag", "STATE": false }, { "NAME": "Generate Sitemap", "STATE": false }, { "NAME": "Robot.txt", "STATE": false }, { "NAME": "Check H1s and Metas", "STATE": false }, { "NAME": "Set up Conversions Events", "STATE": false }, { "NAME": "FavIcon - https://favicon.io/favicon-converter/", "STATE": false }, { "NAME": "Mixpanel.com", "STATE": false }, { "NAME": "Disable Public Registration", "STATE": false } ] } }
-
 
 </script>

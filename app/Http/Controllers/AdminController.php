@@ -32,8 +32,9 @@ class AdminController extends Controller
 
     public function showcontacts()
     {
-      $contact = Contact::all();
-      return view('admin.contacts')->with('contacts',$contact);
+      // $contact = Contact::all();
+      // return view('admin.contacts')->with('contacts',$contact);
+      return view('admin.contacts');//->with('contacts',$contact);
     }
 
     /**
@@ -44,8 +45,8 @@ class AdminController extends Controller
 
     public function showemail($id)
     {
-      $email = Contact::find($id);
-      return view('admin.reademails')->with('email',$email);
+      // $email = Contact::find($id);
+      return view('admin.reademails');//->with('email',$email);
 
     }
 
@@ -63,7 +64,7 @@ class AdminController extends Controller
     }
 
     /**
-     * Manually Create a Sitemap. 
+     * Manually Create a Sitemap.
      *
      * @return \Illuminate\Http\Response
      */

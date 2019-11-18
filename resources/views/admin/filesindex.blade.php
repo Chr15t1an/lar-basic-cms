@@ -22,10 +22,4 @@
   <displayfiles-component></displayfiles-component>
 
 
-<pre>
-<?php //print_r($files) ?>
-</pre>
-
-
-
 @endsection

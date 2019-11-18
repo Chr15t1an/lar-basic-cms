@@ -11,8 +11,8 @@
             </div>
           </div>
       <div class="row">
-          <form v-on:submit.prevent id="">
 
+          <form v-on:submit.prevent id="">
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Title</label>
                 <input v-model="post_title" type="text" class="form-control" id="" aria-describedby="" placeholder="Title">
@@ -43,6 +43,11 @@
                  <input v-model="status" type="checkbox" class="form-control" id="" >
             </div>
 
+            <div v-if="status" class="form-group">
+              <label for="">Public Path</label>
+                <a target="_blank" v-bind:href="public_path"><p>{{public_path}}</p></a>
+            </div>
+
 
 
               <div class="form-group">
@@ -71,6 +76,7 @@
             status:"",
             template:"",
             body:"",
+            public_path:'',
             // postBody:"",
             // meta_key_checklist:'checklist',
             // meta_value_checklist:{},
@@ -81,6 +87,9 @@
           var id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
           this.post_id = id;
           this.getPost();
+
+
+
         },
           methods:{
             // Submit checklist
@@ -101,7 +110,7 @@
               axios
                 .get('/api/admin/posts/edit/'+this.post_id)
                 .then(function (response) {
-                  // console.log(response.data);
+                  console.log(response.data);
                   sel.post = response.data;
 
                   sel.post_title = sel.post.title;
@@ -115,6 +124,9 @@
                   sel.status = sel.post.status;
                   sel.template = sel.post.template;
                   sel.body = sel.post.body;
+
+
+                  sel.public_path = '/posts/'+sel.post_slug;
 
                   $(document).ready(function() {
                     // $('#summernote').summernote({
