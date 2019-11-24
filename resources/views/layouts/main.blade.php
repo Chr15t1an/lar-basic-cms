@@ -18,7 +18,7 @@
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
 
-    <title>@yield('title') | Handle Inbound App</title>
+    <title>@yield('title') | {{ Config::get('app.name')}}</title>
     <meta name="description" content="@yield('metadescription')">
 
 
@@ -34,7 +34,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- icon -->
     <i class="material-icons">
   chat_bubble_outline
-</i><h6>Handle Inbound</h6>
+</i><h6>{{ Config::get('app.name')}}</h6>
 
     <!-- icon -->
 </a>
