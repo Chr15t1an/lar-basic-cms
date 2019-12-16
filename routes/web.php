@@ -63,11 +63,11 @@ Route::get('/posts', 'PostController@index');
 */
 
 
-Route::get('/admin/files/{slug}', 'FileController@show');
-Route::get('/admin/files', 'FileController@index');
+Route::get('/admin/files/{slug}', 'FileController@show')->middleware('auth');
+Route::get('/admin/files', 'FileController@index')->middleware('auth');
 
 
-Route::post('/admin/files', 'FileController@store');
+Route::post('/admin/files', 'FileController@store')->middleware('auth');
 
 
 
