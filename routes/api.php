@@ -57,8 +57,18 @@ Route::post('/admin/posts/edit/{id}', 'PostController@update')->middleware('auth
 Route::post('/admin/posts/delete/{id}', 'PostController@destroy')->middleware('auth:api');
 
 //Files
-Route::get('/files', 'FileController@api_index');//->middleware('auth:api');
+Route::get('/files', 'FileController@api_index')->middleware('auth:api');
 Route::post('/file/store', 'FileController@store')->middleware('auth:api');
 Route::get('/file/edit/{id}', 'FileController@edit')->middleware('auth:api');
 Route::post('/file/edit/{id}', 'FileController@update')->middleware('auth:api');
 Route::post('/file/delete/{id}', 'FileController@destroy')->middleware('auth:api');
+
+
+//Product Routes
+// api/product/store
+
+Route::get('/admin/products', 'ProductController@api_index')->middleware('auth:api');
+Route::post('/product/store', 'ProductController@store')->middleware('auth:api');
+Route::get('/product/edit/{id}', 'ProductController@edit')->middleware('auth:api');
+Route::post('/product/edit/{id}', 'ProductController@update')->middleware('auth:api');
+Route::post('/product/delete/{id}', 'ProductController@destroy')->middleware('auth:api');

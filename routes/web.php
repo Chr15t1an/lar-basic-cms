@@ -147,3 +147,21 @@ Route::get('/admin/posts/create', function () {
     //If No ID the component will adjust
     return view('admin.posts.create');
 })->middleware('auth');
+
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| ~~~~~~ Billing Routes. ~~~~~~~
+|--------------------------------------------------------------------------
+*/
+
+
+//
+// Route::get('/admin/files/{slug}', 'FileController@show')->middleware('auth');
+// Route::get('/admin/files', 'FileController@index')->middleware('auth');
+//
+//
+// Route::post('/admin/files', 'FileController@store')->middleware('auth');
