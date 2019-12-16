@@ -7,7 +7,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/admin/admin.css" rel="stylesheet">
 
 <!-- Fonts -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
