@@ -48,10 +48,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="pricing">Pricing</a>
+      <a class="nav-link" href="/pricing">Pricing</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="signup">Sign up</a>
+      <a class="nav-link" href="/signup">Sign up</a>
     </li>
 
 

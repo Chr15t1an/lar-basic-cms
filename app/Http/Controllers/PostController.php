@@ -106,7 +106,7 @@ class PostController extends Controller
     }
 
     /**
-     * return the data for the requested post. 
+     * return the data for the requested post.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -193,4 +193,50 @@ class PostController extends Controller
           return response()->json(['errors'=>$e]);
       }
     }
+
+
+
+    /**
+      * Create a CSV
+      *
+      * @param array $columnNames
+      * @param array $rows
+      * @param string $fileName
+      * @return \Symfony\Component\HttpFoundation\StreamedResponse
+      */
+     public static function getCsv($columnNames, $rows, $fileName = 'file.csv') {
+         $headers = [
+             "Content-type" => "text/csv",
+             "Content-Disposition" => "attachment; filename=" . $fileName,
+             "Pragma" => "no-cache",
+             "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
+             "Expires" => "0"
+         ];
+         $callback = function() use ($columnNames, $rows ) {
+             $file = fopen('php://output', 'w');
+             fputcsv($file, $columnNames);
+             foreach ($rows as $row) {
+                 fputcsv($file, $row);
+             }
+             fclose($file);
+         };
+         return response()->stream($callback, 200, $headers);
+     }
+
+
+
+
+
+    public function exportposts() {
+        $rows = [];
+        $posts = Post::all();
+        foreach ($posts as $l) {
+          array_push($rows,[$l->title, $l->body,$l->featured_image,$l->meta_title,$l->meta_description,$l->slug,$l->status]);
+        }
+        $columnNames = ['title', 'body', 'featured_image','meta_title','meta_description','slug','status'];
+        return self::getCsv($columnNames, $rows);
+    }
+
+
+
 }

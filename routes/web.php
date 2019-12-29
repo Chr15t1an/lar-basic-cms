@@ -141,6 +141,7 @@ Route::get('/admin/posts/edit/{id}', function () {
 })->middleware('auth');
 
 
+Route::get('/admin/posts/export', 'PostController@exportposts')->middleware('auth');
 
 Route::get('/admin/posts/create', function () {
     //Use onpage Vue Component to get data
