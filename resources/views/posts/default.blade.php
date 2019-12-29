@@ -1,5 +1,6 @@
 @extends('layouts.main')
-@section('title', 'Handle Inbound App')
+@section('title',$post->title)
+@section('metadescription',$post->meta_description)
 
 
 @section('content')
@@ -11,9 +12,9 @@
 
 
 <section class="row">
-  <div class="col-12">
+  <div class="col-12 post">
 <!-- https://github.com/andreasindal/laravel-markdown -->
-{!! $post->body !!}
+ @markdown($post->body)
   </div>
 </section>
 

@@ -260,26 +260,35 @@ font-size: 1.5rem;
   font-size: 1rem;
 
 }
+//
+// /* colors */
+// .blue {
+//   /* #00A6FB */
+// }
+//
+// .black {
+//   /* #001427 */
+//   }
+//
+// .white {
+//     /* #F4F7F5 */
+//   }
+//
+// .red {
+//   /* #E53D00 */
+//
+//     }
+//
+// .green {
+//   /* #5DD9C1 */
+//
+//       }
 
-/* colors */
-.blue {
-  /* #00A6FB */
+
+.post img {
+  max-width: 100%;
 }
-
-.black {
-  /* #001427 */
-  }
-
-.white {
-    /* #F4F7F5 */
-  }
-
-.red {
-  /* #E53D00 */
-
-    }
-
-.green {
-  /* #5DD9C1 */
-
-      }
+.post{
+  padding-top: 15px;
+  word-break: break-word;
+}

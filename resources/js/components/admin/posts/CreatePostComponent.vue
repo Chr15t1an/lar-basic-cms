@@ -11,7 +11,7 @@
             </div>
           </div>
       <div class="row">
-          <form v-on:submit.prevent id="">
+          <form class="col" v-on:submit.prevent id="">
 
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Title</label>
@@ -45,10 +45,10 @@
 
 
 
-              <div class="form-group">
-                   <label for="exampleFormControlTextarea1">Body</label>
-                   <div id="summernote"></div>
-              </div>
+            <div class="form-group">
+               <label for="">Body</label>
+                <textarea v-model="body" placeholder="add multiple lines" class="form-control" id="exampleFormControlTextarea1">{{body}}</textarea>
+          </div>
           <button v-on:click="createPost" class="btn btn-primary mb-2">Create</button>
           </form>
       </div>
@@ -80,8 +80,8 @@
             //Update CHECKLIST
             createPost: function(){
 
-              this.post.body = $('#summernote').summernote('code');
-              this.body = $('#summernote').summernote('code');
+              // this.post.body = $('#summernote').summernote('code');
+              // this.body = $('#summernote').summernote('code');
 
 
               // console.log(myJSON);
@@ -158,11 +158,11 @@
             sel.template = '';
             sel.body = '';
 
-
-            $(document).ready(function() {
-              $('#summernote').summernote('code', '<h6>Start..<h6/>');
-              // $('#summernote').summernote({tabsize: 2,height: 100});
-            });
+            //
+            // $(document).ready(function() {
+            //   $('#summernote').summernote('code', '<h6>Start..<h6/>');
+            //   // $('#summernote').summernote({tabsize: 2,height: 100});
+            // });
 
 
           },

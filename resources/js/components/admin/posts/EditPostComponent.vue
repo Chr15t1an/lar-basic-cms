@@ -12,7 +12,7 @@
           </div>
       <div class="row">
 
-          <form v-on:submit.prevent id="">
+          <form class="col" v-on:submit.prevent id="">
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Title</label>
                 <input v-model="post_title" type="text" class="form-control" id="" aria-describedby="" placeholder="Title">
@@ -50,10 +50,10 @@
 
 
 
-              <div class="form-group">
-                   <label for="exampleFormControlTextarea1">Body</label>
-                   <div id="summernote"></div>
-              </div>
+            <div class="form-group">
+               <label for="">Body</label>
+                <textarea v-model="body" placeholder="add multiple lines" class="form-control" id="exampleFormControlTextarea1">{{body}}</textarea>
+          </div>
           <button v-on:click="updatePost" class="btn btn-primary mb-2">Update</button>
           <button v-on:click="deletePost" class="btn btn-danger mb-2">Delete</button>
           </form>
@@ -128,14 +128,14 @@
 
                   sel.public_path = '/posts/'+sel.post_slug;
 
-                  $(document).ready(function() {
-                    // $('#summernote').summernote({
-                    //   // placeholder: this.post.body,
-                    // });https://summernote.org/
-                    console.log(sel.post.body);
-                    $('#summernote').summernote('code', sel.post.body);
-                    // $('#summernote').summernote({tabsize: 2,height: 100});
-                  });
+                  // $(document).ready(function() {
+                  //   // $('#summernote').summernote({
+                  //   //   // placeholder: this.post.body,
+                  //   // });https://summernote.org/
+                  //   console.log(sel.post.body);
+                  //   $('#summernote').summernote('code', sel.post.body);
+                  //   // $('#summernote').summernote({tabsize: 2,height: 100});
+                  // });
 
 
 
@@ -148,8 +148,8 @@
               // var myJSON = JSON.stringify(this.post);
 
 
-              this.post.body = $('#summernote').summernote('code');
-              this.body = $('#summernote').summernote('code');
+              // this.post.body = $('#summernote').summernote('code');
+              // this.body = $('#summernote').summernote('code');
 
 
 

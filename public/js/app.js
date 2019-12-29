@@ -2896,9 +2896,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     //Update CHECKLIST
     createPost: function createPost() {
-      this.post.body = $('#summernote').summernote('code');
-      this.body = $('#summernote').summernote('code'); // console.log(myJSON);
-
+      // this.post.body = $('#summernote').summernote('code');
+      // this.body = $('#summernote').summernote('code');
+      // console.log(myJSON);
       var attributes = {
         'title': this.post_title,
         'body': this.body,
@@ -2962,10 +2962,11 @@ __webpack_require__.r(__webpack_exports__);
     sel.meta_title = ''; // sel.status = '';
 
     sel.template = '';
-    sel.body = '';
-    $(document).ready(function () {
-      $('#summernote').summernote('code', '<h6>Start..<h6/>'); // $('#summernote').summernote({tabsize: 2,height: 100});
-    });
+    sel.body = ''; //
+    // $(document).ready(function() {
+    //   $('#summernote').summernote('code', '<h6>Start..<h6/>');
+    //   // $('#summernote').summernote({tabsize: 2,height: 100});
+    // });
   }
 });
 
@@ -3094,23 +3095,23 @@ __webpack_require__.r(__webpack_exports__);
         sel.status = sel.post.status;
         sel.template = sel.post.template;
         sel.body = sel.post.body;
-        sel.public_path = '/posts/' + sel.post_slug;
-        $(document).ready(function () {
-          // $('#summernote').summernote({
-          //   // placeholder: this.post.body,
-          // });https://summernote.org/
-          console.log(sel.post.body);
-          $('#summernote').summernote('code', sel.post.body); // $('#summernote').summernote({tabsize: 2,height: 100});
-        });
+        sel.public_path = '/posts/' + sel.post_slug; // $(document).ready(function() {
+        //   // $('#summernote').summernote({
+        //   //   // placeholder: this.post.body,
+        //   // });https://summernote.org/
+        //   console.log(sel.post.body);
+        //   $('#summernote').summernote('code', sel.post.body);
+        //   // $('#summernote').summernote({tabsize: 2,height: 100});
+        // });
       });
       this.submitting = false;
     },
     //Update CHECKLIST
     updatePost: function updatePost() {
       // var myJSON = JSON.stringify(this.post);
-      this.post.body = $('#summernote').summernote('code');
-      this.body = $('#summernote').summernote('code'); // console.log(myJSON);
-
+      // this.post.body = $('#summernote').summernote('code');
+      // this.body = $('#summernote').summernote('code');
+      // console.log(myJSON);
       var attributes = {
         'title': this.post_title,
         'body': this.body,
@@ -41501,6 +41502,7 @@ var render = function() {
       _c(
         "form",
         {
+          staticClass: "col",
           attrs: { id: "" },
           on: {
             submit: function($event) {
@@ -41689,7 +41691,38 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _vm._m(0),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "" } }, [_vm._v("Body")]),
+            _vm._v(" "),
+            _c(
+              "textarea",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.body,
+                    expression: "body"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  placeholder: "add multiple lines",
+                  id: "exampleFormControlTextarea1"
+                },
+                domProps: { value: _vm.body },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.body = $event.target.value
+                  }
+                }
+              },
+              [_vm._v(_vm._s(_vm.body))]
+            )
+          ]),
           _vm._v(" "),
           _c(
             "button",
@@ -41704,20 +41737,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "exampleFormControlTextarea1" } }, [
-        _vm._v("Body")
-      ]),
-      _vm._v(" "),
-      _c("div", { attrs: { id: "summernote" } })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -41766,6 +41786,7 @@ var render = function() {
       _c(
         "form",
         {
+          staticClass: "col",
           attrs: { id: "" },
           on: {
             submit: function($event) {
@@ -41966,7 +41987,38 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm._m(0),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "" } }, [_vm._v("Body")]),
+            _vm._v(" "),
+            _c(
+              "textarea",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.body,
+                    expression: "body"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  placeholder: "add multiple lines",
+                  id: "exampleFormControlTextarea1"
+                },
+                domProps: { value: _vm.body },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.body = $event.target.value
+                  }
+                }
+              },
+              [_vm._v(_vm._s(_vm.body))]
+            )
+          ]),
           _vm._v(" "),
           _c(
             "button",
@@ -41990,20 +42042,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "exampleFormControlTextarea1" } }, [
-        _vm._v("Body")
-      ]),
-      _vm._v(" "),
-      _c("div", { attrs: { id: "summernote" } })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
