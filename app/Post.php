@@ -18,11 +18,8 @@ class Post extends Model
     }
 
 
-    public function tags()
+    public function tag()
     {
       return $this->belongsToMany('App\Tag');
-      // return $this->belongsToMany('App\Tag','post_tag');
-      // return $this->belongsToMany('App\Tag', 'post_tag', 'post_id', 'tag_id');
-
     }
 }

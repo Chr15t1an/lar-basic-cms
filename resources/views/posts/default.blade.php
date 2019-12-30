@@ -7,8 +7,8 @@
 <section class="row align-items-center">
 <div class="col-md-7 col-12">
   <h1>{{$post->title}}</h1>
-  <h6>Category : {{ $post->category->name }}</h6>
-  <h6>Category : {{ $post->tags->name }}</h6>
+  <h6>Category : {{ $post->category->name or 'blank'  }}</h6>
+  <h6>Category : {{ $post->tags->name or 'blank'  }}</h6>
 </div>
 </section>
 
