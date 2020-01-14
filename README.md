@@ -1,7 +1,8 @@
 Fix Broken Tests
+..Had to remove Sitmap. Library isnt working.
+..Need to do this myself.
 
-
-
+Read Post. 
 
 Write Tests
 -Start w/ Category
