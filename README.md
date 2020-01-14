@@ -1,4 +1,25 @@
-From End JS & CSS Are not separated enough. 
+Fix Broken Tests
+
+
+
+
+Write Tests
+-Start w/ Category
+Write Controllers
+-Pass Tests.
+Write UI
+
+
+
+Then The next Is THe updating issue
+
+
+Sitemap is not being built well. Need to script this out later.
+
+
+
+
+From End JS & CSS Are not separated enough.
 
 
 
@@ -21,6 +42,7 @@ https://docs.google.com/document/d/1adkzcZA8odWzEm19zAf4boEuIhGyft3Zm3OQTLVjhc8/
 
 
 ## V2 ToDo's --- Moving forward GO Test Driven Development.
+- Solve the updating problem.
 - Redesign BackEnd
 - Code documentation
 - Components

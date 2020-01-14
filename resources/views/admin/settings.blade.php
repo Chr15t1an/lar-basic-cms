@@ -30,11 +30,11 @@
 </section>
 
 <!-- Site Map -->
-<section class="row align-items-center">
+<!-- <section class="row align-items-center">
     <div class="container">
       <h3>Site Map</h3>
       <createsitemap-component></createsitemap-component>
     </div>
-</section>
+</section> -->
 
 @endsection

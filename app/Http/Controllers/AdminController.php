@@ -10,8 +10,7 @@ use App\Contact;
 use App\Signup;
 
 use Carbon\Carbon;
-use Spatie\Sitemap\Sitemap;
-use Spatie\Sitemap\Tags\Url;
+use Spatie\Sitemap\SitemapGenerator;
 
 use Illuminate\Support\Facades\Redirect;
 
@@ -70,54 +69,23 @@ class AdminController extends Controller
      */
 
 
-    public function makeSitemap()
-    {
-      try {
-
-      Sitemap::create()
-      ->add(Url::create('/')
-      ->setLastModificationDate(Carbon::yesterday())
-      ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
-      ->setPriority(0.1))
-
-      ->add(Url::create('/pricing')
-      ->setLastModificationDate(Carbon::yesterday())
-      ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
-      ->setPriority(0.1))
-
-      ->add(Url::create('/signup')
-      ->setLastModificationDate(Carbon::yesterday())
-      ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
-      ->setPriority(0.1))
-
-      ->add(Url::create('/terms-and-conditions')
-      ->setLastModificationDate(Carbon::yesterday())
-      ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
-      ->setPriority(0.1))
-
-      ->add(Url::create('/privacy-policy')
-      ->setLastModificationDate(Carbon::yesterday())
-      ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
-      ->setPriority(0.1))
-
-      ->add(Url::create('/login')
-      ->setLastModificationDate(Carbon::yesterday())
-      ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
-      ->setPriority(0.1))
-
-      ->writeToFile(public_path('sitemap.xml'));
-
-      return response()->json(['errors'=>[['Sitemap Created!'],['Remember to submit to Google Search Console.']]]);
-
-    } catch (\Exception $e) {
-
-      return response()->json(['errors'=>$e]);
-
-  }
-
-
-
-    }
+  //   public function makeSitemap()
+  //   {
+  //     try {
+  //
+  //       SitemapGenerator::create(env('APP_URL', 'Laravel'))->writeToFile(public_path('sitemap.xml'));
+  //
+  //     return response()->json(['errors'=>[['Sitemap Created!'],['Remember to submit to Google Search Console.']]]);
+  //
+  //   } catch (\Exception $e) {
+  //
+  //     return response()->json(['errors'=>$e]);
+  //
+  // }
+  //
+  //
+  //
+  //   }
 
 
 }
