@@ -9,6 +9,48 @@ use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
+
+
+
+  /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function addCategory()
+  {
+    $categories = Category::all();
+    return $categories;
+  }
+
+
+  /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function removeCategory()
+  {
+    $categories = Category::all();
+    return $categories;
+  }
+
+
+
+  /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function updateCategory($postID, $categoryslug)
+  {
+    self::show($slug);
+    $categories = Category::all();
+    return $categories;
+  }
+
+
+
     /**
      * Display a listing of the resource.
      *
