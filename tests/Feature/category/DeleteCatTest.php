@@ -36,7 +36,7 @@ class DeleteCatTest extends TestCase
         // $id=strval( $cat->id );
        // dd($attributes['name']);
 
-        $this->json('POST','api/categories/delete/'+$attributes['name']);
+        $this->json('POST','api/categories/delete/'.$attributes['name']);
 
         $this->assertDatabaseMissing('categories', $attributes);
     }

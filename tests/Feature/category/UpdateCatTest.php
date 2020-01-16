@@ -33,8 +33,9 @@ class UpdateCatTest extends TestCase
         $this->json('POST','api/categories/create',$attributes);
         $this->assertDatabaseHas('categories',$attributes);
 
+        $path = 'api/categories/edit/'.$attributes['name'];
 
-        $this->json('POST','/categories/edit/'+$attributes['name'],$attributes2);
+        $this->json('POST',$path,$attributes2);
 
         $this->assertDatabaseHas('categories',$attributes2);
 

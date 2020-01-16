@@ -141,7 +141,7 @@ class CategoryController extends Controller
 
       try {
         $cat->save();
-        return 'Message Saved';
+        return 'Cat Updated';
       } catch (\Exception $e) {
         return response()->json(['errors'=>$e]);
       }
