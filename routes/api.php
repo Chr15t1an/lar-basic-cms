@@ -64,3 +64,16 @@ Route::post('/file/store', 'FileController@store')->middleware('auth:api');
 Route::get('/file/edit/{id}', 'FileController@edit')->middleware('auth:api');
 Route::post('/file/edit/{id}', 'FileController@update')->middleware('auth:api');
 Route::post('/file/delete/{id}', 'FileController@destroy')->middleware('auth:api');
+
+
+
+
+//Categories
+// All Cats.
+Route::get('/categories', 'CategoryController@index')->middleware('auth:api');
+// Add Cat.
+Route::post('/categories/create', 'CategoryController@create')->middleware('auth:api');
+//Edit Cat. Change Name.
+Route::post('/categories/edit/{name}', 'CategoryController@update');//->middleware('auth:api');
+//Delete Cat.
+Route::post('/categories/delete/{slug}', 'CategoryController@destroy')->middleware('auth:api');

@@ -2,7 +2,7 @@ Fix Broken Tests
 ..Had to remove Sitmap. Library isnt working.
 ..Need to do this myself.
 
-Read Post. 
+Read Post.
 
 Write Tests
 -Start w/ Category
@@ -44,6 +44,16 @@ https://docs.google.com/document/d/1adkzcZA8odWzEm19zAf4boEuIhGyft3Zm3OQTLVjhc8/
 
 ## V2 ToDo's --- Moving forward GO Test Driven Development.
 - Solve the updating problem.
+
+Versioning
+git ignore a directory.
+- I will Been to include my directory of Files
+- Model View Conrollers Rourtes
+- Migrations
+Will need to include all files.
+- CX artisan commands.
+
+
 - Redesign BackEnd
 - Code documentation
 - Components
