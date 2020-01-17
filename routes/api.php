@@ -53,9 +53,9 @@ Route::get('/admin/settings/seo/gen-sitemap', 'AdminController@makeSitemap');//-
 
 //Posts
 Route::get('/admin/posts', 'PostController@api_index')->middleware('auth:api');
-Route::post('/admin/posts/store', 'PostController@store')->middleware('auth:api');
+Route::post('/admin/posts/store', 'PostController@store');//->middleware('auth:api');
 Route::get('/admin/posts/edit/{id}', 'PostController@edit')->middleware('auth:api');
-Route::post('/admin/posts/edit/{id}', 'PostController@update')->middleware('auth:api');
+Route::post('/admin/posts/edit/{id}', 'PostController@update');//->middleware('auth:api');
 Route::post('/admin/posts/delete/{id}', 'PostController@destroy')->middleware('auth:api');
 
 //Files
@@ -77,3 +77,7 @@ Route::post('/categories/create', 'CategoryController@create')->middleware('auth
 Route::post('/categories/edit/{name}', 'CategoryController@update');//->middleware('auth:api');
 //Delete Cat.
 Route::post('/categories/delete/{slug}', 'CategoryController@destroy')->middleware('auth:api');
+
+
+//Posts
+// Route::post('/categories/add/cat', 'CategoryController@destroy')->middleware('auth:api');

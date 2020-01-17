@@ -8,6 +8,11 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 
+use App\Category;
+use App\Post;
+use App\Http\Controllers\CategoryController;
+
+
 class AttatchCatToPostTest extends TestCase
 {
   use WithFaker, DatabaseTransactions, WithoutMiddleware;
@@ -19,7 +24,7 @@ class AttatchCatToPostTest extends TestCase
     public function testAttatchCatToPost()
     {
 
-
+//Assert Posts 
       //Create Post
       $attributes = [
         'title' => $this->faker->word,
@@ -42,9 +47,22 @@ class AttatchCatToPostTest extends TestCase
         $this->json('POST','api/categories/create',$attributes2);
         $this->assertDatabaseHas('categories',$attributes2);
 
+        //Get Cat ID.
+        $category = CategoryController::show($attributes2['name']);
 
-        
+        // Add it to the post payload.
+        $attributes['category'] = $category->id;
 
+        $slug = $attributes['slug'];
+
+        $post = post::where('slug', $slug)->first();
+        $postID = $post->id;
+
+        $this->json('POST','api/admin/posts/edit/'.$postID, $attributes);
+
+        $post = post::where('slug', $slug)->first();
+
+        $this->assertEquals($attributes2['name'], $post->category->name);
 
     }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 
+// use App\Post;
+
 use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
@@ -17,11 +19,20 @@ class CategoryController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function addCategory()
-  {
-    $categories = Category::all();
-    return $categories;
-  }
+  // public function addCategory(Request $request, $postId, $categoryId)
+  // {
+
+    // $post = Post::findOrFail($postId);
+    // $category = Category::findOrFail($categoryId);
+    // $post->account()->associate($category);
+    // $post->save();
+
+    // $categories = Category::all();
+    // return $categories;
+    //
+    // associate
+
+  // }
 
 
   /**
@@ -31,8 +42,8 @@ class CategoryController extends Controller
    */
   public function removeCategory()
   {
-    $categories = Category::all();
-    return $categories;
+    // $categories = Category::all();
+    // return $categories;
   }
 
 
@@ -44,9 +55,9 @@ class CategoryController extends Controller
    */
   public function updateCategory($postID, $categoryslug)
   {
-    self::show($slug);
-    $categories = Category::all();
-    return $categories;
+    // self::show($slug);
+    // $categories = Category::all();
+    // return $categories;
   }
 
 
@@ -117,7 +128,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public static function show($slug)
     {
         ////Lookup by slug.
         $cat = Category::where('name', $slug)->first();

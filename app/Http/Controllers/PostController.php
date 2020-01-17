@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\Validator;
 
+use App\Category;
+
 class PostController extends Controller
 {
     /**
@@ -77,6 +79,18 @@ class PostController extends Controller
                 if ($request->meta_description) {
                   $newPost->meta_description = $request->meta_description;
                 }
+
+
+
+
+                if ($request->category) {
+                  $category = Category::findOrFail($request->categoryId);
+                  if($category) {
+                    $newPost->category()->associate($category);
+                  }
+                }
+
+
                 $newPost->save();
                 return response()->json(['msg'=>'Post Created.','id'=>$newPost->id]);
 
@@ -168,8 +182,16 @@ class PostController extends Controller
              $newPost->meta_description = $request->meta_description;
            }
 
+           // dd($request->category);
+             if ($request->category) {
+               $category = Category::findOrFail($request->category);
+                   if($category) {
+                       $newPost->category()->associate($category);
+                   }
+             }
+
            $newPost->save();
-           return response()->json(['msg'=>'Post Created.']);
+           return response()->json(['msg'=>'Post Updated.']);
 
          } catch (\Exception $e) {
            //Log Errors

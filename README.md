@@ -53,6 +53,7 @@ git ignore a directory.
 Will need to include all files.
 - CX artisan commands.
 
+- It sucks having 2 functions do the same thing. (update vs store in PostsCon. )
 
 - Redesign BackEnd
 - Code documentation

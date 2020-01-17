@@ -62,7 +62,6 @@ class UpdatePostTest extends TestCase
 
         $this->json('POST','api/admin/posts/edit/'.$postID, $attributes2);
 
-
         // catch data
         $response = $this->json('get','api/admin/posts/edit/'.$postID);
 
