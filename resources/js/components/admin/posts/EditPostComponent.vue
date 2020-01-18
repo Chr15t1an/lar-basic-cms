@@ -43,6 +43,17 @@
                  <input v-model="status" type="checkbox" class="form-control" id="" >
             </div>
 
+            <div class="form-group">
+                 <label for="">Category</label>
+                 <!-- <input v-model="category" type="checkbox" class="form-control" id="" > -->
+
+                 <select v-model="selected">
+                  <option v-for="category in categorys"  v-bind:value="category.id" >{{category.name}}</option>
+                 </select>
+
+
+            </div>
+
             <div v-if="status" class="form-group">
               <label for="">Public Path</label>
                 <a target="_blank" v-bind:href="public_path"><p>{{public_path}}</p></a>
@@ -77,7 +88,8 @@
             template:"",
             body:"",
             public_path:'',
-            // postBody:"",
+            categorys:{},
+            selected:0,
             // meta_key_checklist:'checklist',
             // meta_value_checklist:{},
             }
@@ -89,6 +101,15 @@
           this.getPost();
 
 
+          // get categories
+          // List
+
+
+          // Match Selected to chosen
+          // un upda
+
+
+          // console.log(this.getPost());
 
         },
           methods:{
@@ -107,10 +128,18 @@
             getPost: function(){
               // var data = {id:this.post_id};
               var sel = this;
+
+              axios
+                .get('/api/categories')
+                .then(function (response) {
+                  console.log(response.data);
+                  sel.categorys = response.data;
+                    });
+
               axios
                 .get('/api/admin/posts/edit/'+this.post_id)
                 .then(function (response) {
-                  console.log(response.data);
+                  // console.log(response.data);
                   sel.post = response.data;
 
                   sel.post_title = sel.post.title;
@@ -124,6 +153,8 @@
                   sel.status = sel.post.status;
                   sel.template = sel.post.template;
                   sel.body = sel.post.body;
+
+                  sel.selected = sel.post.category_id;
 
 
                   sel.public_path = '/posts/'+sel.post_slug;
@@ -146,12 +177,8 @@
             updatePost: function(){
 
               // var myJSON = JSON.stringify(this.post);
-
-
               // this.post.body = $('#summernote').summernote('code');
               // this.body = $('#summernote').summernote('code');
-
-
 
               // console.log(myJSON);
               var attributes = {
@@ -163,6 +190,7 @@
                 'meta_description':this.meta_description,
                 'slug':this.post_slug,
                 'status':this.status,
+                'category':this.selected,
               };
 
 

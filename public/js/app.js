@@ -3044,6 +3044,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3058,8 +3069,9 @@ __webpack_require__.r(__webpack_exports__);
       status: "",
       template: "",
       body: "",
-      public_path: '' // postBody:"",
-      // meta_key_checklist:'checklist',
+      public_path: '',
+      categorys: {},
+      selected: 0 // meta_key_checklist:'checklist',
       // meta_value_checklist:{},
 
     };
@@ -3068,7 +3080,11 @@ __webpack_require__.r(__webpack_exports__);
     // window.location.href
     var id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
     this.post_id = id;
-    this.getPost();
+    this.getPost(); // get categories
+    // List
+    // Match Selected to chosen
+    // un upda
+    // console.log(this.getPost());
   },
   methods: {
     // Submit checklist
@@ -3082,8 +3098,12 @@ __webpack_require__.r(__webpack_exports__);
     getPost: function getPost() {
       // var data = {id:this.post_id};
       var sel = this;
-      axios.get('/api/admin/posts/edit/' + this.post_id).then(function (response) {
+      axios.get('/api/categories').then(function (response) {
         console.log(response.data);
+        sel.categorys = response.data;
+      });
+      axios.get('/api/admin/posts/edit/' + this.post_id).then(function (response) {
+        // console.log(response.data);
         sel.post = response.data;
         sel.post_title = sel.post.title;
         sel.post_slug = sel.post.slug;
@@ -3095,6 +3115,7 @@ __webpack_require__.r(__webpack_exports__);
         sel.status = sel.post.status;
         sel.template = sel.post.template;
         sel.body = sel.post.body;
+        sel.selected = sel.post.category_id;
         sel.public_path = '/posts/' + sel.post_slug; // $(document).ready(function() {
         //   // $('#summernote').summernote({
         //   //   // placeholder: this.post.body,
@@ -3120,7 +3141,8 @@ __webpack_require__.r(__webpack_exports__);
         'meta_title': this.meta_title,
         'meta_description': this.meta_description,
         'slug': this.post_slug,
-        'status': this.status
+        'status': this.status,
+        'category': this.selected
       }; // var dt = { myJSON };
 
       var self = this;
@@ -41973,6 +41995,45 @@ var render = function() {
                 }
               }
             })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "" } }, [_vm._v("Category")]),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.selected,
+                    expression: "selected"
+                  }
+                ],
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.selected = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  }
+                }
+              },
+              _vm._l(_vm.categorys, function(category) {
+                return _c("option", { domProps: { value: category.id } }, [
+                  _vm._v(_vm._s(category.name))
+                ])
+              }),
+              0
+            )
           ]),
           _vm._v(" "),
           _vm.status
