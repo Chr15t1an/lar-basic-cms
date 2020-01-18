@@ -74,7 +74,7 @@ Route::get('/categories', 'CategoryController@index')->middleware('auth:api');
 // Add Cat.
 Route::post('/categories/create', 'CategoryController@create')->middleware('auth:api');
 //Edit Cat. Change Name.
-Route::post('/categories/edit/{name}', 'CategoryController@update');//->middleware('auth:api');
+Route::post('/categories/edit/{name}', 'CategoryController@update')->middleware('auth:api');
 //Delete Cat.
 Route::post('/categories/delete/{slug}', 'CategoryController@destroy')->middleware('auth:api');
 

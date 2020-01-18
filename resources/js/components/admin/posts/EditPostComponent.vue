@@ -132,7 +132,7 @@
               axios
                 .get('/api/categories')
                 .then(function (response) {
-                  console.log(response.data);
+                  // console.log(response.data);
                   sel.categorys = response.data;
                     });
 

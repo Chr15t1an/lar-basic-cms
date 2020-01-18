@@ -71,9 +71,9 @@ Vue.component('uploadfiles-component', require('./components/admin/UploadFilesCo
 //Create sitemap component
 Vue.component('displayfiles-component', require('./components/admin/DisplayFilesComponent.vue').default);
 
+//CRUD Categories component
 
-
-
+Vue.component('categories-component', require('./components/admin/CategorysComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
