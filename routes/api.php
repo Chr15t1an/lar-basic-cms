@@ -79,5 +79,12 @@ Route::post('/categories/edit/{name}', 'CategoryController@update')->middleware(
 Route::post('/categories/delete/{slug}', 'CategoryController@destroy')->middleware('auth:api');
 
 
-//Posts
-// Route::post('/categories/add/cat', 'CategoryController@destroy')->middleware('auth:api');
+//Tags
+// All Cats.
+Route::get('/tags', 'TagController@index')->middleware('auth:api');
+// Add Cat.
+Route::post('/tag/create', 'TagController@create')->middleware('auth:api');
+//Edit Cat. Change Name.
+Route::post('/tag/edit/{name}', 'TagController@update')->middleware('auth:api');
+//Delete Cat.
+Route::post('/tag/delete/{slug}', 'TagController@destroy')->middleware('auth:api');

@@ -7,6 +7,7 @@ use App\Post;
 use Illuminate\Support\Facades\Validator;
 
 use App\Category;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -91,8 +92,23 @@ class PostController extends Controller
                 }
 
 
+
+                // if ($request->tag) {
+                //
+                //   $tagId = intval($request->tag);
+                //
+                //   $tag = Tag::findOrFail($tagId);
+                //
+                //
+                //   if($tag) {
+                //                       // dd($tag);
+                //     $newPost->tag()->attach($tag->id);
+                //   }
+                // }
+
+
                 $newPost->save();
-                return response()->json(['msg'=>'Post Created.','id'=>$newPost->id]);
+               return response()->json(['msg'=>'Post Created.','id'=>$newPost->id]);
 
               } catch (\Exception $e) {
                 //Return Errors
@@ -189,6 +205,22 @@ class PostController extends Controller
                        $newPost->category()->associate($category);
                    }
              }
+
+
+             if ($request->tag) {
+
+               $tagId = intval($request->tag);
+
+               $tag = Tag::findOrFail($tagId);
+
+
+               if($tag) {
+
+                 $newPost->tag()->attach($tag->id);
+               }
+             }
+
+
 
            $newPost->save();
            return response()->json(['msg'=>'Post Updated.']);
