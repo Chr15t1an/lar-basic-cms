@@ -16,15 +16,34 @@
       <table class="table table-responsive">
         <thead>
           <tr>
-            <th scope="col">#</th>
+            <th scope="col">Edit</th>
             <th scope="col">Name</th>
             <th scope="col">Delete</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(category, name, index) in categorys">
-            <th scope="row">{{ index }}</th>
-            <td>{{ category.name }}</td>
+            <th scope="row">
+              <a v-on:click="edit(category.name)">
+                <i v-bind:class="category.name" class="material-icons">
+                build
+                </i>
+              </a>
+              <a  v-on:click="save(category.name)">
+                <i  v-bind:class="category.name+'-editing d-none'" class="material-icons">
+                  done
+                </i>
+              </a>
+
+            </th>
+            <td v-bind:class="category.name">{{ category.name }}</td>
+            <td v-bind:class="category.name+'-editing d-none'">
+              <input v-bind:value="category.name" type="text" class="form-control" v-bind:id="category.name">
+            <a>
+
+            </a>
+            </td>
+
             <td><a href="#" v-on:click="destroy(category.name)">Delete</a></td>
           </tr>
 
@@ -53,6 +72,7 @@
             errors:{},
             categorys:{},
             newCatName:"",
+            editing:false,
             }
           },
 
@@ -85,6 +105,21 @@
                   sel.categorys = response.data;
                     });
             },
+            save: function(name) {
+              // console.log(name);
+              var input = $("#"+name).val();
+              var sel = this;
+
+              var attributes = {
+                'name':input,
+              };
+
+              axios.post('/api/categories/edit/'+name,attributes)
+                    .then(function (response) {
+                      sel.newCatName = "",
+                      sel.getCats();
+                    })
+            },
 
             add: function(name) {
 
@@ -99,6 +134,17 @@
                       self.newCatName = "",
                       self.getCats();
                     })
+            },
+            edit: function(name) {
+
+              console.log(name);
+              // Show Editing window
+              $('.'+name+'-editing').removeClass( "d-none");
+              // Hide Basic
+              $('.'+name).addClass( "d-none");
+
+
+              console.log('.'+name+'-editing');
             },
             },
             mounted: function () {

@@ -1859,12 +1859,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       errors: {},
       categorys: {},
-      newCatName: ""
+      newCatName: "",
+      editing: false
     };
   },
   created: function created() {
@@ -1889,6 +1909,17 @@ __webpack_require__.r(__webpack_exports__);
         sel.categorys = response.data;
       });
     },
+    save: function save(name) {
+      // console.log(name);
+      var input = $("#" + name).val();
+      var sel = this;
+      var attributes = {
+        'name': input
+      };
+      axios.post('/api/categories/edit/' + name, attributes).then(function (response) {
+        sel.newCatName = "", sel.getCats();
+      });
+    },
     add: function add(name) {
       var self = this;
       var attributes = {
@@ -1897,6 +1928,14 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/api/categories/create', attributes).then(function (response) {
         self.newCatName = "", self.getCats();
       });
+    },
+    edit: function edit(name) {
+      console.log(name); // Show Editing window
+
+      $('.' + name + '-editing').removeClass("d-none"); // Hide Basic
+
+      $('.' + name).addClass("d-none");
+      console.log('.' + name + '-editing');
     }
   },
   mounted: function mounted() {}
@@ -40850,10 +40889,62 @@ var render = function() {
               _vm._l(_vm.categorys, function(category, name, index) {
                 return _c("tr", [
                   _c("th", { attrs: { scope: "row" } }, [
-                    _vm._v(_vm._s(index))
+                    _c(
+                      "a",
+                      {
+                        on: {
+                          click: function($event) {
+                            return _vm.edit(category.name)
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "i",
+                          {
+                            staticClass: "material-icons",
+                            class: category.name
+                          },
+                          [_vm._v("\n              build\n              ")]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        on: {
+                          click: function($event) {
+                            return _vm.save(category.name)
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "i",
+                          {
+                            staticClass: "material-icons",
+                            class: category.name + "-editing d-none"
+                          },
+                          [_vm._v("\n                done\n              ")]
+                        )
+                      ]
+                    )
                   ]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(category.name))]),
+                  _c("td", { class: category.name }, [
+                    _vm._v(_vm._s(category.name))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { class: category.name + "-editing d-none" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: category.name },
+                      domProps: { value: category.name }
+                    }),
+                    _vm._v(" "),
+                    _c("a")
+                  ]),
                   _vm._v(" "),
                   _c("td", [
                     _c(
@@ -40923,7 +41014,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
         _vm._v(" "),
