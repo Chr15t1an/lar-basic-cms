@@ -54,6 +54,17 @@
 
             </div>
 
+            <div class="form-group">
+                 <label for="">Tags</label>
+                 <!-- <input v-model="category" type="checkbox" class="form-control" id="" > -->
+
+                 <select v-model="selected">
+                  <option v-for="category in categorys"  v-bind:value="category.id" >{{category.name}}</option>
+                 </select>
+
+
+            </div>
+
             <div v-if="status" class="form-group">
               <label for="">Public Path</label>
                 <a target="_blank" v-bind:href="public_path"><p>{{public_path}}</p></a>
@@ -89,6 +100,7 @@
             body:"",
             public_path:'',
             categorys:{},
+            tags:{},
             selected:0,
             // meta_key_checklist:'checklist',
             // meta_value_checklist:{},
@@ -101,15 +113,10 @@
           this.getPost();
 
 
-          // get categories
-          // List
-
-
-          // Match Selected to chosen
-          // un upda
-
-
-          // console.log(this.getPost());
+        // Get all Tags
+        // List all tags as pills.
+        // X remove from array
+        // When you type it auto fills available options. 
 
         },
           methods:{

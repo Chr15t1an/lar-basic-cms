@@ -3338,6 +3338,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3354,6 +3365,7 @@ __webpack_require__.r(__webpack_exports__);
       body: "",
       public_path: '',
       categorys: {},
+      tags: {},
       selected: 0 // meta_key_checklist:'checklist',
       // meta_value_checklist:{},
 
@@ -3363,11 +3375,10 @@ __webpack_require__.r(__webpack_exports__);
     // window.location.href
     var id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
     this.post_id = id;
-    this.getPost(); // get categories
-    // List
-    // Match Selected to chosen
-    // un upda
-    // console.log(this.getPost());
+    this.getPost(); // Get all Tags
+    // List all tags as pills.
+    // X remove from array
+    // When you type it auto fills available options. 
   },
   methods: {
     // Submit checklist
@@ -42662,6 +42673,45 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "" } }, [_vm._v("Category")]),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.selected,
+                    expression: "selected"
+                  }
+                ],
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.selected = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  }
+                }
+              },
+              _vm._l(_vm.categorys, function(category) {
+                return _c("option", { domProps: { value: category.id } }, [
+                  _vm._v(_vm._s(category.name))
+                ])
+              }),
+              0
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "" } }, [_vm._v("Tags")]),
             _vm._v(" "),
             _c(
               "select",
