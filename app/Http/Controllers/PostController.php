@@ -207,17 +207,33 @@ class PostController extends Controller
              }
 
 
+             // Issue Tags when attached will create mutliple records.
+             // Clear all tags first then add then attach
+             // two tags
              if ($request->tag) {
+               $newPost->tag()->detach();
 
-               $tagId = intval($request->tag);
+               $tagIds = explode(",",$request->tag);
+               // dd($tagIds);
 
-               $tag = Tag::findOrFail($tagId);
+               foreach ($tagIds as $id) {
+                 // dd($id);
+                 $tagId = intval($id);
+                 $newPost->tag()->attach($tagId);
 
-
-               if($tag) {
-
-                 $newPost->tag()->attach($tag->id);
                }
+
+
+
+               // dd($tagId);
+               // $tag = Tag::findOrFail($tagId);
+
+
+               // if($tagId) {
+               //   $newPost->tag()->detach();
+               //   //This is where you will loop them.
+               //   $newPost->tag()->attach($tagId);
+               // }
              }
 
 

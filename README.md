@@ -24,7 +24,9 @@ From End JS & CSS Are not separated enough.
 
 
 
-Attaching tags will Create Multiple Records. 
+Attaching tags will Create Multiple Records.
+
+Images thing
 
 
 
