@@ -139,6 +139,12 @@ Route::get('/admin/categories', function () {
     return view('admin.settings.categories');
 })->middleware('auth');
 
+Route::get('/admin/tags', function () {
+    //Use onpage Vue Component to get data
+    return view('admin.settings.tags');
+})->middleware('auth');
+
+
 
 /*
 |--------------------------------------------------------------------------
