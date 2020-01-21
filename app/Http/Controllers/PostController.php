@@ -146,7 +146,9 @@ class PostController extends Controller
         // return gettype($id);
         $id = (int)$id;
         $post = post::findOrFail($id);
-        // dd($post);
+        //Get the relationships. 
+        $post->tag;
+
         return $post;
     }
 

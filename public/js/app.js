@@ -3349,6 +3349,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3366,6 +3374,7 @@ __webpack_require__.r(__webpack_exports__);
       public_path: '',
       categorys: {},
       tags: {},
+      postTags: {},
       selected: 0 // meta_key_checklist:'checklist',
       // meta_value_checklist:{},
 
@@ -3378,7 +3387,7 @@ __webpack_require__.r(__webpack_exports__);
     this.getPost(); // Get all Tags
     // List all tags as pills.
     // X remove from array
-    // When you type it auto fills available options. 
+    // When you type it auto fills available options.
   },
   methods: {
     // Submit checklist
@@ -3391,13 +3400,10 @@ __webpack_require__.r(__webpack_exports__);
     //Get CHECKLIST
     getPost: function getPost() {
       // var data = {id:this.post_id};
-      var sel = this;
-      axios.get('/api/categories').then(function (response) {
-        // console.log(response.data);
-        sel.categorys = response.data;
-      });
+      var sel = this; // get Post
+
       axios.get('/api/admin/posts/edit/' + this.post_id).then(function (response) {
-        // console.log(response.data);
+        console.log(response.data);
         sel.post = response.data;
         sel.post_title = sel.post.title;
         sel.post_slug = sel.post.slug;
@@ -3410,14 +3416,60 @@ __webpack_require__.r(__webpack_exports__);
         sel.template = sel.post.template;
         sel.body = sel.post.body;
         sel.selected = sel.post.category_id;
-        sel.public_path = '/posts/' + sel.post_slug; // $(document).ready(function() {
-        //   // $('#summernote').summernote({
-        //   //   // placeholder: this.post.body,
-        //   // });https://summernote.org/
-        //   console.log(sel.post.body);
-        //   $('#summernote').summernote('code', sel.post.body);
-        //   // $('#summernote').summernote({tabsize: 2,height: 100});
-        // });
+        sel.postTags = sel.post.tag;
+        sel.public_path = '/posts/' + sel.post_slug; //Get all Cats
+
+        axios.get('/api/categories').then(function (response) {
+          // console.log(response.data);
+          sel.categorys = response.data;
+        }); //Get all Tags
+
+        axios.get('/api/tags').then(function (response) {
+          // console.log(response.data);
+          sel.tags = response.data;
+          var allTags = response.data;
+          var postTags = sel.postTags;
+          var unselectedTags = {}; // var postId = sel.post_id;
+          // allTags
+
+          console.log('All Tags');
+          console.log(allTags);
+
+          for (var i = 0; i < postTags.length; i++) {
+            var tag = postTags[i];
+            console.log('Trying');
+            console.log(tag);
+
+            if (allTags.find(tag)) {
+              console.log('found');
+              console.log(tag);
+            } //
+            // // is tag attached to post? if yes skip if no add
+            // if (postTags.find(tagName)) {
+            //   console.log('found');
+            //   console.log(tagName);
+            // }
+            // if ( arr[i] === 5) {
+            //   arr.splice(i, 1);
+            // }
+
+          } // var postTags = sel.postTags;
+          //
+          // // for each item in post tag
+          // // check if it is in all tags and then remove it.
+          // //
+          //
+          // console.log("Tags");
+          // for( var i = 0; i < postTags.length; i++){
+          //
+          //   console.log(postTags[i]);
+          //    // if ( arr[i] === 5) {
+          //    //   arr.splice(i, 1);
+          //    // }
+          // }
+          // sel.postTags = response.data;
+
+        });
       });
       this.submitting = false;
     },
@@ -42463,12 +42515,14 @@ var render = function() {
             { staticClass: "alert alert-warning", attrs: { role: "alert" } },
             [
               _vm._v(
-                "\n              There were some validation errors.\n              "
+                "\n                There were some validation errors.\n                "
               ),
               _vm._l(this.errors, function(error) {
                 return _c("div", [
                   _vm._v(
-                    "\n                " + _vm._s(error) + "\n              "
+                    "\n                  " +
+                      _vm._s(error) +
+                      "\n                "
                   )
                 ])
               })
@@ -42710,44 +42764,62 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "" } }, [_vm._v("Tags")]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                directives: [
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c("label", { attrs: { for: "" } }, [_vm._v("Tags")]),
+              _vm._v(" "),
+              _vm._l(_vm.tags, function(tag) {
+                return _c(
+                  "span",
                   {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.selected,
-                    expression: "selected"
-                  }
-                ],
-                on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.selected = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  }
-                }
-              },
-              _vm._l(_vm.categorys, function(category) {
-                return _c("option", { domProps: { value: category.id } }, [
-                  _vm._v(_vm._s(category.name))
-                ])
+                    staticClass: "badge badge-secondary",
+                    attrs: { value: tag.id }
+                  },
+                  [
+                    _vm._v(_vm._s(tag.name) + "\n                   "),
+                    _c(
+                      "a",
+                      {
+                        on: {
+                          click: function($event) {
+                            return _vm.addTag(tag.id)
+                          }
+                        }
+                      },
+                      [_c("i", [_vm._v("+")])]
+                    )
+                  ]
+                )
               }),
-              0
-            )
-          ]),
+              _vm._v(" "),
+              _vm._l(_vm.postTags, function(tag) {
+                return _c(
+                  "span",
+                  {
+                    staticClass: "badge badge-primary",
+                    attrs: { value: tag.id }
+                  },
+                  [
+                    _vm._v(_vm._s(tag.name) + "\n                  "),
+                    _c(
+                      "a",
+                      {
+                        on: {
+                          click: function($event) {
+                            return _vm.removeTag(tag.id)
+                          }
+                        }
+                      },
+                      [_c("i", [_vm._v("X")])]
+                    )
+                  ]
+                )
+              })
+            ],
+            2
+          ),
           _vm._v(" "),
           _vm.status
             ? _c("div", { staticClass: "form-group" }, [

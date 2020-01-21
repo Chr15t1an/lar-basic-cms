@@ -56,11 +56,19 @@
 
             <div class="form-group">
                  <label for="">Tags</label>
-                 <!-- <input v-model="category" type="checkbox" class="form-control" id="" > -->
+                 <span v-for="tag in tags" class="badge badge-secondary" v-bind:value="tag.id" >{{tag.name}}
+                   <a v-on:click="addTag(tag.id)">
+                     <i>+</i>
+                   </a>
+                   </span>
+<!-- v-model="addTag" -->
+                  <!-- <option v-for="category in categorys"  v-bind:value="category.id" >{{category.name}}</option> -->
+                <span v-for="tag in postTags" class="badge badge-primary" v-bind:value="tag.id" >{{tag.name}}
+                  <a v-on:click="removeTag(tag.id)">
+                    <i>X</i>
+                  </a>
+                  </span>
 
-                 <select v-model="selected">
-                  <option v-for="category in categorys"  v-bind:value="category.id" >{{category.name}}</option>
-                 </select>
 
 
             </div>
@@ -101,6 +109,7 @@
             public_path:'',
             categorys:{},
             tags:{},
+            postTags:{},
             selected:0,
             // meta_key_checklist:'checklist',
             // meta_value_checklist:{},
@@ -116,10 +125,12 @@
         // Get all Tags
         // List all tags as pills.
         // X remove from array
-        // When you type it auto fills available options. 
+        // When you type it auto fills available options.
 
         },
           methods:{
+
+  
             // Submit checklist
             deletePost: function(){
 
@@ -136,17 +147,12 @@
               // var data = {id:this.post_id};
               var sel = this;
 
-              axios
-                .get('/api/categories')
-                .then(function (response) {
-                  // console.log(response.data);
-                  sel.categorys = response.data;
-                    });
 
+            // get Post
               axios
                 .get('/api/admin/posts/edit/'+this.post_id)
                 .then(function (response) {
-                  // console.log(response.data);
+                  console.log(response.data);
                   sel.post = response.data;
 
                   sel.post_title = sel.post.title;
@@ -163,19 +169,82 @@
 
                   sel.selected = sel.post.category_id;
 
+                  sel.postTags = sel.post.tag;
+
 
                   sel.public_path = '/posts/'+sel.post_slug;
 
-                  // $(document).ready(function() {
-                  //   // $('#summernote').summernote({
-                  //   //   // placeholder: this.post.body,
-                  //   // });https://summernote.org/
-                  //   console.log(sel.post.body);
-                  //   $('#summernote').summernote('code', sel.post.body);
-                  //   // $('#summernote').summernote({tabsize: 2,height: 100});
-                  // });
 
 
+
+                  //Get all Cats
+                        axios
+                          .get('/api/categories')
+                          .then(function (response) {
+                            // console.log(response.data);
+                            sel.categorys = response.data;
+                              });
+
+                  //Get all Tags
+                      axios
+                        .get('/api/tags')
+                        .then(function (response) {
+                          // console.log(response.data);
+                          sel.tags = response.data;
+
+
+                          var allTags = response.data;
+                          var postTags = sel.postTags;
+                          var unselectedTags = {};
+                          // var postId = sel.post_id;
+                          // allTags
+                          console.log('All Tags');
+                          console.log(allTags);
+
+                          for( var i = 0; i < postTags.length; i++){
+
+                            var tag = postTags[i];
+                            console.log('Trying');
+                            console.log(tag);
+
+                            if (allTags.find(tag)) {
+                              console.log('found');
+                              console.log(tag);
+                            }
+
+                            //
+                            // // is tag attached to post? if yes skip if no add
+                            // if (postTags.find(tagName)) {
+                            //   console.log('found');
+                            //   console.log(tagName);
+                            // }
+
+                             // if ( arr[i] === 5) {
+                             //   arr.splice(i, 1);
+                             // }
+                          }
+
+                          // var postTags = sel.postTags;
+                          //
+                          // // for each item in post tag
+                          // // check if it is in all tags and then remove it.
+                          // //
+                          //
+                          // console.log("Tags");
+                          // for( var i = 0; i < postTags.length; i++){
+                          //
+                          //   console.log(postTags[i]);
+                          //    // if ( arr[i] === 5) {
+                          //    //   arr.splice(i, 1);
+                          //    // }
+                          // }
+
+
+
+
+
+                          // sel.postTags = response.data;
+                            });
 
             });
             this.submitting = false;
