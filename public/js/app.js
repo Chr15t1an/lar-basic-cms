@@ -3403,7 +3403,7 @@ __webpack_require__.r(__webpack_exports__);
       var sel = this; // get Post
 
       axios.get('/api/admin/posts/edit/' + this.post_id).then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
         sel.post = response.data;
         sel.post_title = sel.post.title;
         sel.post_slug = sel.post.slug;
@@ -3426,34 +3426,52 @@ __webpack_require__.r(__webpack_exports__);
 
         axios.get('/api/tags').then(function (response) {
           // console.log(response.data);
-          sel.tags = response.data;
+          // sel.tags = response.data;
           var allTags = response.data;
           var postTags = sel.postTags;
-          var unselectedTags = {}; // var postId = sel.post_id;
-          // allTags
+          var unselectedTags = []; //Works but there is a timing issue
+          // postTags.forEach(
+          //   el => {
+          //     console.log('.add-'+el.name);
+          //     $( '.add-'+el.name ).hide();
+          //   }
+          // )
 
-          console.log('All Tags');
-          console.log(allTags);
+          allTags.forEach(function (el) {
+            var found = postTags.find(function (e) {
+              return e.id === el.id;
+            }); // console.log(found);
 
-          for (var i = 0; i < postTags.length; i++) {
-            var tag = postTags[i];
-            console.log('Trying');
-            console.log(tag);
-
-            if (allTags.find(tag)) {
-              console.log('found');
-              console.log(tag);
-            } //
-            // // is tag attached to post? if yes skip if no add
-            // if (postTags.find(tagName)) {
-            //   console.log('found');
-            //   console.log(tagName);
-            // }
-            // if ( arr[i] === 5) {
-            //   arr.splice(i, 1);
-            // }
-
-          } // var postTags = sel.postTags;
+            if (!found) {
+              unselectedTags.push(el);
+            }
+          });
+          sel.tags = unselectedTags; // var postId = sel.post_id;
+          // // allTags
+          // console.log('All Tags');
+          // console.log(allTags);
+          //
+          // for( var i = 0; i < postTags.length; i++){
+          //
+          //   var tag = postTags[i];
+          //   console.log('Trying');
+          //   console.log(tag);
+          //
+          //   if (allTags.find(tag)) {
+          //     console.log('found');
+          //     console.log(tag);
+          //   }
+          //
+          // // is tag attached to post? if yes skip if no add
+          // if (postTags.find(tagName)) {
+          //   console.log('found');
+          //   console.log(tagName);
+          // }
+          // if ( arr[i] === 5) {
+          //   arr.splice(i, 1);
+          // }
+          // }
+          // var postTags = sel.postTags;
           //
           // // for each item in post tag
           // // check if it is in all tags and then remove it.
@@ -3468,7 +3486,6 @@ __webpack_require__.r(__webpack_exports__);
           //    // }
           // }
           // sel.postTags = response.data;
-
         });
       });
       this.submitting = false;
@@ -42774,7 +42791,7 @@ var render = function() {
                 return _c(
                   "span",
                   {
-                    staticClass: "badge badge-secondary",
+                    class: "add-" + tag.name + " badge badge-secondary",
                     attrs: { value: tag.id }
                   },
                   [
@@ -42798,7 +42815,7 @@ var render = function() {
                 return _c(
                   "span",
                   {
-                    staticClass: "badge badge-primary",
+                    class: "remove-" + tag.name + " badge badge-primary",
                     attrs: { value: tag.id }
                   },
                   [

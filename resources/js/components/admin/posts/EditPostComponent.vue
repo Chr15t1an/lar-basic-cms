@@ -56,14 +56,14 @@
 
             <div class="form-group">
                  <label for="">Tags</label>
-                 <span v-for="tag in tags" class="badge badge-secondary" v-bind:value="tag.id" >{{tag.name}}
+                 <span v-for="tag in tags" v-bind:class="'add-'+tag.name+' badge badge-secondary'" v-bind:value="tag.id" >{{tag.name}}
                    <a v-on:click="addTag(tag.id)">
                      <i>+</i>
                    </a>
                    </span>
 <!-- v-model="addTag" -->
                   <!-- <option v-for="category in categorys"  v-bind:value="category.id" >{{category.name}}</option> -->
-                <span v-for="tag in postTags" class="badge badge-primary" v-bind:value="tag.id" >{{tag.name}}
+                <span v-for="tag in postTags" v-bind:class="'remove-'+tag.name+' badge badge-primary'" v-bind:value="tag.id" >{{tag.name}}
                   <a v-on:click="removeTag(tag.id)">
                     <i>X</i>
                   </a>
@@ -130,7 +130,7 @@
         },
           methods:{
 
-  
+
             // Submit checklist
             deletePost: function(){
 
@@ -152,7 +152,7 @@
               axios
                 .get('/api/admin/posts/edit/'+this.post_id)
                 .then(function (response) {
-                  console.log(response.data);
+                  // console.log(response.data);
                   sel.post = response.data;
 
                   sel.post_title = sel.post.title;
@@ -190,27 +190,46 @@
                         .get('/api/tags')
                         .then(function (response) {
                           // console.log(response.data);
-                          sel.tags = response.data;
+                          // sel.tags = response.data;
 
 
                           var allTags = response.data;
                           var postTags = sel.postTags;
-                          var unselectedTags = {};
-                          // var postId = sel.post_id;
-                          // allTags
-                          console.log('All Tags');
-                          console.log(allTags);
+                          var unselectedTags = [];
 
-                          for( var i = 0; i < postTags.length; i++){
-
-                            var tag = postTags[i];
-                            console.log('Trying');
-                            console.log(tag);
-
-                            if (allTags.find(tag)) {
-                              console.log('found');
-                              console.log(tag);
+                          //Works but there is a timing issue
+                            // postTags.forEach(
+                            //   el => {
+                            //     console.log('.add-'+el.name);
+                            //     $( '.add-'+el.name ).hide();
+                            //   }
+                            // )
+                            allTags.forEach(
+                              el => {
+                              var found = postTags.find(e => e.id === el.id );
+                              // console.log(found);
+                              if(!found){
+                                unselectedTags.push(el);
+                              }
                             }
+                          )
+                          sel.tags = unselectedTags;
+
+                          // var postId = sel.post_id;
+                          // // allTags
+                          // console.log('All Tags');
+                          // console.log(allTags);
+                          //
+                          // for( var i = 0; i < postTags.length; i++){
+                          //
+                          //   var tag = postTags[i];
+                          //   console.log('Trying');
+                          //   console.log(tag);
+                          //
+                          //   if (allTags.find(tag)) {
+                          //     console.log('found');
+                          //     console.log(tag);
+                          //   }
 
                             //
                             // // is tag attached to post? if yes skip if no add
@@ -222,7 +241,7 @@
                              // if ( arr[i] === 5) {
                              //   arr.splice(i, 1);
                              // }
-                          }
+                          // }
 
                           // var postTags = sel.postTags;
                           //
