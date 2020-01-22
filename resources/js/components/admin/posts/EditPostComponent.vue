@@ -156,7 +156,7 @@
                 }
               });
 
-          
+
 
             },
 
@@ -255,7 +255,14 @@
             //Update CHECKLIST
             updatePost: function(){
 
-              // console.log(myJSON);
+              //Prep Tag Ids For post.
+              var tagIds = "";
+              this.postTags.forEach( el =>{
+
+                tagIds = tagIds+el.id+',';
+              })
+              tagIds = tagIds.substring(0, tagIds.length - 1);
+
               var attributes = {
                 'title':this.post_title,
                 'body':this.body,
@@ -266,6 +273,7 @@
                 'slug':this.post_slug,
                 'status':this.status,
                 'category':this.selected,
+                'tag':tagIds,
               };
 
 
