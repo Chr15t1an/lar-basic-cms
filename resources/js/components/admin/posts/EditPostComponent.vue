@@ -108,9 +108,10 @@
             body:"",
             public_path:'',
             categorys:{},
-            tags:{},
-            postTags:{},
-            selected:0,
+            tags:{}, // These are the available tags - less the tags already applied.
+            postTags:{}, //Tags asscociated with the post
+            selected:0, // Catagory Related.
+            allAvailableTags:{},
             // meta_key_checklist:'checklist',
             // meta_value_checklist:{},
             }
@@ -129,12 +130,8 @@
 
         },
           methods:{
-
-
             // Submit checklist
             deletePost: function(){
-
-
             var self = this;
             axios
               .post('/api/admin/posts/delete/'+this.post_id)
@@ -142,11 +139,67 @@
                   window.location.replace("/admin/posts");
               });
             },
+
+            addTag: function(tag){
+            var self = this;
+            // hide from listed tags and add to added tags
+
+              // add to self.postTags
+              self.tags.forEach(
+              el =>{
+                var found = self.tags.find( a => a.id === tag);
+                if (found) {
+                  self.postTags.push(el);
+                  var index = self.tags.indexOf(found);
+                  // console.log(index);
+                  self.tags.splice(index, 1);
+                }
+              });
+
+          
+
+            },
+
+            removeTag: function(tag){
+            var self = this;
+
+            console.log('Ran');
+
+            // remove from self.postTags
+            self.postTags.forEach(
+            el =>{
+              var found = self.postTags.find( a => a.id === tag);
+              if (found) {
+                // self.postTags.push(el);
+                var index = self.postTags.indexOf(found);
+                // console.log(index);
+                self.postTags.splice(index, 1);
+
+                self.tags.push(found);
+              }
+            });
+
+            // // add to self.tags
+            // self.allAvailableTags.forEach(
+            // el =>{
+            //   var found = self.tags.find( a => a.id === tag);
+            //   console.log(found);
+            //   if (!found) {
+            //     self.tags.push(found);
+            //     // var index = self.tags.indexOf(found);
+            //     // console.log(index);
+            //     // self.tags.splice(index, 1);
+            //   }
+            // });
+
+
+
+            },
+
             //Get CHECKLIST
             getPost: function(){
               // var data = {id:this.post_id};
               var sel = this;
-
 
             // get Post
               axios
@@ -154,10 +207,8 @@
                 .then(function (response) {
                   // console.log(response.data);
                   sel.post = response.data;
-
                   sel.post_title = sel.post.title;
                   sel.post_slug = sel.post.slug;
-
                   sel.post_title = sel.post.title;
                   sel.post_slug = sel.post.slug;
                   sel.featured_image = sel.post.featured_image;
@@ -166,16 +217,9 @@
                   sel.status = sel.post.status;
                   sel.template = sel.post.template;
                   sel.body = sel.post.body;
-
                   sel.selected = sel.post.category_id;
-
                   sel.postTags = sel.post.tag;
-
-
                   sel.public_path = '/posts/'+sel.post_slug;
-
-
-
 
                   //Get all Cats
                         axios
@@ -184,26 +228,15 @@
                             // console.log(response.data);
                             sel.categorys = response.data;
                               });
-
                   //Get all Tags
                       axios
                         .get('/api/tags')
                         .then(function (response) {
-                          // console.log(response.data);
-                          // sel.tags = response.data;
-
-
+                          sel.allAvailableTags = response.data;
                           var allTags = response.data;
                           var postTags = sel.postTags;
                           var unselectedTags = [];
 
-                          //Works but there is a timing issue
-                            // postTags.forEach(
-                            //   el => {
-                            //     console.log('.add-'+el.name);
-                            //     $( '.add-'+el.name ).hide();
-                            //   }
-                            // )
                             allTags.forEach(
                               el => {
                               var found = postTags.find(e => e.id === el.id );
@@ -214,66 +247,13 @@
                             }
                           )
                           sel.tags = unselectedTags;
-
-                          // var postId = sel.post_id;
-                          // // allTags
-                          // console.log('All Tags');
-                          // console.log(allTags);
-                          //
-                          // for( var i = 0; i < postTags.length; i++){
-                          //
-                          //   var tag = postTags[i];
-                          //   console.log('Trying');
-                          //   console.log(tag);
-                          //
-                          //   if (allTags.find(tag)) {
-                          //     console.log('found');
-                          //     console.log(tag);
-                          //   }
-
-                            //
-                            // // is tag attached to post? if yes skip if no add
-                            // if (postTags.find(tagName)) {
-                            //   console.log('found');
-                            //   console.log(tagName);
-                            // }
-
-                             // if ( arr[i] === 5) {
-                             //   arr.splice(i, 1);
-                             // }
-                          // }
-
-                          // var postTags = sel.postTags;
-                          //
-                          // // for each item in post tag
-                          // // check if it is in all tags and then remove it.
-                          // //
-                          //
-                          // console.log("Tags");
-                          // for( var i = 0; i < postTags.length; i++){
-                          //
-                          //   console.log(postTags[i]);
-                          //    // if ( arr[i] === 5) {
-                          //    //   arr.splice(i, 1);
-                          //    // }
-                          // }
-
-
-
-
-
-                          // sel.postTags = response.data;
-                            });
+                        });
 
             });
             this.submitting = false;
             },
             //Update CHECKLIST
             updatePost: function(){
-
-              // var myJSON = JSON.stringify(this.post);
-              // this.post.body = $('#summernote').summernote('code');
-              // this.body = $('#summernote').summernote('code');
 
               // console.log(myJSON);
               var attributes = {
@@ -313,8 +293,6 @@
                   self.errors = errorMsgs;
                     self.submitting = false;
                 }else {
-
-
                   self.getPost();
                 }
               });
@@ -325,9 +303,7 @@
 
           },
 
-              }
-              //  Example Checklist
-              // { "CHECKLIST": { "Items": [ { "NAME": "Uptime Robot", "STATE": false }, { "NAME": "Cloudflare", "STATE": false }, { "NAME": "Google Tag Manager", "STATE": false }, { "NAME": "Google Analitics", "STATE": false }, { "NAME": "Turn on ecommerce tracking | Google Analitics", "STATE": false }, { "NAME": "Bugsnag", "STATE": false }, { "NAME": "Generate Sitemap", "STATE": false }, { "NAME": "Robot.txt", "STATE": false }, { "NAME": "Check H1s and Metas", "STATE": false }, { "NAME": "Set up Conversions Events", "STATE": false }, { "NAME": "FavIcon - https://favicon.io/favicon-converter/", "STATE": false }, { "NAME": "Mixpanel.com", "STATE": false }, { "NAME": "Disable Public Registration", "STATE": false } ] } }
+    }
 
 
 </script>

@@ -3374,8 +3374,12 @@ __webpack_require__.r(__webpack_exports__);
       public_path: '',
       categorys: {},
       tags: {},
+      // These are the available tags - less the tags already applied.
       postTags: {},
-      selected: 0 // meta_key_checklist:'checklist',
+      //Tags asscociated with the post
+      selected: 0,
+      // Catagory Related.
+      allAvailableTags: {} // meta_key_checklist:'checklist',
       // meta_value_checklist:{},
 
     };
@@ -3396,6 +3400,52 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/api/admin/posts/delete/' + this.post_id).then(function (response) {
         window.location.replace("/admin/posts");
       });
+    },
+    addTag: function addTag(tag) {
+      var self = this; // hide from listed tags and add to added tags
+      // add to self.postTags
+
+      self.tags.forEach(function (el) {
+        var found = self.tags.find(function (a) {
+          return a.id === tag;
+        });
+
+        if (found) {
+          self.postTags.push(el);
+          var index = self.tags.indexOf(found); // console.log(index);
+
+          self.tags.splice(index, 1);
+        }
+      });
+    },
+    removeTag: function removeTag(tag) {
+      var self = this;
+      console.log('Ran'); // remove from self.postTags
+
+      self.postTags.forEach(function (el) {
+        var found = self.postTags.find(function (a) {
+          return a.id === tag;
+        });
+
+        if (found) {
+          // self.postTags.push(el);
+          var index = self.postTags.indexOf(found); // console.log(index);
+
+          self.postTags.splice(index, 1);
+          self.tags.push(found);
+        }
+      }); // // add to self.tags
+      // self.allAvailableTags.forEach(
+      // el =>{
+      //   var found = self.tags.find( a => a.id === tag);
+      //   console.log(found);
+      //   if (!found) {
+      //     self.tags.push(found);
+      //     // var index = self.tags.indexOf(found);
+      //     // console.log(index);
+      //     // self.tags.splice(index, 1);
+      //   }
+      // });
     },
     //Get CHECKLIST
     getPost: function getPost() {
@@ -3425,18 +3475,10 @@ __webpack_require__.r(__webpack_exports__);
         }); //Get all Tags
 
         axios.get('/api/tags').then(function (response) {
-          // console.log(response.data);
-          // sel.tags = response.data;
+          sel.allAvailableTags = response.data;
           var allTags = response.data;
           var postTags = sel.postTags;
-          var unselectedTags = []; //Works but there is a timing issue
-          // postTags.forEach(
-          //   el => {
-          //     console.log('.add-'+el.name);
-          //     $( '.add-'+el.name ).hide();
-          //   }
-          // )
-
+          var unselectedTags = [];
           allTags.forEach(function (el) {
             var found = postTags.find(function (e) {
               return e.id === el.id;
@@ -3446,55 +3488,13 @@ __webpack_require__.r(__webpack_exports__);
               unselectedTags.push(el);
             }
           });
-          sel.tags = unselectedTags; // var postId = sel.post_id;
-          // // allTags
-          // console.log('All Tags');
-          // console.log(allTags);
-          //
-          // for( var i = 0; i < postTags.length; i++){
-          //
-          //   var tag = postTags[i];
-          //   console.log('Trying');
-          //   console.log(tag);
-          //
-          //   if (allTags.find(tag)) {
-          //     console.log('found');
-          //     console.log(tag);
-          //   }
-          //
-          // // is tag attached to post? if yes skip if no add
-          // if (postTags.find(tagName)) {
-          //   console.log('found');
-          //   console.log(tagName);
-          // }
-          // if ( arr[i] === 5) {
-          //   arr.splice(i, 1);
-          // }
-          // }
-          // var postTags = sel.postTags;
-          //
-          // // for each item in post tag
-          // // check if it is in all tags and then remove it.
-          // //
-          //
-          // console.log("Tags");
-          // for( var i = 0; i < postTags.length; i++){
-          //
-          //   console.log(postTags[i]);
-          //    // if ( arr[i] === 5) {
-          //    //   arr.splice(i, 1);
-          //    // }
-          // }
-          // sel.postTags = response.data;
+          sel.tags = unselectedTags;
         });
       });
       this.submitting = false;
     },
     //Update CHECKLIST
     updatePost: function updatePost() {
-      // var myJSON = JSON.stringify(this.post);
-      // this.post.body = $('#summernote').summernote('code');
-      // this.body = $('#summernote').summernote('code');
       // console.log(myJSON);
       var attributes = {
         'title': this.post_title,
@@ -3536,9 +3536,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  mounted: function mounted() {} //  Example Checklist
-  // { "CHECKLIST": { "Items": [ { "NAME": "Uptime Robot", "STATE": false }, { "NAME": "Cloudflare", "STATE": false }, { "NAME": "Google Tag Manager", "STATE": false }, { "NAME": "Google Analitics", "STATE": false }, { "NAME": "Turn on ecommerce tracking | Google Analitics", "STATE": false }, { "NAME": "Bugsnag", "STATE": false }, { "NAME": "Generate Sitemap", "STATE": false }, { "NAME": "Robot.txt", "STATE": false }, { "NAME": "Check H1s and Metas", "STATE": false }, { "NAME": "Set up Conversions Events", "STATE": false }, { "NAME": "FavIcon - https://favicon.io/favicon-converter/", "STATE": false }, { "NAME": "Mixpanel.com", "STATE": false }, { "NAME": "Disable Public Registration", "STATE": false } ] } }
-
+  mounted: function mounted() {}
 });
 
 /***/ }),
