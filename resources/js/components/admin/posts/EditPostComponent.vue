@@ -263,6 +263,10 @@
               })
               tagIds = tagIds.substring(0, tagIds.length - 1);
 
+              if(tagIds === ""){
+                tagIds = 0; 
+              };
+
               var attributes = {
                 'title':this.post_title,
                 'body':this.body,
@@ -276,7 +280,7 @@
                 'tag':tagIds,
               };
 
-
+              console.log(attributes);
               // var dt = { myJSON };
               var self = this;
               axios
