@@ -3501,6 +3501,12 @@ __webpack_require__.r(__webpack_exports__);
         tagIds = tagIds + el.id + ',';
       });
       tagIds = tagIds.substring(0, tagIds.length - 1);
+
+      if (tagIds === "") {
+        tagIds = 0;
+      }
+
+      ;
       var attributes = {
         'title': this.post_title,
         'body': this.body,
@@ -3512,7 +3518,8 @@ __webpack_require__.r(__webpack_exports__);
         'status': this.status,
         'category': this.selected,
         'tag': tagIds
-      }; // var dt = { myJSON };
+      };
+      console.log(attributes); // var dt = { myJSON };
 
       var self = this;
       axios.post('/api/admin/posts/edit/' + this.post_id, attributes).then(function (response) {

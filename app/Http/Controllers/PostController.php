@@ -146,7 +146,7 @@ class PostController extends Controller
         // return gettype($id);
         $id = (int)$id;
         $post = post::findOrFail($id);
-        //Get the relationships. 
+        //Get the relationships.
         $post->tag;
 
         return $post;
@@ -212,17 +212,18 @@ class PostController extends Controller
              // Issue Tags when attached will create mutliple records.
              // Clear all tags first then add then attach
              // two tags
-             if ($request->tag) {
+
+             // dd($request->tag);
+
+             if (isset($request->tag)) {
                $newPost->tag()->detach();
-
                $tagIds = explode(",",$request->tag);
-               // dd($tagIds);
-
                foreach ($tagIds as $id) {
-                 // dd($id);
                  $tagId = intval($id);
-                 $newPost->tag()->attach($tagId);
-
+                 if ($tagId) {
+                   // dd($tagId);
+                   $newPost->tag()->attach($tagId);
+                 }
                }
 
 
