@@ -1,4 +1,10 @@
 <?php
+// include '../site/routes/web.php';
+// if(file_exists('/site/routes/web.php')){
+//     include '/site/routes/web.php';
+//     }
+
+
 
 /*
 |--------------------------------------------------------------------------
