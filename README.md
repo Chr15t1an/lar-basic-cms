@@ -1,34 +1,3 @@
-Fix Broken Tests
-..Had to remove Sitmap. Library isnt working.
-..Need to do this myself.
-
-Read Post.
-
-Write Tests
--Start w/ Category
-Write Controllers
--Pass Tests.
-Write UI
-
-
-
-Then The next Is THe updating issue
-
-
-Sitemap is not being built well. Need to script this out later.
-
-
-
-
-From End JS & CSS Are not separated enough.
-
-
-
-Attaching tags will Create Multiple Records.
-
-Images thing
-
-
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -37,6 +6,52 @@ Images thing
 
 This project is built to make building marketing sites simple for me. It was also an attempt to exercise some coding skills and write tests. 
 This is version1. It's not perfect or polished but I think it will work fine for now. 
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+************************** Setting up a Child Site    *************************
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Step 1
+Create a new repo for the child site.
+
+Step 2
+Make a local copy of your new forked repository using git clone.
+```shell
+git clone https://github.com/<username>/<forked-repo>.git
+```
+Step 3
+Add your original repository as an Upstream Remote
+```shell
+cd <forked-repo>
+git remote add upstream https://github.com/<username>/<original-repo>.git
+```
+
+Step 4
+Update your fork with all the changes from your original repository using git pull.
+```shell
+git pull upstream master --allow-unrelated-histories
+```
+
+Step 5
+When you are done, simply push your new fork back into GitHub.
+```shell
+git push origin master
+```
+
+Process was found here
+  Set add as remote upstream.
+  https://deanmalone.net/post/how-to-fork-your-own-repo-on-github/
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*******************************       ........        **********************************
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
