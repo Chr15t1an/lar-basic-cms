@@ -2,10 +2,16 @@
 *******************************       Versioning        ********************************
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+This Project will need to be a submodual
+
+
+---
 Will Need to Test this in a new Project
 master - In line with the repo
 production - The local Project.
 
+
+Cant do master branch idea. You cant pull from a repo or push to a repo
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
