@@ -1,3 +1,14 @@
+Design
+
+- Layout
+- Find a template
+- Split front and backend.
+- Implament Decent Design.
+
+- Have the frontend be the documentation. ?
+
+
+
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -65,26 +76,8 @@ https://docs.google.com/document/d/1adkzcZA8odWzEm19zAf4boEuIhGyft3Zm3OQTLVjhc8/
 
 
 ## V2 ToDo's --- Moving forward GO Test Driven Development.
-- Solve the updating problem.
-
-Versioning
-git ignore a directory.
-- I will Been to include my directory of Files
-- Model View Conrollers Rourtes
-- Migrations
-Will need to include all files.
-- CX artisan commands.
-
-- It sucks having 2 functions do the same thing. (update vs store in PostsCon. )
-
 - Redesign BackEnd
 - Code documentation
-- Components
-- Registration
-- Checklist
-- Clear out errors on contacts.
-- Add Drag and Drop File uploader.
-https://css-tricks.com/instant-page/
 - Alerts- Notifications.
 - Video Player.
 - Allow Posts/Blog TO Be Disabled in Settings.
@@ -93,7 +86,7 @@ https://css-tricks.com/instant-page/
 - AWS FileStorage.
 - Add BugSnag.
 - Toggle AWS vs local storage.
-
+- Sitemap
 - Tests need to be ran in a separate database.
 - Add a fileName to Csv export.
 - Need Public vs Private metadata so that I can Control what gets read.
