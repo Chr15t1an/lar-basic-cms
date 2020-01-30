@@ -1,7 +1,8 @@
 Design
 
 - Layout
-- Find a template
+  - Find a template
+  - 
 - Split front and backend.
 - Implament Decent Design.
 

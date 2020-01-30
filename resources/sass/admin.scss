@@ -8,7 +8,8 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-
+// Argon Sass.
+@import 'argon-dashboard';
 
 //CX
 body{
@@ -285,4 +286,4 @@ font-size: 1.5rem;
 
       }
 
-*{ color: pink;}
+// *{ color: pink;}
