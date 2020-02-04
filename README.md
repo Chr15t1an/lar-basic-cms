@@ -2,8 +2,12 @@ Design
 
 - Layout
   - Find a template
-  - 
+  -
+
+Implament layout   
 - Split front and backend.
+
+Add a color pallet. 
 - Implament Decent Design.
 
 - Have the frontend be the documentation. ?
@@ -105,7 +109,7 @@ https://docs.google.com/document/d/1adkzcZA8odWzEm19zAf4boEuIhGyft3Zm3OQTLVjhc8/
 - Sanitize Admin post requests.
 - Public vs private meta values - Lock Api
 - Check CSRF Token for form submission
-
+- User Management
 
 ### V2. Deployment Process.
 - Set up CI in Gitlab

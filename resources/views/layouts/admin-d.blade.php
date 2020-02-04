@@ -13,6 +13,20 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
     <title>@yield('title')</title>
+
+    <style>
+    .header{
+      z-index: -1;
+    display: flex;
+    }
+    #adminBody{
+      z-index: 10;
+    background: #03A9F4;
+    }
+    </style>
+
+
+
   </head>
 <body>
 
@@ -43,8 +57,7 @@
             <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="./assets/img/theme/team-1-800x800.jpg
-  ">
+                  <img alt="Image placeholder" src="https://media-exp1.licdn.com/dms/image/C5603AQEworctd3kGLA/profile-displayphoto-shrink_200_200/0?e=1586390400&v=beta&t=CcfZkAuJ1UzUcacAi69fqcaRSkYEg-zmRUmflTP7YTk">
                 </span>
               </div>
             </a>
@@ -164,17 +177,17 @@
       <div class="container-fluid">
         <!-- Brand -->
         <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Dashboard</a>
-      
+
         <!-- User -->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
           <li class="nav-item dropdown">
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="./assets/img/theme/team-4-800x800.jpg">
+                  <img alt="Image placeholder" src="https://media-exp1.licdn.com/dms/image/C5603AQEworctd3kGLA/profile-displayphoto-shrink_200_200/0?e=1586390400&v=beta&t=CcfZkAuJ1UzUcacAi69fqcaRSkYEg-zmRUmflTP7YTk">
                 </span>
                 <div class="media-body ml-2 d-none d-lg-block">
-                  <span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>
+                  <span class="mb-0 text-sm  font-weight-bold">Christian Campbell</span>
                 </div>
               </div>
             </a>
@@ -210,14 +223,14 @@
     </nav>
     <!-- End Navbar -->
     <!-- Header -->
-        <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+        <div class="header bg-gradient-primary pb-3 pt-5 pt-md-8">
           <div class="container-fluid">
             <div class="header-body">
             </div>
           </div>
         </div>
 
-        <div class="container-fluid mt--7">
+        <div id="adminBody" class="container-fluid mt--7">
               <div class="row">
  @yield('content')
               </div>
