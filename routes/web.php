@@ -93,17 +93,6 @@ Route::post('/admin/files', 'FileController@store')->middleware('auth');
 |
 */
 
-Route::get('/admin-d', function () {
-    return view('admin.adminDesign');
-})->middleware('auth');
-
-
-Route::get('/admin-a', function () {
-    return view('admin.adminDesign2');
-})->middleware('auth');
-
-
-
 Route::get('/admin', function () {
     return view('admin.admin');
 })->middleware('auth');
