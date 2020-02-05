@@ -20,7 +20,7 @@
   </head>
 <body>
 <!-- Navbar -->
-<nav id="mainnav" class="col-lg-12 navbar navbar-expand-md navbar-light fixed-left">
+<nav id="mainnav" class="col-lg-12 bg-info vh-100 navbar navbar-expand-md navbar-light fixed-left">
 <a class="navbar-brand d-flex navbar-brand" href="/admin/">
     <!-- icon -->
   Admin
