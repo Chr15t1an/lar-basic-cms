@@ -1,6 +1,6 @@
 <template>
   <!-- Leads Table -->
-  <div>
+  <div class="col-10">
       <div v-if="this.errors.length > 0">
         <div class="alert alert-warning" role="alert">
             There were some validation errors.
@@ -11,9 +11,8 @@
       </div>
 
       <div v-if="categorys[0]">
-        <a class="btn btn-success" href="/admin/leads/export">Export leads</a>
-        <hr/>
-      <table class="table table-responsive">
+
+      <table class="table table-bordered">
         <thead>
           <tr>
             <th scope="col">Edit</th>
@@ -55,11 +54,11 @@
       </div>
       <div>
           <label for="">Add Categories</label>
+          <div class="col-sm-7">
+            <input v-model="newCatName" type="text" class="col-sm-4 float-left form-control" id="">
+            <button class="btn btn-primary" v-on:click="add(newCatName)">Add Category</button>
 
-       <input v-model="newCatName" type="text" class="form-control" id="">
-       <button v-on:click="add(newCatName)">Add Category</button>
-
-
+          </div>
 
       </div>
     </div>
@@ -101,7 +100,6 @@
               axios
                 .get('/api/categories')
                 .then(function (response) {
-                  // console.log(response.data);
                   sel.categorys = response.data;
                     });
             },
@@ -137,14 +135,10 @@
             },
             edit: function(name) {
 
-              console.log(name);
               // Show Editing window
               $('.'+name+'-editing').removeClass( "d-none");
               // Hide Basic
               $('.'+name).addClass( "d-none");
-
-
-              console.log('.'+name+'-editing');
             },
             },
             mounted: function () {

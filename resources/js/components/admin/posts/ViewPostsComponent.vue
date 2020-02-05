@@ -1,11 +1,7 @@
 <template>
-
   <div class="container">
-
-    <a class="btn btn-primary" href="/admin/posts/create">Create New</a>
-
-    <hr/>
-
+    <a class="btn btn-primary m-2" href="/admin/posts/create">Create New</a>
+    <a href="/admin/posts/export"><button class="btn btn-outline-dark">Export Posts</button></a>
   <!-- Admin Todo Checklist -->
           <div v-if="this.errors.length > 0">
             <div class="alert alert-warning" role="alert">
@@ -23,21 +19,7 @@
           <div class="post" v-for="item in posts">
             <span v-if="item.status"></span>
             <a v-bind:href="'/admin/posts/edit/'+ item.id"><p>{{item.title}}</p></a>
-            <!-- <i v-on:click="archiveToggle(email.id)" v-if="!email.archived" class="material-icons">archive</i>
-            <i v-on:click="archiveToggle(email.id)" v-else class="material-icons">unarchive</i> -->
-            <!-- <i v-on:click="archiveToggle(email.id)" class="material-icons">unarchive</i> -->
-            <!-- <i v-on:click="destroy(email.id)" class="material-icons">delete</i> -->
           </div>
-
-
-          <!-- <div v-if="posts[0]" v-for="item in posts">
-            <p><a v-bind:href="'/admin/posts/edit/'+ item.id">{{item.title}}</a></p>
-            <br/>
-          </div> -->
-          <!-- <div v-else>
-            <h1>No Posts Yet</h1>
-          </div> -->
-
 
       </div>
 </template>

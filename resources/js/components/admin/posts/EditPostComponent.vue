@@ -1,6 +1,6 @@
 <template>
 
-  <div class="container">
+  <div class="row">
   <!-- Admin Todo Checklist -->
           <div v-if="this.errors.length > 0">
             <div class="alert alert-warning" role="alert">
@@ -10,7 +10,60 @@
                 </div>
             </div>
           </div>
-      <div class="row">
+
+      <div class="col-3 p-3">
+        <div class="form-group">
+             <label for="">Slug</label>
+             <input v-model="post_slug" type="text" class="form-control" id="" required>
+        </div>
+
+
+        <div class="form-group">
+             <label for="">Featured Image</label>
+             <input v-model="featured_image" type="text" class="form-control" id="" >
+        </div>
+
+        <div class="form-group">
+             <label for="">Category</label>
+             <select class="form-control" v-model="selected">
+              <option v-for="category in categorys"  v-bind:value="category.id" >{{category.name}}</option>
+             </select>
+        </div>
+
+
+        <div class="form-group">
+             <label for="">Tags</label>
+             <span v-for="tag in tags" v-bind:class="'add-'+tag.name+' badge badge-secondary p-2 m-1'" v-bind:value="tag.id" >{{tag.name}}
+               <a v-on:click="addTag(tag.id)">
+                 <i>+</i>
+               </a>
+               </span>
+<!-- v-model="addTag" -->
+              <!-- <option v-for="category in categorys"  v-bind:value="category.id" >{{category.name}}</option> -->
+            <span v-for="tag in postTags" v-bind:class="'remove-'+tag.name+' badge badge-primary p-2 m-1'" v-bind:value="tag.id" >{{tag.name}}
+              <a v-on:click="removeTag(tag.id)">
+                <i>X</i>
+              </a>
+              </span>
+
+        </div>
+
+
+        <div class="form-group">
+             <label for="">Meta Title</label>
+             <input v-model="meta_title" type="text" class="form-control" id="" >
+        </div>
+
+        <div class="form-group">
+             <label for="">Meta Description</label>
+             <input v-model="meta_description" type="text" class="form-control" id="" >
+        </div>
+
+
+
+      </div>
+
+      <div class="col-9">
 
           <form class="col" v-on:submit.prevent id="">
             <div class="form-group">
@@ -18,64 +71,28 @@
                 <input v-model="post_title" type="text" class="form-control" id="" aria-describedby="" placeholder="Title">
             </div>
 
-            <div class="form-group">
-                 <label for="">Slug</label>
-                 <input v-model="post_slug" type="text" class="form-control" id="" required>
-            </div>
 
-            <div class="form-group">
-                 <label for="">Featured Image</label>
-                 <input v-model="featured_image" type="text" class="form-control" id="" >
-            </div>
-
-            <div class="form-group">
-                 <label for="">Meta Title</label>
-                 <input v-model="meta_title" type="text" class="form-control" id="" >
-            </div>
-
-            <div class="form-group">
-                 <label for="">Meta Description</label>
-                 <input v-model="meta_description" type="text" class="form-control" id="" >
-            </div>
-
-            <div class="form-group">
+            <!-- <div class="form-group">
                  <label for="">Published</label>
                  <input v-model="status" type="checkbox" class="form-control" id="" >
-            </div>
+            </div> -->
+
 
             <div class="form-group">
-                 <label for="">Category</label>
-                 <!-- <input v-model="category" type="checkbox" class="form-control" id="" > -->
-
-                 <select v-model="selected">
-                  <option v-for="category in categorys"  v-bind:value="category.id" >{{category.name}}</option>
-                 </select>
-
-
+            <div class="form-check">
+              <input v-model="status" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                Published
+              </label>
             </div>
-
-            <div class="form-group">
-                 <label for="">Tags</label>
-                 <span v-for="tag in tags" v-bind:class="'add-'+tag.name+' badge badge-secondary'" v-bind:value="tag.id" >{{tag.name}}
-                   <a v-on:click="addTag(tag.id)">
-                     <i>+</i>
-                   </a>
-                   </span>
-<!-- v-model="addTag" -->
-                  <!-- <option v-for="category in categorys"  v-bind:value="category.id" >{{category.name}}</option> -->
-                <span v-for="tag in postTags" v-bind:class="'remove-'+tag.name+' badge badge-primary'" v-bind:value="tag.id" >{{tag.name}}
-                  <a v-on:click="removeTag(tag.id)">
-                    <i>X</i>
-                  </a>
-                  </span>
-
-
-
-            </div>
-
+          </div>
             <div v-if="status" class="form-group">
-              <label for="">Public Path</label>
+              <!-- <label for="">Public Path</label> -->
+              <label class="form-check-label" for="">
+                Public Path
+              </label>
                 <a target="_blank" v-bind:href="public_path"><p>{{public_path}}</p></a>
+
             </div>
 
 
@@ -264,7 +281,7 @@
               tagIds = tagIds.substring(0, tagIds.length - 1);
 
               if(tagIds === ""){
-                tagIds = 0; 
+                tagIds = 0;
               };
 
               var attributes = {

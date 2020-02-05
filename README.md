@@ -1,13 +1,23 @@
 Design
 
 - Layout
-  - Find a template
-  -
+Login Page - ck
+Categories Page -
+Tags
+
+Edit & Create Posts   
+
+- Color
+
+Combine 
+
+-----! Cats and Tags Broken
+
 
 Implament layout   
 - Split front and backend.
 
-Add a color pallet. 
+Add a color pallet.
 - Implament Decent Design.
 
 - Have the frontend be the documentation. ?

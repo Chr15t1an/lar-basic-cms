@@ -66,7 +66,7 @@
 </nav>
 <!-- End Navbar -->
 <!-- main conten block -->
-<div id="app" class="main col-lg-8">
+<div id="app" class="main col-lg-12">
  @yield('content')
 </div>
   <!-- end main conten block -->

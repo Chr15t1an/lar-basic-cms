@@ -1,6 +1,6 @@
 <template>
   <!-- Leads Table -->
-  <div>
+  <div class="col-10">
       <div v-if="this.errors.length > 0">
         <div class="alert alert-warning" role="alert">
             There were some validation errors.
@@ -12,9 +12,7 @@
 
 
       <div v-if="tags[0]">
-
-        <hr/>
-      <table class="table table-responsive">
+      <table class="table table-bordered">
         <thead>
           <tr>
             <th scope="col">Edit</th>
@@ -56,11 +54,10 @@
       </div>
       <div>
           <label for="">Add Tags</label>
-
-       <input v-model="newTagName" type="text" class="form-control" id="">
-       <button v-on:click="add(newTagName)">Add Tag</button>
-
-
+          <div class="col-sm-7">
+            <input v-model="newTagName" type="text" class="col-sm-4 float-left form-control" id="">
+            <button class="btn btn-primary" v-on:click="add(newTagName)">Add Tag</button>
+          </div>
 
       </div>
     </div>
