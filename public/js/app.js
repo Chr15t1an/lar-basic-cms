@@ -3156,36 +3156,23 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       errors: {},
-      post_id: 0,
-      post: {},
       post_title: "",
-      post_slug: "",
-      featured_image: "",
-      meta_description: "",
-      meta_title: "",
-      status: 0,
-      template: "",
-      body: ""
+      status: 0
     };
   },
-  created: function created() {},
   methods: {
     //Update CHECKLIST
     createPost: function createPost() {
-      // this.post.body = $('#summernote').summernote('code');
-      // this.body = $('#summernote').summernote('code');
-      // console.log(myJSON);
+      var slug = this.post_title;
+      slug = slug.toLowerCase();
+      slug = slug.replace(/[^a-z0-9+ ]+/gi, '');
+      slug = slug.replace(/\s/g, "-");
       var attributes = {
         'title': this.post_title,
-        'body': this.body,
-        'featured_image': this.featured_image,
         'template': 'default',
-        'meta_title': this.meta_title,
-        'meta_description': this.meta_description,
-        'slug': this.post_slug,
+        'slug': slug,
         'status': this.status
-      }; // var dt = { myJSON };
-
+      };
       var self = this;
       axios.post('/api/admin/posts/store', attributes).then(function (response) {
         if (response.data.errors) {
@@ -3215,34 +3202,6 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     }
-  },
-  mounted: function mounted() {
-    var attributes = {
-      'title': '',
-      'body': '',
-      'featured_image': '',
-      'template': 'default',
-      'meta_title': '',
-      'meta_description': '',
-      'slug': '',
-      'status': 0
-    };
-    this.post = attributes;
-    var sel = this;
-    sel.post_title = '';
-    sel.post_slug = '';
-    sel.post_title = '';
-    sel.post_slug = '';
-    sel.featured_image = '';
-    sel.meta_description = '';
-    sel.meta_title = ''; // sel.status = '';
-
-    sel.template = '';
-    sel.body = ''; //
-    // $(document).ready(function() {
-    //   $('#summernote').summernote('code', '<h6>Start..<h6/>');
-    //   // $('#summernote').summernote({tabsize: 2,height: 100});
-    // });
   }
 });
 
@@ -42236,7 +42195,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", { staticClass: "container " }, [
     this.errors.length > 0
       ? _c("div", [
           _c(
@@ -42303,186 +42262,6 @@ var render = function() {
                 }
               }
             })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "" } }, [_vm._v("Slug")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.post_slug,
-                  expression: "post_slug"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", id: "", required: "" },
-              domProps: { value: _vm.post_slug },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.post_slug = $event.target.value
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "" } }, [_vm._v("Featured Image")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.featured_image,
-                  expression: "featured_image"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", id: "" },
-              domProps: { value: _vm.featured_image },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.featured_image = $event.target.value
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "" } }, [_vm._v("Meta Title")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.meta_title,
-                  expression: "meta_title"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", id: "" },
-              domProps: { value: _vm.meta_title },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.meta_title = $event.target.value
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "" } }, [_vm._v("Meta Description")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.meta_description,
-                  expression: "meta_description"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", id: "" },
-              domProps: { value: _vm.meta_description },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.meta_description = $event.target.value
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "" } }, [_vm._v("Published")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.status,
-                  expression: "status"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "checkbox", id: "" },
-              domProps: {
-                checked: Array.isArray(_vm.status)
-                  ? _vm._i(_vm.status, null) > -1
-                  : _vm.status
-              },
-              on: {
-                change: function($event) {
-                  var $$a = _vm.status,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = null,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.status = $$a.concat([$$v]))
-                    } else {
-                      $$i > -1 &&
-                        (_vm.status = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
-                    }
-                  } else {
-                    _vm.status = $$c
-                  }
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "" } }, [_vm._v("Body")]),
-            _vm._v(" "),
-            _c(
-              "textarea",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.body,
-                    expression: "body"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  placeholder: "add multiple lines",
-                  id: "exampleFormControlTextarea1"
-                },
-                domProps: { value: _vm.body },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.body = $event.target.value
-                  }
-                }
-              },
-              [_vm._v(_vm._s(_vm.body))]
-            )
           ]),
           _vm._v(" "),
           _c(

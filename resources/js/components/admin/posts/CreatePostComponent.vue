@@ -1,6 +1,6 @@
 <template>
 
-  <div class="container">
+  <div class="container ">
   <!-- Admin Todo Checklist -->
           <div v-if="this.errors.length > 0">
             <div class="alert alert-warning" role="alert">
@@ -18,17 +18,17 @@
                 <input v-model="post_title" type="text" class="form-control" id="" aria-describedby="" placeholder="Title">
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                  <label for="">Slug</label>
                  <input v-model="post_slug" type="text" class="form-control" id="" required>
-            </div>
+            </div> -->
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                  <label for="">Featured Image</label>
                  <input v-model="featured_image" type="text" class="form-control" id="" >
-            </div>
+            </div> -->
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                  <label for="">Meta Title</label>
                  <input v-model="meta_title" type="text" class="form-control" id="" >
             </div>
@@ -36,19 +36,19 @@
             <div class="form-group">
                  <label for="">Meta Description</label>
                  <input v-model="meta_description" type="text" class="form-control" id="" >
-            </div>
+            </div> -->
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                  <label for="">Published</label>
                  <input v-model="status" type="checkbox" class="form-control" id="" >
-            </div>
+            </div> -->
 
 
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                <label for="">Body</label>
                 <textarea v-model="body" placeholder="add multiple lines" class="form-control" id="exampleFormControlTextarea1">{{body}}</textarea>
-          </div>
+          </div> -->
           <button v-on:click="createPost" class="btn btn-primary mb-2">Create</button>
           </form>
       </div>
@@ -60,44 +60,28 @@
       data:function() {
         return {
             errors:{},
-            post_id:0,
-            post:{},
             post_title:"",
-            post_slug:"",
-            featured_image:"",
-            meta_description:"",
-            meta_title:"",
             status:0,
-            template:"",
-            body:"",
-
             }
           },
-          created: function() {
-        },
+
           methods:{
 
             //Update CHECKLIST
             createPost: function(){
 
-              // this.post.body = $('#summernote').summernote('code');
-              // this.body = $('#summernote').summernote('code');
+              var slug = this.post_title;
+              slug = slug.toLowerCase();
+              slug = slug.replace(/[^a-z0-9+ ]+/gi, '');
+              slug = slug.replace(/\s/g, "-");
 
-
-              // console.log(myJSON);
               var attributes = {
                 'title':this.post_title,
-                'body':this.body,
-                'featured_image':this.featured_image,
                 'template':'default',
-                'meta_title':this.meta_title,
-                'meta_description':this.meta_description,
-                'slug':this.post_slug,
+                'slug':slug,
                 'status':this.status,
               };
 
-
-              // var dt = { myJSON };
               var self = this;
               axios
                 .post('/api/admin/posts/store', attributes)
@@ -129,43 +113,7 @@
               });
             },
           },
-          mounted: function () {
 
-
-            var attributes = {
-              'title':'',
-              'body':'',
-              'featured_image':'',
-              'template':'default',
-              'meta_title':'',
-              'meta_description':'',
-              'slug':'',
-              'status':0,
-            };
-            this.post = attributes;
-
-            var sel = this;
-
-            sel.post_title = '';
-            sel.post_slug = '';
-
-            sel.post_title = '';
-            sel.post_slug = '';
-            sel.featured_image = '';
-            sel.meta_description = '';
-            sel.meta_title = '';
-            // sel.status = '';
-            sel.template = '';
-            sel.body = '';
-
-            //
-            // $(document).ready(function() {
-            //   $('#summernote').summernote('code', '<h6>Start..<h6/>');
-            //   // $('#summernote').summernote({tabsize: 2,height: 100});
-            // });
-
-
-          },
 
               }
 

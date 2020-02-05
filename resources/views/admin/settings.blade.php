@@ -2,9 +2,10 @@
 @section('title', 'Settings')
 @section('content')
 
-<h1>Settings</h1>
-<!-- Google Tag Manager -->
+
+<h1 class="p-3">Settings</h1>
 <section class="row">
+<!-- Google Tag Manager -->
   <div class="container">
     <h3>Google Tag Manager</h3>
     <gtm-component></gtm-component>
