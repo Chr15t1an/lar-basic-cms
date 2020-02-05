@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="row align-items-center">
-<h1>Categories</h1>
+<h1 class="m-5">Categories</h1>
 <!-- User Registration -->
 
     <div class="container">

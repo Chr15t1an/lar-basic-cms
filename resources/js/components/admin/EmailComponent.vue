@@ -1,6 +1,8 @@
 <template>
   <!-- Read Email Component -->
       <div>
+        <a href="/admin/contacts"><button class="btn btn-dark btn-lg float-right">All Messages</button></a>
+        <br/>
             <h1 v-if="noemail">No EMail Found</h1>
 
             <strong>From:</strong> {{ first_name }} {{ last_name }}<br/>
@@ -8,8 +10,8 @@
             <strong> Message:</strong><br/>
             <div style="margin: 14px 0px;" class="">{{ msg }}</div>
 
-          <button v-if="!archive" v-on:click="archiveToggle" type="button" class="btn btn-primary"><i class="material-icons">archive</i></button>
-          <button v-if="archive" v-on:click="archiveToggle" type="button" class="btn btn-light"><i class="material-icons">unarchive</i></button>
+          <button v-if="!archive" v-on:click="archiveToggle" type="button" class="btn btn-primary">Archive</button>
+          <button v-if="archive" v-on:click="archiveToggle" type="button" class="btn btn-light">Unarchive</button>
           <!-- <button v-if="!read" v-on:click="readToggle" type="button" class="btn btn-primary">Mark Read</button>
           <button v-if="read" v-on:click="readToggle" type="button" class="btn btn-default">Mark UnRead</button> -->
           <button v-on:click="destroy" type="button" class="btn btn-danger">Delete</button>

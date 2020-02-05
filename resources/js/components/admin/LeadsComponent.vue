@@ -12,8 +12,8 @@
 
       <div v-if="leads[0]">
         <a class="btn btn-success" href="/admin/leads/export">Export leads</a>
-        <hr/>
-      <table class="table table-responsive">
+
+      <table class="table table-bordered">
         <thead>
           <tr>
             <th scope="col">#</th>

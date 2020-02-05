@@ -1,7 +1,7 @@
 
 Design
 
-Read And Archive E-Mail. 
+Read And Archive E-Mail.
 http://markettesttemplate.test/admin/contacts/1
 
 
@@ -18,7 +18,9 @@ Combine
 
 - Have the frontend be the documentation
 
+documentation
 
+- Polish 
 
 
 
@@ -116,6 +118,8 @@ https://docs.google.com/document/d/1adkzcZA8odWzEm19zAf4boEuIhGyft3Zm3OQTLVjhc8/
 - Public vs private meta values - Lock Api
 - Check CSRF Token for form submission
 - User Management
+- Site map
+-
 
 ### V2. Deployment Process.
 - Set up CI in Gitlab

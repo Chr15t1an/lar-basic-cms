@@ -2159,6 +2159,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -41375,6 +41377,10 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
     _vm.noemail ? _c("h1", [_vm._v("No EMail Found")]) : _vm._e(),
     _vm._v(" "),
     _c("strong", [_vm._v("From:")]),
@@ -41398,7 +41404,7 @@ var render = function() {
             attrs: { type: "button" },
             on: { click: _vm.archiveToggle }
           },
-          [_c("i", { staticClass: "material-icons" }, [_vm._v("archive")])]
+          [_vm._v("Archive")]
         )
       : _vm._e(),
     _vm._v(" "),
@@ -41410,7 +41416,7 @@ var render = function() {
             attrs: { type: "button" },
             on: { click: _vm.archiveToggle }
           },
-          [_c("i", { staticClass: "material-icons" }, [_vm._v("unarchive")])]
+          [_vm._v("Unarchive")]
         )
       : _vm._e(),
     _vm._v(" "),
@@ -41425,7 +41431,18 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "/admin/contacts" } }, [
+      _c("button", { staticClass: "btn btn-dark btn-lg float-right" }, [
+        _vm._v("All Messages")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -41678,9 +41695,7 @@ var render = function() {
             [_vm._v("Export leads")]
           ),
           _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("table", { staticClass: "table table-responsive" }, [
+          _c("table", { staticClass: "table table-bordered" }, [
             _vm._m(0),
             _vm._v(" "),
             _c(
