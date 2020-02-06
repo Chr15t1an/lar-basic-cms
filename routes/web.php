@@ -27,6 +27,14 @@ Route::get('/', function () {
 });
 
 
+Route::get('/installation', function () {
+    return view('documentation.installation');
+});
+
+Route::get('/demo', function () {
+    return view('documentation.demo');
+});
+
 
 Route::get('/components', function () {
     return view('documentation.components');
