@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Handle Inbound App Pricing')
+@section('title', 'Example Sign Up Page')
 @section('content')
 
   <section class="row">

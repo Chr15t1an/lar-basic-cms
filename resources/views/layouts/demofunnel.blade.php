@@ -49,10 +49,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="/components">Components</a>
-    </li>
-
-    <li class="nav-item">
       <a class="nav-link" href="/installation">Installation</a>
     </li>
 
@@ -65,6 +61,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </li>
 
 
+    <li class="nav-item">
+      <a class="nav-link" href="/example-value-prop">Value Proposition</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="/pricing">Pricing</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/signup">Sign up</a>
+    </li>
 
 
   </ul>

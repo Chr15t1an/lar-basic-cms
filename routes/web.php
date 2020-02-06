@@ -33,6 +33,17 @@ Route::get('/signup', function () {
     return view('signup');
 });
 
+
+
+Route::get('/example-funnel', function () {
+    return view('example-funnel');
+});
+
+Route::get('/example-value-prop', function () {
+    return view('example-value-prop');
+});
+
+
 //Basic Terms and Conditions & Privacy Policy
 Route::get('/terms-and-conditions', function () {
     return view('terms-and-conditions');
