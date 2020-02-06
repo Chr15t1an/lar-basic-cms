@@ -23,34 +23,42 @@
 |
 */
 Route::get('/', function () {
-    return view('pubhome');
-});
-Route::get('/pricing', function () {
-    return view('pricing');
+    return view('documentation.pubhome');
 });
 
-Route::get('/signup', function () {
-    return view('signup');
+
+
+Route::get('/components', function () {
+    return view('documentation.components');
 });
 
 
 
 Route::get('/example-funnel', function () {
-    return view('example-funnel');
+    return view('demo-funnel.example-funnel');
 });
 
+Route::get('/pricing', function () {
+    return view('demo-funnel.pricing');
+});
+
+Route::get('/signup', function () {
+    return view('demo-funnel.signup');
+});
+
+
 Route::get('/example-value-prop', function () {
-    return view('example-value-prop');
+    return view('demo-funnel.example-value-prop');
 });
 
 
 //Basic Terms and Conditions & Privacy Policy
 Route::get('/terms-and-conditions', function () {
-    return view('terms-and-conditions');
+    return view('demo-funnel.terms-and-conditions');
 });
 
 Route::get('/privacy-policy', function () {
-    return view('privacy-policy');
+    return view('demo-funnel.privacy-policy');
 });
 
 
