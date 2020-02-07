@@ -34,9 +34,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- icon -->
     <i class="material-icons">
   chat_bubble_outline
-</i><h6>{{ Config::get('app.name')}}</h6>
-
-    <!-- icon -->
+    </i>
+    <!--/ icon -->
 </a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
@@ -122,7 +121,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
  @yield('content')
 
 
-   
+
 
 <contact-component></contact-component>
 </div>
