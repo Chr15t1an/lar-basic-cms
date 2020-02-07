@@ -9,7 +9,8 @@
 <h1 class="text-center">Example Funnel</h1>
 <div class="container">
   <p class="lead">
-    This is the first funnel I used to to test a SASS Idea. The idea was to see if I could generate low-cost / high-intrest leads from google adwords.
+    This is the first funnel I used to to test a SASS Idea.<br/>
+    The idea was to see if I could generate low-cost / high-intrest leads from google adwords.
     <a href="https://myofficeitperson.com/posts/market-test-voip-and-hubspot-checkin-after-value-prop-and-pricing">project write up here</a>
   </p>
 <h2 class="pt-5">Step 1</h2>

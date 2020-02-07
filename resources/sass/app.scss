@@ -1,5 +1,6 @@
 // Fonts
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons|Comfortaa|Roboto&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons|Pridi:300,500&display=swap');
+// https://fonts.googleapis.com/css?family=Alfa+Slab+One&display=swap
 
 // Variables
 @import 'variables';
@@ -7,12 +8,20 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+body{
+  background-image: url("/imgs/docs/cream-dust.png");
+}
+
+
 .lead{
   padding-left: 15px;
 }
 section{
   padding: 15px;
   margin: 50px 0px;
+  // background-color: #fff;
+  // border-radius: 6px;
+  // padding: 12px;
 }
 
 .logos img {
@@ -24,5 +33,9 @@ hr{
 }
 
 #docs h2{
-padding-top: 30px;  
+padding-top: 30px;
+}
+
+h1 {
+    margin-bottom: 50px;
 }
