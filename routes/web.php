@@ -43,7 +43,7 @@ Route::get('/components', function () {
 
 
 Route::get('/example-funnel', function () {
-    return view('demo-funnel.example-funnel');
+    return view('documentation.example-funnel');
 });
 
 Route::get('/pricing', function () {

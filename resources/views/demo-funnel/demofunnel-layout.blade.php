@@ -16,7 +16,7 @@
 
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/funnel.css" rel="stylesheet">
 
     <title>@yield('title') | {{ Config::get('app.name')}}</title>
     <meta name="description" content="@yield('metadescription')">
@@ -29,6 +29,9 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <!-- Navbar -->
+
+<div class="">Add in a pback to parent site bar</div>
+
 <nav id="mainnav" class="col-lg-8 navbar navbar-expand-lg navbar-light offset-lg-2">
 <a class="navbar-brand d-flex navbar-brand" href="/">
     <!-- icon -->
@@ -42,43 +45,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="navbar-toggler-icon"></span>
 </button>
 
+
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
   <ul class="navbar-nav mr-auto">
     <li class="nav-item active">
-      <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="/example-value-prop">Home <span class="sr-only">(current)</span></a>
     </li>
-
-    <li class="nav-item">
-      <a class="nav-link" href="/installation">Installation</a>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link" href="/demo">Demo</a>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link" href="/example-funnel">Example Funnel</a>
-    </li>
-
-
-    <li class="nav-item">
-      <a class="nav-link" href="/example-value-prop">Value Proposition</a>
-    </li>
-
     <li class="nav-item">
       <a class="nav-link" href="/pricing">Pricing</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/signup">Sign up</a>
     </li>
-
-
   </ul>
-
 <ul class="navbar-nav">
-
-
-
     @guest
     <li class="nav-item">
     <a class="nav-link" href="login"><button type="button" class="btn btn-outline-dark">Log in</button></a>
@@ -89,29 +69,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </li>
     @endif
     @else
-
     <li class="nav-item">
       <a class="nav-link" href="/admin">Admin</a>
     </li>
-
     <li class="nav-item">
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
                     {{ __('Logout') }}
                 </a>
-
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
-
       </li>
-
-
-
     @endguest
-
-
 </ul>
 
 </div>

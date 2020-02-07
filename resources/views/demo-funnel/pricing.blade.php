@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('demo-funnel.demofunnel-layout')
 
 @section('title', 'Example Pricing Page')
 @section('content')
