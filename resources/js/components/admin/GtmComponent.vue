@@ -9,7 +9,7 @@
                 </li>
             </div>
           </div>
-          <div class="row">
+          <div class="col-4">
           <form v-if="!submitting">
             <div class="form-group">
               <input v-model="meta_value_gtm" type="text" class="form-control" placeholder="GTM ID">

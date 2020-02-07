@@ -3,7 +3,7 @@
 @section('content')
 
 
-<h1 class="p-3">Settings</h1>
+<h1 class="pt-5">Settings</h1>
 <section class="row">
 <!-- Google Tag Manager -->
   <div class="container">
