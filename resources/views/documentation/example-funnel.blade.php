@@ -5,28 +5,19 @@
 
 
 
-<section class="row align-items-center">
-<h1>Example Funnel</h1>
+<section class="">
+<h1 class="text-center">Example Funnel</h1>
 <div class="container">
-<p>Project Write up
-<a href="https://myofficeitperson.com/posts/market-test-voip-and-hubspot-checkin-after-value-prop-and-pricing">https://myofficeitperson.com/posts/market-test-voip-and-hubspot-checkin-after-value-prop-and-pricing</a>
-</p>
-
-<h2>Step 1</h2>
-<p>
-<a href="/example-value-prop">Step 1</a> is an example of testing a value proposition.
-</p>
-
-
-<h2>Step 2</h2>
-<p>
-<a href="/pricing">Step 2</a> is an example of testing pricing.
-</p>
-
-<h2>Step 3</h2>
-<p>
-<a href="/signup">Step 3</a> is an example of testing capturing lead info.
-</p>
+  <p class="lead">
+    This is the first funnel I used to to test a SASS Idea. The idea was to see if I could generate low-cost / high-intrest leads from google adwords.
+    <a href="https://myofficeitperson.com/posts/market-test-voip-and-hubspot-checkin-after-value-prop-and-pricing">project write up here</a>
+  </p>
+<h2 class="pt-5">Step 1</h2>
+  <p class="lead"><a target="_blank" href="/example-value-prop">Step 1</a> is an example of testing a value proposition.</p>
+<h2 class="pt-5">Step 2</h2>
+  <p class="lead"><a target="_blank" href="/pricing">Step 2</a> is an example of testing pricing.</p>
+<h2 class="pt-5">Step 3</h2>
+  <p class="lead"><a target="_blank" href="/signup">Step 3</a> is an example of testing capturing lead info.</p>
 </div>
 </section>
 

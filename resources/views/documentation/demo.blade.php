@@ -8,10 +8,11 @@
 
 <section class="row align-items-center">
 <div class="col-12">
-<h1>Demo</h1>
-<h2>Video Demostration</h2>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/qStaxEpnj1M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h1 class="text-center">Video Demostration</h2>
 
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/qStaxEpnj1M" allowfullscreen></iframe>
+</div>
 <p>You could always try <a href="/installation">installing</a> it yourself</p>
 
 </div>

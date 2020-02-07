@@ -8,11 +8,11 @@
   <hr/>
     <div class="d-flex justify-content-around">
       <a href="/components"><button class="btn btn-dark btn-lg btn-default">Components</button></a>
-      <a href="/instalation"><button class="btn btn-dark btn-lg btn-default">Instalation</button></a>
+      <a href="/installation"><button class="btn btn-dark btn-lg btn-default">Installation</button></a>
       <a href="/demo"><button class="btn btn-dark btn-lg btn-default">Demo</button></a>
     </div>
   <hr/>
-  
+
   <div class="container pt-4">
     <h2>What it is?</h2>
     <p class="lead">
