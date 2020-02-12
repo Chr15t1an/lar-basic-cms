@@ -6,11 +6,11 @@
 <div class="col-12">
 <h1 class="text-center">Market Test Template</h1>
   <hr/>
-    <div class="d-flex justify-content-around">
-      <a href="/demo"><button class="btn btn-dark btn-lg btn-default">Demo</button></a>
-      <a href="https://github.com/Chr15t1an/lar-basic-cms"><button class="btn btn-dark btn-lg btn-default">GitHub</button></a>
-      <a href="/components"><button class="btn btn-dark btn-lg btn-default">Components</button></a>
-      <a href="/installation"><button class="btn btn-dark btn-lg btn-default">Installation</button></a>
+    <div class="d-md-flex justify-content-around">
+      <a href="/demo"><button class="mt-2 btn btn-dark btn-lg btn-default">Demo</button></a>
+      <a href="https://github.com/Chr15t1an/lar-basic-cms"><button class="mt-2 btn btn-dark btn-lg btn-default">GitHub</button></a>
+      <a href="/components"><button class="mt-2 btn btn-dark btn-lg btn-default">Components</button></a>
+      <a href="/installation"><button class="mt-2 btn btn-dark btn-lg btn-default">Installation</button></a>
 
     </div>
   <hr/>
@@ -18,7 +18,7 @@
   <div class="container pt-4">
     <h2>What it is?</h2>
     <p class="lead">
-      This Laravel based template serves as a starting point to test website ideas. This was inspired by The Lean Startup by Eric Ries and is a part of a market test process I am developing here <a href="https://myofficeitperson.com/posts/test-a-business-idea-process">https://myofficeitperson.com/posts/test-a-business-idea-process</a>.
+      This Laravel based template serves as a starting point to test website ideas. This was inspired by The Lean Startup by Eric Ries and is a part of a market test process I am developing here <a href="https://myofficeitperson.com/posts/test-a-business-idea-process">myofficeitperson.com/posts/test-a-business-idea-process</a>.
     </p>
     <h2>What you can do with it?
     </h2>
