@@ -30,7 +30,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <!-- Navbar -->
 
-<div class="">Add in a pback to parent site bar</div>
+<div class="bg-dark text-center text-white"><a href='/'>Back to Site</a></div>
 
 <nav id="mainnav" class="col-lg-8 navbar navbar-expand-lg navbar-light offset-lg-2">
 <a class="navbar-brand d-flex navbar-brand" href="/">
