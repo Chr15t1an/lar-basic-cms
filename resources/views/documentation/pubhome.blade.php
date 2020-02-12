@@ -7,9 +7,11 @@
 <h1 class="text-center">Market Test Template</h1>
   <hr/>
     <div class="d-flex justify-content-around">
+      <a href="/demo"><button class="btn btn-dark btn-lg btn-default">Demo</button></a>
+      <a href="https://github.com/Chr15t1an/lar-basic-cms"><button class="btn btn-dark btn-lg btn-default">GitHub</button></a>
       <a href="/components"><button class="btn btn-dark btn-lg btn-default">Components</button></a>
       <a href="/installation"><button class="btn btn-dark btn-lg btn-default">Installation</button></a>
-      <a href="/demo"><button class="btn btn-dark btn-lg btn-default">Demo</button></a>
+
     </div>
   <hr/>
 
