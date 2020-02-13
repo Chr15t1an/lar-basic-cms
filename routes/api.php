@@ -43,6 +43,10 @@ Route::post('/admin/leads/{id}/delete','SignupController@destroy')->middleware('
 Route::post('/meta/add','MetavalueController@add_metadata')->middleware('auth:api');
 //Get meta Values.
 Route::post('/meta/get','MetavalueController@api_get_metadata');
+
+//Get private meta values.
+Route::post('/meta/get/private','MetavalueController@api_get_private_metadata')->middleware('auth:api');
+
 //Update a meta value.
 Route::post('/meta/update','MetavalueController@api_update')->middleware('auth:api');
 //Delete a meta value.

@@ -25,7 +25,17 @@ class MetaReadTest extends TestCase
         $this->json('POST','api/meta/add',$attributes);
         $this->assertDatabaseHas('metavalues',$attributes);
 
+        // // assert that the meta data cannot be viewed via public route
+        //
         $response = $this->json('POST','api/meta/get',[
+                'meta_key' => $attributes['meta_key'],
+            ]);
+
+        $response->assertDontSee($attributes['meta_value']);
+
+        // assert that the meta data can be viewed via protected route
+
+        $response = $this->json('POST','api/meta/get/private',[
                 'meta_key' => $attributes['meta_key'],
             ]);
 
