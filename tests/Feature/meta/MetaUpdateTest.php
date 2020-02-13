@@ -16,7 +16,7 @@ class MetaUpdateTest extends TestCase
      * @return void
      * @test
      */
-    public function test_read_meta()
+    public function test_update_meta()
     {
       // Create key & Values
       $attributes = [ // sentence
@@ -28,15 +28,19 @@ class MetaUpdateTest extends TestCase
         $this->json('POST','api/meta/add',$attributes);
       // Check that it exists
         $this->assertDatabaseHas('metavalues',$attributes);
-        $response = $this->json('POST','api/meta/get',[
+        $response = $this->json('POST','api/meta/get/private',[
                 'meta_key' => $attributes['meta_key'],
             ]);
+
         $response->assertSee($attributes['meta_value']);
+
         //Update it
         $this->json('POST','api/meta/update',[
                     'meta_key' => $attributes['meta_key'],
                     'meta_value' => $updatedVal,
+                    'public_permission' => 1,
                 ]);
+
         //Check that it was updated.
           $response = $this->json('POST','api/meta/get',[
                         'meta_key' => $attributes['meta_key'],

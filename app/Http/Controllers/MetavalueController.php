@@ -39,6 +39,7 @@ class MetavalueController extends Controller
         $newLead = new Metavalue;
         $newLead->meta_key = $request->meta_key;
         $newLead->meta_value = $request->meta_value;
+        $newLead->public_permission = 0;
         $newLead->save();
         return response()->json(['msg'=>'Key Added Sucessfully.']);
 
@@ -69,6 +70,26 @@ class MetavalueController extends Controller
     }
 
 
+
+    public function api_get_private_metadata(Request $request )
+    {
+      //validate the $request
+      $meta_key = $request->meta_key;
+      $validator = Validator::make($request->all(), [
+          'meta_key' => 'required|max:155|regex:/^[a-zA-Z\s]*$/',
+      ]);
+      $meta_key = $request->meta_key;
+
+      //call the get_metadata function
+      try {
+          $responce = Metavalue::where('meta_key', $meta_key)->first();
+          return $responce->meta_value;
+      } catch (\Exception $e) {
+         return NULL;
+      }
+    }
+
+
     /**
      * Retrives the metadata by meta_key
      *
@@ -79,7 +100,7 @@ class MetavalueController extends Controller
     public static function get_metadata($meta_key = '')
     {
           try {
-              $responce = Metavalue::where('meta_key', $meta_key)->first();
+              $responce = Metavalue::where('meta_key', $meta_key)->where('public_permission', 1)->first();
               return $responce->meta_value;
           } catch (\Exception $e) {
              return NULL;
@@ -120,6 +141,7 @@ class MetavalueController extends Controller
         $validator = Validator::make($request->all(), [
             'meta_key' => 'required|max:155|regex:/^[a-zA-Z\s]*$/',
             'meta_value' => 'required',
+            // 'public_permission' => 'required',
         ]);
 
 
@@ -132,6 +154,12 @@ class MetavalueController extends Controller
                $meta_key = $request->meta_key;
                $a = $responce = Metavalue::where('meta_key', $meta_key)->first();
                $a->meta_value = $request->meta_value;
+
+               if (isset($request->public_permission)) {
+                 $a->public_permission = $request->public_permission;
+               }
+
+
                $a->save();
                 return response()->json(['msg'=>'Success']);
              } catch (\Exception $e) {
